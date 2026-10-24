@@ -9,13 +9,49 @@ services:
     environment:
       OCR_DEVICE: cpu
       OCR_MODEL: ${OCR_MODEL:-vgg_transformer}
+      OCR_DEFAULT_QUALITY: ${OCR_DEFAULT_QUALITY:-high}
+      GPU_OCR_URL: ${GPU_OCR_URL:-http://ocr-gpu:8081}
+      GPU_OCR_TIMEOUT: ${GPU_OCR_TIMEOUT:-120}
+      GPU_OCR_API_KEY: ${GPU_OCR_API_KEY:-}
+      OCR_QUEUE_SIZE: ${OCR_QUEUE_SIZE:-8}
+      OCR_QUEUE_TIMEOUT: ${OCR_QUEUE_TIMEOUT:-120}
+      OCR_CPU_THREADS: ${OCR_CPU_THREADS:-4}
+      OMP_NUM_THREADS: ${OCR_CPU_THREADS:-4}
+      OPENBLAS_NUM_THREADS: ${OCR_CPU_THREADS:-4}
+      MKL_NUM_THREADS: ${OCR_CPU_THREADS:-4}
+      OCR_ENABLE_MKLDNN: ${OCR_ENABLE_MKLDNN:-1}
     volumes:
       - ocr-cache:/root/.cache
       - paddle-models:/root/.paddlex
       - paddle-legacy-models:/root/.paddleocr
+      - ./identification_demo/config:/app/identification_demo/config:ro
+    restart: unless-stopped
+
+  ocr-gpu:
+    profiles: [gpu]
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      GPU_OCR_API_KEY: ${GPU_OCR_API_KEY:-}
+      GPU_OCR_RECOGNITION_MODEL: ${GPU_OCR_RECOGNITION_MODEL:-vgg_seq2seq}
+      GPU_OCR_AUTHORITY_MODEL: ${GPU_OCR_AUTHORITY_MODEL:-vgg_seq2seq}
+      OCR_QUEUE_SIZE: ${OCR_QUEUE_SIZE:-8}
+      OCR_QUEUE_TIMEOUT: ${OCR_QUEUE_TIMEOUT:-120}
+    volumes:
+      - gpu-cache:/root/.cache
+      - ./identification_demo/config:/app/identification_demo/config:ro
     restart: unless-stopped
 
 volumes:
   ocr-cache:
   paddle-models:
   paddle-legacy-models:
+  gpu-cache:

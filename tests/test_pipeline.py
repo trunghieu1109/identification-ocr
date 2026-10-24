@@ -8,6 +8,7 @@ from PIL import Image
 from identification_demo.engine import OCRBusy, OCRUnavailable
 from identification_demo.pipeline import CARD_FIELDS
 from identification_demo.qr import QRBusy, QRUnavailable
+from identification_demo.wechat_qr import WeChatQRReader
 from identification_demo.web import MAX_IMAGE_BYTES, create_app
 
 
@@ -92,8 +93,10 @@ def test_qr_wins_and_ocr_only_fills_gaps_in_combined_response(tmp_path, monkeypa
     assert result["field_sources"]["nationality"] == "ocr_front"
     assert result["field_sources"]["issuing_authority"] == "ocr_back"
     assert result["ocr"]["front"]["filled_fields"] == ["nationality", "place_of_origin"]
-    assert result["ocr"]["back"]["filled_fields"] == ["issuing_authority", "identifying_features"]
-    assert result["recognized_fields"] == result["total_fields"] == 11
+    assert result["ocr"]["back"]["filled_fields"] == ["issuing_authority"]
+    assert result["recognized_fields"] == 10 and result["total_fields"] == 11
+    assert result["fields"]["identifying_features"] == ""
+    assert result["field_sources"]["identifying_features"] is None
     assert result["missing_fields"] == result["warnings"] == []
     assert result["request_id"] and result["processing_time_ms"] >= 0
     assert response.headers["cache-control"] == "no-store"
@@ -109,7 +112,7 @@ def test_qr_can_be_on_back_and_identical_codes_are_deduplicated():
     assert result["field_sources"]["issue_date"] == "qr_back"
     assert result["qr"]["sides"] == {"front": "no_qr", "back": "complete"}
     repeated = submit(reader=Reader([PAYLOAD, PAYLOAD], [PAYLOAD])).json()
-    assert repeated["recognized_fields"] == 11 and repeated["qr"]["recognized_fields"] == 7
+    assert repeated["recognized_fields"] == 10 and repeated["qr"]["recognized_fields"] == 7
 
 
 @pytest.mark.parametrize("date", ["", "31022021"])
@@ -142,7 +145,7 @@ def test_no_usable_qr_falls_back_to_both_ocr_sides(codes, qr_status):
     assert result["fields"]["issue_date"] == "20/04/2021"
     assert result["fields"]["old_id_number"] == ""
     assert result["field_sources"]["old_id_number"] is None
-    assert result["recognized_fields"] == 10 and result["missing_fields"] == []
+    assert result["recognized_fields"] == 9 and result["missing_fields"] == []
     assert result["warnings"]
 
 
@@ -174,7 +177,7 @@ def test_ocr_errors_keep_successful_qr_and_other_side_results(error):
     assert result["fields"]["nationality"] == "Việt Nam"
     assert result["fields"]["issuing_authority"] == ""
     assert result["ocr"]["back"]["status"] == "error"
-    assert result["missing_fields"] == ["issuing_authority", "identifying_features"]
+    assert result["missing_fields"] == ["issuing_authority"]
     assert "private OCR details" not in response.text
     assert all(not path.parent.exists() for path in engine.paths)
 
@@ -203,7 +206,7 @@ def test_no_text_is_a_processed_result_with_empty_fields():
 
 def test_optional_old_cmnd_does_not_prevent_complete_status():
     result = submit(reader=Reader([PAYLOAD.replace("012345678", "")])).json()
-    assert result["status"] == "complete" and result["recognized_fields"] == 10
+    assert result["status"] == "complete" and result["recognized_fields"] == 9
     assert result["fields"]["old_id_number"] == "" and result["missing_fields"] == []
 
 
@@ -249,7 +252,8 @@ def test_swapped_sides_return_actionable_error():
 
 
 def test_real_qr_decoder_and_combined_api():
-    pytest.importorskip("zxingcpp")
+    if not WeChatQRReader().describe()["available"]:
+        pytest.skip("WeChatQRCode dependencies and models are required")
     qrcode = pytest.importorskip("qrcode")
     stream = io.BytesIO()
     qrcode.make(PAYLOAD).save(stream, "PNG")

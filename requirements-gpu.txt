@@ -1,0 +1,4 @@
+numpy==1.26.4
+ultralytics>=8.4.118,<9
+vietocr==0.3.13
+Pillow==10.2.0

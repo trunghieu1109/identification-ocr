@@ -1,0 +1,39 @@
+diff --git a/ocr/paddle_backend.py b/ocr/paddle_backend.py
+index 8f9d159..a60385e 100644
+--- a/ocr/paddle_backend.py
++++ b/ocr/paddle_backend.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ from typing import Any
++import os
+ 
+ 
+ def _parse_version(version: str) -> tuple[int, int, int]:
+@@ -122,12 +123,17 @@ class PaddleTextDetector:
+         det_unclip_ratio,
+     ):
+         from paddleocr import PaddleOCR
++        import paddle
++        # oneDNN/PIR is broken for these models on Paddle 3.3.x.
++        use_mkldnn = (device == "cpu" and _parse_version(paddle.__version__) < (3, 3, 0)
++                      and os.getenv("OCR_ENABLE_MKLDNN", "1") == "1")
+ 
+         if self._is_v3:
+             kwargs = {
+                 "lang": lang,
+                 "device": device if device != "cpu" else "cpu",
+-                "enable_mkldnn": False,
++                "enable_mkldnn": use_mkldnn,
++                "cpu_threads": max(1, int(os.getenv("OCR_CPU_THREADS", "4"))),
+                 "use_doc_orientation_classify": False,
+                 "use_doc_unwarping": False,
+                 "use_textline_orientation": False,
+@@ -156,6 +162,7 @@ class PaddleTextDetector:
+             use_angle_cls=False,
+             show_log=show_log,
+             use_gpu=use_gpu,
++            cpu_threads=max(1, int(os.getenv("OCR_CPU_THREADS", "4"))),
+             det_limit_side_len=det_limit_side_len,
+             det_db_thresh=det_db_thresh,
+             det_db_box_thresh=det_box_thresh,

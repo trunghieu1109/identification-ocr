@@ -17,5 +17,8 @@ git -C .vendor/vietnam-cccd-ocr checkout "$upstream_ref"
 sh scripts/patch-upstream.sh "$project_dir/.vendor/vietnam-cccd-ocr"
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-.venv/bin/python -m pip install -r .vendor/vietnam-cccd-ocr/requirements.txt -r requirements.txt
+.venv/bin/python -m pip install -r .vendor/vietnam-cccd-ocr/requirements.txt -r requirements.txt -r requirements-cpu.txt -r requirements-qr.txt
+# These distributions share cv2; install the contrib variant last for WeChatQRCode.
+.venv/bin/python -m pip install --force-reinstall --no-deps opencv-contrib-python==4.10.0.84
+.venv/bin/python scripts/setup-qr-models.py
 echo "Đã cài xong. Chạy: .venv/bin/python -m uvicorn identification_demo.web:app --host 0.0.0.0 --port 8888"

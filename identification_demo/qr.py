@@ -59,7 +59,7 @@ class QRReader:
         return {"provider": "zxing-cpp", "available": importlib.util.find_spec("zxingcpp") is not None}
 
     def read(self, image):
-        if not self._lock.acquire(blocking=False):
+        if not self._lock.acquire(timeout=2):
             raise QRBusy("Dịch vụ đang đọc một mã QR khác. Hãy thử lại sau ít giây.")
         try:
             try:

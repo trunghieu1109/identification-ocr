@@ -9,6 +9,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%236651dc'/%3E%3Cpath d='M10 14h20v14H10zM14 19h5m4 0h3m-3 4h3' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/app.js" defer></script>
+  <script src="/assets/qr-lab.js" defer></script>
 </head>
 <body>
   <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -36,10 +37,19 @@
       <span class="demo-tag">BẢN THỬ NGHIỆM <span>01</span></span>
     </div>
 
+    <div class="workspace-tabs" role="tablist" aria-label="Chức năng">
+      <button id="workspace-tab-extract" type="button" role="tab" aria-selected="true" aria-controls="workspace-extract" tabindex="0">Đọc căn cước</button>
+      <button id="workspace-tab-qr" type="button" role="tab" aria-selected="false" aria-controls="workspace-qr" tabindex="-1">Thử nghiệm QR <span>6 phương án</span></button>
+    </div>
+
+    <section id="workspace-extract" role="tabpanel" aria-labelledby="workspace-tab-extract">
     <div class="workspace">
       <section class="panel upload-panel" aria-labelledby="upload-title">
         <div class="panel-header"><div class="section-title"><span class="step">01</span><h2 id="upload-title">Ảnh căn cước</h2></div><span class="small-tag" id="side-badge">2 mặt CCCD</span></div>
         <div class="upload-content">
+          <fieldset class="read-mode" id="quality-selector" aria-describedby="quality-description"><legend>Mức xử lý OCR</legend><label><input type="radio" name="quality" value="medium"> Trung bình · CPU</label><label><input type="radio" name="quality" value="high" checked> Cao · GPU</label></fieldset>
+          <p id="quality-description" class="mode-description">QR luôn được ưu tiên. GPU xử lý OCR cả hai mặt và cơ quan cấp. CPU chỉ chạy khi chọn mức Trung bình.</p>
+          <p id="gpu-status" class="notice" hidden></p>
           <p class="mode-description">Chọn ảnh mặt trước và mặt sau của cùng một thẻ.</p>
           <div class="card-uploads">
             <div class="card-upload">
@@ -80,12 +90,59 @@
           <div id="fields-view" role="tabpanel" aria-labelledby="tab-fields"><dl id="field-list" class="field-list"></dl></div>
           <div id="json-view" role="tabpanel" aria-labelledby="tab-json" hidden><pre id="json-output">Chưa có kết quả.</pre></div>
           <div id="result-notice" class="notice" aria-live="polite" hidden></div>
-          <div class="result-footer"><span id="processing-time">Ưu tiên QR · OCR bổ sung</span><div class="export-actions"><button id="copy-json" class="button button-small" type="button" disabled><svg class="icon"><use href="#i-copy"/></svg>Sao chép</button><button id="download-json" class="button button-small" type="button" disabled><svg class="icon"><use href="#i-download"/></svg>Tải JSON</button></div></div>
+          <details class="back-ocr-details" id="back-ocr-details" hidden>
+            <summary>Chữ OCR mặt sau</summary>
+            <p class="back-ocr-help">Chữ của lượt đọc được chọn, trước khi tách thông tin. Dòng tô màu là dòng được chọn để ghép cơ quan cấp.</p>
+            <p><strong>Chữ ghép thành cơ quan cấp:</strong> <span id="back-ocr-candidate"></span></p>
+            <p><strong>Giá trị trả về:</strong> <span id="back-ocr-authority"></span></p>
+            <figure id="back-ocr-crop" class="back-ocr-crop" hidden>
+              <img id="back-ocr-crop-image" alt="Vùng ảnh GPU đã tìm bổ sung cơ quan cấp">
+              <figcaption id="back-ocr-crop-caption">Vùng ảnh đã tìm bổ sung cơ quan cấp</figcaption>
+            </figure>
+            <div class="back-ocr-columns">
+              <section><h3>OCR lần đầu</h3><ol id="back-ocr-initial"></ol></section>
+              <section><h3>Sau đọc bổ sung</h3><ol id="back-ocr-final"></ol></section>
+            </div>
+            <button class="button button-small" type="button" id="copy-back-ocr">Sao chép chữ OCR</button>
+          </details>
+          <details id="timing-details" class="timing-details" hidden>
+            <summary>Thời gian từng bước</summary>
+            <table><thead><tr><th scope="col">Công đoạn</th><th scope="col">Thời gian</th></tr></thead><tbody id="timing-rows"></tbody></table>
+            <p>Tổng chờ đo từ lúc bấm đến khi hiện kết quả. Gửi ảnh gồm chuẩn bị kết nối và upload. Chi tiết server và OCR nằm trong tổng chờ; không cộng các cấp vào nhau.</p>
+            <p id="ocr-work"></p>
+          </details>
+          <div class="result-footer"><div class="result-timing-summary"><span id="processing-time">Ưu tiên QR · OCR bổ sung</span><span id="result-sources"></span></div><div class="export-actions"><button id="copy-json" class="button button-small" type="button" disabled><svg class="icon"><use href="#i-copy"/></svg>Sao chép</button><button id="download-json" class="button button-small" type="button" disabled><svg class="icon"><use href="#i-download"/></svg>Tải JSON</button></div></div>
         </div>
       </section>
     </div>
 
     <div class="scope-note"><span class="scope-icon"><svg class="icon"><use href="#i-check"/></svg></span><p><strong>QR được ưu tiên cho từng trường</strong>; OCR chỉ điền phần còn thiếu. Số CMND cũ có thể trống. Hãy đối chiếu kết quả với thẻ gốc.</p></div>
+    </section>
+
+    <section id="workspace-qr" role="tabpanel" aria-labelledby="workspace-tab-qr" hidden>
+      <div class="qr-lab-intro"><h2>So sánh sáu cách đọc QR</h2><p>Thử ba bộ đọc ban đầu và ba phương án phục hồi ảnh bằng Restormer / SwinIR. Chọn một phương án hoặc chạy cả sáu lần lượt trên cùng ảnh.</p></div>
+      <div class="qr-lab-layout">
+        <section class="panel" aria-labelledby="qr-upload-title">
+          <div class="panel-header"><div class="section-title"><span class="step">01</span><h2 id="qr-upload-title">Ảnh thử nghiệm</h2></div><span class="small-tag">1 ảnh</span></div>
+          <div class="upload-content">
+            <input id="qr-file-input" class="visually-hidden" type="file" accept="image/jpeg,image/png" aria-label="Chọn ảnh thử nghiệm QR">
+            <div id="qr-dropzone" class="dropzone"><svg class="icon upload-side-icon" aria-hidden="true"><use href="#i-upload"/></svg><p>Kéo thả ảnh có mã QR vào đây</p><button id="qr-choose-file" type="button" class="button button-outline"><svg class="icon"><use href="#i-image"/></svg>Chọn ảnh thử nghiệm</button><span class="file-limit">JPG, PNG · Tối đa 10 MB</span></div>
+            <div id="qr-preview" class="preview" hidden><div class="preview-image-wrap"><img id="qr-preview-image" alt="Ảnh dùng chung cho sáu phương án QR"></div><div class="file-details"><span class="file-description"><strong id="qr-file-name"></strong><span id="qr-file-size"></span></span><button id="qr-remove-file" type="button" class="icon-button" aria-label="Bỏ ảnh thử nghiệm"><svg class="icon"><use href="#i-x"/></svg></button></div></div>
+            <div id="qr-upload-error" class="notice notice-error" role="alert" hidden></div>
+            <button id="qr-run-all" type="button" class="button button-primary qr-run-all" disabled><span>Chạy cả 6 phương án</span><svg class="icon"><use href="#i-arrow"/></svg><span class="spinner" hidden></span></button>
+            <p id="qr-run-status" class="mode-description" role="status">Chọn một ảnh để bắt đầu.</p>
+            <p class="upload-footnote">Ảnh được xử lý trong bộ nhớ. Kết quả thử nghiệm chỉ giữ trên trang này.</p>
+          </div>
+        </section>
+        <div class="qr-lab-methods" id="qr-methods" aria-busy="false"></div>
+      </div>
+      <section class="panel qr-comparison" aria-labelledby="qr-comparison-title">
+        <div class="panel-header"><h2 id="qr-comparison-title">Đối chiếu thông tin từ QR</h2><div class="export-actions"><button id="qr-copy-json" class="button button-small" type="button" disabled>Sao chép JSON</button><button id="qr-download-json" class="button button-small" type="button" disabled>Tải JSON</button></div></div>
+        <div class="qr-table-scroll"><table class="qr-comparison-table"><thead><tr><th scope="col">Thông tin</th><th scope="col">ZXing</th><th scope="col">WeChatQRCode</th><th scope="col">QRDet + ZXing</th><th scope="col">WeChat + Restormer</th><th scope="col">WeChat + SwinIR</th><th scope="col">WeChat + cả hai</th></tr></thead><tbody id="qr-comparison-rows"></tbody></table></div>
+        <p class="qr-comparison-note">Ô có giá trị khác nhau được tô vàng. Không dùng OCR trong tab này. QRDet tìm và nắn vùng QR, sau đó ZXing giải mã.</p>
+      </section>
+      <div class="scope-note"><span class="scope-icon"><svg class="icon"><use href="#i-info"/></svg></span><p>Thời gian nạp model được tách khỏi thời gian đọc QR. Lần suy luận đầu vẫn có thể chậm hơn; hãy chạy lại cùng ảnh để so sánh. WeChatQRCode chỉ trả khung cho mã đã giải mã được.</p></div>
+    </section>
     <footer class="footer"><span>Identification demo</span><span>OCR: PaddleOCR + VietOCR · QR: ZXing</span></footer>
   </main>
   <div id="toast" class="toast" role="status" hidden></div>

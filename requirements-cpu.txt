@@ -1,0 +1,3 @@
+# Paddle 3.3.x fails on oneDNN/PIR for the current OCR checkpoints.
+# Keep acceleration on the runtime verified by the pipeline benchmark.
+paddlepaddle==3.2.2

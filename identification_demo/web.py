@@ -1,10 +1,14 @@
 """Multipart API and same-origin demo UI. Uploaded photos are temporary."""
 import logging
+import asyncio
+import os
+from contextlib import asynccontextmanager, suppress
 from pathlib import Path
 from uuid import uuid4
 from typing import Literal
+from time import perf_counter
 
-from fastapi import FastAPI, File, Form, UploadFile
+from fastapi import FastAPI, File, Form, Request, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.concurrency import run_in_threadpool
@@ -12,18 +16,46 @@ from starlette.exceptions import HTTPException
 
 from .engine import NamLhnEngine, OCRBusy, OCRUnavailable
 from .documents import FRONT_FIELDS
-from .qr import QRReader, QRBusy, QRUnavailable
+from .qr import QRBusy, QRUnavailable
+from .wechat_qr import WeChatQRReader
+from .qr_experiments import QRExperiments, process_qr_experiment
 from .processing import MAX_IMAGE_BYTES, InvalidImage, process_image, process_qr_image
 from .pipeline import process_card
+from .gpu_engine import DocUGPUEngine
+from .request_timing import RequestTimingMiddleware, request_timings
 
 FIELDS = FRONT_FIELDS
 logger = logging.getLogger(__name__)
 
 
-def create_app(engine=None, qr_reader=None):
-    app = FastAPI(title="Identification demo — OCR CCCD", version="0.3.0")
+def create_app(engine=None, qr_reader=None, gpu_engine=None, qr_experiments=None):
+    default_quality = os.getenv("OCR_DEFAULT_QUALITY", "medium")
+    if default_quality not in {"medium", "high"}:
+        raise ValueError("OCR_DEFAULT_QUALITY must be medium or high")
+
+    @asynccontextmanager
+    async def lifespan(app):
+        async def warm_cpu():
+            try:
+                if hasattr(app.state.ocr_engine, "initialize"):
+                    await run_in_threadpool(app.state.ocr_engine.initialize)
+            except Exception:
+                logger.warning("CPU warmup failed; initialization will be retried on request")
+        task = asyncio.create_task(warm_cpu()) if default_quality == "medium" else None
+        yield
+        if task is not None:
+            task.cancel()
+            with suppress(asyncio.CancelledError):
+                await task
+        for backend in (app.state.ocr_engine, app.state.gpu_engine):
+            if hasattr(backend, "close"):
+                backend.close()
+
+    app = FastAPI(title="Identification demo — OCR CCCD", version="0.6.6", lifespan=lifespan)
     app.state.ocr_engine = engine if engine is not None else NamLhnEngine()
-    app.state.qr_reader = qr_reader if qr_reader is not None else QRReader()
+    app.state.qr_reader = qr_reader if qr_reader is not None else WeChatQRReader()
+    app.state.gpu_engine = gpu_engine if gpu_engine is not None else DocUGPUEngine()
+    app.state.qr_experiments = qr_experiments if qr_experiments is not None else QRExperiments()
     static = Path(__file__).parent / "static"
     app.mount("/assets", StaticFiles(directory=static), name="assets")
 
@@ -48,13 +80,21 @@ def create_app(engine=None, qr_reader=None):
             "status": "ok",
             "engine": app.state.ocr_engine.describe(),
             "qr": app.state.qr_reader.describe(),
+            "qr_experiments": app.state.qr_experiments.describe(),
+            "ocr_profiles": {
+                "medium": app.state.ocr_engine.describe(),
+                "high": app.state.gpu_engine.describe(),
+            },
+            "default_quality": default_quality,
             "max_image_bytes": MAX_IMAGE_BYTES,
             "supported_formats": ["image/jpeg", "image/png"],
             "supported_sides": ["front", "back"],
         }
 
     @app.post("/api/cccd/extract", summary="Đọc hai mặt CCCD, ưu tiên QR và bổ sung bằng OCR")
-    async def extract_card(front_image: UploadFile = File(...), back_image: UploadFile = File(...)):
+    async def extract_card(request: Request, front_image: UploadFile = File(...), back_image: UploadFile = File(...),
+                           quality: Literal["medium", "high"] = Form(default_quality),
+                           include_back_ocr: bool = Form(False)):
         request_id = uuid4().hex
         try:
             images = {}
@@ -66,8 +106,25 @@ def create_app(engine=None, qr_reader=None):
                 if not data:
                     return failure(f"{label}: ảnh đang trống. Hãy chọn lại ảnh CCCD.", 422, request_id)
                 images[side] = data
-            result = await run_in_threadpool(process_card, images, app.state.ocr_engine, app.state.qr_reader)
+            selected_engine = app.state.gpu_engine if quality == "high" else app.state.ocr_engine
+            dispatched = perf_counter()
+            worker_started = worker_finished = dispatched
+
+            def run_pipeline():
+                nonlocal worker_started, worker_finished
+                worker_started = perf_counter()
+                try:
+                    return process_card(images, selected_engine, app.state.qr_reader, quality,
+                                        include_back_ocr=include_back_ocr)
+                finally:
+                    worker_finished = perf_counter()
+
+            result = await run_in_threadpool(run_pipeline)
             result["request_id"] = request_id
+            result["request_timings_ms"] = request_timings(
+                request.scope.get("state", {}).get("request_timing", {}),
+                dispatched, worker_started, worker_finished,
+            )
             return result
         except InvalidImage as exc:
             return failure(str(exc), 422, request_id)
@@ -133,10 +190,36 @@ def create_app(engine=None, qr_reader=None):
         finally:
             await file.close()
 
+    @app.post("/api/qr/experiment", summary="Thử các bộ đọc QR và phục hồi ảnh bằng Restormer / SwinIR")
+    async def experiment_qr(file: UploadFile = File(...),
+                            method: Literal["zxing", "wechat", "qrdet", "wechat_parallel", "wechat_restormer", "wechat_swinir", "wechat_both"] = Form(...)):
+        request_id = uuid4().hex
+        try:
+            data = await file.read(MAX_IMAGE_BYTES + 1)
+            if len(data) > MAX_IMAGE_BYTES:
+                return failure("Mỗi ảnh tối đa 10 MB.", 413, request_id)
+            if not data:
+                return failure("Ảnh đang trống. Hãy chọn lại ảnh QR.", 422, request_id)
+            result = await run_in_threadpool(process_qr_experiment, data, app.state.qr_experiments, method)
+            result["request_id"] = request_id
+            return result
+        except InvalidImage as exc:
+            return failure(str(exc), 422, request_id)
+        except QRBusy as exc:
+            return failure(str(exc), 429, request_id, {"Retry-After": "5"})
+        except QRUnavailable as exc:
+            return failure(str(exc), 503, request_id)
+        except Exception:
+            logger.exception("QR experiment failed; method=%s request_id=%s", method, request_id)
+            return failure("Chưa chạy được phương án QR này. Hãy kiểm tra thư viện, model hoặc thử lại.", 503, request_id)
+        finally:
+            await file.close()
+
     @app.exception_handler(HTTPException)
     async def http_error(_request, exc):
         return failure(str(exc.detail), exc.status_code, uuid4().hex)
 
+    app.add_middleware(RequestTimingMiddleware)
     return app
 
 

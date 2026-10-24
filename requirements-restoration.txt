@@ -1,0 +1,4 @@
+# GPU worker only; web/CPU imports no restoration model.
+# Restormer uses rearrange, compatible with the version required by VietOCR.
+einops==0.2.0
+timm==1.0.15

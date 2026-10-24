@@ -1090,3 +1090,89 @@ h2 {
 .field-value { display:grid; gap:4px; min-width:0; overflow-wrap:anywhere; padding:11px 0; }
 .field-source { font-size:10px; color:#8c80a4; }
 .field-row dd > .icon-button { flex-shrink:0; }
+.result-timing-summary { display:grid; gap:5px; min-width:0; font-size:11px; color:#77678e; line-height:1.6; }
+.result-timing-summary #result-sources { color:#a49cad; font-size:10px; }
+.timing-details { margin:16px 0; color:#77678e; font-size:12px; }
+.timing-details summary { cursor:pointer; }
+.timing-details table { width:100%; border-collapse:collapse; margin-top:12px; }
+.timing-details th, .timing-details td { text-align:left; padding:6px 0; border-bottom:1px solid var(--line); }
+.timing-details th:last-child, .timing-details td:last-child { text-align:right; white-space:nowrap; }
+.timing-details .timing-detail td:first-child { padding-left:16px; }
+.timing-details .timing-detail { color:#8c80a4; }
+.timing-details p { font-size:11px; line-height:1.7; }
+
+.back-ocr-details { margin:18px 0; border:1px solid var(--line); border-radius:8px; padding:14px; font-size:12px; line-height:1.7; overflow-wrap:anywhere; }
+.back-ocr-details summary { cursor:pointer; font-weight:600; color:var(--accent); }
+.back-ocr-help { color:#776f84; }
+.back-ocr-crop { margin:16px 0; }
+.back-ocr-crop img { display:block; width:100%; max-height:360px; object-fit:contain; background:#faf9fd; border:1px solid var(--line); border-radius:6px; }
+.back-ocr-crop figcaption { color:#776f84; margin-top:6px; font-size:11px; }
+.back-ocr-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:16px 0; }
+.back-ocr-columns section { min-width:0; background:#faf9fd; padding:12px; border-radius:6px; }
+.back-ocr-columns h3 { margin:0 0 10px; font-size:12px; }
+.back-ocr-columns ol { padding-left:24px; margin:0; }
+.back-ocr-columns li { padding:5px 4px; white-space:pre-wrap; }
+.back-ocr-columns .authority-line { background:#eee9fc; color:#6042a1; border-radius:4px; font-weight:600; }
+@media(max-width:650px) { .back-ocr-columns { grid-template-columns:1fr; } }
+
+.workspace-tabs { display:flex; gap:8px; margin-bottom:25px; border-bottom:1px solid var(--line); }
+.workspace-tabs button { border:0; border-bottom:3px solid transparent; padding:13px 17px; background:none; color:#776f84; font-weight:550; }
+.workspace-tabs button[aria-selected=true] { color:var(--accent); border-bottom-color:var(--accent); }
+.workspace-tabs button span { font-size:10px; margin-left:6px; padding:4px 6px; background:#eee9fc; border-radius:5px; }
+.qr-lab-intro { margin:0 0 22px; }
+.qr-lab-intro h2 { font-size:20px; }
+.qr-lab-intro p { color:#776f84; font-size:13px; line-height:1.8; }
+.qr-lab-layout { display:grid; grid-template-columns:290px minmax(0,1fr); gap:20px; align-items:start; }
+.qr-lab-methods { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; min-width:0; }
+.qr-method { padding:18px 15px; min-width:0; }
+.qr-method-header { display:grid; gap:10px; }
+.qr-method h3 { font-size:15px; margin:0; }
+.qr-method-status { justify-self:start; font-size:10px; border-radius:5px; background:#f3f0fa; padding:5px 7px; color:#80738e; }
+.qr-method-status.success { background:#eaf7ef; color:#24805c; }
+.qr-method-status.attention { background:#fff3dc; color:#91691c; }
+.qr-method-description { min-height:76px; font-size:12px; color:#776f84; line-height:1.7; }
+.qr-availability { font-size:10px; color:#24805c; min-height:28px; line-height:1.6; }
+.qr-availability.unavailable { color:#94712f; }
+.qr-method .button { width:100%; font-size:11px; padding:9px 5px; }
+.qr-method-output { font-size:11px; line-height:1.7; overflow-wrap:anywhere; color:#776f84; }
+.qr-method-output > p { margin-top:16px; }
+.qr-method-output dl { margin:16px 0; }
+.qr-method-output dl > div { display:grid; gap:2px; border-bottom:1px solid var(--line); padding:7px 0; }
+.qr-method-output dt { color:#898092; font-size:10px; }
+.qr-method-output dd { margin:0; color:#4d425e; font-weight:550; font-variant-numeric:tabular-nums; }
+.qr-method-output .qr-metric-note { font-size:10px; color:#898092; }
+.qr-run-all { margin-top:18px; }
+.qr-canvas { display:block; width:100%; height:auto; border-radius:6px; margin-top:14px; border:1px solid var(--line); }
+.qr-comparison { margin-top:24px; }
+.qr-comparison .panel-header { flex-wrap:wrap; }
+.qr-table-scroll { overflow-x:auto; }
+.qr-comparison-table { border-collapse:collapse; width:100%; table-layout:fixed; min-width:1200px; font-size:12px; }
+.qr-restoration-previews { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:15px; }
+.qr-restoration-previews figure { margin:0; min-width:0; }
+.qr-restoration-previews img { display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
+.qr-restoration-previews figcaption { font-size:10px; text-align:center; margin-top:6px; color:#776f84; }
+.qr-comparison-table th, .qr-comparison-table td { text-align:left; padding:15px 20px; border-bottom:1px solid var(--line); line-height:1.7; vertical-align:top; overflow-wrap:anywhere; white-space:pre-wrap; }
+.qr-comparison-table thead { color:#6d6083; background:#faf9fd; }
+.qr-comparison-table tbody th { color:#81788f; font-weight:400; }
+.qr-comparison-table .qr-value-differs { background:#fff6df; }
+.qr-comparison-note { color:#898092; margin:16px 20px; font-size:11px; line-height:1.8; }
+@media(max-width:1100px) {
+  .qr-lab-layout { grid-template-columns:1fr; }
+  .qr-lab-layout > .panel .upload-content { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:0 24px; align-items:start; }
+  .qr-lab-layout .preview, .qr-lab-layout .dropzone { grid-row:1 / 5; }
+  .qr-lab-layout .upload-footnote { text-align:left; }
+}
+@media(max-width:650px) {
+  .workspace-tabs button { padding:12px 9px; font-size:12px; }
+  .workspace-tabs button span { display:none; }
+  .qr-lab-methods { grid-template-columns:1fr; }
+  .qr-lab-layout > .panel .upload-content { display:block; }
+  .qr-lab-layout .upload-footnote { text-align:center; }
+  .qr-method { padding:20px; }
+  .qr-method-header { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .qr-method-description { min-height:0; }
+  .qr-availability { min-height:0; }
+  .qr-method-output dl > div { grid-template-columns:1fr 1fr; gap:10px; }
+  .qr-method-output dd { text-align:right; }
+  .qr-comparison .panel-header { padding:17px; }
+}

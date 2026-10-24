@@ -5,6 +5,7 @@ from fastapi.testclient import TestClient
 from PIL import Image
 
 from identification_demo.qr import QRBusy, QRUnavailable
+from identification_demo.wechat_qr import WeChatQRReader
 from identification_demo.web import MAX_IMAGE_BYTES, create_app, process_qr_image
 
 
@@ -119,7 +120,8 @@ def test_qr_missing_upload_is_rejected():
 
 @pytest.mark.parametrize("rotation,fmt", [(0, "PNG"), (90, "PNG"), (0, "JPEG")])
 def test_real_qr_decoder_extracts_generated_unicode_code(rotation, fmt):
-    pytest.importorskip("zxingcpp")
+    if not WeChatQRReader().describe()["available"]:
+        pytest.skip("WeChatQRCode dependencies and models are required")
     qrcode = pytest.importorskip("qrcode")
     # This integration uses generated QR pixels, never a real person's card.
     qr = qrcode.make(PAYLOAD, box_size=6, border=4).convert("RGB")

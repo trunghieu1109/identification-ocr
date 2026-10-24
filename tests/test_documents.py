@@ -26,13 +26,13 @@ def test_multiline_authority_excludes_the_signer_and_fingerprint_labels():
         "NGUYỄN VĂN MẪU", "Ngón trỏ trái / Left index",
     ])
     assert fields["issue_date"] == "20/04/2021"
-    assert fields["issuing_authority"] == "CỤC TRƯỞNG CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI"
+    assert fields["issuing_authority"] == "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI"
     assert fields["identifying_features"] == "Nốt ruồi 0,2 cm dưới đuôi lông mày trái"
 
 
 @pytest.mark.parametrize("rows,expected", [
     (["CỤC TRƯỞNG", "CỤC CẢNH SÁT ĐKQL CƯ TRÚ", "VÀ DLQG VỀ DÂN CƯ", "Người ký"],
-     "CỤC TRƯỞNG CỤC CẢNH SÁT ĐKQL CƯ TRÚ VÀ DLQG VỀ DÂN CƯ"),
+     "CỤC CẢNH SÁT ĐKQL CƯ TRÚ VÀ DLQG VỀ DÂN CƯ"),
     (["Nơi cấp / Place of issue: Công an tỉnh Hà Nam"], "Công an tỉnh Hà Nam"),
     (["Cơ quan cấp:", "CỤC CẢNH SÁT QLHC VỀ TTXH"], "CỤC CẢNH SÁT QLHC VỀ TTXH"),
 ])

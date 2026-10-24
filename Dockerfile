@@ -16,13 +16,20 @@ RUN git clone https://github.com/namlhn/vietnam-cccd-ocr.git /opt/vietnam-cccd-o
     && git -C /opt/vietnam-cccd-ocr rev-parse HEAD > /opt/ocr-upstream-revision
 
 WORKDIR /app
-COPY requirements.txt ./
+COPY requirements.txt requirements-cpu.txt ./
 RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu \
-    && pip install --no-cache-dir -r /opt/vietnam-cccd-ocr/requirements.txt -r requirements.txt
+    && pip install --no-cache-dir -r /opt/vietnam-cccd-ocr/requirements.txt -r requirements.txt -r requirements-cpu.txt
+COPY requirements-qr.txt ./
+ENV QR_MODEL_DIR=/opt/qr-models
+# OpenCV variants share cv2; install contrib last to keep WeChatQRCode available.
+RUN pip install --no-cache-dir -r requirements-qr.txt \
+    && pip install --no-cache-dir --force-reinstall --no-deps opencv-contrib-python==4.10.0.84
 COPY patches ./patches
 COPY scripts/patch-upstream.sh ./scripts/patch-upstream.sh
 RUN sh scripts/patch-upstream.sh /opt/vietnam-cccd-ocr
 COPY identification_demo ./identification_demo
+COPY scripts/setup-qr-models.py ./scripts/setup-qr-models.py
+RUN python scripts/setup-qr-models.py --directory /opt/qr-models
 COPY scripts/docker-entrypoint.sh ./scripts/docker-entrypoint.sh
 
 ENV TMPDIR=/root/.cache/vietocr OCR_UPLOAD_TMP_DIR=/tmp

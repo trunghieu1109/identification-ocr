@@ -3,7 +3,6 @@ import re
 import unicodedata
 from datetime import datetime
 
-
 FRONT_FIELDS = (
     ("id_number", "Số CCCD", "ID_number"),
     ("name", "Họ và tên", "Name"),
@@ -34,6 +33,10 @@ INSTITUTION = re.compile(
     r"cong\s*an\s*(?:tinh|thanh\s*pho)|dkql\s*cu\s*tru|dlqg|du\s*lieu\s*quoc\s*gia|ve\s*dan\s*cu|\bqlhc\b|\bttxh\b|^(?:tinh|thanh\s*pho)\s"
 )
 FINGERPRINT = re.compile(r"van\s*tay|ngon\s*tro|left\s*index|right\s*index|fingerprint")
+AUTHORITY_CONTINUATION = re.compile(
+    r"^(?:cuc|canh\s*sat|quan\s*ly|hanh\s*chinh|ve|trat\s*tu|xa\s*hoi|dang\s*ky|"
+    r"dkql|qlhc|ttxh|cu\s*tru|va|du\s*lieu|quoc\s*gia|dan\s*cu|cong\s*an|tinh|thanh\s*pho)\b"
+)
 DATE = re.compile(r"(?<!\d)(\d{1,2})\s*[/.-]\s*(\d{1,2})\s*[/.-]\s*(\d{4})(?!\d)")
 WORD_DATE = re.compile(r"ngay\s*(\d{1,2})\s*thang\s*(\d{1,2})\s*nam\s*(\d{4})(?!\d)")
 
@@ -127,25 +130,69 @@ def _issue_date(rows):
     return ""
 
 
+def _authority_text_block(rows):
+    def priority(index):
+        value = fold(rows[index])
+        return (0 if AUTHORITY_LABEL.search(value) else
+                1 if re.search(r"cuc\s*truong|giam\s*doc\s*cong\s*an", value) else
+                2 if re.search(r"cuc\s*canh\s*sat|cong\s*an\s*(?:tinh|thanh)", value) else 3, index)
+
+    for index in sorted(range(len(rows)), key=priority):
+        row = rows[index]
+        label = list(AUTHORITY_LABEL.finditer(fold(row)))
+        head = row[label[-1].end():].strip(" :;/,-") if label else row
+        institution = INSTITUTION.search(fold(head))
+        if not institution and not label:
+            continue
+        if institution:
+            prefix = head[:institution.start()]
+            if DATE.search(prefix) or ISSUE_LABEL.search(fold(prefix)):
+                head = head[institution.start():].strip()
+        parts = [head] if head else []
+        positions = [index] if head else []
+        for following_index in range(index + 1, min(len(rows), index + 9)):
+            following = rows[following_index]
+            value = fold(following)
+            if (ISSUE_LABEL.search(value) or FEATURE_LABEL.search(value) or FINGERPRINT.search(value)
+                    or AUTHORITY_LABEL.search(value) or _is_mrz(following) or DATE.search(following)
+                    or re.search(r"^(?:nguoi\s*ky|chu\s*ky|signature|signed|ho\s*(?:va\s*)?ten)\b", value)):
+                break
+            province_value = bool(parts and re.search(r"(?:tinh|thanh pho)\s*$", fold(parts[-1])))
+            if not (INSTITUTION.search(value) or AUTHORITY_CONTINUATION.search(value) or province_value or (label and not parts)):
+                break
+            if parts and fold(parts[-1]) == value:
+                continue
+            # Detector boxes may overlap and repeat the end of the prior line.
+            words = following.split()
+            if parts:
+                previous = parts[-1].split()
+                for overlap in range(min(len(previous), len(words)), 1, -1):
+                    if fold(" ".join(previous[-overlap:])) == fold(" ".join(words[:overlap])):
+                        words = words[overlap:]
+                        break
+            if words:
+                parts.append(" ".join(words))
+                positions.append(following_index)
+        if parts:
+            return positions, parts
+    return [], []
+
+
+def authority_block(rows):
+    from .authority_region import select_authority_region
+    region = select_authority_region(rows)
+    return list(region.body_indices), list(region.parts)
+
+
 def _authority(rows):
-    labelled = _labelled_value(rows, AUTHORITY_LABEL, limit=2)
-    if labelled:
-        return labelled
-    for index, row in enumerate(rows):
-        if INSTITUTION.search(fold(row)):
-            parts = [row]
-            for following in rows[index + 1:index + 3]:
-                if INSTITUTION.search(fold(following)) and not ISSUE_LABEL.search(fold(following)):
-                    parts.append(following)
-                else:
-                    break
-            return " ".join(parts)
-    return ""
+    from .authority_region import select_authority_region
+    return select_authority_region(rows).text
 
 
 def parse_back(rows, backup_rows=()):
+    text, backup = text_rows({"text_lines": rows}), text_rows({"text_lines": backup_rows})
     return {
-        "issue_date": _issue_date(rows) or _issue_date(backup_rows),
+        "issue_date": _issue_date(text) or _issue_date(backup),
         "issuing_authority": _authority(rows) or _authority(backup_rows),
-        "identifying_features": _labelled_value(rows, FEATURE_LABEL) or _labelled_value(backup_rows, FEATURE_LABEL),
+        "identifying_features": _labelled_value(text, FEATURE_LABEL) or _labelled_value(backup, FEATURE_LABEL),
     }
