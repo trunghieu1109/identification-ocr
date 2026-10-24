@@ -1073,3 +1073,20 @@ h2 {
   border-radius: 7px;
   font: 11px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace;
 }
+
+.card-uploads { display:grid; gap:22px; }
+.upload-content > .mode-description { margin-top:0; }
+.upload-side-title {
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:13px; font-weight:600; margin:0 0 10px;
+}
+.upload-side-title span { color:#8d8498; font-size:10px; font-weight:400; }
+.card-upload .dropzone { padding:20px 12px; }
+.upload-side-icon { color:var(--accent); width:24px; height:24px; margin-bottom:8px; }
+.card-upload .dropzone p { margin-bottom:12px; color:#81798d; }
+.card-upload .file-limit { margin-top:12px; }
+.card-upload .preview-image-wrap { height:180px; padding:10px; }
+.card-upload .preview-image-wrap img { max-height:160px; }
+.field-value { display:grid; gap:4px; min-width:0; overflow-wrap:anywhere; padding:11px 0; }
+.field-source { font-size:10px; color:#8c80a4; }
+.field-row dd > .icon-button { flex-shrink:0; }

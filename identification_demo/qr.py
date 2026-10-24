@@ -44,8 +44,6 @@ def parse_cccd_qr(text):
         return None
     if parts[1] and not re.fullmatch(r"[0-9]{9}|[0-9]{12}", parts[1]):
         return None
-    if not parts[2]:
-        return None
     fields = dict(zip((key for key, _ in QR_FIELDS), parts))
     fields["date_of_birth"] = _date(parts[3])
     fields["issue_date"] = _date(parts[6])

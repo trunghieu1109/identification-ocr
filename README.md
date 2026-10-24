@@ -1,23 +1,23 @@
 # identification-ocr — OCR và QR căn cước
 
-Giao diện tiếng Việt để tải ảnh **mặt trước hoặc mặt sau CCCD**, xem trước ảnh
-và trích xuất thông tin. Mặt trước: số CCCD, họ tên, ngày sinh, giới tính, quốc
-tịch, quê quán, nơi thường trú. Mặt sau: **ngày cấp, cơ quan cấp**, đặc điểm nhân
-dạng. Có sao chép từng trường, xem văn bản OCR, xem JSON và tải kết quả JSON.
+Giao diện tiếng Việt nhận **ảnh mặt trước và mặt sau của cùng một CCCD** trong
+một lần gửi. Dịch vụ đọc QR trên cả hai ảnh trước, ưu tiên các giá trị hợp lệ từ
+QR, sau đó chạy OCR từng mặt để bổ sung các trường còn thiếu. QR lỗi hoặc không
+có cấu trúc hỗ trợ thì chuyển sang OCR. Kết quả có nguồn của từng trường,
+sao chép từng giá trị, xem JSON và tải JSON; không chứa raw text hay QR gốc.
 
-Mặc định tự nhận diện mặt thẻ từ chữ đọc được. Có thể chọn **Mặt sau — ngày cấp,
-cơ quan cấp** trước khi trích xuất. Cơ quan cấp được ghép từ các dòng chữ in trên
-thẻ; không điền một cơ quan mặc định khi ảnh không đọc được.
+Thông tin gồm số CCCD, CMND cũ (nếu có), họ tên, ngày sinh, giới tính, quốc tịch,
+quê quán, nơi thường trú, **ngày cấp, cơ quan cấp**, đặc điểm nhân dạng. Cơ quan
+cấp được ghép từ chữ thực tế trên thẻ; không điền một cơ quan mặc định.
 
 OCR dùng trực tiếp `IDCardExtractor` của
 [namlhn/vietnam-cccd-ocr](https://github.com/namlhn/vietnam-cccd-ocr): PaddleOCR
 phát hiện chữ, VietOCR nhận dạng tiếng Việt, parser của upstream gán các trường.
 Ứng dụng không tạo kết quả giả khi OCR chưa cài đặt hoặc gặp lỗi.
 
-Có thêm chế độ **Đọc mã QR**: tải ảnh mặt thẻ có QR hoặc ảnh cắt riêng vùng QR,
-lấy thông tin trực tiếp từ mã, bao gồm ngày cấp, sao chép và tải JSON.
-Đọc QR chạy bằng [zxing-cpp](https://github.com/zxing-cpp/zxing-cpp/tree/v2.3.0/wrappers/python),
-không cần cài upstream OCR hoặc tải model và không gửi ảnh sang dịch vụ bên ngoài.
+Bộ đọc QR chạy bằng [zxing-cpp](https://github.com/zxing-cpp/zxing-cpp/tree/v2.3.0/wrappers/python).
+Các API QR và OCR riêng vẫn có sẵn để kiểm tra từng bộ xử lý. Đọc QR riêng
+không cần model OCR. Toàn bộ xử lý chạy cục bộ trên máy chủ.
 
 ## Chạy bằng Docker (CPU)
 
@@ -71,7 +71,8 @@ nếu đã có weight tương ứng. Chạy một worker để tránh tải nhi�
 
 ## Đọc mã QR
 
-Trên giao diện, chọn **Đọc mã QR**, tải ảnh JPG/PNG rồi nhấn **Đọc mã QR**.
+Trên giao diện, tải hai ảnh JPG/PNG rồi nhấn **Trích xuất thông tin**; hệ thống
+tự đọc QR và bổ sung bằng OCR. Có thể dùng API `/api/qr/cccd` để đọc riêng QR.
 Giới hạn 10 MiB và 20 megapixel, tự xoay ảnh theo EXIF. Nên chụp rõ toàn bộ mã
 và viền xung quanh; có thể cắt riêng vùng QR khi ảnh toàn thẻ khó đọc.
 
@@ -84,9 +85,9 @@ Số căn cước|Số CMND cũ|Họ tên|Ngày sinh|Giới tính|Nơi cư trú|
 Số CMND cũ có thể trống. Ngày dạng `DDMMYYYY` hoặc `DD/MM/YYYY` được kiểm tra
 hợp lệ rồi hiển thị `DD/MM/YYYY`. Số giấy tờ được giữ dạng chuỗi để bảo toàn
 số 0 đầu. Quốc tịch, quê quán và cơ quan cấp không được suy ra từ QR.
-Với mã có cấu trúc khác, ứng dụng trả trạng thái `unsupported_qr`, để các trường
-trống. Khi có nhiều mã khác nhau trong ảnh,
-ứng dụng yêu cầu cắt riêng một mã và không tự chọn thông tin của một người.
+API QR riêng trả `unsupported_qr` cho cấu trúc khác và `multiple_qr` khi có nhiều
+mã khác nhau. API chung bỏ qua cấu trúc chưa hỗ trợ để dùng OCR; nếu các mã QR
+CCCD hợp lệ có thông tin xung đột thì trả HTTP 422, không ghép các thông tin đó.
 
 Chỉ dùng QR thì không cần chạy `setup.sh`:
 
@@ -100,6 +101,56 @@ Nếu dịch vụ đã cài trước đó, cài lại `requirements.txt` và kh�
 với Docker chạy `docker compose up -d --build` để có thư viện đọc QR mới.
 
 ## API
+
+### API chung — ưu tiên QR, OCR bổ sung
+
+```bash
+curl --fail-with-body http://localhost:8888/api/cccd/extract \
+  -F 'front_image=@/path/to/cccd-front.jpg' \
+  -F 'back_image=@/path/to/cccd-back.jpg'
+```
+
+`POST /api/cccd/extract` yêu cầu hai multipart field `front_image`, `back_image`.
+Mỗi ảnh tối đa 10 MiB, 20 megapixel, JPG/PNG. Cả hai ảnh được kiểm tra hợp lệ
+trước khi gọi QR hoặc OCR. Đặt đúng mặt vào từng field; nếu nhãn OCR cho thấy
+đã gửi nhầm mặt, API báo HTTP 422.
+
+Quy tắc ghép:
+
+1. Đọc QR trên cả hai ảnh. Các bản sao cùng mã được chấp nhận; các giá trị khác
+   nhau của cùng một trường trong QR CCCD sẽ trả HTTP 422 để tránh trộn thẻ.
+2. Giữ nguyên mọi trường QR đã đọc hợp lệ. Ngày QR thiếu hoặc không hợp lệ được
+   để trống, cho phép OCR bổ sung. Không suy ra cơ quan cấp từ QR.
+3. Chạy OCR mặt trước khi thiếu trường mặt trước, OCR mặt sau khi thiếu trường
+   mặt sau. Chỉ điền vào trường trống, kể cả khi OCR trả giá trị khác với QR.
+   Schema hiện có quốc tịch, quê quán, cơ quan cấp và đặc điểm nhân dạng nên
+   thông thường vẫn cần OCR cả hai mặt dù QR đầy đủ.
+4. OCR một mặt lỗi vẫn giữ kết quả QR và OCR mặt còn lại. Trường chưa đọc được
+   trả `""`; `field_sources` tương ứng là `null`.
+
+Kết quả trả `source: "qr_ocr"` và `fields` gồm 11 key:
+`id_number`, `old_id_number`, `name`, `date_of_birth`, `gender`, `nationality`,
+`place_of_origin`, `place_of_residence`, `issue_date`, `issuing_authority`,
+`identifying_features`. Ngày cấp có dạng `DD/MM/YYYY`. Số CMND cũ chỉ lấy từ QR
+và có thể không tồn tại; trường này không bắt buộc để đạt `complete`.
+
+Metadata:
+
+- `field_sources`: nguồn theo từng key — `qr_front`, `qr_back`, `ocr_front`,
+  `ocr_back`, hoặc `null`.
+- `missing_fields`: các trường còn thiếu, không tính CMND cũ.
+- `qr`: `status`, `recognized_fields`, trạng thái của từng ảnh tại `sides`.
+- `ocr`: trạng thái và `filled_fields` của từng mặt (`front`, `back`).
+- `warnings`: thông báo QR fallback hoặc bộ xử lý gặp lỗi, không chứa dữ liệu gốc.
+- `recognized_fields`, `total_fields: 11`, `processing_time_ms`, `request_id`.
+
+HTTP 200 có `status` là `complete`, `partial` hoặc `no_text`. `complete` có thể
+đạt 10/11 khi không có CMND cũ. Nếu chưa có dữ liệu và bộ xử lý gặp lỗi, trả 503;
+nếu đang bận thì 429 với `Retry-After: 5`. Ảnh quá dung lượng trả 413; thiếu ảnh,
+ảnh hỏng, sai mặt hoặc QR xung đột trả 422. Không trả `raw_text`, `raw_qr`,
+`qr_codes`; không lưu ảnh hoặc kết quả vào database.
+
+### API QR riêng
 
 ```bash
 curl --fail-with-body http://localhost:8888/api/qr/cccd \
@@ -125,7 +176,7 @@ thì trả chuỗi trống. API, giao diện và JSON tải về không chứa n
 QR được đọc trong bộ nhớ, không ghi ảnh đã giải mã ra file. Không lưu ảnh hay
 kết quả vào database. API trả `Cache-Control: no-store`.
 
-API OCR:
+### API OCR riêng
 
 ```bash
 curl --fail-with-body http://localhost:8888/api/ocr/cccd \
@@ -175,6 +226,10 @@ Test QR kiểm tra Unicode tiếng Việt, số 0 đầu, ngày không hợp l�
 ảnh lỗi, EXIF, không có QR, nhiều QR và cấu trúc chưa hỗ trợ. Test tích hợp dùng
 `qrcode` tạo ảnh QR với dữ liệu giả lập rồi đọc bằng bộ giải mã thật, gồm ảnh
 PNG, JPEG và ảnh xoay; không cần model OCR hoặc ảnh giấy tờ cá nhân.
+
+Test API chung kiểm tra QR ưu tiên OCR, QR trên mỗi mặt, ngày cấp thiếu hoặc
+không hợp lệ được OCR bổ sung, QR lỗi chuyển sang OCR, lỗi một mặt vẫn giữ
+phần kết quả còn lại, QR xung đột, hai ảnh bắt buộc, dọn ảnh tạm và không trả raw.
 
 Chưa tự phát hiện/crop toàn bộ thẻ; parser dựa vào nhãn chữ và bố cục CCCD.
 Dùng ảnh chụp thẳng, rõ chữ, thẻ chiếm phần lớn khung hình. Parser mặt sau ưu

@@ -1,27 +1,20 @@
 "use strict";
 
-const fieldSets = { front: [
-  ["id_number", "Số CCCD"], ["name", "Họ và tên"],
-  ["date_of_birth", "Ngày sinh"], ["gender", "Giới tính"],
-  ["nationality", "Quốc tịch"], ["place_of_origin", "Quê quán"],
-  ["place_of_residence", "Nơi thường trú"],
-], back: [
+const fields = [
+  ["id_number", "Số CCCD"], ["old_id_number", "Số CMND cũ"],
+  ["name", "Họ và tên"], ["date_of_birth", "Ngày sinh"],
+  ["gender", "Giới tính"], ["nationality", "Quốc tịch"],
+  ["place_of_origin", "Quê quán"], ["place_of_residence", "Nơi thường trú"],
   ["issue_date", "Ngày cấp"], ["issuing_authority", "Cơ quan cấp"],
   ["identifying_features", "Đặc điểm nhân dạng"],
-], qr: [
-  ["id_number", "Số căn cước"], ["old_id_number", "Số CMND cũ"],
-  ["name", "Họ và tên"], ["date_of_birth", "Ngày sinh"],
-  ["gender", "Giới tính"], ["place_of_residence", "Nơi cư trú"],
-  ["issue_date", "Ngày cấp"],
-] };
-let fields = fieldSets.front;
+];
+const sourceLabels = { qr_front: "QR · mặt trước", qr_back: "QR · mặt sau", ocr_front: "OCR · mặt trước", ocr_back: "OCR · mặt sau" };
+const sides = ["front", "back"];
 const $ = id => document.getElementById(id);
-let selectedFile = null;
-let previewURL = null;
+const selectedFiles = { front: null, back: null };
+const previewURLs = { front: null, back: null };
 let result = null;
 let busy = false;
-let readMode = "ocr";
-let serviceHealth = null;
 let toastTimer;
 
 function makeIcon(name) {
@@ -48,10 +41,21 @@ function renderFields(values = null) {
       value.append(placeholder);
       value.setAttribute("aria-label", "Chưa có kết quả");
     } else {
-      value.textContent = values[key] || (readMode === "qr" && key === "old_id_number" && result?.status === "complete" ? "Không có trong mã QR" : "Chưa đọc được");
+      const content = document.createElement("span");
+      content.className = "field-value";
+      const text = document.createElement("span");
+      text.textContent = values[key] || (key === "old_id_number" ? "Không có / chưa đọc được" : "Chưa đọc được");
+      content.append(text);
       if (!values[key]) value.classList.add("empty");
+      if (values[key] && sourceLabels[result?.field_sources?.[key]]) {
+        const source = document.createElement("span");
+        source.className = "field-source";
+        source.textContent = sourceLabels[result.field_sources[key]];
+        content.append(source);
+      }
+      value.append(content);
     }
-    if (values && values[key]) {
+    if (values?.[key]) {
       const copy = document.createElement("button");
       copy.type = "button";
       copy.className = "icon-button";
@@ -74,21 +78,15 @@ function setState(kind, title, description) {
 
 function resetResult() {
   result = null;
-  fields = readMode === "qr" ? fieldSets.qr : $("card-side").value === "back" ? fieldSets.back : fieldSets.front;
   renderFields();
   $("result-count").textContent = `0 / ${fields.length} trường`;
-  $("side-badge").textContent = readMode === "qr" ? "Mã QR" : { auto: "Tự nhận diện", front: "Mặt trước", back: "Mặt sau" }[$("card-side").value];
-  $("raw-text-label").textContent = "Xem văn bản OCR";
-  $("raw-text-details").hidden = true;
-  $("raw-text-details").open = false;
-  $("raw-text").textContent = "";
   $("json-output").textContent = "Chưa có kết quả.";
   $("result-notice").hidden = true;
   $("copy-json").disabled = true;
   $("download-json").disabled = true;
-  $("processing-time").textContent = `${fields.length} trường thông tin`;
+  $("processing-time").textContent = "Ưu tiên QR · OCR bổ sung";
   setTab("fields");
-  setState("", "Sẵn sàng đọc ảnh", "Kết quả sẽ xuất hiện sau khi bạn tải ảnh và trích xuất.");
+  setState("", "Sẵn sàng đọc ảnh", "Tải đủ hai mặt để đọc QR và bổ sung thông tin bằng OCR.");
 }
 
 function uploadError(message) {
@@ -96,100 +94,90 @@ function uploadError(message) {
   $("upload-error").hidden = !message;
 }
 
-function chooseFile(file) {
+function updateButton() {
+  $("extract-button").disabled = busy || sides.some(side => !selectedFiles[side]);
+}
+
+function chooseFile(side, file) {
   if (busy || !file) return;
-  $("file-input").value = "";
+  $(`${side}-file-input`).value = "";
   if (!file.size) return uploadError("Ảnh đang trống. Hãy chọn lại ảnh CCCD.");
   if (file.size > 10 * 1024 * 1024) return uploadError("Mỗi ảnh tối đa 10 MB. Hãy chọn ảnh có dung lượng nhỏ hơn.");
   if (!["image/jpeg", "image/png"].includes(file.type)) return uploadError("Chỉ hỗ trợ ảnh JPG hoặc PNG.");
-  clearSelection();
-  selectedFile = file;
-  previewURL = URL.createObjectURL(file);
-  $("preview-image").src = previewURL;
-  $("file-name").textContent = file.name;
-  $("file-size").textContent = file.size >= 1024 * 1024 ? `${(file.size / 1024 / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(file.size / 1024))} KB`;
-  $("dropzone").hidden = true;
-  $("preview").hidden = false;
-  $("extract-button").disabled = false;
-}
-
-function clearSelection() {
-  if (busy) return;
-  selectedFile = null;
-  if (previewURL) URL.revokeObjectURL(previewURL);
-  previewURL = null;
-  $("preview-image").removeAttribute("src");
-  $("file-input").value = "";
-  $("dropzone").hidden = false;
-  $("preview").hidden = true;
-  $("extract-button").disabled = true;
+  if (previewURLs[side]) URL.revokeObjectURL(previewURLs[side]);
+  selectedFiles[side] = file;
+  previewURLs[side] = URL.createObjectURL(file);
+  $(`${side}-preview-image`).src = previewURLs[side];
+  $(`${side}-file-name`).textContent = file.name;
+  $(`${side}-file-size`).textContent = file.size >= 1024 * 1024 ? `${(file.size / 1024 / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(file.size / 1024))} KB`;
+  $(`${side}-dropzone`).hidden = true;
+  $(`${side}-preview`).hidden = false;
   uploadError("");
   resetResult();
+  updateButton();
+}
+
+function clearSelection(side) {
+  if (busy) return;
+  selectedFiles[side] = null;
+  if (previewURLs[side]) URL.revokeObjectURL(previewURLs[side]);
+  previewURLs[side] = null;
+  $(`${side}-preview-image`).removeAttribute("src");
+  $(`${side}-file-input`).value = "";
+  $(`${side}-dropzone`).hidden = false;
+  $(`${side}-preview`).hidden = true;
+  uploadError("");
+  resetResult();
+  updateButton();
 }
 
 function setBusy(value) {
   busy = value;
+  updateButton();
   $("result-panel").setAttribute("aria-busy", String(value));
-  $("extract-button").disabled = value || !selectedFile;
   $("extract-button").classList.toggle("processing", value);
-  $("extract-label").textContent = value ? "Đang đọc thông tin…" : readMode === "qr" ? "Đọc mã QR" : "Trích xuất thông tin";
+  $("extract-label").textContent = value ? "Đang đọc QR và OCR…" : "Trích xuất thông tin";
   $("extract-spinner").hidden = !value;
   $("extract-arrow").hidden = value;
-  $("remove-file").disabled = value;
-  $("file-input").disabled = value;
-  $("card-side").disabled = value;
-  $("read-mode").disabled = value;
+  for (const side of sides) {
+    for (const suffix of ["remove-file", "file-input", "choose-file"]) $(`${side}-${suffix}`).disabled = value;
+  }
 }
 
 async function extract() {
-  if (!selectedFile || busy) return;
+  if (busy || sides.some(side => !selectedFiles[side])) return;
   uploadError("");
   resetResult();
   setBusy(true);
-  setState("processing", readMode === "qr" ? "Đang đọc mã QR" : "Đang nhận dạng thông tin", readMode === "qr" ? "Đang tìm mã QR và đọc thông tin trong ảnh." : "Lần đầu có thể lâu hơn do tải mô hình. Vui lòng giữ trang đang mở.");
+  setState("processing", "Đang đọc hai mặt CCCD", "Đọc QR trước, sau đó dùng OCR bổ sung. Quá trình này có thể mất một lúc; vui lòng giữ trang đang mở.");
   const form = new FormData();
-  form.append("file", selectedFile);
-  if (readMode === "ocr") form.append("side", $("card-side").value);
+  for (const side of sides) form.append(`${side}_image`, selectedFiles[side]);
   try {
-    const response = await fetch(readMode === "qr" ? "/api/qr/cccd" : "/api/ocr/cccd", { method: "POST", body: form });
+    const response = await fetch("/api/cccd/extract", { method: "POST", body: form });
     let payload;
     try { payload = await response.json(); }
     catch { throw new Error("Dịch vụ chưa trả về kết quả hợp lệ. Hãy thử lại sau."); }
-    if (!response.ok || !payload.success) {
-      const detail = typeof payload.error === "string" ? payload.error : "Không trích xuất được ảnh. Hãy thử lại.";
-      throw new Error(detail);
-    }
+    if (!response.ok || !payload.success) throw new Error(typeof payload.error === "string" ? payload.error : "Không trích xuất được ảnh. Hãy thử lại.");
     if (!payload.fields || typeof payload.fields !== "object" || Array.isArray(payload.fields)) throw new Error("Kết quả không đúng định dạng.");
-    const responseSide = payload.side === "back" ? "back" : "front";
-    const responseFields = readMode === "qr" ? fieldSets.qr : fieldSets[responseSide];
-    for (const [key] of responseFields) if (typeof payload.fields[key] !== "string") throw new Error("Kết quả thiếu trường thông tin.");
-    fields = responseFields;
+    for (const [key] of fields) if (typeof payload.fields[key] !== "string") throw new Error("Kết quả thiếu trường thông tin.");
     result = payload;
     renderFields(result.fields);
-    $("side-badge").textContent = readMode === "qr" ? "Mã QR" : responseSide === "back" ? "Mặt sau" : "Mặt trước";
     const count = fields.filter(([key]) => result.fields[key]).length;
+    const qrCount = fields.filter(([key]) => result.field_sources?.[key]?.startsWith("qr_")).length;
+    const ocrCount = count - qrCount;
     $("result-count").textContent = `${count} / ${fields.length} trường`;
     $("json-output").textContent = JSON.stringify(result, null, 2);
-    $("processing-time").textContent = `Xử lý trong ${(result.processing_time_ms / 1000).toLocaleString("vi-VN", { maximumFractionDigits: 1 })} giây`;
+    $("processing-time").textContent = `${(result.processing_time_ms / 1000).toLocaleString("vi-VN", { maximumFractionDigits: 1 })} giây · ${qrCount} QR, ${ocrCount} OCR`;
     $("copy-json").disabled = false;
     $("download-json").disabled = false;
-    $("raw-text").textContent = readMode === "ocr" && typeof result.raw_text === "string" ? result.raw_text : "";
-    $("raw-text-details").hidden = !$("raw-text").textContent;
-    if (readMode === "qr") {
-      const titles = { complete: "Đã đọc xong mã QR", partial: "Đã đọc một phần thông tin QR", no_qr: "Chưa đọc được mã QR", unsupported_qr: "Đã đọc QR, chưa tách được thông tin", multiple_qr: "Ảnh có nhiều mã QR" };
-      setState(count ? "success" : "", titles[result.status] || "Đã xử lý ảnh", result.message || "Hãy đối chiếu kết quả với thẻ gốc.");
-      $("result-notice").textContent = result.message || "";
-      $("result-notice").hidden = result.status === "complete" || !result.message;
-      return;
-    }
-    setState(count ? "success" : "", count ? "Đã đọc xong ảnh CCCD" : result.raw_text ? "Đã đọc văn bản, chưa tách được thông tin" : "Chưa tìm thấy thông tin", count ? `Trích xuất được ${count} trên ${fields.length} trường của ${responseSide === "back" ? "mặt sau" : "mặt trước"}.` : "Hãy chọn đúng mặt thẻ, dùng ảnh chụp thẳng và rõ chữ.");
-    if (count < fields.length) {
-      $("result-notice").textContent = count ? "Một số trường chưa đọc được. Bạn có thể xem văn bản OCR hoặc thử ảnh rõ hơn." : "Chưa tách được trường nào. Kiểm tra mặt thẻ đã chọn và mở văn bản OCR để xem kết quả nhận dạng.";
-      $("result-notice").hidden = false;
-    }
+    setState(count ? "success" : "", result.status === "complete" ? "Đã đọc xong thông tin CCCD" : count ? "Đã đọc một phần thông tin" : "Chưa tìm thấy thông tin", count ? `Giữ ${qrCount} trường từ QR và bổ sung ${ocrCount} trường bằng OCR.` : "Hãy dùng ảnh chụp thẳng, rõ chữ và không chói sáng.");
+    const messages = Array.isArray(result.warnings) ? [...result.warnings] : [];
+    if (result.status !== "complete") messages.push("Một số trường còn thiếu. Hãy thử ảnh rõ hơn và đối chiếu với thẻ gốc.");
+    $("result-notice").textContent = messages.join(" ");
+    $("result-notice").hidden = !messages.length;
   } catch (error) {
     uploadError(error instanceof TypeError ? "Mất kết nối với dịch vụ. Kiểm tra kết nối và thử lại." : error.message);
-    setState("", "Chưa thể đọc ảnh", "Ảnh đã chọn vẫn được giữ để bạn có thể thử lại.");
+    setState("", "Chưa thể đọc ảnh", "Hai ảnh đã chọn vẫn được giữ để bạn có thể thử lại.");
   } finally {
     setBusy(false);
   }
@@ -231,26 +219,24 @@ async function copyText(value) {
   } catch { toast("Không sao chép được. Bạn có thể tải file JSON."); }
 }
 
-$("choose-file").addEventListener("click", () => $("file-input").click());
-$("file-input").addEventListener("change", event => chooseFile(event.target.files[0]));
-$("remove-file").addEventListener("click", clearSelection);
+for (const side of sides) {
+  $(`${side}-choose-file`).addEventListener("click", () => $(`${side}-file-input`).click());
+  $(`${side}-file-input`).addEventListener("change", event => chooseFile(side, event.target.files[0]));
+  $(`${side}-remove-file`).addEventListener("click", () => clearSelection(side));
+  $(`${side}-preview-image`).addEventListener("error", () => {
+    clearSelection(side);
+    uploadError("Không xem trước được ảnh. Hãy chọn một ảnh JPG hoặc PNG hợp lệ.");
+  });
+  for (const eventName of ["dragenter", "dragover", "dragleave", "drop"]) {
+    $(`${side}-dropzone`).addEventListener(eventName, event => {
+      event.preventDefault();
+      if (busy) return;
+      $(`${side}-dropzone`).classList.toggle("dragover", ["dragenter", "dragover"].includes(eventName));
+      if (eventName === "drop") chooseFile(side, event.dataTransfer.files[0]);
+    });
+  }
+}
 $("extract-button").addEventListener("click", extract);
-$("card-side").addEventListener("change", () => { uploadError(""); resetResult(); });
-$("read-mode").addEventListener("change", event => {
-  if (busy) return;
-  readMode = event.target.value;
-  $("side-selector").hidden = readMode === "qr";
-  $("mode-description").textContent = readMode === "qr" ? "Lấy thông tin trực tiếp từ mã QR. Tải ảnh mặt thẻ có QR hoặc ảnh cắt riêng vùng QR." : "Đọc thông tin trên mặt trước hoặc mặt sau CCCD.";
-  $("image-guidance").textContent = readMode === "qr" ? "Chụp rõ toàn bộ mã QR và viền xung quanh, tránh lóa hoặc mờ. Có thể cắt riêng vùng QR để dễ đọc hơn." : "Chụp thẳng, đủ sáng và rõ chữ. Để thẻ chiếm phần lớn khung hình, tránh chói sáng hoặc che thông tin.";
-  uploadError("");
-  resetResult();
-  setBusy(false);
-  updateServiceState();
-});
-$("preview-image").addEventListener("error", () => {
-  clearSelection();
-  uploadError("Không xem trước được ảnh. Hãy chọn một ảnh JPG hoặc PNG hợp lệ.");
-});
 for (const name of ["fields", "json"]) {
   $("tab-" + name).addEventListener("click", () => setTab(name));
   $("tab-" + name).addEventListener("keydown", event => {
@@ -260,20 +246,6 @@ for (const name of ["fields", "json"]) {
     }
   });
 }
-for (const eventName of ["dragenter", "dragover"]) {
-  $("dropzone").addEventListener(eventName, event => {
-    event.preventDefault();
-    $("dropzone").classList.add("dragover");
-  });
-}
-for (const eventName of ["dragleave", "drop"]) {
-  $("dropzone").addEventListener(eventName, event => {
-    event.preventDefault();
-    $("dropzone").classList.remove("dragover");
-    if (eventName === "drop") chooseFile(event.dataTransfer.files[0]);
-  });
-}
-// Prevent dropping a file outside the dropzone from navigating away from the demo.
 window.addEventListener("dragover", event => event.preventDefault());
 window.addEventListener("drop", event => event.preventDefault());
 $("copy-json").addEventListener("click", () => { if (result) copyText(JSON.stringify(result, null, 2)); });
@@ -282,31 +254,26 @@ $("download-json").addEventListener("click", () => {
   const url = URL.createObjectURL(new Blob([JSON.stringify(result, null, 2)], { type: "application/json;charset=utf-8" }));
   const link = document.createElement("a");
   link.href = url;
-  link.download = readMode === "qr" ? "cccd-qr-result.json" : "cccd-result.json";
+  link.download = "cccd-result.json";
   document.body.append(link);
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
-window.addEventListener("beforeunload", () => { if (previewURL) URL.revokeObjectURL(previewURL); });
-
-function updateServiceState() {
-  if (!serviceHealth) return;
-  const available = readMode === "qr" ? serviceHealth.qr?.available : serviceHealth.engine?.source_available;
-  $("service-state").className = `service-state ${available ? "ready" : "unavailable"}`;
-  $("service-state").replaceChildren();
-  const dot = document.createElement("span");
-  dot.className = "status-dot";
-  $("service-state").append(dot, document.createTextNode(available ? "Dịch vụ đang hoạt động" : readMode === "qr" ? "Bộ đọc QR chưa được cài đặt" : "OCR chưa được cài đặt"));
-}
+window.addEventListener("beforeunload", () => {
+  for (const url of Object.values(previewURLs)) if (url) URL.revokeObjectURL(url);
+});
 
 renderFields();
 fetch("/api/health").then(response => {
   if (!response.ok) throw new Error("Health check failed");
   return response.json();
 }).then(health => {
-  serviceHealth = health;
-  updateServiceState();
+  const available = health.engine?.source_available && health.qr?.available;
+  $("service-state").className = `service-state ${available ? "ready" : "unavailable"}`;
+  const dot = document.createElement("span");
+  dot.className = "status-dot";
+  $("service-state").replaceChildren(dot, document.createTextNode(available ? "Dịch vụ đang hoạt động" : "Một bộ đọc chưa sẵn sàng"));
 }).catch(() => {
   $("service-state").textContent = "Chưa kết nối dịch vụ";
   $("service-state").className = "service-state unavailable";

@@ -35,11 +35,17 @@ def test_optional_cmnd_and_unicode_normalization_do_not_shift_fields():
     "https://example.com", "", "001099000001|TEST",
     PAYLOAD.replace("001099000001", "1099000001"),
     PAYLOAD.replace("012345678", "invalid"),
-    PAYLOAD.replace("NGUYỄN VĂN THỬ", ""),
     PAYLOAD + "|unknown extension",
 ])
 def test_unknown_layouts_are_not_guessed(text):
     assert parse_cccd_qr(text) is None
+
+
+def test_known_layout_with_missing_name_preserves_other_qr_fields():
+    fields = parse_cccd_qr(PAYLOAD.replace("NGUYỄN VĂN THỬ", ""))
+    assert fields["name"] == ""
+    assert fields["id_number"] == "001099000001"
+    assert fields["issue_date"] == "15/03/2021"
 
 
 @pytest.mark.parametrize("value,expected", [
