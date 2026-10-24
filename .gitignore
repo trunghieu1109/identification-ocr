@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# CCCD OCR dependencies and model checkpoints
+.venv/
+.vendor/
+*.pyc
+*.pth
+*.pt

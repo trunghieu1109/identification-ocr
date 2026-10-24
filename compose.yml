@@ -1,0 +1,21 @@
+services:
+  identification-ocr:
+    build:
+      context: .
+      args:
+        OCR_REF: ${OCR_REF:-2d951ac603a43677572ff39ed6a21bdebe622263}
+    ports:
+      - "0.0.0.0:${OCR_PORT:-8888}:8080"
+    environment:
+      OCR_DEVICE: cpu
+      OCR_MODEL: ${OCR_MODEL:-vgg_transformer}
+    volumes:
+      - ocr-cache:/root/.cache
+      - paddle-models:/root/.paddlex
+      - paddle-legacy-models:/root/.paddleocr
+    restart: unless-stopped
+
+volumes:
+  ocr-cache:
+  paddle-models:
+  paddle-legacy-models:

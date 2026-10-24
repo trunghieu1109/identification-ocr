@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tải ảnh căn cước để trích xuất thông tin bằng OCR hoặc đọc mã QR.">
+  <meta name="theme-color" content="#6651dc">
+  <title>OCR và QR căn cước · Identification demo</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%236651dc'/%3E%3Cpath d='M10 14h20v14H10zM14 19h5m4 0h3m-3 4h3' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="8" cy="10" r="1.5"/><path d="M5.5 15c0-3 5-3 5 0m3-5h4m-4 4h4"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="brand" aria-label="Identification demo — trang chủ"><span class="brand-icon"><svg class="icon"><use href="#i-card"/></svg></span><span>Identification<span class="brand-demo">demo</span></span></a>
+      <div class="header-right"><span class="page-pill">OCR / QR CCCD</span><span class="service-state" id="service-state"><span class="status-dot"></span>Đang kết nối</span></div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="intro">
+      <div><p class="eyebrow">NHẬN DẠNG GIẤY TỜ</p><h1>Từ ảnh căn cước đến thông tin.</h1><p class="subtitle">Tải ảnh để đọc chữ trên thẻ hoặc lấy thông tin trực tiếp từ mã QR.</p></div>
+      <span class="demo-tag">BẢN THỬ NGHIỆM <span>01</span></span>
+    </div>
+
+    <div class="workspace">
+      <section class="panel upload-panel" aria-labelledby="upload-title">
+        <div class="panel-header"><div class="section-title"><span class="step">01</span><h2 id="upload-title">Ảnh căn cước</h2></div><span class="small-tag" id="side-badge">Tự nhận diện</span></div>
+        <div class="upload-content">
+          <fieldset class="read-mode" id="read-mode" aria-describedby="mode-description"><legend>Cách đọc thông tin</legend><label><input type="radio" name="read-mode" value="ocr" checked> Đọc chữ (OCR)</label><label><input type="radio" name="read-mode" value="qr"> Đọc mã QR</label></fieldset>
+          <p id="mode-description" class="mode-description">Đọc thông tin trên mặt trước hoặc mặt sau CCCD.</p>
+          <div class="side-selector" id="side-selector"><label for="card-side">Mặt thẻ</label><select id="card-side"><option value="auto">Tự nhận diện</option><option value="front">Mặt trước</option><option value="back">Mặt sau — ngày cấp, cơ quan cấp</option></select></div>
+          <input id="file-input" class="visually-hidden" type="file" accept="image/jpeg,image/png" aria-label="Chọn ảnh CCCD">
+          <div id="dropzone" class="dropzone">
+            <div class="upload-art" aria-hidden="true"><div class="art-card"><span class="art-avatar"></span><div class="art-lines"><span></span><span></span><span></span></div><span class="art-chip"></span></div><span class="art-upload"><svg class="icon"><use href="#i-upload"/></svg></span></div>
+            <h3>Kéo thả ảnh vào đây</h3><p>hoặc chọn ảnh từ thiết bị của bạn</p>
+            <button type="button" class="button button-outline" id="choose-file"><svg class="icon"><use href="#i-image"/></svg>Chọn ảnh CCCD</button>
+            <span class="file-limit">JPG, PNG · Tối đa 10 MB</span>
+          </div>
+          <div id="preview" class="preview" hidden><div class="preview-image-wrap"><img id="preview-image" alt="Ảnh CCCD đã chọn"></div><div class="file-details"><span class="file-icon"><svg class="icon"><use href="#i-image"/></svg></span><span class="file-description"><strong id="file-name"></strong><span id="file-size"></span></span><button class="icon-button" id="remove-file" type="button" aria-label="Bỏ ảnh đã chọn" title="Bỏ ảnh"><svg class="icon"><use href="#i-x"/></svg></button></div></div>
+
+          <div class="guidance"><svg class="icon"><use href="#i-info"/></svg><div><strong>Để đọc ảnh tốt hơn</strong><p id="image-guidance">Chụp thẳng, đủ sáng và rõ chữ. Để thẻ chiếm phần lớn khung hình, tránh chói sáng hoặc che thông tin.</p></div></div>
+          <div id="upload-error" class="notice notice-error" role="alert" hidden></div>
+          <button id="extract-button" type="button" class="button button-primary" disabled><span id="extract-label">Trích xuất thông tin</span><svg class="icon" id="extract-arrow"><use href="#i-arrow"/></svg><span class="spinner" id="extract-spinner" hidden></span></button>
+          <p class="upload-footnote">Ảnh chỉ được xử lý cho yêu cầu này, không lưu vào cơ sở dữ liệu.</p>
+        </div>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-title" aria-busy="false" id="result-panel">
+        <div class="panel-header"><div class="section-title"><span class="step">02</span><h2 id="result-title">Thông tin trích xuất</h2></div><span class="result-count" id="result-count">0 / 7 trường</span></div>
+        <div class="result-content">
+          <div class="result-state" id="result-state" aria-live="polite"><span class="result-state-icon"><svg class="icon"><use href="#i-card"/></svg></span><div><strong id="result-state-title">Sẵn sàng đọc ảnh</strong><p id="result-state-description">Kết quả sẽ xuất hiện sau khi bạn tải ảnh và trích xuất.</p></div></div>
+          <div class="result-tabs" role="tablist" aria-label="Định dạng kết quả"><button id="tab-fields" type="button" role="tab" aria-selected="true" aria-controls="fields-view" tabindex="0">Thông tin</button><button id="tab-json" type="button" role="tab" aria-selected="false" aria-controls="json-view" tabindex="-1">JSON <span>{ }</span></button></div>
+          <div id="fields-view" role="tabpanel" aria-labelledby="tab-fields"><dl id="field-list" class="field-list"></dl></div>
+          <div id="json-view" role="tabpanel" aria-labelledby="tab-json" hidden><pre id="json-output">Chưa có kết quả.</pre></div>
+          <details id="raw-text-details" class="raw-text-details" hidden><summary id="raw-text-label">Xem văn bản OCR</summary><pre id="raw-text"></pre></details>
+          <div id="result-notice" class="notice" aria-live="polite" hidden></div>
+          <div class="result-footer"><span id="processing-time">7 trường thông tin cơ bản</span><div class="export-actions"><button id="copy-json" class="button button-small" type="button" disabled><svg class="icon"><use href="#i-copy"/></svg>Sao chép</button><button id="download-json" class="button button-small" type="button" disabled><svg class="icon"><use href="#i-download"/></svg>Tải JSON</button></div></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="scope-note"><span class="scope-icon"><svg class="icon"><use href="#i-check"/></svg></span><p>Hỗ trợ <strong>OCR mặt trước, mặt sau CCCD và đọc mã QR</strong>. Hãy đối chiếu kết quả với thẻ gốc.</p></div>
+    <footer class="footer"><span>Identification demo</span><span>OCR: PaddleOCR + VietOCR · QR: ZXing</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

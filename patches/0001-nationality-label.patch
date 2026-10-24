@@ -1,0 +1,13 @@
+diff --git a/ocr/parser.py b/ocr/parser.py
+index 0309d72..906be50 100644
+--- a/ocr/parser.py
++++ b/ocr/parser.py
+@@ -13,7 +13,7 @@ LABEL_PATTERNS = {
+     "name": re.compile(r"họ\s*và\s*tên|họ\s*tên|tên|name", re.IGNORECASE),
+     "dob": re.compile(r"ngày\s*sinh|sinh|birth|bith|date of birth", re.IGNORECASE),
+     "gender": re.compile(r"giới\s*tính|giới|sex|gender", re.IGNORECASE),
+-    "nationality": re.compile(r"quốc\s*tịch|quốc|tịch|nat|nationality", re.IGNORECASE),
++    "nationality": re.compile(r"quốc\s*tịch|quốc|tịch|nationality|nat\b", re.IGNORECASE),
+     "origin": re.compile(
+         r"place\s*of\s*(?:origin|ongin|ngin|orging)|"
+         r"quê\s*qu[aá]n|origin|ongin|ngin|orging",

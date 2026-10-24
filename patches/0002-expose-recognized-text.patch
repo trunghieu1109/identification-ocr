@@ -1,0 +1,13 @@
+diff --git a/ocr/extractor.py b/ocr/extractor.py
+index f5eae14..a22bd74 100644
+--- a/ocr/extractor.py
++++ b/ocr/extractor.py
+@@ -128,6 +128,8 @@ class IDCardExtractor:
+         result = parse_idcard_fields(parser_input, id_number, id_number_box)
+         result["elapsed"] = round(time.time() - start_time, 2)
+         result["detection_count"] = len(detections)
++        result["text_lines"] = [{"text": text, "box": box} for text, box in recognized]
++        result["paddle_text_lines"] = [{"text": item.get("text", ""), "box": item["box"]} for item in detections]
+ 
+         if save_crops_dir:
+             self._save_field_crops(frame, image_path, result, save_crops_dir)
