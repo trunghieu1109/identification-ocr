@@ -5,7 +5,7 @@ from time import perf_counter
 
 from .authority_region import select_authority_region
 from .cpu_pipeline import _parse
-from .card_preprocessing import prepare_card, project_polygon
+from .card_preprocessing import prepare_card
 from .documents import detect_side
 from .namlhn_address import address_fields
 from .namlhn_layout import reading_order
@@ -46,7 +46,7 @@ def _detections(results, scale_x, scale_y):
 
 
 def extract_pixels(detector, recognizer, image, side, text_enhancement="off", readings=None,
-                   card_preprocessor=None, card_enhancement="off", artifacts=None):
+                   card_enhancement="off", artifacts=None):
     """Optional readings retain caller-owned input crops, including blank OCR results."""
     import cv2
     import numpy as np
@@ -55,11 +55,10 @@ def extract_pixels(detector, recognizer, image, side, text_enhancement="off", re
     timings = {}
     started = perf_counter()
     frame = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
-    original_size = (frame.shape[1], frame.shape[0])
-    frame, inverse_transform, image_preprocessing = prepare_card(frame, card_preprocessor, card_enhancement, artifacts)
+    frame, image_preprocessing = prepare_card(frame, card_enhancement, artifacts)
     timings["card_preprocessing"] = round((perf_counter() - started) * 1000, 2)
     started = perf_counter()
-    # Keep detector sharpening separate from the rectified card used for recognition.
+    # Keep detector sharpening separate from the full image used for recognition.
     processed = prepare_image(frame, enhance=True, resize=True)
     timings["preprocess"] = round((perf_counter() - started) * 1000, 2)
     started = perf_counter()
@@ -123,19 +122,6 @@ def extract_pixels(detector, recognizer, image, side, text_enhancement="off", re
             metadata = region.metadata((frame.shape[1], frame.shape[0]))
             if metadata:
                 result["authority_region"] = metadata
-    if not np.allclose(inverse_transform, np.eye(3)):
-        for line in selected:
-            line["working_box"] = line["box"]
-            line["box"] = project_polygon(line["box"], inverse_transform, original_size)
-        for item in mapping.values():
-            item["box"] = project_polygon(item["box"], inverse_transform, original_size)
-        region = result.get("authority_region", {})
-        if region.get("bbox"):
-            left, top, right, bottom = region["bbox"]
-            points = project_polygon([[left, top], [right, top], [right, bottom], [left, bottom]], inverse_transform, original_size)
-            region["bbox"] = [min(p[0] for p in points), min(p[1] for p in points),
-                              max(p[0] for p in points), max(p[1] for p in points)]
-            region["image_size"] = list(original_size)
     if readings is not None:
         for reading in readings[reading_start:]:
             reading["regions"] = [dict(selected[index]) for index in reading["indexes"]]

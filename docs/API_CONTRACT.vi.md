@@ -143,7 +143,8 @@ Tất cả giá trị trong `fields` đều là **string**. Trường chưa đ�
 `id_number` từ OCR giữ cả ứng viên sai độ dài/ký tự; không tự cắt về 12 chữ số.
 `ocr.front.id_number_validation` phân biệt `format_valid`, `unverified`,
 `ambiguous`; kiểm tra định dạng không chứng minh OCR đúng. Metadata
-`ocr.<side>.image_preprocessing` mô tả crop/hiệu chỉnh ảnh thực sự đã dùng.
+`ocr.<side>.image_preprocessing` mô tả hiệu chỉnh ảnh thực sự đã dùng;
+namlhn GPU giữ toàn ảnh và trả `crop.status: "off"`.
 Xem [chi tiết hành vi mới](CARD_PREPROCESSING.vi.md).
 
 Ngày hết hạn được lấy trong cùng lượt OCR hai mặt, không gọi thêm lượt OCR riêng.

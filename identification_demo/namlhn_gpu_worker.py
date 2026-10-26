@@ -83,11 +83,9 @@ class NamLhnDocUCudaEngine(NamLhnCudaEngine):
             raise ValueError("NAMLHN_GPU_TEXT_ENHANCEMENT must be off or adaptive")
         self._detector = None
         self._recognizer = None
-        self._card_preprocessor = None
-        self.card_crop = os.getenv("NAMLHN_GPU_CARD_CROP", "auto")
         self.card_enhancement = os.getenv("NAMLHN_GPU_CARD_ENHANCEMENT", "adaptive")
-        if self.card_crop not in {"auto", "off"} or self.card_enhancement not in {"adaptive", "off"}:
-            raise ValueError("NAMLHN_GPU_CARD_CROP must be auto/off; NAMLHN_GPU_CARD_ENHANCEMENT must be adaptive/off")
+        if self.card_enhancement not in {"adaptive", "off"}:
+            raise ValueError("NAMLHN_GPU_CARD_ENHANCEMENT must be adaptive/off")
 
     def _initialize(self):
         if self._detector is not None and self._recognizer is not None:
@@ -117,9 +115,6 @@ class NamLhnDocUCudaEngine(NamLhnCudaEngine):
                                  limit_side_len=960, thresh=.2, box_thresh=.5, unclip_ratio=2.,
                                  enable_mkldnn=False)
         recognizer = VietOCRRecognizer(config_name=self.model, weights_path=str(weights), device="cuda:0")
-        if self.card_crop == "auto":
-            from .card_preprocessing import CardCropper
-            self._card_preprocessor = CardCropper(os.getenv("DOCU_MODEL_DIR", "/app/model"), "cuda:0")
         if not str(next(recognizer.predictor.model.parameters()).device).startswith("cuda"):
             raise OCRUnavailable("Bộ đọc DocU chưa chạy trên CUDA.")
         paddle.ones([1]).sum().numpy()
@@ -134,7 +129,7 @@ class NamLhnDocUCudaEngine(NamLhnCudaEngine):
         self._initialize()
         initialized_ms = (perf_counter() - started) * 1000
         result = extract_pixels(self._detector, self._recognizer, image, side, self.text_enhancement,
-                                card_preprocessor=self._card_preprocessor, card_enhancement=self.card_enhancement)
+                                card_enhancement=self.card_enhancement)
         result["timings_ms"]["model_init"] = round(initialized_ms, 2)
         return result
 
@@ -149,7 +144,7 @@ class NamLhnDocUCudaEngine(NamLhnCudaEngine):
                 "detection_model": "PP-OCRv6_medium_det", "recognition_provider": "docu",
                 "recognition_device": "cuda:0",
                 "text_enhancement": self.text_enhancement,
-                "card_crop": self.card_crop, "card_enhancement": self.card_enhancement,
+                "card_crop": "off", "card_enhancement": self.card_enhancement,
                 "coordinate_space": "original_image"}
 
 

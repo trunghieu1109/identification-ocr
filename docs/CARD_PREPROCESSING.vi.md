@@ -1,9 +1,12 @@
-# Giữ số căn cước OCR và tập trung vào vùng thẻ
+# Giữ số căn cước OCR và hiệu chỉnh ảnh
 
 Luồng GPU chính vẫn dùng namlhn GPU với VietOCR `vgg_seq2seq`. Hai thay đổi:
 
 - Giữ ứng viên số căn cước đọc được ngay cả khi OCR làm thừa/thiếu ký tự.
-- Tách thẻ khỏi nền, nắn phối cảnh khi cần, rồi hiệu chỉnh ánh sáng và nhiễu.
+- Giảm nhiễu và hiệu chỉnh ánh sáng khi cần, giữ toàn ảnh upload.
+
+Phần tự tìm thẻ/crop nền/nắn phối cảnh được thêm sau đã được gỡ theo yêu cầu.
+Cách tìm và cắt từng dòng chữ sẵn có của namlhn/DocU vẫn giữ nguyên.
 
 ## Số căn cước
 
@@ -32,36 +35,32 @@ Không dùng số thuộc nhãn ngày sinh, ngày hết hạn, quê quán, đị
 Nếu provider trả ID rỗng, lớp xử lý chung cũng thử lấy lại từ text của lượt
 OCR đó. QR vẫn được ưu tiên; ID OCR chưa xác nhận không ghi đè ID đã có từ QR.
 
-## Crop và tiền xử lý
+## Hiệu chỉnh ảnh, giữ nguyên vùng đọc
 
 Mặc định trên worker namlhn GPU:
 
 ```text
-NAMLHN_GPU_CARD_CROP=auto
 NAMLHN_GPU_CARD_ENHANCEMENT=adaptive
 ```
 
-Model segmentation DocU đã có trong Docker nhận diện vùng thẻ; chỉ bước tách
-thẻ được dùng thêm, bộ đọc chữ giữ nguyên. Khi nền chiếm nhiều diện tích,
-crop có một ít đệm quanh mép để giữ chữ sát cạnh rồi nắn phối cảnh. Ảnh đã
-sát thẻ (thẻ chiếm ít nhất 85% diện tích) giữ nguyên pixel để tránh nội suy
-không cần thiết. Không thấy vùng đủ tin cậy hoặc localizer lỗi thì đọc ảnh gốc.
-Hai thẻ có diện tích tương đương được báo lỗi `multiple_documents`.
+Namlhn GPU không nạp model segmentation để tách thẻ. Ảnh upload giữ nguyên
+kích thước, khung hình và tọa độ; detector tiếp tục tìm dòng chữ trên toàn ảnh.
+Tùy chọn `NAMLHN_GPU_CARD_CROP` và `--card-crop` đã được bỏ.
 
 Sau đó đo độ sáng, độ tương phản và nhiễu trên vùng đọc. Chỉ tăng sáng gamma
 khi thiếu sáng; dùng CLAHE khi tương phản thấp; giảm nhiễu bằng bilateral
 trước khi tăng tương phản. Ảnh sạch/đủ sáng không bị áp dụng các bước này.
 Lượt tăng cường từng dòng theo `NAMLHN_GPU_TEXT_ENHANCEMENT` vẫn độc lập.
 
-`ocr.front.image_preprocessing` và `ocr.back.image_preprocessing` báo crop,
-polygon, kích thước và các bước thực sự đã áp dụng. Tọa độ dòng chữ, mapping
-và vùng cơ quan cấp được quy đổi về ảnh gốc (`original_image`). Vì thế
-debug/export tiếp tục đối chiếu được với ảnh upload, kể cả khi có phối cảnh.
+`ocr.front.image_preprocessing` và `ocr.back.image_preprocessing` báo
+`crop.status: "off"`, kích thước toàn ảnh và các bước thực sự đã áp dụng.
+Tọa độ dòng chữ, mapping và vùng cơ quan cấp tiếp tục thuộc ảnh upload
+(`original_image`), không có thêm phép nắn hay biến đổi tọa độ thẻ.
 
-Muốn tắt crop và hiệu chỉnh toàn thẻ để đối chiếu pixel với luồng cũ:
+Muốn tắt hiệu chỉnh toàn ảnh để đối chiếu pixel với luồng cũ:
 
 ```bash
-NAMLHN_GPU_CARD_CROP=off NAMLHN_GPU_CARD_ENHANCEMENT=off \
+NAMLHN_GPU_CARD_ENHANCEMENT=off \
   docker compose --profile gpu up -d --no-deps namlhn-gpu identification-ocr
 ```
 
@@ -69,14 +68,15 @@ NAMLHN_GPU_CARD_CROP=off NAMLHN_GPU_CARD_ENHANCEMENT=off \
 
 ```bash
 python3 scripts/export-front-ocr.py front.jpg --docker \
-  --card-crop auto --card-enhancement adaptive
+  --card-enhancement adaptive
 ```
 
-Ngoài ảnh/text từng dòng, báo cáo có `card.png` (vùng thẻ trước hiệu chỉnh)
-và `prepared_card.png` (ảnh thực tế dùng đọc chữ). `source.png` luôn là ảnh
-upload đã chỉnh EXIF. `--card-crop off --card-enhancement off` tắt hai bước
-này trong lần export mà không thay cấu hình worker phục vụ API.
+Ngoài ảnh/text từng dòng, báo cáo có `card.png` (toàn ảnh trước hiệu chỉnh)
+và `prepared_card.png` (toàn ảnh thực tế dùng đọc chữ). `source.png` luôn là
+ảnh upload đã chỉnh EXIF. `--card-enhancement off` tắt hiệu chỉnh trong lần
+export mà không thay cấu hình worker phục vụ API. Các báo cáo đã export
+trước khi gỡ crop vẫn được giữ nguyên để đối chiếu lịch sử.
 
-Đã kiểm tra crop nền và ảnh thiếu sáng/nhiễu tạo từ ảnh đã export trước đó;
-748 kiểm thử đạt, 6 bỏ qua. Đây là kiểm tra hành vi và hồi quy, không phải
-chứng minh độ chính xác OCR trên một tập CCCD đại diện.
+Kiểm thử kiểm tra việc giữ toàn ảnh, giữ box/cách cắt dòng chữ và tiếp tục
+giảm nhiễu, tăng sáng/tương phản. Đây là kiểm tra hành vi và hồi quy, không
+phải chứng minh độ chính xác OCR trên một tập CCCD đại diện.

@@ -23,10 +23,11 @@ Bỏ chọn ưu tiên QR để đo khả năng OCR độc lập.
 CPU vẫn theo `OCR_MODEL` (mặc định Transformer). GPU có cấu hình riêng:
 `NAMLHN_GPU_PIPELINE=docu` và `NAMLHN_GPU_MODEL=vgg_seq2seq`. Bộ đọc lấy
 đúng checkpoint/config cục bộ của DocU và cách cắt dòng của upstream;
-không gọi worker DocU qua HTTP. Model segmentation DocU cục bộ được dùng
-thêm để [tách thẻ khỏi nền và hiệu chỉnh ảnh](CARD_PREPROCESSING.vi.md).
+không gọi worker DocU qua HTTP. Namlhn GPU giữ toàn ảnh, không nạp model
+segmentation/crop thẻ; [hiệu chỉnh ánh sáng/nhiễu](CARD_PREPROCESSING.vi.md)
+vẫn được giữ lại.
 Paddle chỉ nạp detector `PP-OCRv6_medium_det`, không nạp recognizer Paddle.
-Detector dùng tiền xử lý namlhn; tọa độ được quy đổi về vùng thẻ trước khi
+Detector dùng tiền xử lý namlhn; tọa độ được quy đổi về ảnh upload trước khi
 cắt, nên recognizer đọc pixel chưa qua tăng nét detector. Kết quả cuối có
 tọa độ ảnh upload. Tất cả vùng chữ hợp lệ
 được đọc; kết quả không trộn chữ Paddle. Tên cạnh nhãn và tên ở dòng kế
@@ -34,7 +35,7 @@ tọa độ ảnh upload. Tất cả vùng chữ hợp lệ
 
 `NAMLHN_GPU_TEXT_ENHANCEMENT=adaptive` (mặc định) thử khử nhiễu/làm nét
 ở những crop chất lượng thấp sau lượt nhận dạng đầu. Chế độ `off`
-chỉ bỏ lượt đọc bổ sung; crop/hiệu chỉnh toàn thẻ có cấu hình riêng.
+chỉ bỏ lượt đọc bổ sung; hiệu chỉnh toàn ảnh có cấu hình riêng.
 Xem [phép so sánh và giới hạn](NAMLHN_TEXT_ENHANCEMENT.vi.md).
 
 Health/API trả `strategy: namlhn_docu_v1`; UI hiển thị **bộ đọc DocU**.

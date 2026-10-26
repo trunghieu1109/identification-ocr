@@ -355,7 +355,7 @@ function renderTimings(payload) {
   const labels = { image_decode: "Chuẩn bị ảnh", qr_front: "QR mặt trước", qr_back: "QR mặt sau",
     ocr_front: "OCR mặt trước", ocr_back: "OCR mặt sau", merge: "Tổng hợp kết quả", total: "Pipeline QR/OCR trên server" };
   const details = { queue_wait: "Chờ hàng đợi", inference: "Xử lý OCR", model_init: "Khởi tạo model",
-    preprocess: "Tiền xử lý", card_preprocessing: "Crop thẻ và hiệu chỉnh ảnh", paddle_detect_recognize: "PaddleOCR", vietocr_reread: "VietOCR đọc bổ sung",
+    preprocess: "Tiền xử lý", card_preprocessing: "Hiệu chỉnh ảnh", paddle_detect_recognize: "PaddleOCR", vietocr_reread: "VietOCR đọc bổ sung",
     paddle_detection: "Tìm dòng chữ (Paddle)", line_crops: "Cắt dòng chữ", docu_recognition: "Nhận dạng chữ (DocU)",
     text_enhancement: "Làm rõ vùng chữ", enhanced_recognition: "Đọc lại vùng đã làm rõ",
     iqa: "Kiểm tra chất lượng ảnh", segmentation: "Tìm vùng thẻ", rotation: "Chỉnh hướng thẻ",
@@ -371,7 +371,7 @@ function renderTimings(payload) {
     const prep = payload.ocr?.[side]?.image_preprocessing;
     const adjustments = [["brightness", "tăng sáng"], ["contrast", "tăng tương phản"], ["denoise", "giảm nhiễu"]]
       .filter(([key]) => prep?.enhancement?.[key]).map(([, label]) => label);
-    const notes = [prep?.crop?.status === "cropped" ? "đã crop sát thẻ" : "", ...adjustments].filter(Boolean);
+    const notes = adjustments;
     return work ? `${side === "front" ? "Mặt trước" : "Mặt sau"}: ${work.primary_regions} vùng chữ, đọc bổ sung ${work.reread_regions} vùng.${notes.length ? ` ${notes.join(", ")}.` : ""}` : "";
   }).filter(Boolean).join(" ");
   $("timing-details").hidden = !rows.children.length;

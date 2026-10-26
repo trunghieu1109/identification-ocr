@@ -275,7 +275,8 @@ Worker `ocr-gpu` của DocU, `ocr-gpu-regions` và các biến `GPU_OCR_URL`,
 HTML, ảnh đánh số vùng, PNG/text từng vùng, JSON và file ZIP; xem
 [hướng dẫn xuất crop](docs/OCR_CROP_EXPORT.vi.md).
 
-GPU hiện [tự crop vùng thẻ và hiệu chỉnh ảnh khi cần](docs/CARD_PREPROCESSING.vi.md).
+GPU [giữ toàn ảnh, giảm nhiễu và hiệu chỉnh ảnh khi cần](docs/CARD_PREPROCESSING.vi.md).
+Phần tự crop/nắn phối cảnh thẻ thêm sau đã được gỡ; cách tìm/cắt dòng chữ của namlhn giữ nguyên.
 Số căn cước đọc thừa/thiếu ký tự được giữ trong `id_number` kèm trạng thái
 chưa xác nhận, thay vì bị xóa vì không đủ 9/12 chữ số. QR vẫn được ưu tiên.
 

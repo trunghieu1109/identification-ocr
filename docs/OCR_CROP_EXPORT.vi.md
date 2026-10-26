@@ -30,10 +30,11 @@ python3 scripts/export-front-ocr.py front.png --docker --enhancement off
 Không truyền `--output` thì script tạo thư mục có thời gian trong
 `exports/ocr-front/`. Thư mục xuất phải mới hoặc đang trống.
 
-Luồng GPU mặc định tự crop thẻ khỏi nền và hiệu chỉnh sáng/tương phản/nhiễu
-khi cần. Báo cáo thêm `card.png`, `prepared_card.png` để xem trước/sau.
-`--card-crop off --card-enhancement off` giữ toàn ảnh và tắt hiệu chỉnh này
-trong một lần export. Xem [hành vi ID và tiền xử lý](CARD_PREPROCESSING.vi.md).
+Luồng GPU giữ toàn ảnh và hiệu chỉnh sáng/tương phản/nhiễu khi cần.
+Báo cáo thêm `card.png`, `prepared_card.png` để xem toàn ảnh trước/sau.
+`--card-enhancement off` tắt hiệu chỉnh này trong một lần export.
+Cách tìm/cắt từng dòng chữ vẫn giữ nguyên như namlhn trước đây.
+Xem [hành vi ID và tiền xử lý](CARD_PREPROCESSING.vi.md).
 
 Kết quả gồm:
 

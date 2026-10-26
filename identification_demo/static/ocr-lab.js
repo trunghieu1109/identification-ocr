@@ -134,7 +134,7 @@
             const note = document.createElement("p");
             const adjustments = [["brightness", "Tăng sáng"], ["contrast", "Tăng tương phản"], ["denoise", "Giảm nhiễu"]]
               .filter(([key]) => prep.enhancement?.[key]).map(([, label]) => label);
-            note.textContent = [prep.crop?.status === "cropped" ? "Đã crop vùng thẻ" : "Đọc toàn ảnh", ...adjustments].join(" · ");
+            note.textContent = ["Đọc toàn ảnh", ...adjustments].join(" · ");
             section.append(note);
           }
           for (const row of report.ocr[side].debug?.text_lines || []) {

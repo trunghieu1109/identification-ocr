@@ -145,7 +145,7 @@ def write_html(report, output):
     body = "\n".join(cards) or "<p>Không phát hiện được vùng chữ nào có thể cắt để nhận dạng.</p>"
     previews = "".join(f'<figure><figcaption>{label}</figcaption><img src="{filename}" alt="{label}"></figure>'
                        for name, filename in report.get("preprocessing_images", {}).items()
-                       for label in ["Vùng thẻ trước hiệu chỉnh" if name == "card" else "Vùng thẻ sau hiệu chỉnh ánh sáng và nhiễu"])
+                       for label in ["Toàn ảnh trước hiệu chỉnh" if name == "card" else "Toàn ảnh sau hiệu chỉnh ánh sáng và nhiễu"])
     page = f'''<!doctype html>
 <html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ảnh crop và chữ OCR mặt trước</title>
@@ -169,8 +169,6 @@ def run_local(args, output):
     sys.path.insert(0, str(ROOT))
     if args.model:
         os.environ["NAMLHN_GPU_MODEL"] = args.model
-    if args.card_crop:
-        os.environ["NAMLHN_GPU_CARD_CROP"] = args.card_crop
     if args.card_enhancement:
         os.environ["NAMLHN_GPU_CARD_ENHANCEMENT"] = args.card_enhancement
     from identification_demo.namlhn_docu_pipeline import extract_pixels
@@ -188,7 +186,6 @@ def run_local(args, output):
                 engine._initialize()
                 return extract_pixels(engine._detector, engine._recognizer, image, "front",
                                       text_enhancement=enhancement, readings=readings,
-                                      card_preprocessor=engine._card_preprocessor,
                                       card_enhancement=engine.card_enhancement, artifacts=artifacts)
 
             raw, timings = engine._queue.run(run)
@@ -218,8 +215,6 @@ def run_docker(args, output):
         command.extend(["--recognizer", args.recognizer])
     if args.enhancement:
         command.extend(["--enhancement", args.enhancement])
-    if args.card_crop:
-        command.extend(["--card-crop", args.card_crop])
     if args.card_enhancement:
         command.extend(["--card-enhancement", args.card_enhancement])
     subprocess.run(command, cwd=ROOT, check=True)
@@ -233,7 +228,6 @@ def main(argv=None):
     parser.add_argument("--recognizer", choices=("vietocr",), default="vietocr", help="Bộ đọc chữ: VietOCR")
     parser.add_argument("--model", choices=("vgg_seq2seq", "vgg_transformer"), help="Mặc định theo NAMLHN_GPU_MODEL")
     parser.add_argument("--enhancement", choices=("off", "adaptive"), help="Mặc định theo cấu hình worker")
-    parser.add_argument("--card-crop", choices=("auto", "off"), help="Tự động crop vùng thẻ hoặc giữ toàn ảnh")
     parser.add_argument("--card-enhancement", choices=("adaptive", "off"), help="Hiệu chỉnh sáng/tương phản/nhiễu trước OCR")
     args = parser.parse_args(argv)
     args.image = args.image.resolve()

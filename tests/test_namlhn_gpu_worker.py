@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 
 from identification_demo.engine import NamLhnEngine, OCRBusy, OCRUnavailable, OCRMultipleDocuments
 from identification_demo.namlhn_gpu_engine import NamLhnGPUEngine
-from identification_demo.namlhn_gpu_worker import NamLhnCudaEngine, create_namlhn_gpu_app
+from identification_demo.namlhn_gpu_worker import NamLhnCudaEngine, NamLhnDocUCudaEngine, create_namlhn_gpu_app
 from identification_demo.processing import MAX_IMAGE_BYTES
 from test_pipeline import image_data
 
@@ -138,3 +138,14 @@ def test_a_different_gpu_model_requires_an_explicit_override(monkeypatch):
         assert gpu.model == "vgg_seq2seq" and NamLhnGPUEngine("").model == "vgg_seq2seq"
     finally:
         gpu.close()
+
+
+def test_removed_card_crop_setting_cannot_reenable_crop_and_enhancement_stays_on(monkeypatch):
+    monkeypatch.setenv("NAMLHN_GPU_CARD_CROP", "auto")
+    monkeypatch.delenv("NAMLHN_GPU_CARD_ENHANCEMENT", raising=False)
+    engine = NamLhnDocUCudaEngine()
+    try:
+        info = engine.describe()
+        assert info["card_crop"] == "off" and info["card_enhancement"] == "adaptive"
+    finally:
+        engine.close()

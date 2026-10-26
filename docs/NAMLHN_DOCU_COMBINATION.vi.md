@@ -2,9 +2,9 @@
 
 Lựa chọn `namlhn_gpu` hiện dùng `strategy: namlhn_docu_v1`:
 
-1. [Tách vùng thẻ và hiệu chỉnh ảnh có chọn lọc](CARD_PREPROCESSING.vi.md),
+1. [Giữ toàn ảnh và hiệu chỉnh ánh sáng/nhiễu có chọn lọc](CARD_PREPROCESSING.vi.md),
    sau đó tiền xử lý namlhn và detector `PP-OCRv6_medium_det` tìm các dòng chữ.
-2. Quy đổi box về vùng thẻ đang đọc, cắt bằng
+2. Quy đổi box về ảnh upload, cắt từng dòng chữ bằng
    `VietOCRRecognizer.crop_oriented_box` của DocU, với khoảng đệm trên/dưới/ngang
    0.04/0.01/0.02 như upstream.
 3. Nhận dạng mọi dòng hợp lệ bằng checkpoint/config `vgg_seq2seq` của DocU.
@@ -46,12 +46,12 @@ trị lân cận, dùng vị trí khi có box. Nhãn tiếng Anh bị đọc sai
 trường tiếp theo. Giữ nguyên chữ, dấu câu và số nhà đã đọc được.
 
 Chỉ dùng một bản VietOCR, chạy CUDA/FP32, không gọi worker DocU qua HTTP.
-Model segmentation DocU cục bộ tách thẻ khỏi nền trước detector; khi không
-crop/hiệu chỉnh, nhận dạng vẫn dùng pixel gốc chưa qua tăng nét detector.
-Tọa độ kết quả cuối được quy đổi về ảnh upload. Ngày hết hạn tiếp tục được
+Phần tự tách/crop/nắn phối cảnh thẻ thêm sau đã được gỡ. Detector thấy toàn
+ảnh như trước; nhận dạng dùng pixel chưa qua tăng nét detector, có hiệu
+chỉnh ánh sáng/nhiễu khi cần. Tọa độ kết quả thuộc ảnh upload. Ngày hết hạn tiếp tục được
 ghép từ nhãn và giá trị trên mặt trước, không lấy ngày đứng riêng.
 
-Lượt đọc đầu dùng ảnh sau bước crop/hiệu chỉnh toàn thẻ. Namlhn GPU có thêm
+Lượt đọc đầu dùng toàn ảnh sau hiệu chỉnh ánh sáng/nhiễu. Namlhn GPU có thêm
 [khử nhiễu/làm nét chữ có chọn lọc](NAMLHN_TEXT_ENHANCEMENT.vi.md), thử đọc
 bổ sung các vùng chất lượng thấp rồi đối chiếu với kết quả ban đầu.
 
