@@ -32,7 +32,8 @@ def image_data(side="front", fmt="PNG"):
 
 class Engine:
     def __init__(self, front=None, back=None):
-        self.results = {"front": FRONT if front is None else front, "back": BACK if back is None else back}
+        self.results = {"front": {**FRONT, "text_lines": [*FRONT["text_lines"], "Có giá trị đến: 25/10/2036"]} if front is None else front,
+                        "back": BACK if back is None else back}
         self.paths = []
         self.calls = []
 
@@ -92,9 +93,9 @@ def test_qr_wins_and_ocr_only_fills_gaps_in_combined_response(tmp_path, monkeypa
     assert result["field_sources"]["name"] == "qr_front"
     assert result["field_sources"]["nationality"] == "ocr_front"
     assert result["field_sources"]["issuing_authority"] == "ocr_back"
-    assert result["ocr"]["front"]["filled_fields"] == ["nationality", "place_of_origin"]
+    assert result["ocr"]["front"]["filled_fields"] == ["nationality", "place_of_origin", "expiry_date"]
     assert result["ocr"]["back"]["filled_fields"] == ["issuing_authority"]
-    assert result["recognized_fields"] == 10 and result["total_fields"] == 11
+    assert result["recognized_fields"] == 11 and result["total_fields"] == 12
     assert result["fields"]["identifying_features"] == ""
     assert result["field_sources"]["identifying_features"] is None
     assert result["missing_fields"] == result["warnings"] == []
@@ -112,7 +113,7 @@ def test_qr_can_be_on_back_and_identical_codes_are_deduplicated():
     assert result["field_sources"]["issue_date"] == "qr_back"
     assert result["qr"]["sides"] == {"front": "no_qr", "back": "complete"}
     repeated = submit(reader=Reader([PAYLOAD, PAYLOAD], [PAYLOAD])).json()
-    assert repeated["recognized_fields"] == 10 and repeated["qr"]["recognized_fields"] == 7
+    assert repeated["recognized_fields"] == 11 and repeated["qr"]["recognized_fields"] == 7
 
 
 @pytest.mark.parametrize("date", ["", "31022021"])
@@ -145,7 +146,7 @@ def test_no_usable_qr_falls_back_to_both_ocr_sides(codes, qr_status):
     assert result["fields"]["issue_date"] == "20/04/2021"
     assert result["fields"]["old_id_number"] == ""
     assert result["field_sources"]["old_id_number"] is None
-    assert result["recognized_fields"] == 9 and result["missing_fields"] == []
+    assert result["recognized_fields"] == 10 and result["missing_fields"] == []
     assert result["warnings"]
 
 
@@ -206,7 +207,7 @@ def test_no_text_is_a_processed_result_with_empty_fields():
 
 def test_optional_old_cmnd_does_not_prevent_complete_status():
     result = submit(reader=Reader([PAYLOAD.replace("012345678", "")])).json()
-    assert result["status"] == "complete" and result["recognized_fields"] == 9
+    assert result["status"] == "complete" and result["recognized_fields"] == 10
     assert result["fields"]["old_id_number"] == "" and result["missing_fields"] == []
 
 
@@ -259,7 +260,7 @@ def test_real_qr_decoder_and_combined_api():
     qrcode.make(PAYLOAD).save(stream, "PNG")
     class OrderedEngine:
         def __init__(self):
-            self.results = iter([FRONT, BACK])
+            self.results = iter([Engine().results["front"], BACK])
 
         def describe(self):
             return {}

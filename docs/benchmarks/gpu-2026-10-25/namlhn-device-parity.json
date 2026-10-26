@@ -1,0 +1,53 @@
+{
+  "model": "vgg_transformer",
+  "recognition_checkpoint_sha256": "380512193a8b6cbf6fad80deacdc9b6939d10d473d199892fc6408d13775ea59",
+  "recognition_config_matches": true,
+  "gpu_vietocr_precision": "fp32; TF32 disabled",
+  "comparison": "NFC, casefold and whitespace normalization; OCR-only; equal outputs are not an accuracy score",
+  "samples": [
+    {
+      "case": "expiry-front",
+      "different_fields": [],
+      "matching_fields": 12,
+      "cpu_ms": 14168,
+      "gpu_ms": 2533,
+      "cpu_status": "complete",
+      "gpu_status": "complete",
+      "images": {
+        "front_sha256": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back_sha256": "9fc4a717b106624aad008b8b4e1be6c274fce448f83c65e014eb1294b1948e82"
+      }
+    },
+    {
+      "case": "expiry-back",
+      "different_fields": [],
+      "matching_fields": 12,
+      "cpu_ms": 5366,
+      "gpu_ms": 1582,
+      "cpu_status": "partial",
+      "gpu_status": "partial",
+      "images": {
+        "front_sha256": "8ab42db0bdd4eaab05e76caa8fafdd0b4e67ce78fcde53f0e31b4b539efe2845",
+        "back_sha256": "6fbcdaff9710aa156dd73f8f31a15e0f1d37dc0ab45b7b7b64d391544e021889"
+      }
+    },
+    {
+      "case": "authority-multiline",
+      "different_fields": [],
+      "matching_fields": 12,
+      "cpu_ms": 8060,
+      "gpu_ms": 2169,
+      "cpu_status": "partial",
+      "gpu_status": "partial",
+      "images": {
+        "front_sha256": "7f83afb4e11734fff16d77a4e252d765889ca33c82376bf8eac94d4f7a3ed90c",
+        "back_sha256": "0a4abd94a15fa786fb0eeb10167164f8d7b9901b574569efdbf68efcfe058499"
+      }
+    }
+  ],
+  "main_api": {
+    "total_fields": 11,
+    "provider": "CaoAnhNato/vn-identity-card-ocr",
+    "changed": false
+  }
+}

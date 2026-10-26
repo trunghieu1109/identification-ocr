@@ -8,7 +8,7 @@ sao chép từng giá trị, xem JSON và tải JSON. API mặc định không c
 hay QR gốc; giao diện có thêm chữ OCR mặt sau khi yêu cầu chế độ đối chiếu.
 
 Thông tin gồm số CCCD, CMND cũ (nếu có), họ tên, ngày sinh, giới tính, quốc tịch,
-quê quán, nơi thường trú, **ngày cấp, cơ quan cấp**. Key đặc điểm nhân dạng vẫn
+quê quán, nơi thường trú, **ngày cấp, cơ quan cấp, ngày hết hạn**. Key đặc điểm nhân dạng vẫn
 được giữ trong API chung nhưng để trống và không phát sinh OCR bổ sung. Cơ quan
 cấp được ghép từ chữ thực tế trên thẻ; không điền một cơ quan mặc định.
 
@@ -20,12 +20,19 @@ cấp và hiển thị chữ ghép cùng giá trị trường cuối cùng. Có 
 OCR để đối chiếu. Đây là dữ liệu của lượt đọc được chọn trả về, không chạy
 thêm OCR. Giao diện gửi `include_back_ocr=true` trong request hiện tại;
 API thông thường không gửi cờ này vẫn không trả chữ OCR. Khi bật cờ, JSON
-cũng có `ocr.back.debug`; schema 11 trường giữ nguyên.
+cũng có `ocr.back.debug`.
+
+Từ `0.7.0`, luồng GPU chính dùng **namlhn GPU**, cùng worker với tab thử nghiệm.
+Cả CPU và GPU trả **12 trường**, bổ sung `fields.expiry_date` dạng `DD/MM/YYYY`.
+Ngày hết hạn phải gắn với nhãn trên mặt trước hoặc mặt sau; không lấy ngày sinh,
+ngày cấp hoặc ngày đứng riêng. Không đọc được hay có kết quả mâu thuẫn thì trả
+`""`. Thẻ ghi không thời hạn trả `expiry_date: ""`, `expiry.expiry_type: "unlimited"`
+và không tính trường này là thiếu. `field_sources.expiry_date` ghi mặt OCR đọc được.
 
 | Mức | Giá trị API | Bộ xử lý OCR |
 | --- | --- | --- |
 | Trung bình | `medium` | `namlhn/vietnam-cccd-ocr`, CPU |
-| Cao (mặc định trong Compose) | `high` | `CaoAnhNato/vn-identity-card-ocr` (DocU), GPU CUDA |
+| Cao (mặc định trong Compose) | `high` | namlhn GPU: Paddle detector + bộ đọc DocU Seq2Seq, CUDA |
 
 Compose đặt `OCR_DEFAULT_QUALITY=high`: request không gửi `quality` và giao
 diện mặc định dùng GPU cho cả hai mặt, gồm cơ quan cấp. Không warm model OCR
@@ -34,7 +41,7 @@ gọi API OCR CPU riêng. Chạy ngoài Compose không đặt biến này giữ 
 `medium` để tương thích các client cũ.
 
 **Cả hai mức đều đọc QR trước và chỉ dùng OCR để bổ sung trường trống.** Mức
-cao chọn pipeline của repo thứ hai; cần đánh giá trên ảnh thực tế để so sánh
+cao dùng detector namlhn và bộ đọc DocU Seq2Seq; cần đánh giá trên ảnh thực tế để so sánh
 độ chính xác. Nếu GPU không hoạt động, không tự đổi sang OCR CPU: giữ phần QR
 đã đọc và báo lỗi OCR trong kết quả; khi hoàn toàn chưa có dữ liệu thì trả 503.
 
@@ -53,8 +60,11 @@ không cần model OCR. Toàn bộ xử lý chạy cục bộ trên máy chủ.
 
 ## Thử nghiệm QR
 
-Tab **Thử nghiệm QR** (hoặc mở `/#qr`) nhận một ảnh JPG/PNG, tối đa 10 MB.
-Chạy từng phương án hoặc **Chạy cả 6 phương án** lần lượt trên cùng ảnh:
+Tab **Thử nghiệm QR** (hoặc mở `/#qr`) nhận một ảnh hoặc **Hai mặt** JPG/PNG,
+tối đa 10 MB mỗi ảnh. Chọn **Hai mặt** để tải mặt trước và mặt sau, chọn
+**Song song** (mặc định) hoặc **Tuần tự**. Mỗi mặt dùng cùng phương án tìm vùng,
+xử lý và giải mã; không bỏ qua mặt sau khi mặt trước đọc được QR.
+Chạy từng phương án hoặc **Chạy cả 6 phương án** lần lượt trên cùng bộ ảnh:
 
 | Phương án | Xử lý |
 | --- | --- |
@@ -67,7 +77,27 @@ Chạy từng phương án hoặc **Chạy cả 6 phương án** lần lượt t
 
 **Ba phương án phục hồi chỉ dùng trong tab/API thử nghiệm.** API chính và
 API QR riêng tiếp tục dùng WeChatQRCode hiện tại. Luồng song song được bỏ
-khỏi giao diện; API thử nghiệm `wechat_parallel` cũ vẫn được giữ để tương thích.
+khỏi danh sách phương án; API thử nghiệm `wechat_parallel` cũ vẫn được giữ để tương thích.
+
+Thử nghiệm hai mặt gọi riêng `POST /api/qr/experiment/pair`, gửi multipart
+`front_image`, `back_image`, `method` và `execution=parallel|sequential`
+(mặc định `parallel`). Hai bộ đọc/model độc lập được giữ lại cho hai mặt,
+giúp chạy đồng thời mà không dùng chung detector. Chế độ tuần tự dùng chính
+hai bộ đọc đó để so sánh sau khi đã nạp model. Một mặt lỗi vẫn giữ kết quả
+mặt còn lại; hai mặt đều lỗi trả 429/503. Kiểm tra cả hai ảnh trước khi quét.
+
+Response có `sides.front` / `sides.back`: thông tin CCCD, trạng thái, khung QR,
+thời gian nạp model, đọc QR và tổng xử lý từng mặt. `schedule_ms` trong từng
+mặt ghi thời điểm bắt đầu/kết thúc tính từ lúc chạy hai mặt. `timings_ms`
+cấp ngoài có `image_decode`, `queue_wait`, `execution`, `sum_side_processing`
+và `total`; tổng thời gian từng mặt có thể chồng nhau khi chạy song song,
+không phải thời gian thực tế người dùng chờ. Giao diện đo thêm tổng chờ
+trình duyệt và hiển thị kết quả/khung QR của từng mặt. JSON tải xuống giữ đủ
+metadata này. QR trùng nhau được gộp ở kết quả tổng; nhiều nội dung khác nhau
+trả `multiple_qr`, để trống thông tin tổng và vẫn giữ kết quả riêng từng mặt.
+Worker phục hồi GPU có thể xếp hàng, nên chạy song song không bảo đảm nhanh
+gấp đôi. Nên chạy lại cùng ảnh sau khi nạp model rồi so sánh hai chế độ.
+Tính năng này chỉ nằm trong tab/API thử nghiệm QR.
 
 Ba phép thử mới dùng cùng QRDet small (confidence 0.5). Ảnh có cạnh trên
 1600 px được tìm thêm trên bốn vùng chồng lấn rộng/cao 60%, rồi loại các
@@ -218,76 +248,36 @@ nvidia-smi
 docker compose --profile gpu up -d --build
 ```
 
-Ứng dụng vẫn public cổng 8888; `ocr-gpu` chỉ có cổng trong mạng Docker. Worker
-GPU chạy trực tiếp `DocUOCRPipeline` và các extractor của repo CaoAnhNato, tách
-khỏi môi trường PaddleOCR/VietOCR của mức CPU. Không chạy PostgreSQL, MinIO,
-Redis hay tính năng lưu ảnh của API upstream.
+Ứng dụng public cổng 8888; luồng chính `high` gọi worker **`namlhn-gpu:8082`**.
+Worker dùng detector Paddle `PP-OCRv6_medium_det`, bộ đọc DocU `vgg_seq2seq`
+và parser namlhn (`strategy: namlhn_docu_v1`). CPU vẫn dùng worker riêng.
 
-`Dockerfile.gpu` pin source tại commit
-`7b98e5ef984f55c9f23f896e67c93c1be0aabddc`. Checkpoint được copy từ image
-`natollang/docu-ocr` đã pin digest trong Dockerfile; Git upstream không chứa
-model. Lần build đầu cần tải image checkpoint và thư viện CUDA, cần dung lượng
-đĩa đáng kể. Các checkpoint segmentation, rotation, detection, recognition
-và bộ đọc bổ sung cơ quan cấp đều
-phải có; worker từ chối khởi tạo nếu thiếu, không dùng model ngẫu nhiên hoặc
-YOLO tổng quát để thay thế model OCR đã huấn luyện.
+Biến cấu hình cho GPU chính: `NAMLHN_GPU_OCR_URL`, `NAMLHN_GPU_OCR_API_KEY`,
+`NAMLHN_GPU_MODEL`, `NAMLHN_GPU_PIPELINE`, `NAMLHN_GPU_TEXT_ENHANCEMENT`.
+Để chạy trên máy GPU khác, build `Dockerfile.namlhn-gpu` trên máy đó rồi đặt
+`NAMLHN_GPU_OCR_URL=http://GPU_HOST:8082` cho ứng dụng. Endpoint worker là
+`GET /api/v1/health/ready` và `POST /api/v1/extract`.
 
-Từ `0.6.4`, cấu hình mặc định GPU dùng **cùng bộ đọc `vgg_seq2seq`** cho chữ
-thông thường và đọc bổ sung cơ quan cấp, trên `cuda:0`. Không nạp Transformer
-riêng cho trường này. Bộ tìm thẻ/vùng chữ vẫn dùng YOLO; không chạy Paddle
-hay gửi ảnh sang luồng CPU. Các bước dùng chung model được nạp một lần và
-tái sử dụng trong queue. Đọc bổ sung chỉ tập trung vùng cần thiết, không
-đọc lại các trường QR đã đủ.
+`GET /api/health` trả trạng thái tại `ocr_profiles.high`: provider namlhn,
+thiết bị `cuda:0`, `recognition_model: vgg_seq2seq`, `strategy: namlhn_docu_v1`.
+Cần NVIDIA driver hoạt động trên host và Docker được cấp quyền GPU.
+Các worker hiện dùng chung một GPU; request được xếp hàng theo từng worker.
 
-Compose cho phép chọn `GPU_OCR_RECOGNITION_MODEL` (mặc định `vgg_seq2seq`)
-và `GPU_OCR_AUTHORITY_MODEL` (mặc định `vgg_seq2seq`). Chỉ hỗ trợ hai
-giá trị `vgg_seq2seq`/`vgg_transformer`, yêu cầu checkpoint tương ứng có sẵn.
-Nếu chọn cùng model, worker dùng chung một instance. Health trả
-`recognition_model` và `authority_recognition_model` để kiểm tra cấu hình.
-Việc đổi model không bảo đảm độ chính xác trên mọi ảnh; tìm thiếu dòng do
-YOLO vẫn có thể khiến kết quả thiếu phần tên, khi đó phần đọc được được giữ.
-
-Runtime dùng PyTorch 2.7.1 + CUDA 12.8, hỗ trợ Blackwell/RTX 50 theo
-[PyTorch](https://pytorch.org/blog/pytorch-2-7/). RTX Blackwell cần NVIDIA open
-kernel modules theo [NVIDIA](https://developer.nvidia.com/blog/nvidia-transitions-fully-towards-open-source-gpu-kernel-modules/).
-`nvidia-smi` phải hoạt động trên host; cài thư viện CUDA trong container không
-khắc phục được driver host đang lỗi.
-
-Để dùng một máy GPU khác, chạy worker bằng `Dockerfile.gpu` trên máy đó rồi cấu
-hình `GPU_OCR_URL=http://GPU_HOST:8081` cho service chính. Worker dùng endpoint
-`GET /api/v1/health/ready` và `POST /api/v1/extract?doc_type_hint=cccd_front|cccd_back`.
-Cũng có thể nối API gốc của repo cùng schema, với readiness báo CUDA và model
-đã sẵn sàng; phải tắt lưu trữ upstream nếu không muốn lưu ảnh.
-
-Biến cấu hình: `GPU_OCR_URL` (mặc định Compose `http://ocr-gpu:8081`),
-`GPU_OCR_TIMEOUT` (120 giây), `GPU_OCR_API_KEY` (Bearer token, đặt giống nhau
-ở service chính và worker khi cần bảo vệ kết nối). Health chính trả trạng thái
-hai profile tại `ocr_profiles.medium`, `ocr_profiles.high`; `high.available`
-chỉ là `true` khi worker đã tải model và báo thiết bị CUDA.
-
-Adapter chuẩn hóa tên trường và ngày của DocU về schema chung; cơ quan cấp
-được ghép từ chữ GPU đọc được. Các giá trị quốc tịch/giới tính mặc định của
-upstream chỉ được giữ khi có chữ nhận dạng làm căn cứ.
-
-Các dự đoán vùng thẻ trùng nhau được gộp theo polygon IoU. **Số vùng phát hiện
-không tự làm dừng OCR.** Khi phân vùng không rõ ràng hoặc kết quả thiếu trường,
-worker đọc lại nguyên ảnh bằng cùng YOLO text detector + VietOCR trên CUDA,
-bỏ qua bước cắt thẻ và model đoán chiều xoay. Thử các chiều 0/180/90/270 độ có
-giới hạn và dừng khi đọc đủ trường đúng mặt thẻ; chọn kết quả có nhãn và trường
-hợp lệ hơn, không ghép giá trị từ các vùng khác nhau.
-
-Chỉ trả `multiple_documents` khi nhiều vùng độc lập có đủ nhãn/trường đọc được
-và thông tin khác nhau (mặt sau cần đủ 3 trường; mặt trước cần ít nhất 4 trường).
-API chung giữ thông tin QR/OCR của mặt còn lại và trả `partial`, kèm
-`ocr.front|back.error_code`, `detected_regions`; chỉ trả 422 khi hoàn toàn chưa
-có dữ liệu. Không tự đổi sang OCR CPU. Khi đọc lại nguyên ảnh, metadata
-`ocr.front|back.recovery` cho biết `method`, `detected_regions`,
-`rotation_degrees`, `attempted_rotations`; không chứa văn bản hay ảnh gốc.
-
-Compose hiện yêu cầu **một GPU**, các model dùng chung `cuda:0`; không cần một
-GPU riêng cho mỗi bước OCR hoặc mỗi mặt thẻ.
+Worker `ocr-gpu` của DocU, `ocr-gpu-regions` và các biến `GPU_OCR_URL`,
+`GPU_OCR_RECOGNITION_MODEL`, `GPU_OCR_AUTHORITY_MODEL` phục vụ lựa chọn DocU
+ở tab thử nghiệm. Cấu hình và giới hạn của chúng được mô tả trong
+[thử nghiệm OCR](docs/OCR_EXPERIMENT.vi.md).
 
 ### Điều chỉnh trường cơ quan cấp và làm rõ ảnh
+
+Để xuất từng **ảnh crop mặt trước cùng text OCR tương ứng**, dùng
+[`scripts/export-front-ocr.py`](scripts/export-front-ocr.py). Script tạo báo cáo
+HTML, ảnh đánh số vùng, PNG/text từng vùng, JSON và file ZIP; xem
+[hướng dẫn xuất crop](docs/OCR_CROP_EXPORT.vi.md).
+
+GPU hiện [tự crop vùng thẻ và hiệu chỉnh ảnh khi cần](docs/CARD_PREPROCESSING.vi.md).
+Số căn cước đọc thừa/thiếu ký tự được giữ trong `id_number` kèm trạng thái
+chưa xác nhận, thay vì bị xóa vì không đủ 9/12 chữ số. QR vẫn được ưu tiên.
 
 Hai bộ xử lý hiện dùng model OCR và quy tắc tách trường, **không dùng prompt
 LLM**. Quy tắc chuẩn hóa cơ quan cấp nằm trong
@@ -456,10 +446,10 @@ Quy tắc ghép:
 4. OCR một mặt lỗi vẫn giữ kết quả QR và OCR mặt còn lại. Trường chưa đọc được
    trả `""`; `field_sources` tương ứng là `null`.
 
-Kết quả trả `source: "qr_ocr"` và `fields` gồm 11 key:
+Kết quả trả `source: "qr_ocr"` và `fields` gồm 12 key:
 `id_number`, `old_id_number`, `name`, `date_of_birth`, `gender`, `nationality`,
 `place_of_origin`, `place_of_residence`, `issue_date`, `issuing_authority`,
-`identifying_features`. Ngày cấp có dạng `DD/MM/YYYY`. Số CMND cũ chỉ lấy từ QR
+`identifying_features`, `expiry_date`. Ngày cấp và ngày hết hạn có dạng `DD/MM/YYYY`. Số CMND cũ chỉ lấy từ QR
 và có thể không tồn tại. `identifying_features` luôn là `""`, nguồn `null` trong
 API chung; không đọc bổ sung đặc điểm nhân dạng. Hai key này không bắt buộc
 để đạt `complete`, nhưng vẫn có trong schema cố định.
@@ -475,10 +465,11 @@ Metadata:
 - `ocr`: trạng thái và `filled_fields` của từng mặt (`front`, `back`).
   Khi lỗi có `error` để biết bộ xử lý chưa sẵn sàng hoặc đang bận.
 - `warnings`: thông báo QR fallback hoặc bộ xử lý gặp lỗi, không chứa dữ liệu gốc.
-- `recognized_fields`, `total_fields: 11`, `processing_time_ms`, `request_id`.
+- `expiry`: `status` (`found`, `not_found`, `conflict`), `expiry_type` (`date`, `unlimited` hoặc `null`), `label_found`, `side`.
+- `recognized_fields`, `total_fields: 12`, `processing_time_ms`, `request_id`.
 
 HTTP 200 có `status` là `complete`, `partial` hoặc `no_text`. `complete` có thể
-đạt 9/11 khi không có CMND cũ và đã bỏ qua đặc điểm nhân dạng. Nếu chưa có dữ liệu và bộ xử lý gặp lỗi, trả 503;
+đạt 10/12 khi không có CMND cũ và đã bỏ qua đặc điểm nhân dạng (9/12 nếu không thời hạn). Nếu chưa có dữ liệu và bộ xử lý gặp lỗi, trả 503;
 nếu đang bận thì 429 với `Retry-After: 5`. Ảnh quá dung lượng trả 413; thiếu ảnh,
 ảnh hỏng, sai mặt hoặc QR xung đột trả 422. Không trả `raw_text`, `raw_qr`,
 `qr_codes`; không lưu ảnh hoặc kết quả vào database.
@@ -601,7 +592,8 @@ curl --fail-with-body http://localhost:8888/api/ocr/cccd \
 (mặc định `auto`). Mặt trước trả `fields` với các key
 `id_number`, `name`, `date_of_birth`, `gender`, `nationality`, `place_of_origin`,
 `place_of_residence`. Mặt sau trả `issue_date` (DD/MM/YYYY), `issuing_authority`,
-`identifying_features`. Kết quả có `side`, `detected_side`, `raw_text`,
+`identifying_features`. Cả hai mặt có thêm `expiry_date` và metadata `expiry`.
+Kết quả có `side`, `detected_side`, `raw_text`,
 `recognized_fields`, `total_fields`, `processing_time_ms` và `request_id`.
 
 - HTTP 200: OCR chạy xong. `status` là `complete`, `partial`, `unstructured`
@@ -621,6 +613,33 @@ model chỉ khởi tạo khi yêu cầu OCR đầu tiên đến.
 File xử lý nằm trong thư mục tạm riêng và được xóa khi yêu cầu kết thúc, kể cả
 khi OCR lỗi. Không lưu ảnh hoặc kết quả vào database. Trường không đọc được để
 chuỗi trống; kết quả luôn cần đối chiếu với thẻ gốc.
+
+## Thử nghiệm OCR đầy đủ
+
+Tab **Thử nghiệm OCR** (`/#experiment`) thay tab Ngày hết hạn, so sánh
+**namlhn CPU**, **namlhn GPU**, **DocU GPU gốc**, **DocU v2 theo vùng** và
+**DocU v3 mở rộng box** trên cùng hai ảnh. Mặc định chọn namlhn GPU; có thể chạy
+từng bộ, so sánh ba phiên bản DocU hoặc chạy cả năm lần lượt, ưu tiên QR
+như API chính hoặc chỉ OCR.
+API riêng `POST /api/cccd/experiment/extract` trả 12 trường, gồm ngày hết
+hạn **chỉ từ mặt trước** và đặc điểm nhân dạng nếu đọc được. Giao diện
+đối chiếu giá trị, nguồn, thời gian, chữ OCR và cho tải JSON.
+Namlhn GPU mặc định kết hợp Paddle tìm vùng chữ với bộ đọc VietOCR Seq2Seq
+của DocU (`strategy: namlhn_docu_v1`). Các dòng được cắt từ ảnh gốc, có
+khoảng đệm của DocU, rồi đọc bằng một recognizer dùng chung.
+Chữ Paddle không tham gia kết quả cuối. `NAMLHN_GPU_PIPELINE=legacy` cùng
+`NAMLHN_GPU_MODEL=vgg_transformer` khôi phục cách đọc cũ.
+Worker namlhn GPU và DocU thử nghiệm tách riêng. V2 đọc bổ sung vùng ngày;
+v3 phát triển từ v2, mở rộng vùng đọc nhãn/ngày và giữ một kích thước tìm
+chữ toàn ảnh. Cả hai
+dùng YOLO + Seq2Seq và chia sẻ model/queue trên worker thử nghiệm.
+Chi tiết v3 có ảnh vùng đọc rộng hơn cùng chữ nhận dạng để đối chiếu.
+API chính cũng dùng namlhn GPU ở mức `high` và trả 12 trường gồm `expiry_date`.
+Xem [contract và cách chạy worker thử nghiệm](docs/OCR_EXPERIMENT.vi.md).
+Kết quả trước/sau và giới hạn của bản kết hợp nằm trong
+[báo cáo namlhn + DocU](docs/NAMLHN_DOCU_COMBINATION.vi.md).
+Namlhn GPU còn có [khử nhiễu/làm nét chữ có chọn lọc](docs/NAMLHN_TEXT_ENHANCEMENT.vi.md),
+điều khiển bằng `NAMLHN_GPU_TEXT_ENHANCEMENT=adaptive|off`.
 
 ## Kiểm tra
 

@@ -1,0 +1,5663 @@
+{
+  "synthetic": true,
+  "scope": "Same labelled RGB line crops; recognition only; whitespace/NFC normalized; all case/diacritics preserved.",
+  "runs": [
+    {
+      "model": "vgg_seq2seq",
+      "max_width": 512,
+      "exact": 56,
+      "total": 64,
+      "cer": 0.011538461538461539,
+      "elapsed_ms": 1280.8,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "confidence": 0.7218253504146229,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "confidence": 0.8906113330055686,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "CÔNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "confidence": 0.8751374912612578,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "confidence": 0.8791258769375937,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "Độc lập Tự do Hạnh phúc",
+          "confidence": 0.7328298534116438,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "confidence": 0.8891896782097993,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "Số / No: 001099000001",
+          "confidence": 0.6415983209243188,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "Số / No.:001099000001",
+          "confidence": 0.7355666377622149,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "Họ và tên / Full name: NGUYỄN VĂN THỨ",
+          "confidence": 0.8428991678598765,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "confidence": 0.8762777125513231,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "confidence": 0.7877394994720817,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "confidence": 0.883536981684821,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9054681994020939,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.8978074081242085,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "ĐẶNG THỊ THUY DƯƠNG",
+          "confidence": 0.8582708474836851,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "confidence": 0.8511838991391031,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "confidence": 0.9036922913331252,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "confidence": 0.9034394438450153,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "confidence": 0.854837024377452,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "confidence": 0.8934164783533882,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "confidence": 0.8278274750337005,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "confidence": 0.8924360360418048,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.862265146261937,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.8838927584725458,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "Giới tính / Sex: Nam",
+          "confidence": 0.8520312637090683,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "Giới tính / Sex: Nam",
+          "confidence": 0.8559129297733307,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "Giới tính / Sex: Nữ",
+          "confidence": 0.8345650403123153,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "Giới tính / Sex: Nữ",
+          "confidence": 0.8560516708775571,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "confidence": 0.880205335039081,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "confidence": 0.8864962512796576,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "Quê quán / Place of origin: Hà Nội",
+          "confidence": 0.8494028650662478,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Quê quán / Place of origin: Hà Nội",
+          "confidence": 0.880847338367911,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "confidence": 0.9033204518007428,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "confidence": 0.9031457713480746,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Tinh Phú Thọ",
+          "confidence": 0.6457994441900935,
+          "errors": 11,
+          "correct": false
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "confidence": 0.7066605011990041,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "confidence": 0.8277865059673786,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "confidence": 0.8357454992830753,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "confidence": 0.6920015559888181,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "confidence": 0.6984393568355826,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "confidence": 0.7029980783526962,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "confidence": 0.6708417874487007,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "confidence": 0.8545373491942883,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "confidence": 0.8720925552770495,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "25/10/2036",
+          "confidence": 0.9029299855232239,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "25/10/2036",
+          "confidence": 0.9024946451187134,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "Không thời hạn",
+          "confidence": 0.9026308485439846,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "Không thời hạn",
+          "confidence": 0.8987964902605329,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "Ngày cấp / Date of issue: 15/03/2021",
+          "confidence": 0.8560157521731324,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "Ngày cấp / Date of issue: 15/03/2021",
+          "confidence": 0.8695640572243266,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "confidence": 0.7548668728820209,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "CỤC TRƯỞ NG CỤC CẢNH SÁT",
+          "confidence": 0.8730864649017652,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "confidence": 0.886433419254091,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "confidence": 0.8973776797453562,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "confidence": 0.8250027149915695,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "confidence": 0.8991540607653166,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "001099000007",
+          "confidence": 0.8924936105807623,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "001099000007",
+          "confidence": 0.7995893923299653,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "079203001256",
+          "confidence": 0.9019818852345148,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "079203001256",
+          "confidence": 0.8028996086546353,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "31/12/2000",
+          "confidence": 0.8331968012181196,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "31/12/2000",
+          "confidence": 0.9001913368701935,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "15/03/2021",
+          "confidence": 0.907399594783783,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "15/03/2021",
+          "confidence": 0.9080193400382995,
+          "errors": 0,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "model": "vgg_seq2seq",
+      "max_width": 1024,
+      "exact": 49,
+      "total": 64,
+      "cer": 0.11428571428571428,
+      "elapsed_ms": 1006.6,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "confidence": 0.7218253504146229,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "confidence": 0.8906113330055686,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "CÔNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "confidence": 0.8751374912612578,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "confidence": 0.8791258769375937,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "Độc lập Tự do Hạnh phúc",
+          "confidence": 0.7328298534116438,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "confidence": 0.8891896782097993,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "Số / No: 001099000001",
+          "confidence": 0.6415983209243188,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "Số / No.:001099000001",
+          "confidence": 0.7355666377622149,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "Họ và tên / Full name: NGUYỄN VĂN THỨ",
+          "confidence": 0.8428991678598765,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "confidence": 0.8762777125513231,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "confidence": 0.7877394994720817,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "confidence": 0.883536981684821,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9054681994020939,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.8978074081242085,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "ĐẶNG THỊ THUY DƯƠNG",
+          "confidence": 0.8582708474836851,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "confidence": 0.8511838991391031,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "confidence": 0.9036922913331252,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "confidence": 0.9034394438450153,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "confidence": 0.854837024377452,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "confidence": 0.8934164783533882,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "confidence": 0.8278274750337005,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "confidence": 0.8924360360418048,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.862265146261937,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.8838927584725458,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "Giới tính / Sex: Nam",
+          "confidence": 0.8520312637090683,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "Giới tính / Sex: Nam",
+          "confidence": 0.8559129297733307,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "Giới tính / Sex: Nữ",
+          "confidence": 0.8345650403123153,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "Giới tính / Sex: Nữ",
+          "confidence": 0.8560516708775571,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "confidence": 0.880205335039081,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "confidence": 0.8864962512796576,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "Quê quán / Place of origin: Hà Nội",
+          "confidence": 0.8494028650662478,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Quê quán / Place of origin: Hà Nội",
+          "confidence": 0.880847338367911,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "Nơi thường trú / Place of residence: Phường Mài",
+          "confidence": 0.8303321479482854,
+          "errors": 42,
+          "correct": false
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Phố Nội",
+          "confidence": 0.8169763655002628,
+          "errors": 34,
+          "correct": false
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành Phú Thọ",
+          "confidence": 0.87179786413908,
+          "errors": 19,
+          "correct": false
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành Phú Thọ",
+          "confidence": 0.8223226969671804,
+          "errors": 19,
+          "correct": false
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Số 128/45 Nguyễn Đình Chiều, Phường 1 Thành Thành",
+          "confidence": 0.7499197154324881,
+          "errors": 27,
+          "correct": false
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường 1 Thành Thành",
+          "confidence": 0.7512957877954658,
+          "errors": 26,
+          "correct": false
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "confidence": 0.8858692918134772,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "confidence": 0.8944059260513472,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Phường Tân Phú, Thành Pức, Thành Minh",
+          "confidence": 0.8335140536765795,
+          "errors": 20,
+          "correct": false
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Phường Tân Phú, Thành phố Tức Thà Hồ Chí Minh",
+          "confidence": 0.7562861442565918,
+          "errors": 11,
+          "correct": false
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "confidence": 0.8545373491942883,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "confidence": 0.8720925552770495,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "25/10/2036",
+          "confidence": 0.9029299855232239,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "25/10/2036",
+          "confidence": 0.9024946451187134,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "Không thời hạn",
+          "confidence": 0.9026308485439846,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "Không thời hạn",
+          "confidence": 0.8987964902605329,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "Ngày cấp / Date of issue: 15/03/2021",
+          "confidence": 0.8560157521731324,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "Ngày cấp / Date of issue: 15/03/2021",
+          "confidence": 0.8695640572243266,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "confidence": 0.7548668728820209,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "CỤC TRƯỞ NG CỤC CẢNH SÁT",
+          "confidence": 0.8730864649017652,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "confidence": 0.886433419254091,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "confidence": 0.8973776797453562,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "confidence": 0.8250027149915695,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "confidence": 0.8991540607653166,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "001099000007",
+          "confidence": 0.8924936105807623,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "001099000007",
+          "confidence": 0.7995893923299653,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "079203001256",
+          "confidence": 0.9019818852345148,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "079203001256",
+          "confidence": 0.8028996086546353,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "31/12/2000",
+          "confidence": 0.8331968012181196,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "31/12/2000",
+          "confidence": 0.9001913368701935,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "15/03/2021",
+          "confidence": 0.907399594783783,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "15/03/2021",
+          "confidence": 0.9080193400382995,
+          "errors": 0,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "model": "vgg_transformer",
+      "max_width": 512,
+      "exact": 52,
+      "total": 64,
+      "cer": 0.00989010989010989,
+      "elapsed_ms": 3746.1,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "confidence": 0.9367589038961074,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "confidence": 0.9364133722641889,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "confidence": 0.9295015755821677,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "confidence": 0.9327269862679874,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "confidence": 0.9254874741589582,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "confidence": 0.926562644817211,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "Số / No.: 0010990000001",
+          "confidence": 0.8526284488347861,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "Số / No.: 0010990000001",
+          "confidence": 0.891088948301647,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "confidence": 0.893244524259825,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "confidence": 0.8810244548965145,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "confidence": 0.9273379061903272,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "confidence": 0.9296783038548061,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9330660328269005,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9321710765361786,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "ĐẶNG THỊ THUỶ DƯƠNG",
+          "confidence": 0.9014727990878256,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "confidence": 0.9062582866141671,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "confidence": 0.9364079695481521,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "confidence": 0.9358641367692214,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "confidence": 0.9137191842584049,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "confidence": 0.9129212148049298,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "confidence": 0.9369896394865853,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "confidence": 0.9362155624798366,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "Ngày sinh/Date of birth: 01/02/1999",
+          "confidence": 0.9064635344914027,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.9315264015584379,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "Giới tính/Sex: Nam",
+          "confidence": 0.8903697927792867,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "Giới tính/Sex: Nam",
+          "confidence": 0.8787097980578741,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "Giới tính/Sex: Nữ",
+          "confidence": 0.8913722459007712,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "Giới tính/ Sex: Nữ",
+          "confidence": 0.8844737526443269,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "confidence": 0.9310314655303955,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "confidence": 0.9302210861986334,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "Quê quán / Place of origin: hà nội",
+          "confidence": 0.9045816011288587,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Quê quán / Place of origin: hà nội",
+          "confidence": 0.9146722187014187,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "confidence": 0.9325020514177472,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "confidence": 0.9274287833256668,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "confidence": 0.9327125973620657,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "confidence": 0.9341834258225005,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "confidence": 0.8978855984333234,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "confidence": 0.9099146284555134,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "confidence": 0.8485890192064371,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "confidence": 0.8500387560237538,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "confidence": 0.8217596694246515,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "confidence": 0.7974795372803,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "confidence": 0.9250774849206209,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "confidence": 0.9178863223642111,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "25/10/2036",
+          "confidence": 0.93433718085289,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "25/10/2036",
+          "confidence": 0.932410204410553,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "Không thời hạn",
+          "confidence": 0.9327029883861542,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "Không thời hạn",
+          "confidence": 0.9319746792316437,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "Ngày cấp/ Date of issue: 15/03/2021",
+          "confidence": 0.9170259049960545,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "Ngày cấp/ Date of issue: 15/03/2021",
+          "confidence": 0.9114779114723206,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "confidence": 0.9330212188803632,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "confidence": 0.9356085632158362,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "confidence": 0.9343396425247192,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "confidence": 0.933559904495875,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "confidence": 0.9293292886332462,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "confidence": 0.9312210930021185,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "001099000007",
+          "confidence": 0.9268576900164286,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "001099000007",
+          "confidence": 0.8690158793559442,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "079203001256",
+          "confidence": 0.9233363270759583,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "079203001256",
+          "confidence": 0.9243624905745188,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "31/12/2000",
+          "confidence": 0.8888729593970559,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "31/12/2000",
+          "confidence": 0.9308382332324981,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "15/03/2021",
+          "confidence": 0.9330208957195282,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "15/03/2021",
+          "confidence": 0.931528115272522,
+          "errors": 0,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "model": "vgg_transformer",
+      "max_width": 1024,
+      "exact": 43,
+      "total": 64,
+      "cer": 0.10824175824175825,
+      "elapsed_ms": 5199.7,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "confidence": 0.9367589038961074,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "confidence": 0.9364133722641889,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "confidence": 0.9295015755821677,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "confidence": 0.9327269862679874,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "confidence": 0.9254874741589582,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "confidence": 0.926562644817211,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "Số / No.: 0010990000001",
+          "confidence": 0.8526284488347861,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "Số / No.: 0010990000001",
+          "confidence": 0.891088948301647,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "confidence": 0.893244524259825,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "confidence": 0.8810244548965145,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "confidence": 0.9273379061903272,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "confidence": 0.9296783038548061,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9330660328269005,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9321710765361786,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "ĐẶNG THỊ THUỶ DƯƠNG",
+          "confidence": 0.9014727990878256,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "confidence": 0.9062582866141671,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "confidence": 0.9364079695481521,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "confidence": 0.9358641367692214,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "confidence": 0.9137191842584049,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "confidence": 0.9129212148049298,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "confidence": 0.9369896394865853,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "confidence": 0.9362155624798366,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "Ngày sinh/Date of birth: 01/02/1999",
+          "confidence": 0.9064635344914027,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.9315264015584379,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "Giới tính/Sex: Nam",
+          "confidence": 0.8903697927792867,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "Giới tính/Sex: Nam",
+          "confidence": 0.8787097980578741,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "Giới tính/Sex: Nữ",
+          "confidence": 0.8913722459007712,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "Giới tính/ Sex: Nữ",
+          "confidence": 0.8844737526443269,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "confidence": 0.9310314655303955,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "confidence": 0.9302210861986334,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "Quê quán / Place of origin: hà nội",
+          "confidence": 0.9045816011288587,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Quê quán / Place of origin: hà nội",
+          "confidence": 0.9146722187014187,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh",
+          "confidence": 0.9206934620936712,
+          "errors": 41,
+          "correct": false
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai",
+          "confidence": 0.9113827814471047,
+          "errors": 36,
+          "correct": false
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì,",
+          "confidence": 0.9319789655830549,
+          "errors": 13,
+          "correct": false
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh",
+          "confidence": 0.9323522343355066,
+          "errors": 8,
+          "correct": false
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Số 128/45 Nguyễn Đình Chiều, Phường Đa Kao,",
+          "confidence": 0.9196425468422645,
+          "errors": 31,
+          "correct": false
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận",
+          "confidence": 0.9302620055774847,
+          "errors": 25,
+          "correct": false
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Lon",
+          "confidence": 0.9358590983209156,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "confidence": 0.9342670246310856,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố",
+          "confidence": 0.9307610365477476,
+          "errors": 12,
+          "correct": false
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ",
+          "confidence": 0.9006744909286499,
+          "errors": 9,
+          "correct": false
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "confidence": 0.9250774849206209,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "confidence": 0.9178863223642111,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "25/10/2036",
+          "confidence": 0.93433718085289,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "25/10/2036",
+          "confidence": 0.932410204410553,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "Không thời hạn",
+          "confidence": 0.9327029883861542,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "Không thời hạn",
+          "confidence": 0.9319746792316437,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "Ngày cấp/ Date of issue: 15/03/2021",
+          "confidence": 0.9170259049960545,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "Ngày cấp/ Date of issue: 15/03/2021",
+          "confidence": 0.9114779114723206,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "confidence": 0.9330212188803632,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "confidence": 0.9356085632158362,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "confidence": 0.9343396425247192,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "confidence": 0.933559904495875,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "confidence": 0.9293292886332462,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "confidence": 0.9312210930021185,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "001099000007",
+          "confidence": 0.9268576900164286,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "001099000007",
+          "confidence": 0.8690158793559442,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "079203001256",
+          "confidence": 0.9233363270759583,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "079203001256",
+          "confidence": 0.9243624905745188,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "31/12/2000",
+          "confidence": 0.8888729593970559,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "31/12/2000",
+          "confidence": 0.9308382332324981,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "15/03/2021",
+          "confidence": 0.9330208957195282,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "15/03/2021",
+          "confidence": 0.931528115272522,
+          "errors": 0,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "model": "PP-OCRv6_medium_rec",
+      "exact": 14,
+      "total": 64,
+      "cer": 0.0945054945054945,
+      "elapsed_ms": 823.0,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "CĂN CUC CÔNG DÂN",
+          "confidence": 0.9952210783958435,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "CĂN CUÓC CÔNG DÂN",
+          "confidence": 0.9921514987945557,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "CÔNG HÒA XÃ HI CH NGHÃA VIĘT NAM",
+          "confidence": 0.9364451766014099,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "CNG HÒA XÃ HI CH NGHÃA VIĘT NAM",
+          "confidence": 0.9443193078041077,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "Đc lp - T do - Hnh phúc",
+          "confidence": 0.9941853284835815,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "Đc lp - T do - Hnh phúc",
+          "confidence": 0.9937863349914551,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "S / No.: 001099000001",
+          "confidence": 0.9779715538024902,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "S/ No.: 001099000001",
+          "confidence": 0.941820502281189,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "H và tên / Full name: NGUYN VĂN TH",
+          "confidence": 0.9951550960540771,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "H và tên / Full name: NGUYN VĂN TH",
+          "confidence": 0.9855592250823975,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "NGUYÊN VĂN TH",
+          "confidence": 0.9309543967247009,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "NGUYĚN VĂN TH",
+          "confidence": 0.9169914722442627,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9865759015083313,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9981476068496704,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "DĂNG TH! THUY DUONG",
+          "confidence": 0.9449487924575806,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "ĐNG TH! THUY DUONG",
+          "confidence": 0.9653661251068115,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "TRÂN NGOC ÁNH",
+          "confidence": 0.9672878980636597,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "TRÂN NGOC ÁNH",
+          "confidence": 0.9246820211410522,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "ĐÕ TH! HÔNG NHUNG",
+          "confidence": 0.9276131987571716,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "ĐÕ THI HNG NHUNG",
+          "confidence": 0.9328224658966064,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "PHAM HU PHUÓC",
+          "confidence": 0.9572362303733826,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "PHAM HU PHUÓC",
+          "confidence": 0.9455503821372986,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.999382734298706,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.9982352256774902,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "Gii tính / Sex: Nam",
+          "confidence": 0.990545392036438,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "Giói tính / Sex: Nam",
+          "confidence": 0.9840113520622253,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "Gii tính / Sex: N",
+          "confidence": 0.9882763028144836,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "Giói tính / Sex: N",
+          "confidence": 0.9738081693649292,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "Quc tch / Nationality: Vit Nam",
+          "confidence": 0.9989013075828552,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Quc tch / Nationality: Vit Nam",
+          "confidence": 0.9720103740692139,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "Quê quán / Place of origin: Hà Ni",
+          "confidence": 0.9896881580352783,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Quê quán / Place of origin: Hà Ni",
+          "confidence": 0.9948402047157288,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "Nơi thưng trú / Place of residence: Phưng Minh Khai, Qun Bc Tù Liêm, Thành ph Hà Ni",
+          "confidence": 0.9891781210899353,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Nơi thưng trú / Place of residence: Phưng Minh Khai, Qun Bc Tù Liêm, Thành ph Hà Ni",
+          "confidence": 0.9695494174957275,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "T 12, Phưng Trưng Vương, Thành ph Vit Trì, Tinh Phú Th",
+          "confidence": 0.9772225022315979,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "T 12, Phưng Trung Vương, Thành ph Vit Trì, Tinh Phú Th",
+          "confidence": 0.9664768576622009,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "S 128/45 Nguyn Đình Chiu, Phưng Đa Kao, Qun 1, Thành ph Hồ Chí Minh",
+          "confidence": 0.9890624284744263,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "S 128/45 Nguyn Đình Chiu, Phưng Đa Kao, Qun 1, Thành ph H Chí Minh",
+          "confidence": 0.9900134801864624,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "Xã Đc Hoà Thưng, Huyn Đc Hoà, Tnh Long An",
+          "confidence": 0.9844697117805481,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "Xã Đc Hoà Thưng, Huyn Đc Hoà, Tinh Long An",
+          "confidence": 0.9832721948623657,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Phưng Tân Phú, Thành ph Th Đc, Thành ph Hồ Chí Minh",
+          "confidence": 0.9919230937957764,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Phưng Tn Phú, Thành ph Th Đc, Thành ph H Chí Minh",
+          "confidence": 0.9773056507110596,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "Có giá tr đn / Date of expiry:",
+          "confidence": 0.9736111760139465,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "Có giá trį đn / Date of expiry:",
+          "confidence": 0.9871590733528137,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "25/10/2036",
+          "confidence": 0.9999954104423523,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "25/10/2036",
+          "confidence": 0.9999958872795105,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "Không thi hn",
+          "confidence": 0.9987464547157288,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "Không thài hn",
+          "confidence": 0.9567276239395142,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "Ngày cp / Date of issue: 15/03/2021",
+          "confidence": 0.9906326532363892,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "Ngày cp / Date of issue: 15/03/2021",
+          "confidence": 0.9952799081802368,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "CC TRUNG CC CÁNH SÁT",
+          "confidence": 0.9468434453010559,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "CC TRUNG CC CÁNH SÁT",
+          "confidence": 0.9769633412361145,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QUÃN LÝ HÀNH CHÍNH VÊ TRT T XÃ HI",
+          "confidence": 0.9442553520202637,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "QUÃN LÝ HÀNH CHÍNH V TRT T XÃ HI",
+          "confidence": 0.9736360311508179,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔNG AN TÍNH HÀ NAM",
+          "confidence": 0.9762915372848511,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "CÔNG AN TÍNH HÀ NAM",
+          "confidence": 0.9707849621772766,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "001099000007",
+          "confidence": 0.9997370839118958,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "001099000007",
+          "confidence": 0.9999809861183167,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "079203001256",
+          "confidence": 0.999993622303009,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "079203001256",
+          "confidence": 0.9999977946281433,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "31/12/2000",
+          "confidence": 0.9999968409538269,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "31/12/2000",
+          "confidence": 0.9999972581863403,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "15/03/2021",
+          "confidence": 0.9999982714653015,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "15/03/2021",
+          "confidence": 0.9999969601631165,
+          "errors": 0,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "model": "latin_PP-OCRv5_mobile_rec",
+      "exact": 14,
+      "total": 64,
+      "cer": 0.0989010989010989,
+      "elapsed_ms": 209.1,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "CN CUC CÔNG DN",
+          "confidence": 0.9783270955085754,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "CĂN CƯC CÔNG DN",
+          "confidence": 0.9393848180770874,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "CNG HA X HI CH NGHĪA VIT NAM",
+          "confidence": 0.9335679411888123,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "CNG HÒA X HI CH NGHA VIT NAM",
+          "confidence": 0.9268859028816223,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "Đc lp - T do - Hnh phúc",
+          "confidence": 0.9781585931777954,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "Đc lp - T do - Hnh phúc",
+          "confidence": 0.9603646993637085,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "S / No.: 001099000001",
+          "confidence": 0.9663044810295105,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "S/No.: 001099000001",
+          "confidence": 0.9893327951431274,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "H và tên / Full name: NGUYN VĂN TH",
+          "confidence": 0.9618984460830688,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "H và tên / Full name: NGUYN VĂN TH",
+          "confidence": 0.965743899345398,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "NGUYN VN TH",
+          "confidence": 0.9845640063285828,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "NGUYN VN TH",
+          "confidence": 0.9832594394683838,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9926477670669556,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "HOÀNG THÀNH VINH",
+          "confidence": 0.9800921082496643,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "ĐNG TH THU DƯNG",
+          "confidence": 0.9163897633552551,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "ĐNG TH THU DƯ NG",
+          "confidence": 0.9055178165435791,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "TRN NGC ÁNH",
+          "confidence": 0.9897395968437195,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "TRN NGC ÁNH",
+          "confidence": 0.9871817231178284,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "Đ TH HNG NHUNG",
+          "confidence": 0.9658991098403931,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "Đ TH HNG NHUNG",
+          "confidence": 0.9636017084121704,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "PHM H PHƯC",
+          "confidence": 0.8334232568740845,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "PHM H HC",
+          "confidence": 0.8308323621749878,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.9996850490570068,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "confidence": 0.984691321849823,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "Gii tính / Sex: Nam",
+          "confidence": 0.9934260845184326,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "Giói tính / Sex: Nam",
+          "confidence": 0.9625388383865356,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "Gii tính / Sex: N",
+          "confidence": 0.9856336116790771,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "Giói tính / Sex: N",
+          "confidence": 0.9232781529426575,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "Quc tch / Nationality: Vit Nam",
+          "confidence": 0.9949643015861511,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Quc tch / Nationality: Vit Nam",
+          "confidence": 0.9918175339698792,
+          "errors": 3,
+          "correct": false
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "Quê quán / Place of origin: Hà Ni",
+          "confidence": 0.9939929842948914,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Quê quán / Place of origin: Hà Ni",
+          "confidence": 0.9903329610824585,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "Nơi thưng trú / Place of residence: Phưng Minh Khai, Qun Bc T Liêm, Thành ph Hà Ni",
+          "confidence": 0.9845053553581238,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Nơi thưng trú / Place of residence: Phưng Minh Khai, Qun Bc Tù Liêm, Thành ph Hà Ni",
+          "confidence": 0.979446291923523,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "T 12, Phưng Trưng Vưσng, Thành ph Vit Trì, Tnh Phú Th",
+          "confidence": 0.9816023111343384,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "T 12, Phưng Trưng Vương, Thành ph Vit Trì, Tính Phú Th",
+          "confidence": 0.9677729606628418,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "S 128/45 Nguyn Đình Chiu, Phưng Đa Kao, Qun 1, Thành ph H Chí Minh",
+          "confidence": 0.9871005415916443,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "S 128/45 Nguyn Đình Chiu, Phưng Đa Kao, Qun 1, Thành ph H Chí Minh",
+          "confidence": 0.9718825817108154,
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "Xã Đc Hoà Thưng, Huyn Đc Hoà, Tnh Long An",
+          "confidence": 0.986581027507782,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "Xã Đc Hoà Thưng, Huyn Đc Hoà, Tnh Long An",
+          "confidence": 0.9940787553787231,
+          "errors": 5,
+          "correct": false
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Phưng Tân Phú, Thành ph Th Đc, Thành ph H Chí Minh",
+          "confidence": 0.9601361751556396,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Phưng Tân Phú, Thành ph Th Đc, Thành ph H Chí Minh",
+          "confidence": 0.9909041523933411,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "Có giá tr đn / Date of expiry:",
+          "confidence": 0.983516275882721,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "Có giá tr đn / Date of expiry:",
+          "confidence": 0.9877006411552429,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "25/10/2036",
+          "confidence": 0.9999574422836304,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "25/10/2036",
+          "confidence": 0.9999324083328247,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "Không thi hn",
+          "confidence": 0.9938280582427979,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "Không thi hn",
+          "confidence": 0.9980967044830322,
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "Ngày cp / Date of issue: 15/03/2021",
+          "confidence": 0.9886692762374878,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "Ngày cãp / Date of issue: 15/03/2021",
+          "confidence": 0.9850277304649353,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "CC TRƯ NG CC CNH SÁT",
+          "confidence": 0.9614356756210327,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "CC TRƯ NG CC CNH SÁT",
+          "confidence": 0.9566219449043274,
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QUN LÝ HÀNH CHÍNH V TRT T XĂ HI",
+          "confidence": 0.9023258686065674,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "QUN LÝ HÀNH CHÍNH V TRT T X HI",
+          "confidence": 0.907275378704071,
+          "errors": 6,
+          "correct": false
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔNG AN TNH HÀ NAM",
+          "confidence": 0.9958794713020325,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "CÔNG AN TÍNH HÀ NAM",
+          "confidence": 0.9662016034126282,
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "001099000007",
+          "confidence": 0.9998383522033691,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "001099000007",
+          "confidence": 0.9995296597480774,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "079203001256",
+          "confidence": 0.9998692870140076,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "079203001256",
+          "confidence": 0.9999017119407654,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "31/12/2000",
+          "confidence": 0.9999839663505554,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "31/12/2000",
+          "confidence": 0.9999611973762512,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "15/03/2021",
+          "confidence": 0.9999922513961792,
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "15/03/2021",
+          "confidence": 0.9999868273735046,
+          "errors": 0,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "model": "asternet",
+      "normalization": "zero_one",
+      "exact": 58,
+      "total": 64,
+      "cer": 0.004395604395604396,
+      "elapsed_ms": 1485.2,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "Số / No: 001099000001",
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "Số / No:: 001099000001",
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "Họ và tên / FuII name: NGUYỄN VĂN THỬ",
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "Họ và tên / FuII name: NGUYỄN VĂN THỬ",
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "HOÀNG THÀNH VINH",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "HOÀNG THÀNH VINH",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999/",
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "Giới tính / Sex: Nam",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "Giới tính / Sex: Nam",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "Giới tính / Sex: Nữi",
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "Giới tính / Sex: Nữ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "Quê quán / Place of origin: Hà Nội",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Quê quán / Place of origin: Hà Nội",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "25/10/2036",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "25/10/2036",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "Không thời hạn",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "Không thời hạn",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "Ngày cấp / Date of issue: 15/03/2021",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "Ngày cấp / Date of issue: 15/03/2021",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "001099000007",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "001099000007",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "079203001256",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "079203001256",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "31/12/2000",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "31/12/2000",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "15/03/2021",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "15/03/2021",
+          "errors": 0,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "model": "asternet",
+      "normalization": "minus_one_one",
+      "exact": 59,
+      "total": 64,
+      "cer": 0.0038461538461538464,
+      "elapsed_ms": 1458.3,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "CĂN CƯỚC CÔNG DÂN",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "Độc lập - Tự do - Hạnh phúc",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "Số / No: 001099000001",
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "Số / No:: 001099000001",
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "Họ và tên / FuI name: NGUYỄN VĂN THỬ",
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "Họ và tên / FuII name: NGUYỄN VĂN THỬ",
+          "errors": 2,
+          "correct": false
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "NGUYỄN VĂN THỬ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "HOÀNG THÀNH VINH",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "HOÀNG THÀNH VINH",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "TRẦN NGỌC ÁNH",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "ĐỖ THỊ HỒNG NHUNG",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "PHẠM HỮU PHƯỚC",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "Ngày sinh / Date of birth: 01/02/1999",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "Giới tính / Sex: Nam",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "Giới tính / Sex: Nam",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "Giới tính / Sex: Nữi",
+          "errors": 1,
+          "correct": false
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "Giới tính / Sex: Nữ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Quốc tịch / Nationality: Việt Nam",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "Quê quán / Place of origin: Hà Nội",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Quê quán / Place of origin: Hà Nội",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "Có giá trị đến / Date of expiry:",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "25/10/2036",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "25/10/2036",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "Không thời hạn",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "Không thời hạn",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "Ngày cấp / Date of issue: 15/03/2021",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "Ngày cấp / Date of issue: 15/03/2021",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "CÔNG AN TỈNH HÀ NAM",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "001099000007",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "001099000007",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "079203001256",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "079203001256",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "31/12/2000",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "31/12/2000",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "15/03/2021",
+          "errors": 0,
+          "correct": true
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "15/03/2021",
+          "errors": 0,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "model": "asternet",
+      "normalization": "imagenet",
+      "exact": 0,
+      "total": 64,
+      "cer": 0.8813186813186813,
+      "elapsed_ms": 1465.9,
+      "rows": [
+        {
+          "name": "00-0.png",
+          "image": "00-0.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "clear",
+          "prediction": "ẢM BUỔCCỎMBBBẢN\"",
+          "errors": 14,
+          "correct": false
+        },
+        {
+          "name": "00-1.png",
+          "image": "00-1.png",
+          "text": "CĂN CƯỚC CÔNG DÂN",
+          "variant": "small-faded",
+          "prediction": "2ẦẦ2323PẨM3PẨẨ",
+          "errors": 17,
+          "correct": false
+        },
+        {
+          "name": "01-0.png",
+          "image": "01-0.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "clear",
+          "prediction": "BKG PỔẢ XẢ BỔI HẢ KGHẢ ]Ể]\" KẢM",
+          "errors": 20,
+          "correct": false
+        },
+        {
+          "name": "01-1.png",
+          "image": "01-1.png",
+          "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "variant": "small-faded",
+          "prediction": "P3M3MM3R3B33MN3MA M2MAM",
+          "errors": 29,
+          "correct": false
+        },
+        {
+          "name": "02-0.png",
+          "image": "02-0.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "clear",
+          "prediction": "BỂỂẪBẨẨ3Ỉẩ3]ẨBẨ",
+          "errors": 27,
+          "correct": false
+        },
+        {
+          "name": "02-1.png",
+          "image": "02-1.png",
+          "text": "Độc lập - Tự do - Hạnh phúc",
+          "variant": "small-faded",
+          "prediction": "B33M33/3233 B3BB BBB3$",
+          "errors": 25,
+          "correct": false
+        },
+        {
+          "name": "03-0.png",
+          "image": "03-0.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "clear",
+          "prediction": "BỔ2]P33PBPPPPOPQA",
+          "errors": 22,
+          "correct": false
+        },
+        {
+          "name": "03-1.png",
+          "image": "03-1.png",
+          "text": "Số / No.: 001099000001",
+          "variant": "small-faded",
+          "prediction": "SỔ NQ:99299999903",
+          "errors": 15,
+          "correct": false
+        },
+        {
+          "name": "04-0.png",
+          "image": "04-0.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "BBBả bểmBMM momg:MBUỂMBẨM \"BỬ",
+          "errors": 30,
+          "correct": false
+        },
+        {
+          "name": "04-1.png",
+          "image": "04-1.png",
+          "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "PMMD3MM393R2MMMM33",
+          "errors": 37,
+          "correct": false
+        },
+        {
+          "name": "05-0.png",
+          "image": "05-0.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "clear",
+          "prediction": "MGUYỂM VĂM THỬ",
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "05-1.png",
+          "image": "05-1.png",
+          "text": "NGUYỄN VĂN THỬ",
+          "variant": "small-faded",
+          "prediction": "mẦMỄẦẨẦẦẨẦ",
+          "errors": 13,
+          "correct": false
+        },
+        {
+          "name": "06-0.png",
+          "image": "06-0.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "clear",
+          "prediction": "}ỔẨ]ẨBỉBBỈẨ]}}ỂẨ]]]]HỈ",
+          "errors": 21,
+          "correct": false
+        },
+        {
+          "name": "06-1.png",
+          "image": "06-1.png",
+          "text": "HOÀNG THÀNH VINH",
+          "variant": "small-faded",
+          "prediction": "PQẰM2 BÀMP M",
+          "errors": 13,
+          "correct": false
+        },
+        {
+          "name": "07-0.png",
+          "image": "07-0.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "clear",
+          "prediction": "BẬ]B]]ỷỷ]]]]]ỶB]3B]B/",
+          "errors": 21,
+          "correct": false
+        },
+        {
+          "name": "07-1.png",
+          "image": "07-1.png",
+          "text": "ĐẶNG THỊ THUỲ DƯƠNG",
+          "variant": "small-faded",
+          "prediction": "2ẬN@3ẦỒM3°",
+          "errors": 18,
+          "correct": false
+        },
+        {
+          "name": "08-0.png",
+          "image": "08-0.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "clear",
+          "prediction": "BBẢM MOEẢMH",
+          "errors": 11,
+          "correct": false
+        },
+        {
+          "name": "08-1.png",
+          "image": "08-1.png",
+          "text": "TRẦN NGỌC ÁNH",
+          "variant": "small-faded",
+          "prediction": "MR3RM33238B",
+          "errors": 12,
+          "correct": false
+        },
+        {
+          "name": "09-0.png",
+          "image": "09-0.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "clear",
+          "prediction": "BỔ THỊ HỒNG MHUMG",
+          "errors": 4,
+          "correct": false
+        },
+        {
+          "name": "09-1.png",
+          "image": "09-1.png",
+          "text": "ĐỖ THỊ HỒNG NHUNG",
+          "variant": "small-faded",
+          "prediction": "P3P33333M3",
+          "errors": 17,
+          "correct": false
+        },
+        {
+          "name": "10-0.png",
+          "image": "10-0.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "clear",
+          "prediction": "BBBAMH PPK6",
+          "errors": 11,
+          "correct": false
+        },
+        {
+          "name": "10-1.png",
+          "image": "10-1.png",
+          "text": "PHẠM HỮU PHƯỚC",
+          "variant": "small-faded",
+          "prediction": "P3MMM2P33B)",
+          "errors": 11,
+          "correct": false
+        },
+        {
+          "name": "11-0.png",
+          "image": "11-0.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "clear",
+          "prediction": "]$]B33ỈI])B3Bm BBI3K3BB3]BBB",
+          "errors": 36,
+          "correct": false
+        },
+        {
+          "name": "11-1.png",
+          "image": "11-1.png",
+          "text": "Ngày sinh / Date of birth: 01/02/1999",
+          "variant": "small-faded",
+          "prediction": "MmSm smb2B33Bmb3m22233",
+          "errors": 33,
+          "correct": false
+        },
+        {
+          "name": "12-0.png",
+          "image": "12-0.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "clear",
+          "prediction": "BỂỂẨỂỈ\"]B633ẩ]\"",
+          "errors": 20,
+          "correct": false
+        },
+        {
+          "name": "12-1.png",
+          "image": "12-1.png",
+          "text": "Giới tính / Sex: Nam",
+          "variant": "small-faded",
+          "prediction": "BẪMMm_23333M3M",
+          "errors": 20,
+          "correct": false
+        },
+        {
+          "name": "13-0.png",
+          "image": "13-0.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "clear",
+          "prediction": "BỂẨỂỈ\"]Bẩ3\"Ẩ",
+          "errors": 19,
+          "correct": false
+        },
+        {
+          "name": "13-1.png",
+          "image": "13-1.png",
+          "text": "Giới tính / Sex: Nữ",
+          "variant": "small-faded",
+          "prediction": "BI MMm:23333MẨẨ",
+          "errors": 18,
+          "correct": false
+        },
+        {
+          "name": "14-0.png",
+          "image": "14-0.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "clear",
+          "prediction": "QUỔpỷỈ)2MảẩỈBBa]Ỉỷ2ẢỈỂỂMam",
+          "errors": 29,
+          "correct": false
+        },
+        {
+          "name": "14-1.png",
+          "image": "14-1.png",
+          "text": "Quốc tịch / Nationality: Việt Nam",
+          "variant": "small-faded",
+          "prediction": "Qẩ3ẩẦ3MầẦmẩM3Ẫ$PẪẩẦ",
+          "errors": 32,
+          "correct": false
+        },
+        {
+          "name": "15-0.png",
+          "image": "15-0.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "clear",
+          "prediction": "KỂ3Ẩ]ẨẨ\"]B333M BỂBỈỈẨẩ]]3}Ể_ẨỈ",
+          "errors": 33,
+          "correct": false
+        },
+        {
+          "name": "15-1.png",
+          "image": "15-1.png",
+          "text": "Quê quán / Place of origin: Hà Nội",
+          "variant": "small-faded",
+          "prediction": "QS 332B133 33MB3B3 MẨẦ",
+          "errors": 30,
+          "correct": false
+        },
+        {
+          "name": "16-0.png",
+          "image": "16-0.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "clear",
+          "prediction": "]MBP\"\"ẢBB6B\" 3631B6163BBB]3MỈ]B33]3Qp3BBBẳg\"\"]Ẩ$M\"\"pẳ]BẨỔ33Ỉ",
+          "errors": 84,
+          "correct": false
+        },
+        {
+          "name": "16-1.png",
+          "image": "16-1.png",
+          "text": "Nơi thường trú / Place of residence: Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội",
+          "variant": "small-faded",
+          "prediction": "MẦẪ$_$ẨM$$Ẫ3$s$33ẨMẨ3MMm3Ầ333ẩm$ẳ3WMẦ3ẦẦM3ẪPẨẨẨ",
+          "errors": 86,
+          "correct": false
+        },
+        {
+          "name": "17-0.png",
+          "image": "17-0.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "clear",
+          "prediction": "BổỏB;B}]]B]3]BẬ3Ể]3g\"ẩ]pỂỔ/'Ểj ]ỈpP]jẢ\"",
+          "errors": 54,
+          "correct": false
+        },
+        {
+          "name": "17-1.png",
+          "image": "17-1.png",
+          "text": "Tổ 12, Phường Trưng Vương, Thành phố Việt Trì, Tỉnh Phú Thọ",
+          "variant": "small-faded",
+          "prediction": "Tố 2:ỄẦ33332Ầ3 PBẦẦ33MẦSẦB BẦẨ MĐ, MB DẦẦB BẦ, ỒẦ",
+          "errors": 49,
+          "correct": false
+        },
+        {
+          "name": "18-0.png",
+          "image": "18-0.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "B3BEBB3HBỔPB]]]]BB]ỂB,HPBB BBp,Quẩ\"33BSBPBBB B]]M]y)",
+          "errors": 65,
+          "correct": false
+        },
+        {
+          "name": "18-1.png",
+          "image": "18-1.png",
+          "text": "Số 128/45 Nguyễn Đình Chiểu, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "$222835M3M5D SD2MM33 MMRM3R3 R333QRSEBSB BRS RRSRMMẦD",
+          "errors": 63,
+          "correct": false
+        },
+        {
+          "name": "19-0.png",
+          "image": "19-0.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "clear",
+          "prediction": "BBẢKBBỂ\"\"]]]j3UỷỂ]BỂ3BẺ,\"BỈ]]]Bp]3yẢn",
+          "errors": 44,
+          "correct": false
+        },
+        {
+          "name": "19-1.png",
+          "image": "19-1.png",
+          "text": "Xã Đức Hoà Thượng, Huyện Đức Hoà, Tỉnh Long An",
+          "variant": "small-faded",
+          "prediction": "R3: R3A33DBBP33BMSB B3BB3 BMB BBBB BB\"",
+          "errors": 42,
+          "correct": false
+        },
+        {
+          "name": "20-0.png",
+          "image": "20-0.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "clear",
+          "prediction": "B]B]3\"BẩảpB\"Ảg\"]ẩ]BỂỔ\"PỷBẢg,\"pảpỈB]BBỂB]MỈ]Ỉ)",
+          "errors": 54,
+          "correct": false
+        },
+        {
+          "name": "20-1.png",
+          "image": "20-1.png",
+          "text": "Phường Tân Phú, Thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "variant": "small-faded",
+          "prediction": "MmR23 Mm MmẨ:2BSm BM_m2333MBSmm$m3mRẦẨD",
+          "errors": 53,
+          "correct": false
+        },
+        {
+          "name": "21-0.png",
+          "image": "21-0.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "clear",
+          "prediction": "BBẨ ỂỂẨBỂJ]BBBB BB3PỈ]\"3\"",
+          "errors": 30,
+          "correct": false
+        },
+        {
+          "name": "21-1.png",
+          "image": "21-1.png",
+          "text": "Có giá trị đến / Date of expiry:",
+          "variant": "small-faded",
+          "prediction": "P3 QM 33đầ33Qầ3 Ầ2B3BM33",
+          "errors": 28,
+          "correct": false
+        },
+        {
+          "name": "22-0.png",
+          "image": "22-0.png",
+          "text": "25/10/2036",
+          "variant": "clear",
+          "prediction": "2]](]22(3B",
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "22-1.png",
+          "image": "22-1.png",
+          "text": "25/10/2036",
+          "variant": "small-faded",
+          "prediction": "2SD2223B",
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "23-0.png",
+          "image": "23-0.png",
+          "text": "Không thời hạn",
+          "variant": "clear",
+          "prediction": "BBổng Ểỉ Bgn",
+          "errors": 9,
+          "correct": false
+        },
+        {
+          "name": "23-1.png",
+          "image": "23-1.png",
+          "text": "Không thời hạn",
+          "variant": "small-faded",
+          "prediction": "KR3M3DB3B",
+          "errors": 13,
+          "correct": false
+        },
+        {
+          "name": "24-0.png",
+          "image": "24-0.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "clear",
+          "prediction": "]BỂBBẨẩP\"BB63B3333BBBBBBB]",
+          "errors": 36,
+          "correct": false
+        },
+        {
+          "name": "24-1.png",
+          "image": "24-1.png",
+          "text": "Ngày cấp / Date of issue: 15/03/2021",
+          "variant": "small-faded",
+          "prediction": "MS3332233323335232223",
+          "errors": 32,
+          "correct": false
+        },
+        {
+          "name": "25-0.png",
+          "image": "25-0.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "clear",
+          "prediction": "]K\"BỞ]BB]ỂỂẨ]33Ẩ\"",
+          "errors": 22,
+          "correct": false
+        },
+        {
+          "name": "25-1.png",
+          "image": "25-1.png",
+          "text": "CỤC TRƯỞNG CỤC CẢNH SÁT",
+          "variant": "small-faded",
+          "prediction": "29:38M33M33NBBẨ",
+          "errors": 22,
+          "correct": false
+        },
+        {
+          "name": "26-0.png",
+          "image": "26-0.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "clear",
+          "prediction": "QẢM Ỷ BẢNH HỈMH VỂ TBRẨP \"Ử XÃ BỎI",
+          "errors": 17,
+          "correct": false
+        },
+        {
+          "name": "26-1.png",
+          "image": "26-1.png",
+          "text": "QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+          "variant": "small-faded",
+          "prediction": "MMMM3MB3MM3 M2MR3233B3 BẦ$",
+          "errors": 33,
+          "correct": false
+        },
+        {
+          "name": "27-0.png",
+          "image": "27-0.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "clear",
+          "prediction": "CÔMG ẢM TỈMH HẢ MÂM",
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "27-1.png",
+          "image": "27-1.png",
+          "text": "CÔNG AN TỈNH HÀ NAM",
+          "variant": "small-faded",
+          "prediction": "PPM3:ẦM PẦB BẦ MẦMỔ",
+          "errors": 16,
+          "correct": false
+        },
+        {
+          "name": "28-0.png",
+          "image": "28-0.png",
+          "text": "001099000007",
+          "variant": "clear",
+          "prediction": "(Q] (380000()7",
+          "errors": 9,
+          "correct": false
+        },
+        {
+          "name": "28-1.png",
+          "image": "28-1.png",
+          "text": "001099000007",
+          "variant": "small-faded",
+          "prediction": "02202200022",
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "29-0.png",
+          "image": "29-0.png",
+          "text": "079203001256",
+          "variant": "clear",
+          "prediction": "()\"p2(3(()]2BB",
+          "errors": 11,
+          "correct": false
+        },
+        {
+          "name": "29-1.png",
+          "image": "29-1.png",
+          "text": "079203001256",
+          "variant": "small-faded",
+          "prediction": "222P2222BB",
+          "errors": 10,
+          "correct": false
+        },
+        {
+          "name": "30-0.png",
+          "image": "30-0.png",
+          "text": "31/12/2000",
+          "variant": "clear",
+          "prediction": "33]]]]222]](",
+          "errors": 9,
+          "correct": false
+        },
+        {
+          "name": "30-1.png",
+          "image": "30-1.png",
+          "text": "31/12/2000",
+          "variant": "small-faded",
+          "prediction": "B212222DD",
+          "errors": 7,
+          "correct": false
+        },
+        {
+          "name": "31-0.png",
+          "image": "31-0.png",
+          "text": "15/03/2021",
+          "variant": "clear",
+          "prediction": "]ỂBj3Ể2Ẫ3]",
+          "errors": 8,
+          "correct": false
+        },
+        {
+          "name": "31-1.png",
+          "image": "31-1.png",
+          "text": "15/03/2021",
+          "variant": "small-faded",
+          "prediction": "2DDB222222",
+          "errors": 8,
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "asternet_revision": "aec29ab0aaf26061e861cb4b3a301988744c5fa3"
+}

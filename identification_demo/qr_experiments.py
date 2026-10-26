@@ -1,13 +1,15 @@
 """Independent QR experiments; never fall back to another detector or OCR."""
 import importlib
 import importlib.util
-from contextlib import closing
+import logging
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import ExitStack, closing
 from threading import Lock
 from time import perf_counter
 
 from PIL import Image
 
-from .processing import load_image, qr_result
+from .processing import InvalidImage, load_image, qr_result
 from .qr import QRBusy, QRUnavailable
 from .qr_parallel import WeChatParallel
 from .qr_restoration import QRRestorationClient, RESTORATION_METHODS, WeChatRestoration
@@ -19,6 +21,7 @@ METHODS = {"zxing": "ZXing", "wechat": "WeChatQRCode", "qrdet": "QRDet + ZXing",
            "wechat_both": "WeChat + Restormer + SwinIR"}
 LEGACY_METHODS = {"wechat_parallel": "WeChat song song"}
 QRDET_RELEASE = "https://github.com/Eric-Canas/qrdet/releases/download/v2.0_release"
+logger = logging.getLogger(__name__)
 
 
 def _barcode_text(barcode):
@@ -169,12 +172,8 @@ class QRExperiments:
         return texts, regions
 
 
-def process_qr_experiment(data, experiments, method):
-    started = perf_counter()
-    with closing(load_image(data)) as image:
-        image_decoded = perf_counter()
-        output = experiments.read(image, method)
-        dimensions = {"width": image.width, "height": image.height}
+def _experiment_result(output, method, dimensions, image_decode_ms, processing_time_ms):
+    output = dict(output)
     texts = output.pop("texts")
     result = qr_result(texts)
     result.update(output)
@@ -183,6 +182,109 @@ def process_qr_experiment(data, experiments, method):
     if not texts and result["regions"]:
         result["status"] = "detected_not_decoded"
         result["message"] = "Đã tìm thấy vùng QR nhưng chưa giải mã được nội dung."
-    result["timings_ms"]["image_decode"] = round((image_decoded - started) * 1000, 2)
-    result["processing_time_ms"] = round((perf_counter() - started) * 1000, 2)
+    result["timings_ms"] = {**result["timings_ms"], "image_decode": round(image_decode_ms, 2)}
+    result["processing_time_ms"] = round(processing_time_ms, 2)
     return result
+
+
+def process_qr_experiment(data, experiments, method):
+    started = perf_counter()
+    with closing(load_image(data)) as image:
+        image_decoded = perf_counter()
+        output = experiments.read(image, method)
+        dimensions = {"width": image.width, "height": image.height}
+    return _experiment_result(output, method, dimensions, (image_decoded - started) * 1000,
+                              (perf_counter() - started) * 1000)
+
+
+class QRPairExperiments:
+    """Keep one independent, reusable detector per side, exclusively for the lab."""
+
+    def __init__(self, readers=None):
+        self._readers = readers if readers is not None else {side: QRExperiments() for side in ("front", "back")}
+        self._lock = Lock()
+
+    def read(self, images, method, execution):
+        queued = perf_counter()
+        if not self._lock.acquire(timeout=2):
+            raise QRBusy("Đang chạy một thử nghiệm QR hai mặt khác. Hãy thử lại sau ít giây.")
+        try:
+            started = perf_counter()
+
+            def read_side(side):
+                side_started = perf_counter()
+                try:
+                    output = self._readers[side].read(images[side], method)
+                    error = None
+                except Exception as exc:
+                    logger.warning("QR pair experiment failed on %s (%s)", side, type(exc).__name__)
+                    output, error = None, exc
+                finished = perf_counter()
+                return {"output": output, "error": error,
+                        "started_at_ms": round((side_started - started) * 1000, 2),
+                        "finished_at_ms": round((finished - started) * 1000, 2),
+                        "processing_time_ms": (finished - side_started) * 1000}
+
+            if execution == "parallel":
+                with ThreadPoolExecutor(max_workers=2, thread_name_prefix="qr-pair") as pool:
+                    futures = {side: pool.submit(read_side, side) for side in ("front", "back")}
+                    results = {side: future.result() for side, future in futures.items()}
+            else:
+                results = {side: read_side(side) for side in ("front", "back")}
+            return results, round((started - queued) * 1000, 2), round((perf_counter() - started) * 1000, 2)
+        finally:
+            self._lock.release()
+
+
+def process_qr_pair_experiment(data, experiments, method, execution="parallel"):
+    if method not in METHODS and method not in LEGACY_METHODS:
+        raise ValueError("Unknown QR experiment")
+    if execution not in {"parallel", "sequential"}:
+        raise ValueError("Unknown QR execution mode")
+    started = perf_counter()
+    with ExitStack() as stack:
+        images, decode_times = {}, {}
+        # Validate both images before starting either detector.
+        for side in ("front", "back"):
+            decoding = perf_counter()
+            try:
+                images[side] = stack.enter_context(closing(load_image(data[side])))
+            except InvalidImage as exc:
+                label = "Mặt trước" if side == "front" else "Mặt sau"
+                raise InvalidImage(f"{label}: {exc}") from exc
+            decode_times[side] = (perf_counter() - decoding) * 1000
+        outputs, queue_ms, execution_ms = experiments.read(images, method, execution)
+        sides, texts, failures = {}, [], []
+        for side, value in outputs.items():
+            if value["error"] is not None:
+                error = value["error"]
+                failures.append(error)
+                message = str(error) if isinstance(error, (QRBusy, QRUnavailable)) else "Chưa xử lý được QR ở ảnh này."
+                sides[side] = {"success": False, "status": "error", "error": message,
+                               "processing_time_ms": round(value["processing_time_ms"] + decode_times[side], 2)}
+            else:
+                output = value["output"]
+                texts.extend(output["texts"])
+                image = images[side]
+                sides[side] = _experiment_result(output, method, {"width": image.width, "height": image.height},
+                                                 decode_times[side], value["processing_time_ms"] + decode_times[side])
+            sides[side]["schedule_ms"] = {key: value[key] for key in ("started_at_ms", "finished_at_ms")}
+        if len(failures) == 2:
+            if any(isinstance(error, QRBusy) for error in failures):
+                raise QRBusy("Hai mặt chưa xử lý được do bộ đọc QR đang bận. Hãy thử lại.")
+            raise QRUnavailable("Chưa xử lý được QR ở cả hai mặt. Hãy kiểm tra bộ đọc, model hoặc thử lại.")
+
+        texts = list(dict.fromkeys(texts))
+        result = qr_result(texts)
+        if failures:
+            result.update(status="partial_error", message="Một mặt xử lý lỗi; kết quả mặt còn lại vẫn được giữ để đối chiếu.")
+        elif not texts and any(side.get("regions") for side in sides.values()):
+            result.update(status="detected_not_decoded", message="Đã tìm thấy vùng QR nhưng chưa giải mã được nội dung.")
+        total_ms = round((perf_counter() - started) * 1000, 2)
+        result.update(source="qr_pair_experiment", method=method, method_label={**METHODS, **LEGACY_METHODS}[method],
+                      execution=execution, sides=sides, decoded_count=len(texts), processing_time_ms=total_ms,
+                      timings_ms={"image_decode": round(sum(decode_times.values()), 2), "queue_wait": queue_ms,
+                                  "execution": execution_ms,
+                                  "sum_side_processing": round(sum(side["processing_time_ms"] for side in sides.values()), 2),
+                                  "total": total_ms})
+        return result

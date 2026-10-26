@@ -1,0 +1,787 @@
+{
+  "label": "adaptive-text-enhancement",
+  "date": "2026-10-25T12:35:56.534311+00:00",
+  "scope": "Synthetic fixtures only; QR disabled; one warmup and repeated HTTP calls per case/engine. Not a real-card accuracy benchmark.",
+  "summary": [
+    {
+      "case": "clean",
+      "engine": "namlhn_gpu",
+      "median_ms": 643
+    },
+    {
+      "case": "low-contrast",
+      "engine": "namlhn_gpu",
+      "median_ms": 1267
+    }
+  ],
+  "runs": [
+    {
+      "case": "clean",
+      "engine": "namlhn_gpu",
+      "repeat": 0,
+      "exact_matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "normalized_matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái",
+        "expiry_date": "25/10/2036"
+      },
+      "processing_time_ms": 643,
+      "ocr_engine": {
+        "label": "namlhn GPU",
+        "provider": "namlhn/vietnam-cccd-ocr",
+        "device": "cuda",
+        "model": "vgg_seq2seq",
+        "strategy": "namlhn_docu_v1",
+        "text_enhancement": "adaptive",
+        "decoder": "vietocr_default",
+        "used": true
+      },
+      "expiry": {
+        "status": "found",
+        "expiry_type": "date",
+        "label_found": true,
+        "side": "front",
+        "candidates": [
+          {
+            "expiry_date": "25/10/2036",
+            "expiry_type": "date",
+            "evidence": [
+              {
+                "number": 9,
+                "text": "Có giá trị đến / Date of expiry"
+              },
+              {
+                "number": 10,
+                "text": "25/10/2036"
+              }
+            ],
+            "method": "layout",
+            "reading": "primary"
+          }
+        ]
+      },
+      "ocr": {
+        "front": {
+          "status": "complete",
+          "filled_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence",
+            "expiry_date"
+          ],
+          "timings_ms": {
+            "preprocess": 37.26,
+            "paddle_detection": 30.19,
+            "line_crops": 3.14,
+            "docu_recognition": 301.75,
+            "text_enhancement": 4.69,
+            "enhanced_recognition": 0.0,
+            "metadata": 0.69,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 377.82,
+            "worker_image_decode": 8.53,
+            "worker_round_trip": 389.59
+          },
+          "work": {
+            "primary_regions": 10,
+            "recognized_regions": 10,
+            "recognition_batches": 1,
+            "enhanced_regions": 0,
+            "enhancement_changed_regions": 0,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "text_enhancement": {
+            "mode": "adaptive",
+            "method": "nlmeans_unsharp_v1",
+            "status": "skipped",
+            "attempted_regions": 0,
+            "changed_regions": 0
+          },
+          "debug": {
+            "text_lines": [
+              {
+                "number": 1,
+                "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                "is_expiry": false,
+                "bbox": [
+                  39.577836411609496,
+                  22.166666666666664,
+                  626.1213720316622,
+                  84.70833333333333
+                ]
+              },
+              {
+                "number": 2,
+                "text": "Số / No.001099000001",
+                "is_expiry": false,
+                "bbox": [
+                  43.53562005277045,
+                  114.0,
+                  442.48021108179415,
+                  155.16666666666666
+                ]
+              },
+              {
+                "number": 3,
+                "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+                "is_expiry": false,
+                "bbox": [
+                  39.577836411609496,
+                  173.375,
+                  711.6094986807387,
+                  230.375
+                ]
+              },
+              {
+                "number": 4,
+                "text": "Ngày sinh / Date of birth: 01/02/1999",
+                "is_expiry": false,
+                "bbox": [
+                  43.53562005277045,
+                  254.125,
+                  652.2427440633245,
+                  298.4583333333333
+                ]
+              },
+              {
+                "number": 5,
+                "text": "Giới tính / Sex: Nam",
+                "is_expiry": false,
+                "bbox": [
+                  43.53562005277045,
+                  322.2083333333333,
+                  373.61477572559363,
+                  367.3333333333333
+                ]
+              },
+              {
+                "number": 6,
+                "text": "Quốc tịch / Nationality: Việt Nam",
+                "is_expiry": false,
+                "bbox": [
+                  43.53562005277045,
+                  393.4583333333333,
+                  577.8364116094987,
+                  438.5833333333333
+                ]
+              },
+              {
+                "number": 7,
+                "text": "Quê quán / Place of origin: Hà Nội",
+                "is_expiry": false,
+                "bbox": [
+                  43.53562005277045,
+                  461.54166666666663,
+                  597.6253298153034,
+                  509.8333333333333
+                ]
+              },
+              {
+                "number": 8,
+                "text": "Nơi thường trú / Place of residence: Hà Nội",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  533.5833333333333,
+                  736.1477572559367,
+                  578.7083333333333
+                ]
+              },
+              {
+                "number": 9,
+                "text": "Có giá trị đến / Date of expiry",
+                "is_expiry": true,
+                "bbox": [
+                  41.16094986807388,
+                  600.0833333333333,
+                  537.467018469657,
+                  652.3333333333333
+                ]
+              },
+              {
+                "number": 10,
+                "text": "25/10/2036",
+                "is_expiry": true,
+                "bbox": [
+                  42.74406332453825,
+                  656.2916666666666,
+                  239.05013192612137,
+                  699.0416666666666
+                ]
+              }
+            ]
+          }
+        },
+        "back": {
+          "status": "complete",
+          "filled_fields": [
+            "issue_date",
+            "issuing_authority",
+            "identifying_features"
+          ],
+          "timings_ms": {
+            "preprocess": 38.63,
+            "paddle_detection": 25.07,
+            "line_crops": 1.55,
+            "docu_recognition": 147.8,
+            "text_enhancement": 2.31,
+            "enhanced_recognition": 0.0,
+            "metadata": 1.06,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 216.73,
+            "worker_image_decode": 8.04,
+            "worker_round_trip": 227.07
+          },
+          "work": {
+            "primary_regions": 4,
+            "recognized_regions": 4,
+            "recognition_batches": 1,
+            "enhanced_regions": 0,
+            "enhancement_changed_regions": 0,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              41.16,
+              246.21,
+              656.2,
+              300.04
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          },
+          "text_enhancement": {
+            "mode": "adaptive",
+            "method": "nlmeans_unsharp_v1",
+            "status": "skipped",
+            "attempted_regions": 0,
+            "changed_regions": 0
+          },
+          "debug": {
+            "text_lines": [
+              {
+                "number": 1,
+                "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                "is_expiry": false,
+                "bbox": [
+                  39.577836411609496,
+                  22.166666666666664,
+                  626.1213720316622,
+                  84.70833333333333
+                ]
+              },
+              {
+                "number": 2,
+                "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  112.41666666666666,
+                  662.5329815303429,
+                  157.54166666666666
+                ]
+              },
+              {
+                "number": 3,
+                "text": "Ngày cấp / Date of issue: 15/03/2021",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  179.70833333333331,
+                  653.8258575197889,
+                  231.16666666666666
+                ]
+              },
+              {
+                "number": 4,
+                "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                "is_expiry": false,
+                "bbox": [
+                  41.16094986807388,
+                  246.20833333333331,
+                  656.2005277044855,
+                  300.04166666666663
+                ]
+              }
+            ],
+            "authority": {
+              "initial_lines": [
+                {
+                  "number": 1,
+                  "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                  "in_authority": false
+                },
+                {
+                  "number": 2,
+                  "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                  "in_authority": false
+                },
+                {
+                  "number": 3,
+                  "text": "Ngày cấp / Date of issue: 15/03/2021",
+                  "in_authority": false
+                },
+                {
+                  "number": 4,
+                  "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                  "in_authority": true
+                }
+              ],
+              "final_lines": [
+                {
+                  "number": 1,
+                  "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                  "in_authority": false
+                },
+                {
+                  "number": 2,
+                  "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                  "in_authority": false
+                },
+                {
+                  "number": 3,
+                  "text": "Ngày cấp / Date of issue: 15/03/2021",
+                  "in_authority": false
+                },
+                {
+                  "number": 4,
+                  "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                  "in_authority": true
+                }
+              ],
+              "authority_candidate": "CÔNG AN TỈNH HÀ NAM",
+              "ambiguous": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "low-contrast",
+      "engine": "namlhn_gpu",
+      "repeat": 0,
+      "exact_matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "normalized_matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái",
+        "expiry_date": "25/10/2036"
+      },
+      "processing_time_ms": 1267,
+      "ocr_engine": {
+        "label": "namlhn GPU",
+        "provider": "namlhn/vietnam-cccd-ocr",
+        "device": "cuda",
+        "model": "vgg_seq2seq",
+        "strategy": "namlhn_docu_v1",
+        "text_enhancement": "adaptive",
+        "decoder": "vietocr_default",
+        "used": true
+      },
+      "expiry": {
+        "status": "found",
+        "expiry_type": "date",
+        "label_found": true,
+        "side": "front",
+        "candidates": [
+          {
+            "expiry_date": "25/10/2036",
+            "expiry_type": "date",
+            "evidence": [
+              {
+                "number": 9,
+                "text": "Có giá trị đến / Date of expiry:"
+              },
+              {
+                "number": 10,
+                "text": "25/10/2036"
+              }
+            ],
+            "method": "layout",
+            "reading": "primary"
+          }
+        ]
+      },
+      "ocr": {
+        "front": {
+          "status": "complete",
+          "filled_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence",
+            "expiry_date"
+          ],
+          "timings_ms": {
+            "preprocess": 40.1,
+            "paddle_detection": 28.25,
+            "line_crops": 3.04,
+            "docu_recognition": 274.45,
+            "text_enhancement": 137.92,
+            "enhanced_recognition": 259.1,
+            "metadata": 0.71,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 744.33,
+            "worker_image_decode": 19.26,
+            "worker_round_trip": 772.17
+          },
+          "work": {
+            "primary_regions": 10,
+            "recognized_regions": 10,
+            "recognition_batches": 2,
+            "enhanced_regions": 9,
+            "enhancement_changed_regions": 0,
+            "reread_regions": 9,
+            "full_image_attempts": 1
+          },
+          "text_enhancement": {
+            "mode": "adaptive",
+            "method": "nlmeans_unsharp_v1",
+            "status": "applied",
+            "attempted_regions": 9,
+            "changed_regions": 0
+          },
+          "debug": {
+            "text_lines": [
+              {
+                "number": 1,
+                "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  23.75,
+                  625.32981530343,
+                  81.54166666666666
+                ]
+              },
+              {
+                "number": 2,
+                "text": "Số / No: 001099000001",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  111.625,
+                  442.48021108179415,
+                  155.95833333333331
+                ]
+              },
+              {
+                "number": 3,
+                "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+                "is_expiry": false,
+                "bbox": [
+                  39.577836411609496,
+                  174.95833333333331,
+                  711.6094986807387,
+                  228.79166666666666
+                ]
+              },
+              {
+                "number": 4,
+                "text": "Ngày sinh / Date of birth: 01/02/1999",
+                "is_expiry": false,
+                "bbox": [
+                  41.16094986807388,
+                  250.95833333333331,
+                  652.2427440633245,
+                  298.4583333333333
+                ]
+              },
+              {
+                "number": 5,
+                "text": "Giới tính / Sex: Nam",
+                "is_expiry": false,
+                "bbox": [
+                  45.11873350923482,
+                  323.79166666666663,
+                  373.61477572559363,
+                  366.54166666666663
+                ]
+              },
+              {
+                "number": 6,
+                "text": "Quốc tịch / Nationality: Việt Nam",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  391.0833333333333,
+                  578.6279683377309,
+                  440.16666666666663
+                ]
+              },
+              {
+                "number": 7,
+                "text": "Quê quán / Place of origin: Hà Nội",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  461.54166666666663,
+                  597.6253298153034,
+                  509.8333333333333
+                ]
+              },
+              {
+                "number": 8,
+                "text": "Nơi thường trú / Place of residence: Hà Nội",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  532.7916666666666,
+                  736.1477572559367,
+                  577.125
+                ]
+              },
+              {
+                "number": 9,
+                "text": "Có giá trị đến / Date of expiry:",
+                "is_expiry": true,
+                "bbox": [
+                  41.16094986807388,
+                  600.0833333333333,
+                  536.6754617414248,
+                  652.3333333333333
+                ]
+              },
+              {
+                "number": 10,
+                "text": "25/10/2036",
+                "is_expiry": true,
+                "bbox": [
+                  42.74406332453825,
+                  656.2916666666666,
+                  239.05013192612137,
+                  699.0416666666666
+                ]
+              }
+            ]
+          }
+        },
+        "back": {
+          "status": "complete",
+          "filled_fields": [
+            "issue_date",
+            "issuing_authority",
+            "identifying_features"
+          ],
+          "timings_ms": {
+            "preprocess": 40.05,
+            "paddle_detection": 27.42,
+            "line_crops": 1.49,
+            "docu_recognition": 147.71,
+            "text_enhancement": 71.35,
+            "enhanced_recognition": 147.4,
+            "metadata": 1.05,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 437.18,
+            "worker_image_decode": 12.94,
+            "worker_round_trip": 457.35
+          },
+          "work": {
+            "primary_regions": 4,
+            "recognized_regions": 4,
+            "recognition_batches": 2,
+            "enhanced_regions": 4,
+            "enhancement_changed_regions": 0,
+            "reread_regions": 4,
+            "full_image_attempts": 1
+          },
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              41.16,
+              247.79,
+              656.2,
+              298.46
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          },
+          "text_enhancement": {
+            "mode": "adaptive",
+            "method": "nlmeans_unsharp_v1",
+            "status": "applied",
+            "attempted_regions": 4,
+            "changed_regions": 0
+          },
+          "debug": {
+            "text_lines": [
+              {
+                "number": 1,
+                "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                "is_expiry": false,
+                "bbox": [
+                  43.53562005277045,
+                  23.75,
+                  625.32981530343,
+                  81.54166666666666
+                ]
+              },
+              {
+                "number": 2,
+                "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                "is_expiry": false,
+                "bbox": [
+                  41.16094986807388,
+                  110.04166666666666,
+                  664.1160949868073,
+                  159.125
+                ]
+              },
+              {
+                "number": 3,
+                "text": "Ngày cấp / Date of issue: 15/03/2021",
+                "is_expiry": false,
+                "bbox": [
+                  42.74406332453825,
+                  181.29166666666666,
+                  652.2427440633245,
+                  230.375
+                ]
+              },
+              {
+                "number": 4,
+                "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                "is_expiry": false,
+                "bbox": [
+                  41.16094986807388,
+                  247.79166666666666,
+                  656.2005277044855,
+                  298.4583333333333
+                ]
+              }
+            ],
+            "authority": {
+              "initial_lines": [
+                {
+                  "number": 1,
+                  "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                  "in_authority": false
+                },
+                {
+                  "number": 2,
+                  "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                  "in_authority": false
+                },
+                {
+                  "number": 3,
+                  "text": "Ngày cấp / Date of issue: 15/03/2021",
+                  "in_authority": false
+                },
+                {
+                  "number": 4,
+                  "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                  "in_authority": true
+                }
+              ],
+              "final_lines": [
+                {
+                  "number": 1,
+                  "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                  "in_authority": false
+                },
+                {
+                  "number": 2,
+                  "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                  "in_authority": false
+                },
+                {
+                  "number": 3,
+                  "text": "Ngày cấp / Date of issue: 15/03/2021",
+                  "in_authority": false
+                },
+                {
+                  "number": 4,
+                  "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                  "in_authority": true
+                }
+              ],
+              "authority_candidate": "CÔNG AN TỈNH HÀ NAM",
+              "ambiguous": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

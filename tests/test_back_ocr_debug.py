@@ -45,7 +45,7 @@ def test_requested_back_text_reaches_ui_without_extra_ocr_or_changing_qr_priorit
     assert not debug['ambiguous']
     assert result['fields']['issue_date'] == '15/03/2021' and result['field_sources']['issue_date'] == 'qr_front'
     assert posts == ['cccd_front', 'cccd_back'] and not cpu.calls
-    assert len(result['fields']) == 11
+    assert len(result['fields']) == 12
 
 
 def test_common_api_keeps_back_text_out_unless_requested():

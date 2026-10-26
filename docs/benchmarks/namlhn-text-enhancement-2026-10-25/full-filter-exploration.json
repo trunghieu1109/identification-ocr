@@ -1,0 +1,761 @@
+{
+  "synthetic": true,
+  "runs": [
+    {
+      "case": "clean",
+      "mode": "raw",
+      "ms": 1499.81,
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "clean",
+      "mode": "filtered",
+      "ms": 809.32,
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": false,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": false
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lace of origin Hà Nôi",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TÍNH HÀ NAM",
+        "identifying_features": "nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "clean",
+      "mode": "adaptive",
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "small-caption",
+      "mode": "raw",
+      "ms": 592.18,
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": false,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lloc of origin: Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "small-caption",
+      "mode": "filtered",
+      "ms": 737.18,
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": false,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": false
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THU",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "llocion hà nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TÍNH HÀ NAM",
+        "identifying_features": "Not ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "small-caption",
+      "mode": "adaptive",
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lloc of origin: Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": false,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "blur-noise",
+      "mode": "raw",
+      "ms": 585.64,
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "blur-noise",
+      "mode": "filtered",
+      "ms": 778.17,
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "blur-noise",
+      "mode": "adaptive",
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "low-contrast",
+      "mode": "raw",
+      "ms": 567.42,
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "low-contrast",
+      "mode": "filtered",
+      "ms": 787.63,
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "low-contrast",
+      "mode": "adaptive",
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "heavy-noise",
+      "mode": "raw",
+      "ms": 566.69,
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "heavy-noise",
+      "mode": "filtered",
+      "ms": 794.6,
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "heavy-noise",
+      "mode": "adaptive",
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ]
+    },
+    {
+      "case": "no-caption",
+      "mode": "raw",
+      "ms": 546.23,
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": []
+    },
+    {
+      "case": "no-caption",
+      "mode": "filtered",
+      "ms": 699.75,
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": false
+      },
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THU",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TÍNH HÀ NAM",
+        "identifying_features": "Not ruồi má trái"
+      },
+      "expiry": []
+    },
+    {
+      "case": "no-caption",
+      "mode": "adaptive",
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": []
+    }
+  ]
+}

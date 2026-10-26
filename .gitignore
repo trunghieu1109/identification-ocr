@@ -225,3 +225,6 @@ __marimo__/
 *.pyc
 *.pth
 *.pt
+
+# Generated front-card OCR crops and reports
+/exports/ocr-front/

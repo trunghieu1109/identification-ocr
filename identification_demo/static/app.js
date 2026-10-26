@@ -7,6 +7,7 @@ const fields = [
   ["place_of_origin", "Quê quán"], ["place_of_residence", "Nơi thường trú"],
   ["issue_date", "Ngày cấp"], ["issuing_authority", "Cơ quan cấp"],
   ["identifying_features", "Đặc điểm nhân dạng"],
+  ["expiry_date", "Ngày hết hạn"],
 ];
 const sourceLabels = { qr_front: "QR · mặt trước", qr_back: "QR · mặt sau", ocr_front: "OCR · mặt trước", ocr_back: "OCR · mặt sau" };
 const sides = ["front", "back"];
@@ -58,7 +59,7 @@ function renderFields(values = null) {
       const content = document.createElement("span");
       content.className = "field-value";
       const text = document.createElement("span");
-      text.textContent = values[key] || (key === "identifying_features" ? "Đã bỏ qua" : key === "old_id_number" ? "Không có / chưa đọc được" : "Chưa đọc được");
+      text.textContent = values[key] || (key === "expiry_date" && result?.expiry?.expiry_type === "unlimited" ? "Không thời hạn" : key === "identifying_features" ? "Đã bỏ qua" : key === "old_id_number" ? "Không có / chưa đọc được" : "Chưa đọc được");
       content.append(text);
       if (!values[key]) value.classList.add("empty");
       if (values[key] && sourceLabels[result?.field_sources?.[key]]) {
@@ -354,7 +355,9 @@ function renderTimings(payload) {
   const labels = { image_decode: "Chuẩn bị ảnh", qr_front: "QR mặt trước", qr_back: "QR mặt sau",
     ocr_front: "OCR mặt trước", ocr_back: "OCR mặt sau", merge: "Tổng hợp kết quả", total: "Pipeline QR/OCR trên server" };
   const details = { queue_wait: "Chờ hàng đợi", inference: "Xử lý OCR", model_init: "Khởi tạo model",
-    preprocess: "Tiền xử lý", paddle_detect_recognize: "PaddleOCR", vietocr_reread: "VietOCR đọc bổ sung",
+    preprocess: "Tiền xử lý", card_preprocessing: "Crop thẻ và hiệu chỉnh ảnh", paddle_detect_recognize: "PaddleOCR", vietocr_reread: "VietOCR đọc bổ sung",
+    paddle_detection: "Tìm dòng chữ (Paddle)", line_crops: "Cắt dòng chữ", docu_recognition: "Nhận dạng chữ (DocU)",
+    text_enhancement: "Làm rõ vùng chữ", enhanced_recognition: "Đọc lại vùng đã làm rõ",
     iqa: "Kiểm tra chất lượng ảnh", segmentation: "Tìm vùng thẻ", rotation: "Chỉnh hướng thẻ",
     detection: "Tìm vùng chữ", recognition: "Nhận dạng chữ", authority_refinement: "Đọc lại cơ quan cấp",
     metadata: "Trích xuất thông tin", recovery: "Khôi phục ảnh khó" };
@@ -365,7 +368,11 @@ function renderTimings(payload) {
   }
   $("ocr-work").textContent = sides.map(side => {
     const work = payload.ocr?.[side]?.work;
-    return work ? `${side === "front" ? "Mặt trước" : "Mặt sau"}: ${work.primary_regions} vùng chữ, đọc bổ sung ${work.reread_regions} vùng.` : "";
+    const prep = payload.ocr?.[side]?.image_preprocessing;
+    const adjustments = [["brightness", "tăng sáng"], ["contrast", "tăng tương phản"], ["denoise", "giảm nhiễu"]]
+      .filter(([key]) => prep?.enhancement?.[key]).map(([, label]) => label);
+    const notes = [prep?.crop?.status === "cropped" ? "đã crop sát thẻ" : "", ...adjustments].filter(Boolean);
+    return work ? `${side === "front" ? "Mặt trước" : "Mặt sau"}: ${work.primary_regions} vùng chữ, đọc bổ sung ${work.reread_regions} vùng.${notes.length ? ` ${notes.join(", ")}.` : ""}` : "";
   }).filter(Boolean).join(" ");
   $("timing-details").hidden = !rows.children.length;
 }

@@ -1,0 +1,459 @@
+{
+  "synthetic": true,
+  "runs": [
+    {
+      "case": "expiry-front",
+      "result": {
+        "success": true,
+        "source": "qr_ocr",
+        "quality": "high",
+        "ocr_engine": {
+          "provider": "namlhn/vietnam-cccd-ocr",
+          "device": "cuda",
+          "model": "asternet_vi_v1",
+          "strategy": "namlhn_asternet_v1",
+          "text_enhancement": "adaptive",
+          "recognition_provider": "asternet",
+          "recognition_device": "cuda:0",
+          "used": true
+        },
+        "status": "complete",
+        "fields": {
+          "id_number": "001099000001",
+          "old_id_number": "",
+          "name": "NGUYỄN VĂN THỬ",
+          "date_of_birth": "01/02/1999",
+          "gender": "Nam",
+          "nationality": "Việt Nam",
+          "place_of_origin": "Hà Nội",
+          "place_of_residence": "Hà Nội",
+          "issue_date": "15/03/2021",
+          "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+          "identifying_features": "",
+          "expiry_date": "25/10/2036"
+        },
+        "field_sources": {
+          "id_number": "ocr_front",
+          "old_id_number": null,
+          "name": "ocr_front",
+          "date_of_birth": "ocr_front",
+          "gender": "ocr_front",
+          "nationality": "ocr_front",
+          "place_of_origin": "ocr_front",
+          "place_of_residence": "ocr_front",
+          "issue_date": "ocr_back",
+          "issuing_authority": "ocr_back",
+          "identifying_features": null,
+          "expiry_date": "ocr_front"
+        },
+        "missing_fields": [],
+        "qr": {
+          "status": "no_qr",
+          "recognized_fields": 0,
+          "sides": {
+            "front": "no_qr",
+            "back": "no_qr"
+          }
+        },
+        "ocr": {
+          "front": {
+            "status": "complete",
+            "filled_fields": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "expiry_date"
+            ],
+            "timings_ms": {
+              "preprocess": 37.33,
+              "paddle_detection": 34.61,
+              "line_crops": 3.08,
+              "docu_recognition": 143.48,
+              "text_enhancement": 0.01,
+              "enhanced_recognition": 0.0,
+              "metadata": 5.05,
+              "model_init": 0.0,
+              "queue_wait": 0.04,
+              "inference": 223.65,
+              "worker_image_decode": 8.39,
+              "worker_round_trip": 234.67
+            },
+            "work": {
+              "primary_regions": 10,
+              "recognized_regions": 10,
+              "recognition_batches": 1,
+              "enhanced_regions": 0,
+              "enhancement_changed_regions": 0,
+              "reread_regions": 0,
+              "full_image_attempts": 1
+            }
+          },
+          "back": {
+            "status": "complete",
+            "filled_fields": [
+              "issue_date",
+              "issuing_authority"
+            ],
+            "timings_ms": {
+              "preprocess": 37.3,
+              "paddle_detection": 25.14,
+              "line_crops": 1.55,
+              "docu_recognition": 58.9,
+              "text_enhancement": 0.0,
+              "enhanced_recognition": 0.0,
+              "metadata": 1.05,
+              "model_init": 0.0,
+              "queue_wait": 0.04,
+              "inference": 124.02,
+              "worker_image_decode": 7.85,
+              "worker_round_trip": 134.32
+            },
+            "work": {
+              "primary_regions": 4,
+              "recognized_regions": 4,
+              "recognition_batches": 1,
+              "enhanced_regions": 0,
+              "enhancement_changed_regions": 0,
+              "reread_regions": 0,
+              "full_image_attempts": 1
+            },
+            "authority_region": {
+              "method": "layout",
+              "bbox": [
+                41.16,
+                246.21,
+                656.2,
+                300.04
+              ],
+              "image_size": [
+                1200,
+                760
+              ],
+              "line_count": 1,
+              "anchor": "label"
+            },
+            "debug": {
+              "initial_lines": [
+                {
+                  "number": 1,
+                  "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                  "in_authority": false
+                },
+                {
+                  "number": 2,
+                  "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                  "in_authority": false
+                },
+                {
+                  "number": 3,
+                  "text": "Ngày cấp / Date of issue: 15/03/2021",
+                  "in_authority": false
+                },
+                {
+                  "number": 4,
+                  "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                  "in_authority": true
+                }
+              ],
+              "final_lines": [
+                {
+                  "number": 1,
+                  "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                  "in_authority": false
+                },
+                {
+                  "number": 2,
+                  "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                  "in_authority": false
+                },
+                {
+                  "number": 3,
+                  "text": "Ngày cấp / Date of issue: 15/03/2021",
+                  "in_authority": false
+                },
+                {
+                  "number": 4,
+                  "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                  "in_authority": true
+                }
+              ],
+              "authority_candidate": "CÔNG AN TỈNH HÀ NAM",
+              "ambiguous": false
+            }
+          }
+        },
+        "expiry": {
+          "status": "found",
+          "expiry_type": "date",
+          "label_found": true,
+          "side": "front"
+        },
+        "warnings": [
+          "Không đọc được thông tin CCCD từ QR; đã dùng OCR trên hai mặt."
+        ],
+        "recognized_fields": 10,
+        "total_fields": 12,
+        "processing_time_ms": 506,
+        "timings_ms": {
+          "image_decode": 22.35,
+          "qr_front": 103.06,
+          "qr_back": 6.86,
+          "ocr_front": 238.53,
+          "ocr_back": 135.26,
+          "merge": 0.1,
+          "total": 506.16
+        },
+        "request_id": "a2235c55b0af4464b468df94c88eee6c",
+        "request_timings_ms": {
+          "receive_upload": 2.49,
+          "prepare_request": 0.41,
+          "dispatch_wait": 0.12,
+          "pipeline": 506.2,
+          "finish_result": 0.12,
+          "server_until_result": 509.35
+        }
+      }
+    },
+    {
+      "case": "expiry-back",
+      "result": {
+        "success": true,
+        "source": "qr_ocr",
+        "quality": "high",
+        "ocr_engine": {
+          "provider": "namlhn/vietnam-cccd-ocr",
+          "device": "cuda",
+          "model": "asternet_vi_v1",
+          "strategy": "namlhn_asternet_v1",
+          "text_enhancement": "adaptive",
+          "recognition_provider": "asternet",
+          "recognition_device": "cuda:0",
+          "used": true
+        },
+        "status": "complete",
+        "fields": {
+          "id_number": "001099000001",
+          "old_id_number": "",
+          "name": "NGUYỄN VĂN THỬ",
+          "date_of_birth": "01/02/1999",
+          "gender": "Nam",
+          "nationality": "Việt Nam",
+          "place_of_origin": "Hà Nội",
+          "place_of_residence": "Hà Nội",
+          "issue_date": "15/03/2021",
+          "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+          "identifying_features": "",
+          "expiry_date": "25/10/2036"
+        },
+        "field_sources": {
+          "id_number": "ocr_front",
+          "old_id_number": null,
+          "name": "ocr_front",
+          "date_of_birth": "ocr_front",
+          "gender": "ocr_front",
+          "nationality": "ocr_front",
+          "place_of_origin": "ocr_front",
+          "place_of_residence": "ocr_front",
+          "issue_date": "ocr_back",
+          "issuing_authority": "ocr_back",
+          "identifying_features": null,
+          "expiry_date": "ocr_back"
+        },
+        "missing_fields": [],
+        "qr": {
+          "status": "no_qr",
+          "recognized_fields": 0,
+          "sides": {
+            "front": "no_qr",
+            "back": "no_qr"
+          }
+        },
+        "ocr": {
+          "front": {
+            "status": "partial",
+            "filled_fields": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence"
+            ],
+            "timings_ms": {
+              "preprocess": 37.26,
+              "paddle_detection": 25.6,
+              "line_crops": 2.6,
+              "docu_recognition": 121.33,
+              "text_enhancement": 0.01,
+              "enhanced_recognition": 0.0,
+              "metadata": 2.69,
+              "model_init": 0.0,
+              "queue_wait": 0.05,
+              "inference": 189.59,
+              "worker_image_decode": 8.2,
+              "worker_round_trip": 200.71
+            },
+            "work": {
+              "primary_regions": 8,
+              "recognized_regions": 8,
+              "recognition_batches": 1,
+              "enhanced_regions": 0,
+              "enhancement_changed_regions": 0,
+              "reread_regions": 0,
+              "full_image_attempts": 1
+            }
+          },
+          "back": {
+            "status": "complete",
+            "filled_fields": [
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "timings_ms": {
+              "preprocess": 37.25,
+              "paddle_detection": 25.64,
+              "line_crops": 2.03,
+              "docu_recognition": 83.82,
+              "text_enhancement": 0.01,
+              "enhanced_recognition": 0.0,
+              "metadata": 1.35,
+              "model_init": 0.0,
+              "queue_wait": 0.04,
+              "inference": 150.18,
+              "worker_image_decode": 8.11,
+              "worker_round_trip": 160.83
+            },
+            "work": {
+              "primary_regions": 6,
+              "recognized_regions": 6,
+              "recognition_batches": 1,
+              "enhanced_regions": 0,
+              "enhancement_changed_regions": 0,
+              "reread_regions": 0,
+              "full_image_attempts": 1
+            },
+            "authority_region": {
+              "method": "layout",
+              "bbox": [
+                41.16,
+                246.21,
+                656.2,
+                300.04
+              ],
+              "image_size": [
+                1200,
+                760
+              ],
+              "line_count": 1,
+              "anchor": "label"
+            },
+            "debug": {
+              "initial_lines": [
+                {
+                  "number": 1,
+                  "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                  "in_authority": false
+                },
+                {
+                  "number": 2,
+                  "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                  "in_authority": false
+                },
+                {
+                  "number": 3,
+                  "text": "Ngày cấp / Date of issue: 15/03/2021",
+                  "in_authority": false
+                },
+                {
+                  "number": 4,
+                  "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                  "in_authority": true
+                },
+                {
+                  "number": 5,
+                  "text": "Có giá trị đến / Date of expiry:",
+                  "in_authority": false
+                },
+                {
+                  "number": 6,
+                  "text": "25/10/2036",
+                  "in_authority": false
+                }
+              ],
+              "final_lines": [
+                {
+                  "number": 1,
+                  "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+                  "in_authority": false
+                },
+                {
+                  "number": 2,
+                  "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+                  "in_authority": false
+                },
+                {
+                  "number": 3,
+                  "text": "Ngày cấp / Date of issue: 15/03/2021",
+                  "in_authority": false
+                },
+                {
+                  "number": 4,
+                  "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+                  "in_authority": true
+                },
+                {
+                  "number": 5,
+                  "text": "Có giá trị đến / Date of expiry:",
+                  "in_authority": false
+                },
+                {
+                  "number": 6,
+                  "text": "25/10/2036",
+                  "in_authority": false
+                }
+              ],
+              "authority_candidate": "CÔNG AN TỈNH HÀ NAM",
+              "ambiguous": false
+            }
+          }
+        },
+        "expiry": {
+          "status": "found",
+          "expiry_type": "date",
+          "label_found": true,
+          "side": "back"
+        },
+        "warnings": [
+          "Không đọc được thông tin CCCD từ QR; đã dùng OCR trên hai mặt."
+        ],
+        "recognized_fields": 10,
+        "total_fields": 12,
+        "processing_time_ms": 393,
+        "timings_ms": {
+          "image_decode": 18.18,
+          "qr_front": 5.94,
+          "qr_back": 5.46,
+          "ocr_front": 201.37,
+          "ocr_back": 162.34,
+          "merge": 0.06,
+          "total": 393.35
+        },
+        "request_id": "3722dc1549164de6b20863c8a80a2052",
+        "request_timings_ms": {
+          "receive_upload": 0.74,
+          "prepare_request": 0.43,
+          "dispatch_wait": 0.11,
+          "pipeline": 393.4,
+          "finish_result": 0.13,
+          "server_until_result": 394.8
+        }
+      }
+    }
+  ]
+}

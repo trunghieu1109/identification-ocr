@@ -1,0 +1,45 @@
+{
+  "synthetic": true,
+  "pairs": [
+    {
+      "name": "expiry-front",
+      "front": "front-expiry-1.png",
+      "back": "back-expiry-0.png",
+      "expected": {
+        "front": {
+          "id_number": "001099000001",
+          "name": "NGUYỄN VĂN THỬ",
+          "date_of_birth": "01/02/1999",
+          "gender": "Nam",
+          "nationality": "Việt Nam",
+          "place_of_origin": "Hà Nội",
+          "place_of_residence": "Hà Nội"
+        },
+        "back": {
+          "issue_date": "15/03/2021",
+          "issuing_authority": "CÔNG AN TỈNH HÀ NAM"
+        }
+      }
+    },
+    {
+      "name": "expiry-back",
+      "front": "front-expiry-0.png",
+      "back": "back-expiry-1.png",
+      "expected": {
+        "front": {
+          "id_number": "001099000001",
+          "name": "NGUYỄN VĂN THỬ",
+          "date_of_birth": "01/02/1999",
+          "gender": "Nam",
+          "nationality": "Việt Nam",
+          "place_of_origin": "Hà Nội",
+          "place_of_residence": "Hà Nội"
+        },
+        "back": {
+          "issue_date": "15/03/2021",
+          "issuing_authority": "CÔNG AN TỈNH HÀ NAM"
+        }
+      }
+    }
+  ]
+}

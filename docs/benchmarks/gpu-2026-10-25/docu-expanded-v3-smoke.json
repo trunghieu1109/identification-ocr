@@ -1,0 +1,531 @@
+{
+  "date": "2026-10-25",
+  "strategy": "docu_expanded_v3",
+  "basis": "DocU regions v2, single full-image detection size 640; expanded local crop and direct row patches in the existing local recognition batch",
+  "method": "GPU HTTP OCR-only, synthetic fixtures; one call per case, then three alternating warm calls on inline 12px fixture; not a general performance benchmark",
+  "benchmark_ms": {
+    "docu_gpu_regions": [
+      999,
+      1006,
+      1066
+    ],
+    "docu_gpu_v3": [
+      1224,
+      1194,
+      1302
+    ]
+  },
+  "median_ms": {
+    "docu_gpu_regions": 1006,
+    "docu_gpu_v3": 1224
+  },
+  "verification": {
+    "tests_passed": 549,
+    "main_api": "11 fields, production DocU container and image unchanged",
+    "debug_opt_in": true,
+    "v2_v3_queue_isolation": true
+  },
+  "cases": [
+    {
+      "fixture": "front-inline-caption-12px.png",
+      "engine": "docu_gpu_regions",
+      "processing_time_ms": 2364,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái",
+        "expiry_date": ""
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_regions_v2",
+          "target": "expiry_date",
+          "status": "not_found",
+          "reason": "no_valid_date",
+          "anchor": "unassigned_date",
+          "reread_regions": 1,
+          "elapsed_ms": 172.98,
+          "bbox": [
+            589,
+            402,
+            975,
+            699
+          ]
+        },
+        "back": {
+          "strategy": "docu_regions_v2",
+          "target": "issue_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 142.06,
+          "bbox": [
+            0,
+            277,
+            536,
+            526
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "front-inline-caption-12px.png",
+      "engine": "docu_gpu_v3",
+      "processing_time_ms": 1399,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái",
+        "expiry_date": "20/10/2028"
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_expanded_v3",
+          "target": "expiry_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "unassigned_date",
+          "reread_regions": 6,
+          "elapsed_ms": 298.45,
+          "bbox": [
+            0,
+            402,
+            1200,
+            699
+          ]
+        },
+        "back": {
+          "strategy": "docu_expanded_v3",
+          "target": "issue_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 122.46,
+          "bbox": [
+            0,
+            277,
+            1156,
+            526
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "front-inline-caption-16px.png",
+      "engine": "docu_gpu_regions",
+      "processing_time_ms": 1136,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái",
+        "expiry_date": ""
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_regions_v2",
+          "target": "expiry_date",
+          "status": "not_found",
+          "reason": "no_valid_date",
+          "anchor": "unassigned_date",
+          "reread_regions": 1,
+          "elapsed_ms": 80.12,
+          "bbox": [
+            589,
+            403,
+            975,
+            698
+          ]
+        },
+        "back": {
+          "strategy": "docu_regions_v2",
+          "target": "issue_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 116.63,
+          "bbox": [
+            0,
+            277,
+            536,
+            526
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "front-inline-caption-16px.png",
+      "engine": "docu_gpu_v3",
+      "processing_time_ms": 1310,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái",
+        "expiry_date": "20/10/2028"
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_expanded_v3",
+          "target": "expiry_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "unassigned_date",
+          "reread_regions": 6,
+          "elapsed_ms": 262.3,
+          "bbox": [
+            0,
+            403,
+            1200,
+            698
+          ]
+        },
+        "back": {
+          "strategy": "docu_expanded_v3",
+          "target": "issue_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 97.77,
+          "bbox": [
+            0,
+            277,
+            1156,
+            526
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "front-date-16px.png",
+      "engine": "docu_gpu_regions",
+      "processing_time_ms": 962,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruối má trái",
+        "expiry_date": "25/10/2036"
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_regions_v2",
+          "target": "expiry_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 149.73,
+          "bbox": [
+            0,
+            539,
+            621,
+            756
+          ]
+        },
+        "back": {
+          "strategy": "docu_regions_v2",
+          "target": "issue_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 114.66,
+          "bbox": [
+            2,
+            281,
+            535,
+            514
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "front-date-16px.png",
+      "engine": "docu_gpu_v3",
+      "processing_time_ms": 866,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruối má trái",
+        "expiry_date": "25/10/2036"
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_expanded_v3",
+          "target": "expiry_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 125.84,
+          "bbox": [
+            0,
+            539,
+            1175,
+            756
+          ]
+        },
+        "back": {
+          "strategy": "docu_expanded_v3",
+          "target": "issue_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 93.72,
+          "bbox": [
+            0,
+            281,
+            1158,
+            514
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "front-small-caption.png",
+      "engine": "docu_gpu_regions",
+      "processing_time_ms": 1686,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "20/04/2021",
+        "issuing_authority": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+        "identifying_features": "",
+        "expiry_date": "25/10/2036"
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_regions_v2",
+          "target": "expiry_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "unassigned_date",
+          "reread_regions": 3,
+          "elapsed_ms": 129.17,
+          "bbox": [
+            0,
+            411,
+            332,
+            709
+          ]
+        },
+        "back": {
+          "strategy": "docu_regions_v2",
+          "target": "issue_date",
+          "status": "skipped",
+          "reason": "already_found",
+          "reread_regions": 0,
+          "elapsed_ms": 0
+        }
+      }
+    },
+    {
+      "fixture": "front-small-caption.png",
+      "engine": "docu_gpu_v3",
+      "processing_time_ms": 1695,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "20/04/2021",
+        "issuing_authority": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+        "identifying_features": "",
+        "expiry_date": "25/10/2036"
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_expanded_v3",
+          "target": "expiry_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "unassigned_date",
+          "reread_regions": 7,
+          "elapsed_ms": 232.95,
+          "bbox": [
+            0,
+            411,
+            1200,
+            709
+          ]
+        },
+        "back": {
+          "strategy": "docu_expanded_v3",
+          "target": "issue_date",
+          "status": "skipped",
+          "reason": "already_found",
+          "reread_regions": 0,
+          "elapsed_ms": 0
+        }
+      }
+    },
+    {
+      "fixture": "front-no-expiry-caption.png",
+      "engine": "docu_gpu_regions",
+      "processing_time_ms": 1010,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái",
+        "expiry_date": ""
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_regions_v2",
+          "target": "expiry_date",
+          "status": "not_found",
+          "reason": "no_valid_date",
+          "anchor": "unassigned_date",
+          "reread_regions": 1,
+          "elapsed_ms": 58.71,
+          "bbox": [
+            584,
+            396,
+            981,
+            699
+          ]
+        },
+        "back": {
+          "strategy": "docu_regions_v2",
+          "target": "issue_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 111.03,
+          "bbox": [
+            0,
+            277,
+            536,
+            526
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "front-no-expiry-caption.png",
+      "engine": "docu_gpu_v3",
+      "processing_time_ms": 1188,
+      "fields": {
+        "id_number": "001099000001",
+        "old_id_number": "",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái",
+        "expiry_date": ""
+      },
+      "field_recovery": {
+        "front": {
+          "strategy": "docu_expanded_v3",
+          "target": "expiry_date",
+          "status": "not_found",
+          "reason": "no_valid_date",
+          "anchor": "unassigned_date",
+          "reread_regions": 6,
+          "elapsed_ms": 258.35,
+          "bbox": [
+            0,
+            396,
+            1200,
+            699
+          ]
+        },
+        "back": {
+          "strategy": "docu_expanded_v3",
+          "target": "issue_date",
+          "status": "recovered",
+          "reason": "label_and_date",
+          "anchor": "caption",
+          "reread_regions": 2,
+          "elapsed_ms": 96.47,
+          "bbox": [
+            0,
+            277,
+            1156,
+            526
+          ]
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Synthetic fixtures; user photo not available for recheck.",
+    "Expanded crops may add recognition time; no speedup guarantee.",
+    "Captions still need readable pixels; no guessed labels."
+  ]
+}

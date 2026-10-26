@@ -92,6 +92,9 @@ class NamLhnEngine:
         result.setdefault("timings_ms", {}).update(timings)
         return result
 
+    def extract_expiry_image(self, image, side, source_data=None):
+        return self.extract_image(image, side, needed_fields=["expiry_date"], source_data=source_data)
+
     def _extract_pixels(self, image, side, needed_fields):
         from .cpu_pipeline import extract_pixels
         started = perf_counter()

@@ -4,15 +4,40 @@ from time import perf_counter
 from .documents import FRONT_FIELDS, BACK_FIELDS, detect_side, fold, parse_back
 from .authority import authority_word_score
 from .authority_region import select_authority_region
+from .namlhn_identity import extract_id_number, extract_name
+from .namlhn_layout import reading_order
+from .namlhn_mapping import map_front_fields
 
 
 def _parse(lines, side):
     from ocr.parser import parse_idcard_fields
-    from ocr.utils import extract_id_number, to_parser_results
+    from ocr.utils import to_parser_results
     if side == "back":
         return {}, parse_back(lines)
-    number, box = extract_id_number(lines)
+    source_lines = lines
+    mapping = map_front_fields(lines)
+    lines = reading_order(lines)
+    number, box, validation = extract_id_number(lines, with_details=True)
     raw = parse_idcard_fields(to_parser_results([(item["text"], item["box"]) for item in lines]), number, box)
+    name = extract_name(lines)
+    if name is not None:
+        raw["Name"], raw["Name_box"] = name
+    for key, _label, upstream in FRONT_FIELDS:
+        if key in mapping:
+            if key == "id_number" and not mapping[key]["value"] and number:
+                # Spatial uncertainty must not erase an observed, imperfect ID.
+                mapping[key] = {**mapping[key], "value": number, "box": box, "method": "observed_number",
+                                "status": "found", "value_indices": [index for index, line in enumerate(source_lines)
+                                                                         if _inside(line["box"], box)]}
+            raw[upstream] = mapping[key]["value"]
+            raw[upstream + "_box"] = mapping[key]["box"]
+    raw["_field_mapping"] = mapping
+    value = str(raw.get("ID_number") or "").strip()
+    if value:
+        validation = {**validation, "format_valid": value.isascii() and value.isdigit() and len(value) in (9, 12),
+                      "observed_length": len(value)}
+        validation["status"] = "ambiguous" if validation["ambiguous"] else "format_valid" if validation["format_valid"] else "unverified"
+    raw["_id_number_validation"] = validation
     return raw, {key: str(raw.get(upstream) or "").strip() for key, _, upstream in FRONT_FIELDS}
 
 
@@ -28,6 +53,10 @@ def reread_indexes(lines, raw, fields, side, needed, threshold=.9):
     """A missing unlocated field warrants one broad fallback; QR-filled fields do not."""
     selected = set()
     for key in needed:
+        if key == "expiry_date":
+            from .expiry import expiry_reread_indices
+            selected.update(expiry_reread_indices(lines))
+            continue
         if side == "front":
             upstream = next(upstream for name, _, upstream in FRONT_FIELDS if name == key)
             box = raw.get(upstream + "_box")
@@ -72,7 +101,7 @@ def extract_pixels(extractor, image, side, needed_fields=None):
     detected = detect_side([line["text"] for line in lines])
     actual_side = detected if side == "auto" and detected != "unknown" else "front" if side == "auto" else side
     schema = BACK_FIELDS if actual_side == "back" else FRONT_FIELDS
-    needed = list(needed_fields) if needed_fields is not None else [key for key, *_ in schema]
+    needed = list(needed_fields) if needed_fields is not None else [key for key, *_ in schema] + ["expiry_date"]
     raw, primary = _parse(lines, actual_side)
     selected = reread_indexes(lines, raw, primary, actual_side, needed)
     timings["metadata"] = round((perf_counter() - started) * 1000, 2)
@@ -105,6 +134,13 @@ def extract_pixels(extractor, image, side, needed_fields=None):
             "text_lines": combined, "timings_ms": timings,
             "work": {"primary_regions": len(lines), "reread_regions": len(patches),
                      "reread_batches": int(bool(patches)), "full_image_attempts": 1}}
+    if actual_side == "front":
+        result["id_number_validation"] = (raw if fields.get("id_number") and not secondary.get("id_number") else _secondary_raw).get("_id_number_validation", {})
+        mapping = dict(_secondary_raw.get("_field_mapping", {}))
+        for key, item in raw.get("_field_mapping", {}).items():
+            if fields[key] and not secondary.get(key):
+                mapping[key] = item
+        result["field_mapping"] = mapping
     if actual_side == "back":
         result["initial_text_lines"] = lines
         region = select_authority_region(combined)

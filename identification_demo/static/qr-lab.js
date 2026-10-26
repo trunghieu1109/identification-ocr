@@ -16,32 +16,42 @@
     ["place_of_residence", "Nơi cư trú"], ["issue_date", "Ngày cấp"],
   ];
   const statuses = { complete: "Đọc đủ thông tin", partial: "Đọc được một phần", no_qr: "Chưa đọc được QR",
-    detected_not_decoded: "Có vùng QR, chưa giải mã", multiple_qr: "Nhiều nội dung QR", unsupported_qr: "QR không có cấu trúc CCCD" };
+    detected_not_decoded: "Có vùng QR, chưa giải mã", multiple_qr: "Nhiều nội dung QR", unsupported_qr: "QR không có cấu trúc CCCD",
+    partial_error: "Một mặt xử lý lỗi" };
   const reports = {};
-  let file = null;
-  let previewURL = null;
+  const files = { front: null, back: null };
+  const previewURLs = { front: null, back: null };
+  const sideNames = { front: "Mặt trước", back: "Mặt sau" };
+  const uploadID = (side, suffix) => `qr-${side === "back" ? "back-" : ""}${suffix}`;
+  const pairMode = () => el("qr-scope").querySelector('input[value="pair"]').checked;
+  const executionMode = () => el("qr-execution").querySelector("input:checked").value;
   let running = false;
   const ms = value => `${Number(value).toLocaleString("vi-VN", { maximumFractionDigits: 1 })} ms`;
 
+  const workspaces = ["extract", "qr", "experiment"];
   function setWorkspace(name, focus = false) {
-    for (const id of ["extract", "qr"]) {
+    for (const id of workspaces) {
       const selected = id === name;
       el(`workspace-tab-${id}`).setAttribute("aria-selected", String(selected));
       el(`workspace-tab-${id}`).tabIndex = selected ? 0 : -1;
       el(`workspace-${id}`).hidden = !selected;
     }
     if (focus) el(`workspace-tab-${name}`).focus();
-    history.replaceState(null, "", name === "qr" ? "#qr" : location.pathname + location.search);
+    history.replaceState(null, "", location.pathname + location.search + (name === "extract" ? "" : `#${name}`));
   }
-  for (const name of ["extract", "qr"]) {
+  for (const name of workspaces) {
     el(`workspace-tab-${name}`).addEventListener("click", () => setWorkspace(name));
     el(`workspace-tab-${name}`).addEventListener("keydown", event => {
       if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
       event.preventDefault();
-      setWorkspace(event.key === "Home" ? "extract" : event.key === "End" ? "qr" : name === "qr" ? "extract" : "qr", true);
+      const index = workspaces.indexOf(name);
+      const next = event.key === "Home" ? 0 : event.key === "End" ? workspaces.length - 1 :
+        (index + (event.key === "ArrowRight" ? 1 : -1) + workspaces.length) % workspaces.length;
+      setWorkspace(workspaces[next], true);
     });
   }
-  if (location.hash === "#qr") setWorkspace("qr");
+  if (workspaces.includes(location.hash.slice(1))) setWorkspace(location.hash.slice(1));
+  if (location.hash === "#expiry") setWorkspace("experiment");
 
   for (const method of methods) {
     const card = document.createElement("section");
@@ -63,12 +73,17 @@
     el("qr-upload-error").hidden = !message;
   }
   function updateControls() {
-    el("qr-run-all").disabled = running || !file;
+    const ready = files.front && (!pairMode() || files.back);
+    el("qr-run-all").disabled = running || !ready;
     el("qr-run-all").classList.toggle("processing", running);
     el("qr-run-all").querySelector(".spinner").hidden = !running;
     el("qr-run-all").querySelector(".icon").hidden = running;
-    for (const id of ["qr-file-input", "qr-choose-file", "qr-remove-file"]) el(id).disabled = running;
-    for (const method of methods) el(`qr-run-${method.id}`).disabled = running || !file;
+    for (const side of ["front", "back"]) {
+      for (const suffix of ["file-input", "choose-file", "remove-file"]) el(uploadID(side, suffix)).disabled = running;
+    }
+    el("qr-scope").disabled = running;
+    el("qr-execution").disabled = running;
+    for (const method of methods) el(`qr-run-${method.id}`).disabled = running || !ready;
     el("qr-methods").setAttribute("aria-busy", String(running));
   }
   function clearReports() {
@@ -84,44 +99,51 @@
     }
     renderComparison();
   }
-  function chooseFile(selected) {
+  function readyMessage() {
+    const ready = files.front && (!pairMode() || files.back);
+    el("qr-run-status").textContent = ready ? "Ảnh đã sẵn sàng. Chạy từng phương án hoặc cả sáu." :
+      pairMode() ? "Chọn đủ mặt trước và mặt sau để bắt đầu." : "Chọn một ảnh để bắt đầu.";
+  }
+  function chooseFile(selected, side = "front") {
     if (running || !selected) return;
-    el("qr-file-input").value = "";
+    el(uploadID(side, "file-input")).value = "";
     if (!selected.size) return error("Ảnh đang trống. Hãy chọn lại ảnh.");
     if (selected.size > 10 * 1024 * 1024) return error("Mỗi ảnh tối đa 10 MB.");
     if (!["image/jpeg", "image/png"].includes(selected.type)) return error("Chỉ hỗ trợ ảnh JPG hoặc PNG.");
-    if (previewURL) URL.revokeObjectURL(previewURL);
-    file = selected;
-    previewURL = URL.createObjectURL(file);
-    el("qr-preview-image").src = previewURL;
-    el("qr-file-name").textContent = file.name;
-    el("qr-file-size").textContent = `${(file.size / 1024).toLocaleString("vi-VN", { maximumFractionDigits: 1 })} KB`;
-    el("qr-dropzone").hidden = true;
-    el("qr-preview").hidden = false;
-    el("qr-run-status").textContent = "Ảnh đã sẵn sàng. Chạy từng phương án hoặc cả sáu.";
+    if (previewURLs[side]) URL.revokeObjectURL(previewURLs[side]);
+    files[side] = selected;
+    previewURLs[side] = URL.createObjectURL(selected);
+    el(uploadID(side, "preview-image")).src = previewURLs[side];
+    el(uploadID(side, "file-name")).textContent = selected.name;
+    el(uploadID(side, "file-size")).textContent = `${(selected.size / 1024).toLocaleString("vi-VN", { maximumFractionDigits: 1 })} KB`;
+    el(uploadID(side, "dropzone")).hidden = true;
+    el(uploadID(side, "preview")).hidden = false;
+    readyMessage();
     error("");
     clearReports();
     updateControls();
   }
-  function clearFile() {
+  function clearFile(side = "front") {
     if (running) return;
-    file = null;
-    if (previewURL) URL.revokeObjectURL(previewURL);
-    previewURL = null;
-    el("qr-preview-image").removeAttribute("src");
-    el("qr-file-input").value = "";
-    el("qr-dropzone").hidden = false;
-    el("qr-preview").hidden = true;
-    el("qr-run-status").textContent = "Chọn một ảnh để bắt đầu.";
+    files[side] = null;
+    if (previewURLs[side]) URL.revokeObjectURL(previewURLs[side]);
+    previewURLs[side] = null;
+    el(uploadID(side, "preview-image")).removeAttribute("src");
+    el(uploadID(side, "file-input")).value = "";
+    el(uploadID(side, "dropzone")).hidden = false;
+    el(uploadID(side, "preview")).hidden = true;
+    readyMessage();
     error("");
     clearReports();
     updateControls();
   }
 
-  function drawRegions(method) {
-    const report = reports[method.id];
-    const canvas = el(`qr-canvas-${method.id}`);
-    const image = el("qr-preview-image");
+  function drawRegions(method, side = null) {
+    const report = side ? reports[method.id]?.sides?.[side] : reports[method.id];
+    const canvas = el(`qr-canvas-${method.id}${side ? `-${side}` : ""}`);
+    if (!canvas) return;
+    const image = el(uploadID(side || "front", "preview-image"));
+    if (report?.sides) { canvas.hidden = true; return; }
     if (!report?.success || !image.complete || !image.naturalWidth) { canvas.hidden = true; return; }
     const width = report.image.width, height = report.image.height;
     const scale = Math.min(1, 900 / Math.max(width, height));
@@ -141,13 +163,52 @@
     canvas.hidden = false;
   }
 
-  function renderReport(method) {
+  function renderReport(method, expandSides = true) {
     const report = reports[method.id];
     const status = el(`qr-status-${method.id}`);
     status.textContent = report.success ? statuses[report.status] || report.status : "Lỗi";
-    status.className = `qr-method-status ${report.success && report.decoded_count ? "success" : "attention"}`;
+    status.className = `qr-method-status ${report.success && report.decoded_count && !["multiple_qr", "partial_error"].includes(report.status) ? "success" : "attention"}`;
     const output = el(`qr-output-${method.id}`);
     output.replaceChildren();
+    if (report.sides) {
+      const summary = document.createElement("p");
+      summary.className = "qr-pair-summary";
+      summary.textContent = `${report.execution === "parallel" ? "Song song" : "Tuần tự"} · Tổng server: ${ms(report.processing_time_ms)} · Tổng chờ: ${ms(report.client_elapsed_ms)}. Thực thi hai mặt: ${ms(report.timings_ms.execution)}; chờ lượt: ${ms(report.timings_ms.queue_wait)}. Tổng thời gian từng mặt: ${ms(report.timings_ms.sum_side_processing)} (có thể chồng nhau).`;
+      output.append(summary);
+      const message = document.createElement("p");
+      message.textContent = report.message;
+      output.append(message);
+      for (const side of ["front", "back"]) {
+        const section = document.createElement("details");
+        section.className = "qr-side-result";
+        section.open = expandSides;
+        const heading = document.createElement("summary");
+        const sideReport = report.sides[side];
+        heading.textContent = `${sideNames[side]} · ${sideReport.success ? statuses[sideReport.status] || sideReport.status : "Lỗi"} · ${ms(sideReport.processing_time_ms)}`;
+        section.append(heading);
+        const schedule = document.createElement("p");
+        schedule.className = "qr-metric-note";
+        schedule.textContent = `Bắt đầu: ${ms(sideReport.schedule_ms.started_at_ms)} · Kết thúc: ${ms(sideReport.schedule_ms.finished_at_ms)} từ lúc chạy hai mặt.`;
+        section.append(schedule);
+        renderSingleReport(sideReport, section);
+        if (sideReport.success) {
+          const canvas = document.createElement("canvas");
+          canvas.id = `qr-canvas-${method.id}-${side}`;
+          canvas.className = "qr-canvas";
+          canvas.setAttribute("role", "img");
+          canvas.setAttribute("aria-label", `Vùng QR ${sideNames[side].toLowerCase()} do ${method.label} trả về`);
+          section.append(canvas);
+        }
+        output.append(section);
+        drawRegions(method, side);
+      }
+      return;
+    }
+    renderSingleReport(report, output);
+    drawRegions(method);
+  }
+
+  function renderSingleReport(report, output) {
     const message = document.createElement("p");
     message.textContent = report.success ? report.message : report.error;
     output.append(message);
@@ -166,7 +227,7 @@
       add("Đọc QR", ms(report.timings_ms.detect_decode));
       add("Nạp bộ đọc / model", ms(report.timings_ms.initialize));
       add("Xử lý ảnh trên server", ms(report.processing_time_ms));
-      add("Tổng chờ", ms(report.client_elapsed_ms));
+      if (report.client_elapsed_ms !== undefined) add("Tổng chờ", ms(report.client_elapsed_ms));
       if (report.restoration) {
         const data = report.restoration;
         add("Vùng QR tìm được / đã xử lý", `${data.detected_regions} / ${data.processed_regions}`);
@@ -219,19 +280,19 @@
         }
       }
     }
-    drawRegions(method);
   }
 
   function renderComparison() {
     const body = el("qr-comparison-rows");
     body.replaceChildren();
-    for (const [key, label] of qrFields) {
+    const comparisonSides = pairMode() ? ["front", "back"] : [null];
+    for (const side of comparisonSides) for (const [key, label] of qrFields) {
       const row = document.createElement("tr");
       const heading = document.createElement("th");
       heading.scope = "row";
-      heading.textContent = label;
+      heading.textContent = side ? `${sideNames[side]} · ${label}` : label;
       row.append(heading);
-      const values = methods.map(method => reports[method.id]?.fields?.[key] || "");
+      const values = methods.map(method => (side ? reports[method.id]?.sides?.[side] : reports[method.id])?.fields?.[key] || "");
       const differs = new Set(values.filter(Boolean)).size > 1;
       for (const value of values) {
         const cell = document.createElement("td");
@@ -247,7 +308,7 @@
   }
 
   async function run(selectedMethods) {
-    if (running || !file) return;
+    if (running || !files.front || (pairMode() && !files.back)) return;
     running = true;
     updateControls();
     error("");
@@ -259,24 +320,29 @@
         el(`qr-status-${method.id}`).className = "qr-method-status";
         el(`qr-output-${method.id}`).textContent = "Đang xử lý ảnh. Lần đầu có thể cần thêm thời gian nạp model.";
         el(`qr-canvas-${method.id}`).hidden = true;
-        el("qr-run-status").textContent = `Đang chạy ${method.label} trên ảnh đã chọn…`;
+        el("qr-run-status").textContent = `Đang chạy ${method.label} ${pairMode() ? "trên hai mặt" : "trên ảnh đã chọn"}…`;
         const started = performance.now();
         const form = new FormData();
-        form.append("file", file);
+        if (pairMode()) {
+          form.append("front_image", files.front);
+          form.append("back_image", files.back);
+          form.append("execution", executionMode());
+        } else form.append("file", files.front);
         form.append("method", method.id);
         try {
-          const response = await fetch("/api/qr/experiment", { method: "POST", body: form });
+          const response = await fetch(pairMode() ? "/api/qr/experiment/pair" : "/api/qr/experiment", { method: "POST", body: form });
           let payload;
           try { payload = await response.json(); }
           catch { throw new Error("Dịch vụ trả về kết quả không hợp lệ. Hãy thử lại."); }
           if (!response.ok || !payload.success) throw new Error(payload.error || "Không chạy được phương án QR này.");
-          if (payload.method !== method.id || !payload.fields || !Array.isArray(payload.regions) || !payload.timings_ms || !payload.image) throw new Error("Kết quả thử nghiệm thiếu thông tin.");
+          if (payload.method !== method.id || !payload.fields || !payload.timings_ms ||
+              (pairMode() ? !payload.sides?.front || !payload.sides?.back : !Array.isArray(payload.regions) || !payload.image)) throw new Error("Kết quả thử nghiệm thiếu thông tin.");
           reports[method.id] = { ...payload, client_elapsed_ms: Math.round((performance.now() - started) * 100) / 100 };
         } catch (problem) {
           reports[method.id] = { success: false, method: method.id,
             error: problem instanceof TypeError ? "Mất kết nối với dịch vụ. Hãy thử lại." : problem.message };
         }
-        renderReport(method);
+        renderReport(method, selectedMethods.length === 1);
         renderComparison();
       }
       el("qr-run-status").textContent = "Đã chạy xong. Bạn có thể thử lại từng phương án trên cùng ảnh.";
@@ -286,21 +352,43 @@
     }
   }
 
-  el("qr-choose-file").addEventListener("click", () => el("qr-file-input").click());
-  el("qr-file-input").addEventListener("change", event => chooseFile(event.target.files[0]));
-  el("qr-remove-file").addEventListener("click", clearFile);
-  el("qr-preview-image").addEventListener("load", () => methods.forEach(drawRegions));
-  el("qr-preview-image").addEventListener("error", () => { clearFile(); error("Không xem trước được ảnh. Hãy chọn lại ảnh JPG hoặc PNG hợp lệ."); });
-  for (const name of ["dragenter", "dragover", "dragleave", "drop"]) {
-    el("qr-dropzone").addEventListener(name, event => {
-      event.preventDefault();
-      if (running) return;
-      el("qr-dropzone").classList.toggle("dragover", ["dragenter", "dragover"].includes(name));
-      if (name === "drop") chooseFile(event.dataTransfer.files[0]);
+  for (const side of ["front", "back"]) {
+    el(uploadID(side, "choose-file")).addEventListener("click", () => el(uploadID(side, "file-input")).click());
+    el(uploadID(side, "file-input")).addEventListener("change", event => chooseFile(event.target.files[0], side));
+    el(uploadID(side, "remove-file")).addEventListener("click", () => clearFile(side));
+    el(uploadID(side, "preview-image")).addEventListener("load", () => methods.forEach(method => {
+      drawRegions(method);
+      drawRegions(method, side);
+    }));
+    el(uploadID(side, "preview-image")).addEventListener("error", () => {
+      clearFile(side);
+      error("Không xem trước được ảnh. Hãy chọn lại ảnh JPG hoặc PNG hợp lệ.");
     });
+    for (const name of ["dragenter", "dragover", "dragleave", "drop"]) {
+      el(uploadID(side, "dropzone")).addEventListener(name, event => {
+        event.preventDefault();
+        if (running) return;
+        el(uploadID(side, "dropzone")).classList.toggle("dragover", ["dragenter", "dragover"].includes(name));
+        if (name === "drop") chooseFile(event.dataTransfer.files[0], side);
+      });
+    }
   }
+  el("qr-scope").addEventListener("change", () => {
+    el("qr-back-upload").hidden = !pairMode();
+    el("qr-execution").hidden = !pairMode();
+    el("qr-front-title").textContent = pairMode() ? "Mặt trước" : "Ảnh QR";
+    el("qr-preview-image").alt = pairMode() ? "Ảnh mặt trước dùng thử nghiệm QR" : "Ảnh dùng thử nghiệm QR";
+    error("");
+    clearReports();
+    readyMessage();
+    updateControls();
+  });
   el("qr-run-all").addEventListener("click", () => run(methods));
-  const exportText = () => JSON.stringify({ image: file ? { name: file.name, size: file.size } : null, results: reports }, null, 2);
+  const exportText = () => JSON.stringify({
+    ...(!pairMode() ? { image: files.front ? { name: files.front.name, size: files.front.size } : null } : {}),
+    images: Object.fromEntries((pairMode() ? ["front", "back"] : ["front"]).map(side =>
+      [side, files[side] ? { name: files[side].name, size: files[side].size } : null])), results: reports,
+  }, null, 2);
   el("qr-copy-json").addEventListener("click", () => copyText(exportText()));
   el("qr-download-json").addEventListener("click", () => {
     const url = URL.createObjectURL(new Blob([exportText()], { type: "application/json;charset=utf-8" }));
@@ -312,7 +400,7 @@
     link.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
-  window.addEventListener("beforeunload", () => { if (previewURL) URL.revokeObjectURL(previewURL); });
+  window.addEventListener("beforeunload", () => Object.values(previewURLs).forEach(url => { if (url) URL.revokeObjectURL(url); }));
   fetch("/api/health").then(response => {
     if (!response.ok) throw new Error("Health check failed");
     return response.json();

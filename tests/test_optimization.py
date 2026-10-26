@@ -25,11 +25,12 @@ def test_combined_reuses_decoded_images_and_only_requests_qr_gaps(monkeypatch):
             assert image.getpixel((0, 0)) == (255, 255, 255)
             sent.append((side, needed_fields))
             assert source_data == image_data(side)
-            return FRONT if side == "front" else BACK
+            return {**FRONT, "text_lines": [*FRONT["text_lines"], "Có giá trị đến: 25/10/2036"]} if side == "front" else BACK
     monkeypatch.setattr(pipeline, "load_image", load)
     result = process_card({"front": image_data(), "back": image_data("back")}, Pixels(), Reader())
     assert len(decoded) == 2
-    assert sent == [("front", ["nationality", "place_of_origin"]), ("back", ["issuing_authority"])]
+    assert sent == [("front", ["nationality", "place_of_origin", "expiry_date"]),
+                    ("back", ["issuing_authority", "expiry_date"])]
     assert result["fields"]["issue_date"] == "15/03/2021"
     assert list(result["fields"]) == list(CARD_FIELDS)
     assert result["fields"]["identifying_features"] == ""

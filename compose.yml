@@ -13,6 +13,15 @@ services:
       GPU_OCR_URL: ${GPU_OCR_URL:-http://ocr-gpu:8081}
       GPU_OCR_TIMEOUT: ${GPU_OCR_TIMEOUT:-120}
       GPU_OCR_API_KEY: ${GPU_OCR_API_KEY:-}
+      NAMLHN_GPU_OCR_URL: ${NAMLHN_GPU_OCR_URL:-http://namlhn-gpu:8082}
+      NAMLHN_GPU_OCR_API_KEY: ${NAMLHN_GPU_OCR_API_KEY:-}
+      NAMLHN_GPU_MODEL: ${NAMLHN_GPU_MODEL:-vgg_seq2seq}
+      NAMLHN_GPU_PIPELINE: ${NAMLHN_GPU_PIPELINE:-docu}
+      NAMLHN_GPU_TEXT_ENHANCEMENT: ${NAMLHN_GPU_TEXT_ENHANCEMENT:-adaptive}
+      NAMLHN_GPU_CARD_CROP: ${NAMLHN_GPU_CARD_CROP:-auto}
+      NAMLHN_GPU_CARD_ENHANCEMENT: ${NAMLHN_GPU_CARD_ENHANCEMENT:-adaptive}
+      DOCU_REGIONS_GPU_URL: ${DOCU_REGIONS_GPU_URL:-http://ocr-gpu-regions:8081}
+      DOCU_REGIONS_GPU_API_KEY: ${DOCU_REGIONS_GPU_API_KEY:-${GPU_OCR_API_KEY:-}}
       OCR_QUEUE_SIZE: ${OCR_QUEUE_SIZE:-8}
       OCR_QUEUE_TIMEOUT: ${OCR_QUEUE_TIMEOUT:-120}
       OCR_CPU_THREADS: ${OCR_CPU_THREADS:-4}
@@ -50,8 +59,63 @@ services:
       - ./identification_demo/config:/app/identification_demo/config:ro
     restart: unless-stopped
 
+  ocr-gpu-regions:
+    profiles: [gpu]
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    command: [python, -m, uvicorn, identification_demo.docu_region_worker:app, --host, 0.0.0.0, --port, '8081']
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      GPU_OCR_API_KEY: ${DOCU_REGIONS_GPU_API_KEY:-${GPU_OCR_API_KEY:-}}
+      GPU_OCR_RECOGNITION_MODEL: vgg_seq2seq
+      GPU_OCR_AUTHORITY_MODEL: vgg_seq2seq
+      OCR_QUEUE_SIZE: ${OCR_QUEUE_SIZE:-8}
+      OCR_QUEUE_TIMEOUT: ${OCR_QUEUE_TIMEOUT:-120}
+    volumes:
+      - docu-regions-cache:/root/.cache
+      - ./identification_demo/config:/app/identification_demo/config:ro
+    restart: unless-stopped
+
+  namlhn-gpu:
+    profiles: [gpu]
+    build:
+      context: .
+      dockerfile: Dockerfile.namlhn-gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      NAMLHN_GPU_MODEL: ${NAMLHN_GPU_MODEL:-vgg_seq2seq}
+      NAMLHN_GPU_PIPELINE: ${NAMLHN_GPU_PIPELINE:-docu}
+      NAMLHN_GPU_TEXT_ENHANCEMENT: ${NAMLHN_GPU_TEXT_ENHANCEMENT:-adaptive}
+      NAMLHN_GPU_CARD_CROP: ${NAMLHN_GPU_CARD_CROP:-auto}
+      NAMLHN_GPU_CARD_ENHANCEMENT: ${NAMLHN_GPU_CARD_ENHANCEMENT:-adaptive}
+      NAMLHN_GPU_OCR_API_KEY: ${NAMLHN_GPU_OCR_API_KEY:-}
+      NAMLHN_GPU_FAST_DECODE: ${NAMLHN_GPU_FAST_DECODE:-1}
+      OCR_QUEUE_SIZE: ${OCR_QUEUE_SIZE:-8}
+      OCR_QUEUE_TIMEOUT: ${OCR_QUEUE_TIMEOUT:-120}
+    volumes:
+      - namlhn-gpu-cache:/root/.cache
+      - namlhn-gpu-paddle:/root/.paddlex
+      - ./identification_demo/config:/app/identification_demo/config:ro
+    restart: unless-stopped
+
 volumes:
   ocr-cache:
   paddle-models:
   paddle-legacy-models:
   gpu-cache:
+  namlhn-gpu-cache:
+  namlhn-gpu-paddle:
+  docu-regions-cache:

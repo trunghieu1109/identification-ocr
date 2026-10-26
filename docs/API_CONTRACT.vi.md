@@ -1,6 +1,9 @@
 # API contract: đọc thông tin từ hai mặt căn cước
 
-Đối chiếu với mã nguồn ứng dụng phiên bản **0.6.6**, ngày **24/10/2026**.
+Đối chiếu với mã nguồn ứng dụng phiên bản **0.7.0**, ngày **25/10/2026**.
+
+Từ 0.7.0, mức `high` dùng namlhn GPU. Cả hai mức thêm `expiry_date` vào
+`fields` và `field_sources`; `total_fields` tăng từ 11 lên 12.
 
 API nhận ảnh mặt trước và mặt sau của cùng một căn cước, trả một JSON chứa
 thông tin đọc được của người trên thẻ. Đây là contract hiện tại để hệ thống
@@ -70,11 +73,12 @@ base64 thay thế.
 | `source` | string | `"qr_ocr"` |
 | `quality` | string | Mức xử lý được chọn: `medium` hoặc `high` |
 | `status` | string | `complete`, `partial` hoặc `no_text` |
-| `fields` | object | Luôn có đủ 11 key thông tin tại mục 4 |
-| `field_sources` | object | Có cùng 11 key; giá trị là nguồn dữ liệu hoặc `null` |
+| `fields` | object | Luôn có đủ 12 key thông tin tại mục 4 |
+| `field_sources` | object | Có cùng 12 key; giá trị là nguồn dữ liệu hoặc `null` |
 | `missing_fields` | string[] | Tên các trường chưa đọc được, không tính `old_id_number` và `identifying_features` |
-| `recognized_fields` | integer | Số trường có giá trị khác `""`, có tính `old_id_number`; từ 0 đến 10 (key đặc điểm nhân dạng được giữ trống) |
-| `total_fields` | integer | Luôn là `11` |
+| `recognized_fields` | integer | Số trường có giá trị khác `""`, có tính `old_id_number`; từ 0 đến 11 (key đặc điểm nhân dạng được giữ trống) |
+| `total_fields` | integer | Luôn là `12` |
+| `expiry` | object | `status`: `found`, `not_found`, `conflict`; `expiry_type`: `date`, `unlimited` hoặc `null`; `label_found`: boolean; `side`: `front`, `back` hoặc `null` |
 | `qr` | object | Trạng thái đọc QR, số trường lấy từ QR và trạng thái từng ảnh |
 | `ocr` | object | Trạng thái OCR và các trường được bổ sung cho từng mặt |
 | `ocr_engine` | object | Metadata bộ xử lý OCR |
@@ -86,13 +90,14 @@ base64 thay thế.
 
 Quy ước trạng thái:
 
-- `complete`: đủ 9 trường ngoài `old_id_number` và `identifying_features`.
-  `recognized_fields` có thể là **9 hoặc 10**; tổng key vẫn là 11.
+- `complete`: đủ 10 trường ngoài `old_id_number` và `identifying_features`.
+  Thẻ không thời hạn không bắt buộc có giá trị `expiry_date`.
+  `recognized_fields` có thể là **9, 10 hoặc 11**; tổng key là 12.
 - `partial`: có ít nhất một trường đọc được và còn thiếu trường bắt buộc,
   hoặc cơ quan cấp mới đọc được một phần (`authority_region.status: "partial"`).
   Trường hợp thứ hai vẫn giữ giá trị và nguồn OCR; `missing_fields` có thể rỗng.
 - `no_text`: không có trường nào đọc được, `recognized_fields = 0`;
-  `fields` vẫn chứa đủ 11 key với giá trị `""`.
+  `fields` vẫn chứa đủ 12 key với giá trị `""`.
 
 `request_timings_ms.receive_upload` đo đến khi ứng dụng đã nhận hết body;
 bao gồm thời gian parse các chunk multipart trong lúc nhận.
@@ -133,6 +138,19 @@ Tất cả giá trị trong `fields` đều là **string**. Trường chưa đ�
 | `issue_date` | Ngày cấp, dạng `DD/MM/YYYY`; không đọc được trả `""` |
 | `issuing_authority` | Tên cơ quan cấp đọc được trên thẻ; từ 0.6.0 bỏ chức danh người ký như Cục trưởng/Giám đốc/KT. |
 | `identifying_features` | Đặc điểm nhân dạng; API chung luôn trả `""`, nguồn `null`, không yêu cầu OCR bổ sung |
+| `expiry_date` | Ngày hết hạn dạng `DD/MM/YYYY`, đọc từ nhãn và ngày tương ứng trên một trong hai mặt; chưa đọc được hoặc mâu thuẫn trả `""` |
+
+`id_number` từ OCR giữ cả ứng viên sai độ dài/ký tự; không tự cắt về 12 chữ số.
+`ocr.front.id_number_validation` phân biệt `format_valid`, `unverified`,
+`ambiguous`; kiểm tra định dạng không chứng minh OCR đúng. Metadata
+`ocr.<side>.image_preprocessing` mô tả crop/hiệu chỉnh ảnh thực sự đã dùng.
+Xem [chi tiết hành vi mới](CARD_PREPROCESSING.vi.md).
+
+Ngày hết hạn được lấy trong cùng lượt OCR hai mặt, không gọi thêm lượt OCR riêng.
+Không dùng ngày sinh/ngày cấp hoặc một ngày đứng riêng để điền `expiry_date`.
+Nếu hai mặt hoặc các lượt đọc cho kết quả khác nhau, `expiry.status: "conflict"`,
+nguồn là `null` và trường nằm trong `missing_fields`. Nếu thẻ ghi không thời hạn,
+`expiry.expiry_type: "unlimited"`, giá trị ngày là `""` và không tính là thiếu.
 
 `date_of_birth` từ QR và bộ xử lý GPU được chuẩn hóa thành `DD/MM/YYYY`.
 Nhánh OCR CPU hiện giữ chuỗi ngày sinh do bộ nhận dạng trả về; client cần
@@ -181,16 +199,18 @@ QR căn cước được hỗ trợ hiện chứa tối đa 7 trường: `id_num
 `qr.status: "complete"` và `ocr.<side>.status: "complete"` chỉ mô tả bước
 tương ứng; trạng thái chung của kết quả luôn nằm ở `status` cấp ngoài cùng.
 
-Hiện `medium` trả `ocr_engine.provider: "namlhn/vietnam-cccd-ocr"`;
-`high` trả `"CaoAnhNato/vn-identity-card-ocr"`. Các giá trị provider, thời gian,
+Hiện cả `medium` và `high` trả `ocr_engine.provider: "namlhn/vietnam-cccd-ocr"`;
+thiết bị lần lượt là `cpu` và `cuda`. Các giá trị provider, thời gian,
 nội dung thông báo và kết quả đọc là dữ liệu của từng lần xử lý, có thể thay đổi
 khi cải thiện bộ xử lý. Client dùng các trạng thái và key đã mô tả để xử lý.
 
-Từ `0.6.4`, mức GPU mặc định dùng chung Seq2Seq cho chữ thông thường và các
-crop đọc bổ sung cơ quan cấp, cùng instance CUDA. Không nạp Transformer riêng
-hoặc gọi luồng OCR CPU để đọc cơ quan cấp. `GET /api/health` có
-`ocr_profiles.high.recognition_model` và `authority_recognition_model` khi
-worker cung cấp các thông tin này. Schema trường và ưu tiên QR giữ nguyên.
+Mức GPU dùng worker namlhn: Paddle tìm dòng và DocU VietOCR Seq2Seq đọc chữ,
+`recognition_model: "vgg_seq2seq"`, `strategy: "namlhn_docu_v1"`.
+Không gọi luồng CPU để đọc cơ quan cấp.
+`GET /api/health` có `ocr_profiles.high.recognition_model`, `strategy` và
+`text_enhancement`; response có model và chiến lược thực tế trong `ocr_engine`.
+`recognition_provider` và `recognition_device` mô tả bộ nhận dạng thực tế;
+detector/crop và ưu tiên QR giữ nguyên.
 
 Các metadata tùy chọn đã có trong implementation:
 
@@ -284,7 +304,8 @@ Dữ liệu người và thời gian dưới đây là minh họa.
     "place_of_residence": "Phường Thử, Hà Nội",
     "issue_date": "15/03/2021",
     "issuing_authority": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
-    "identifying_features": ""
+    "identifying_features": "",
+    "expiry_date": "25/10/2036"
   },
   "field_sources": {
     "id_number": "qr_front",
@@ -297,7 +318,8 @@ Dữ liệu người và thời gian dưới đây là minh họa.
     "place_of_residence": "qr_front",
     "issue_date": "qr_front",
     "issuing_authority": "ocr_back",
-    "identifying_features": null
+    "identifying_features": null,
+    "expiry_date": "ocr_front"
   },
   "missing_fields": [],
   "qr": {
@@ -311,16 +333,17 @@ Dữ liệu người và thời gian dưới đây là minh họa.
   "ocr": {
     "front": {
       "status": "complete",
-      "filled_fields": ["nationality", "place_of_origin"]
+      "filled_fields": ["nationality", "place_of_origin", "expiry_date"]
     },
     "back": {
       "status": "complete",
       "filled_fields": ["issuing_authority"]
     }
   },
+  "expiry": {"status": "found", "expiry_type": "date", "label_found": true, "side": "front"},
   "warnings": [],
-  "recognized_fields": 10,
-  "total_fields": 11,
+  "recognized_fields": 11,
+  "total_fields": 12,
   "processing_time_ms": 1234,
   "timings_ms": {"image_decode": 40, "qr_front": 15, "qr_back": 5, "ocr_front": 700, "ocr_back": 470, "merge": 4, "total": 1234},
   "request_id": "0123456789abcdef0123456789abcdef"

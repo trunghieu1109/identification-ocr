@@ -1,0 +1,13 @@
+# Main GPU worker; keep its CUDA dependencies separate from the CPU service.
+# The base can be rebuilt with Dockerfile.benchmark-gpu when not present locally.
+ARG NAMLHN_GPU_BASE_IMAGE=identification-ocr-benchmark-gpu:experiment
+FROM ${NAMLHN_GPU_BASE_IMAGE}
+COPY identification_demo /app/identification_demo
+ENV OCR_DEVICE=cuda OCR_MODEL=vgg_transformer OCR_DEFAULT_QUALITY=high
+ENV NAMLHN_GPU_MODEL=vgg_seq2seq NAMLHN_GPU_PIPELINE=docu
+ENV NAMLHN_GPU_TEXT_ENHANCEMENT=adaptive
+ENTRYPOINT []
+HEALTHCHECK --interval=15s --timeout=5s --start-period=90s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8082/api/v1/health/ready', timeout=4)"
+EXPOSE 8082
+CMD ["python", "-m", "uvicorn", "identification_demo.namlhn_gpu_worker:app", "--host", "0.0.0.0", "--port", "8082"]

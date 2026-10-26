@@ -1,0 +1,1045 @@
+{
+  "created_at": "2026-10-25T08:50:31.317821+00:00",
+  "engine": "namlhn",
+  "model": "vgg_seq2seq",
+  "environment": {
+    "python": "3.11.17",
+    "torch": "2.7.1+cu128",
+    "torch_cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5060",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "gpu_total_mb": 7706,
+    "cpu_threads": 4,
+    "paddle": "3.2.2",
+    "paddle_cuda": "12.9",
+    "paddleocr": "3.7.0",
+    "recognizer_device": "cuda:0",
+    "paddle_device": "gpu:0",
+    "paddle_ocr_device": "gpu:0",
+    "paddle_models": {
+      "text_detection_model_name": "PP-OCRv6_medium_det",
+      "text_recognition_model_name": "PP-OCRv6_medium_rec"
+    }
+  },
+  "checkpoint_sha256": "0921503a41375a0584268e23ef3d414ea478a8fe8777865c7745d38f2d0bc5db",
+  "dataset": [
+    {
+      "name": "expiry-front",
+      "images": {
+        "front": {
+          "file": "front-expiry-1.png",
+          "sha256": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+          "size": [
+            1200,
+            760
+          ],
+          "bytes": 71853
+        },
+        "back": {
+          "file": "back-expiry-0.png",
+          "sha256": "9fc4a717b106624aad008b8b4e1be6c274fce448f83c65e014eb1294b1948e82",
+          "size": [
+            1200,
+            760
+          ],
+          "bytes": 37139
+        }
+      }
+    },
+    {
+      "name": "expiry-back",
+      "images": {
+        "front": {
+          "file": "front-expiry-0.png",
+          "sha256": "8ab42db0bdd4eaab05e76caa8fafdd0b4e67ce78fcde53f0e31b4b539efe2845",
+          "size": [
+            1200,
+            760
+          ],
+          "bytes": 61173
+        },
+        "back": {
+          "file": "back-expiry-1.png",
+          "sha256": "6fbcdaff9710aa156dd73f8f31a15e0f1d37dc0ab45b7b7b64d391544e021889",
+          "size": [
+            1200,
+            760
+          ],
+          "bytes": 47362
+        }
+      }
+    }
+  ],
+  "scope": "predecoded RGB images; no HTTP, upload, QR or image decode; sequential sides; CUDA synchronized",
+  "requested_fields": {
+    "front": [
+      "id_number",
+      "name",
+      "date_of_birth",
+      "gender",
+      "nationality",
+      "place_of_origin",
+      "place_of_residence"
+    ],
+    "back": [
+      "issue_date",
+      "issuing_authority"
+    ]
+  },
+  "initialization_ms": 6538.2,
+  "first_pair": {
+    "pair": "expiry-front",
+    "pair_ms": 1355.15,
+    "pair_wall_ms": 1356.28,
+    "sides_ms": {
+      "front": 1096.31,
+      "back": 258.84
+    },
+    "checks": {
+      "front": {
+        "nonempty_fields": [
+          "id_number",
+          "name",
+          "date_of_birth",
+          "gender",
+          "nationality",
+          "place_of_origin",
+          "place_of_residence"
+        ],
+        "expected_matches": {
+          "id_number": true,
+          "name": false,
+          "date_of_birth": true,
+          "gender": true,
+          "nationality": true,
+          "place_of_origin": true,
+          "place_of_residence": true
+        },
+        "expiry_values": [
+          "25/10/2036"
+        ],
+        "ocr_line_count": 10
+      },
+      "back": {
+        "nonempty_fields": [
+          "issue_date",
+          "issuing_authority",
+          "identifying_features"
+        ],
+        "expected_matches": {
+          "issue_date": true,
+          "issuing_authority": true
+        },
+        "expiry_values": [],
+        "ocr_line_count": 4
+      }
+    },
+    "timings_ms": {
+      "front": {
+        "preprocess": 95.61,
+        "paddle_detect_recognize": 704.06,
+        "metadata": 1.8,
+        "vietocr_reread": 292.98,
+        "model_init": 0.0,
+        "queue_wait": 0.06,
+        "inference": 1095.98
+      },
+      "back": {
+        "preprocess": 13.67,
+        "paddle_detect_recognize": 111.6,
+        "metadata": 2.48,
+        "vietocr_reread": 130.35,
+        "model_init": 0.0,
+        "queue_wait": 0.05,
+        "inference": 258.56
+      }
+    },
+    "work": {
+      "front": {
+        "primary_regions": 10,
+        "reread_regions": 3,
+        "reread_batches": 1,
+        "full_image_attempts": 1
+      },
+      "back": {
+        "primary_regions": 4,
+        "reread_regions": 4,
+        "reread_batches": 1,
+        "full_image_attempts": 1
+      }
+    }
+  },
+  "warmup_rounds": 2,
+  "repeats": 5,
+  "summary": {
+    "all_pairs": {
+      "median_ms": 388.29,
+      "mean_ms": 387.9,
+      "min_ms": 349.42,
+      "max_ms": 425.92,
+      "p95_ms": 425.92
+    },
+    "by_pair": {
+      "expiry-front": {
+        "median_ms": 424.19,
+        "mean_ms": 424.68,
+        "min_ms": 423.69,
+        "max_ms": 425.92,
+        "p95_ms": 425.92
+      },
+      "expiry-back": {
+        "median_ms": 351.06,
+        "mean_ms": 351.13,
+        "min_ms": 349.42,
+        "max_ms": 352.9,
+        "p95_ms": 352.9
+      }
+    },
+    "by_side": {
+      "front": {
+        "median_ms": 212.81,
+        "mean_ms": 212.58,
+        "min_ms": 207.69,
+        "max_ms": 217.14,
+        "p95_ms": 217.14
+      },
+      "back": {
+        "median_ms": 175.25,
+        "mean_ms": 175.32,
+        "min_ms": 141.29,
+        "max_ms": 209.27,
+        "p95_ms": 209.27
+      }
+    }
+  },
+  "samples": [
+    {
+      "repeat": 1,
+      "pair": "expiry-front",
+      "pair_ms": 425.92,
+      "pair_wall_ms": 426.75,
+      "sides_ms": {
+        "front": 217.14,
+        "back": 208.78
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 10
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority",
+            "identifying_features"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.53,
+          "paddle_detect_recognize": 121.02,
+          "metadata": 0.63,
+          "vietocr_reread": 86.65,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 216.93
+        },
+        "back": {
+          "preprocess": 8.5,
+          "paddle_detect_recognize": 80.83,
+          "metadata": 1.6,
+          "vietocr_reread": 117.24,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 208.62
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "reread_regions": 4,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 1,
+      "pair": "expiry-back",
+      "pair_ms": 351.06,
+      "pair_wall_ms": 351.87,
+      "sides_ms": {
+        "front": 209.47,
+        "back": 141.59
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 6
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.9,
+          "paddle_detect_recognize": 112.93,
+          "metadata": 0.57,
+          "vietocr_reread": 86.78,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 209.28
+        },
+        "back": {
+          "preprocess": 8.42,
+          "paddle_detect_recognize": 100.23,
+          "metadata": 2.49,
+          "vietocr_reread": 29.7,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 141.43
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 8,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 1,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "pair": "expiry-front",
+      "pair_ms": 424.19,
+      "pair_wall_ms": 424.98,
+      "sides_ms": {
+        "front": 214.92,
+        "back": 209.27
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 10
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority",
+            "identifying_features"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.33,
+          "paddle_detect_recognize": 119.22,
+          "metadata": 0.63,
+          "vietocr_reread": 86.49,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 214.77
+        },
+        "back": {
+          "preprocess": 8.29,
+          "paddle_detect_recognize": 81.42,
+          "metadata": 1.56,
+          "vietocr_reread": 117.39,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 209.11
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "reread_regions": 4,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "pair": "expiry-back",
+      "pair_ms": 349.42,
+      "pair_wall_ms": 350.18,
+      "sides_ms": {
+        "front": 207.69,
+        "back": 141.73
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 6
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.14,
+          "paddle_detect_recognize": 112.47,
+          "metadata": 0.54,
+          "vietocr_reread": 86.26,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 207.52
+        },
+        "back": {
+          "preprocess": 8.32,
+          "paddle_detect_recognize": 100.41,
+          "metadata": 2.5,
+          "vietocr_reread": 29.75,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 141.58
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 8,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 1,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "pair": "expiry-front",
+      "pair_ms": 425.4,
+      "pair_wall_ms": 426.22,
+      "sides_ms": {
+        "front": 216.13,
+        "back": 209.27
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 10
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority",
+            "identifying_features"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.34,
+          "paddle_detect_recognize": 120.14,
+          "metadata": 0.64,
+          "vietocr_reread": 86.73,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 215.94
+        },
+        "back": {
+          "preprocess": 8.28,
+          "paddle_detect_recognize": 81.42,
+          "metadata": 1.57,
+          "vietocr_reread": 117.37,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 209.1
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "reread_regions": 4,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "pair": "expiry-back",
+      "pair_ms": 352.9,
+      "pair_wall_ms": 353.69,
+      "sides_ms": {
+        "front": 210.32,
+        "back": 142.58
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 6
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.45,
+          "paddle_detect_recognize": 113.73,
+          "metadata": 0.59,
+          "vietocr_reread": 87.28,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 210.15
+        },
+        "back": {
+          "preprocess": 8.32,
+          "paddle_detect_recognize": 101.27,
+          "metadata": 2.47,
+          "vietocr_reread": 29.71,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 142.37
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 8,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 1,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 4,
+      "pair": "expiry-front",
+      "pair_ms": 424.18,
+      "pair_wall_ms": 425.02,
+      "sides_ms": {
+        "front": 215.95,
+        "back": 208.23
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 10
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority",
+            "identifying_features"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.3,
+          "paddle_detect_recognize": 120.77,
+          "metadata": 0.63,
+          "vietocr_reread": 85.91,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 215.73
+        },
+        "back": {
+          "preprocess": 8.21,
+          "paddle_detect_recognize": 81.25,
+          "metadata": 1.61,
+          "vietocr_reread": 116.51,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 208.01
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "reread_regions": 4,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 4,
+      "pair": "expiry-back",
+      "pair_ms": 350.3,
+      "pair_wall_ms": 351.0,
+      "sides_ms": {
+        "front": 207.74,
+        "back": 142.56
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 6
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.23,
+          "paddle_detect_recognize": 112.4,
+          "metadata": 0.53,
+          "vietocr_reread": 86.29,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 207.54
+        },
+        "back": {
+          "preprocess": 8.12,
+          "paddle_detect_recognize": 101.44,
+          "metadata": 2.49,
+          "vietocr_reread": 29.7,
+          "model_init": 0.0,
+          "queue_wait": 0.06,
+          "inference": 142.33
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 8,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 1,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 5,
+      "pair": "expiry-front",
+      "pair_ms": 423.69,
+      "pair_wall_ms": 424.49,
+      "sides_ms": {
+        "front": 215.77,
+        "back": 207.92
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 10
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority",
+            "identifying_features"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.36,
+          "paddle_detect_recognize": 120.02,
+          "metadata": 0.62,
+          "vietocr_reread": 86.47,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 215.57
+        },
+        "back": {
+          "preprocess": 8.17,
+          "paddle_detect_recognize": 81.37,
+          "metadata": 1.7,
+          "vietocr_reread": 115.99,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 207.68
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "reread_regions": 4,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    },
+    {
+      "repeat": 5,
+      "pair": "expiry-back",
+      "pair_ms": 351.98,
+      "pair_wall_ms": 352.79,
+      "sides_ms": {
+        "front": 210.69,
+        "back": 141.29
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 6
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 8.06,
+          "paddle_detect_recognize": 116.27,
+          "metadata": 0.59,
+          "vietocr_reread": 85.46,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 210.5
+        },
+        "back": {
+          "preprocess": 8.26,
+          "paddle_detect_recognize": 100.12,
+          "metadata": 2.51,
+          "vietocr_reread": 29.63,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 141.1
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 8,
+          "reread_regions": 3,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 1,
+          "reread_batches": 1,
+          "full_image_attempts": 1
+        }
+      }
+    }
+  ]
+}

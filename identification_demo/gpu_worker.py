@@ -413,7 +413,7 @@ class DocULocalEngine:
         return payload
 
 
-def create_gpu_app(engine=None, restoration_engine=None):
+def create_gpu_app(engine=None, restoration_engine=None, extra_front_fields=()):
     engine = engine if engine is not None else DocULocalEngine()
     from .qr_restoration_worker import QRRestorationEngine, add_restoration_routes
     restoration = restoration_engine if restoration_engine is not None else QRRestorationEngine(queue=getattr(engine, "_queue", None))
@@ -456,6 +456,8 @@ def create_gpu_app(engine=None, restoration_engine=None):
             side = doc_type_hint.removeprefix("cccd_")
             needed = fields.split(",") if fields is not None else None
             allowed = {key for key, *_ in (BACK_FIELDS if side == "back" else FRONT_FIELDS)}
+            if side == "front":
+                allowed.update(extra_front_fields)
             if needed is not None and (not needed or not set(needed) <= allowed):
                 raise InvalidImage("Danh sách trường OCR không hợp lệ.")
             return await run_in_threadpool(process_upload, data, engine, side, needed)

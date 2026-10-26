@@ -1,0 +1,20 @@
+{
+  "packages": {
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "paddlepaddle-gpu": "3.2.2",
+    "paddleocr": "3.7.0",
+    "paddlex": "3.7.2",
+    "vietocr": "0.3.13",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "opencv-contrib-python": "4.10.0.84",
+    "nvidia-cublas-cu12": "12.9.0.13",
+    "nvidia-cudnn-cu12": "9.9.0.52",
+    "nvidia-cusparselt-cu12": "0.7.1"
+  },
+  "namlhn_revision": "2d951ac603a43677572ff39ed6a21bdebe622263",
+  "docu_revision": "7b98e5ef984f55c9f23f896e67c93c1be0aabddc",
+  "image_id": "sha256:69a7ed02905f0a2bce62cff7c1658b59908965a98272381a9284039831ffc207",
+  "gpu_driver": "NVIDIA GeForce RTX 5060, 580.178.04"
+}

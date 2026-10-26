@@ -1,0 +1,4711 @@
+{
+  "scope": "Synthetic GPU smoke, predecoded pixels, no HTTP/QR",
+  "runs": [
+    {
+      "case": "expiry-front",
+      "repeat": 0,
+      "pair_ms": 605.62,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "stages": {
+        "front": {
+          "structured_fields": {
+            "id_number": "001099000001",
+            "name": "NGUYỄN VĂN THỬ",
+            "date_of_birth": "01/02/1999",
+            "gender": "Nam",
+            "nationality": "Việt Nam",
+            "place_of_origin": "Hà Nội",
+            "place_of_residence": "Hà Nội"
+          },
+          "document_side": "front",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9022700265262965,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700200961187,
+              "confidence": 0.8638700200961187,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  114.0
+                ],
+                [
+                  442.48021108179415,
+                  114.0
+                ],
+                [
+                  442.48021108179415,
+                  155.16666666666666
+                ],
+                [
+                  43.53562005277045,
+                  155.16666666666666
+                ]
+              ],
+              "detection_score": 0.9305464868507738,
+              "text": "Số / No.001099000001",
+              "score": 0.6398109990358353,
+              "confidence": 0.6398109990358353,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  39.577836411609496,
+                  177.33333333333331
+                ],
+                [
+                  710.8179419525065,
+                  173.375
+                ],
+                [
+                  711.6094986807387,
+                  226.41666666666666
+                ],
+                [
+                  40.369393139841684,
+                  230.375
+                ]
+              ],
+              "detection_score": 0.8499859828820896,
+              "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+              "score": 0.8513979058007937,
+              "confidence": 0.8513979058007937,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  254.125
+                ],
+                [
+                  652.2427440633245,
+                  254.125
+                ],
+                [
+                  652.2427440633245,
+                  298.4583333333333
+                ],
+                [
+                  43.53562005277045,
+                  298.4583333333333
+                ]
+              ],
+              "detection_score": 0.8832481939288702,
+              "text": "Ngày sinh / Date of birth: 01/02/1999",
+              "score": 0.8538041565869305,
+              "confidence": 0.8538041565869305,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  44.327176781002635,
+                  322.2083333333333
+                ],
+                [
+                  373.61477572559363,
+                  325.375
+                ],
+                [
+                  373.61477572559363,
+                  367.3333333333333
+                ],
+                [
+                  43.53562005277045,
+                  364.9583333333333
+                ]
+              ],
+              "detection_score": 0.8673171729942806,
+              "text": "Giới tính / Sex: Nam",
+              "score": 0.8372805655002594,
+              "confidence": 0.8372805655002594,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  393.4583333333333
+                ],
+                [
+                  577.8364116094987,
+                  393.4583333333333
+                ],
+                [
+                  577.8364116094987,
+                  438.5833333333333
+                ],
+                [
+                  43.53562005277045,
+                  438.5833333333333
+                ]
+              ],
+              "detection_score": 0.912778520924894,
+              "text": "Quốc tịch / Nationality: Việt Nam",
+              "score": 0.8559628138036439,
+              "confidence": 0.8559628138036439,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  461.54166666666663
+                ],
+                [
+                  597.6253298153034,
+                  461.54166666666663
+                ],
+                [
+                  597.6253298153034,
+                  509.8333333333333
+                ],
+                [
+                  43.53562005277045,
+                  509.8333333333333
+                ]
+              ],
+              "detection_score": 0.8825261633839524,
+              "text": "Quê quán / Place of origin: Hà Nội",
+              "score": 0.849044498275308,
+              "confidence": 0.849044498275308,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  533.5833333333333
+                ],
+                [
+                  736.1477572559367,
+                  533.5833333333333
+                ],
+                [
+                  736.1477572559367,
+                  578.7083333333333
+                ],
+                [
+                  42.74406332453825,
+                  578.7083333333333
+                ]
+              ],
+              "detection_score": 0.9148291105718528,
+              "text": "Nơi thường trú / Place of residence: Hà Nội",
+              "score": 0.8585615934327592,
+              "confidence": 0.8585615934327592,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  600.0833333333333
+                ],
+                [
+                  537.467018469657,
+                  602.4583333333333
+                ],
+                [
+                  537.467018469657,
+                  652.3333333333333
+                ],
+                [
+                  41.16094986807388,
+                  649.9583333333333
+                ]
+              ],
+              "detection_score": 0.8327666588256657,
+              "text": "Có giá trị đến / Date of expiry",
+              "score": 0.8525829050810106,
+              "confidence": 0.8525829050810106,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  656.2916666666666
+                ],
+                [
+                  239.05013192612137,
+                  656.2916666666666
+                ],
+                [
+                  239.05013192612137,
+                  699.0416666666666
+                ],
+                [
+                  42.74406332453825,
+                  699.0416666666666
+                ]
+              ],
+              "detection_score": 0.9293735383954995,
+              "text": "25/10/2036",
+              "score": 0.9030568897724152,
+              "confidence": 0.9030568897724152,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 41.18,
+            "paddle_detection": 27.08,
+            "line_crops": 2.99,
+            "docu_recognition": 296.05,
+            "metadata": 0.36,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 368.28
+          },
+          "work": {
+            "primary_regions": 10,
+            "recognized_regions": 10,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "structured_fields": {
+            "issue_date": "15/03/2021",
+            "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+            "identifying_features": "Nốt ruồi má trái"
+          },
+          "document_side": "back",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9034696168954076,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700292660639,
+              "confidence": 0.8638700292660639,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  157.54166666666666
+                ],
+                [
+                  42.74406332453825,
+                  157.54166666666666
+                ]
+              ],
+              "detection_score": 0.9450761541993198,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8770110739601983,
+              "confidence": 0.8770110739601983,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  179.70833333333331
+                ],
+                [
+                  653.8258575197889,
+                  228.79166666666666
+                ],
+                [
+                  42.74406332453825,
+                  231.16666666666666
+                ]
+              ],
+              "detection_score": 0.8458048025587658,
+              "text": "Ngày cấp / Date of issue: 15/03/2021",
+              "score": 0.850078867127498,
+              "confidence": 0.850078867127498,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  250.16666666666666
+                ],
+                [
+                  656.2005277044855,
+                  246.20833333333331
+                ],
+                [
+                  656.2005277044855,
+                  296.0833333333333
+                ],
+                [
+                  41.16094986807388,
+                  300.04166666666663
+                ]
+              ],
+              "detection_score": 0.8856914231577094,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8411059703897027,
+              "confidence": 0.8411059703897027,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 41.21,
+            "paddle_detection": 27.12,
+            "line_crops": 1.51,
+            "docu_recognition": 149.21,
+            "metadata": 1.06,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 220.72
+          },
+          "work": {
+            "primary_regions": 4,
+            "recognized_regions": 4,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "initial_text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9034696168954076,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700292660639,
+              "confidence": 0.8638700292660639,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  157.54166666666666
+                ],
+                [
+                  42.74406332453825,
+                  157.54166666666666
+                ]
+              ],
+              "detection_score": 0.9450761541993198,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8770110739601983,
+              "confidence": 0.8770110739601983,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  179.70833333333331
+                ],
+                [
+                  653.8258575197889,
+                  228.79166666666666
+                ],
+                [
+                  42.74406332453825,
+                  231.16666666666666
+                ]
+              ],
+              "detection_score": 0.8458048025587658,
+              "text": "Ngày cấp / Date of issue: 15/03/2021",
+              "score": 0.850078867127498,
+              "confidence": 0.850078867127498,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  250.16666666666666
+                ],
+                [
+                  656.2005277044855,
+                  246.20833333333331
+                ],
+                [
+                  656.2005277044855,
+                  296.0833333333333
+                ],
+                [
+                  41.16094986807388,
+                  300.04166666666663
+                ]
+              ],
+              "detection_score": 0.8856914231577094,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8411059703897027,
+              "confidence": 0.8411059703897027,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              41.16,
+              246.21,
+              656.2,
+              300.04
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          }
+        }
+      }
+    },
+    {
+      "case": "expiry-front",
+      "repeat": 1,
+      "pair_ms": 602.43,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "stages": {
+        "front": {
+          "structured_fields": {
+            "id_number": "001099000001",
+            "name": "NGUYỄN VĂN THỬ",
+            "date_of_birth": "01/02/1999",
+            "gender": "Nam",
+            "nationality": "Việt Nam",
+            "place_of_origin": "Hà Nội",
+            "place_of_residence": "Hà Nội"
+          },
+          "document_side": "front",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9022700265262965,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700200961187,
+              "confidence": 0.8638700200961187,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  114.0
+                ],
+                [
+                  442.48021108179415,
+                  114.0
+                ],
+                [
+                  442.48021108179415,
+                  155.16666666666666
+                ],
+                [
+                  43.53562005277045,
+                  155.16666666666666
+                ]
+              ],
+              "detection_score": 0.9305464868507738,
+              "text": "Số / No.001099000001",
+              "score": 0.6398109990358353,
+              "confidence": 0.6398109990358353,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  39.577836411609496,
+                  177.33333333333331
+                ],
+                [
+                  710.8179419525065,
+                  173.375
+                ],
+                [
+                  711.6094986807387,
+                  226.41666666666666
+                ],
+                [
+                  40.369393139841684,
+                  230.375
+                ]
+              ],
+              "detection_score": 0.8499859828820896,
+              "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+              "score": 0.8513979058007937,
+              "confidence": 0.8513979058007937,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  254.125
+                ],
+                [
+                  652.2427440633245,
+                  254.125
+                ],
+                [
+                  652.2427440633245,
+                  298.4583333333333
+                ],
+                [
+                  43.53562005277045,
+                  298.4583333333333
+                ]
+              ],
+              "detection_score": 0.8832481939288702,
+              "text": "Ngày sinh / Date of birth: 01/02/1999",
+              "score": 0.8538041565869305,
+              "confidence": 0.8538041565869305,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  44.327176781002635,
+                  322.2083333333333
+                ],
+                [
+                  373.61477572559363,
+                  325.375
+                ],
+                [
+                  373.61477572559363,
+                  367.3333333333333
+                ],
+                [
+                  43.53562005277045,
+                  364.9583333333333
+                ]
+              ],
+              "detection_score": 0.8673171729942806,
+              "text": "Giới tính / Sex: Nam",
+              "score": 0.8372805655002594,
+              "confidence": 0.8372805655002594,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  393.4583333333333
+                ],
+                [
+                  577.8364116094987,
+                  393.4583333333333
+                ],
+                [
+                  577.8364116094987,
+                  438.5833333333333
+                ],
+                [
+                  43.53562005277045,
+                  438.5833333333333
+                ]
+              ],
+              "detection_score": 0.912778520924894,
+              "text": "Quốc tịch / Nationality: Việt Nam",
+              "score": 0.8559628138036439,
+              "confidence": 0.8559628138036439,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  461.54166666666663
+                ],
+                [
+                  597.6253298153034,
+                  461.54166666666663
+                ],
+                [
+                  597.6253298153034,
+                  509.8333333333333
+                ],
+                [
+                  43.53562005277045,
+                  509.8333333333333
+                ]
+              ],
+              "detection_score": 0.8825261633839524,
+              "text": "Quê quán / Place of origin: Hà Nội",
+              "score": 0.849044498275308,
+              "confidence": 0.849044498275308,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  533.5833333333333
+                ],
+                [
+                  736.1477572559367,
+                  533.5833333333333
+                ],
+                [
+                  736.1477572559367,
+                  578.7083333333333
+                ],
+                [
+                  42.74406332453825,
+                  578.7083333333333
+                ]
+              ],
+              "detection_score": 0.9148291105718528,
+              "text": "Nơi thường trú / Place of residence: Hà Nội",
+              "score": 0.8585615934327592,
+              "confidence": 0.8585615934327592,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  600.0833333333333
+                ],
+                [
+                  537.467018469657,
+                  602.4583333333333
+                ],
+                [
+                  537.467018469657,
+                  652.3333333333333
+                ],
+                [
+                  41.16094986807388,
+                  649.9583333333333
+                ]
+              ],
+              "detection_score": 0.8327666588256657,
+              "text": "Có giá trị đến / Date of expiry",
+              "score": 0.8525829050810106,
+              "confidence": 0.8525829050810106,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  656.2916666666666
+                ],
+                [
+                  239.05013192612137,
+                  656.2916666666666
+                ],
+                [
+                  239.05013192612137,
+                  699.0416666666666
+                ],
+                [
+                  42.74406332453825,
+                  699.0416666666666
+                ]
+              ],
+              "detection_score": 0.9293735383954995,
+              "text": "25/10/2036",
+              "score": 0.9030568897724152,
+              "confidence": 0.9030568897724152,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 41.01,
+            "paddle_detection": 27.22,
+            "line_crops": 2.98,
+            "docu_recognition": 295.97,
+            "metadata": 0.37,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 368.17
+          },
+          "work": {
+            "primary_regions": 10,
+            "recognized_regions": 10,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "structured_fields": {
+            "issue_date": "15/03/2021",
+            "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+            "identifying_features": "Nốt ruồi má trái"
+          },
+          "document_side": "back",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9034696168954076,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700292660639,
+              "confidence": 0.8638700292660639,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  157.54166666666666
+                ],
+                [
+                  42.74406332453825,
+                  157.54166666666666
+                ]
+              ],
+              "detection_score": 0.9450761541993198,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8770110739601983,
+              "confidence": 0.8770110739601983,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  179.70833333333331
+                ],
+                [
+                  653.8258575197889,
+                  228.79166666666666
+                ],
+                [
+                  42.74406332453825,
+                  231.16666666666666
+                ]
+              ],
+              "detection_score": 0.8458048025587658,
+              "text": "Ngày cấp / Date of issue: 15/03/2021",
+              "score": 0.850078867127498,
+              "confidence": 0.850078867127498,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  250.16666666666666
+                ],
+                [
+                  656.2005277044855,
+                  246.20833333333331
+                ],
+                [
+                  656.2005277044855,
+                  296.0833333333333
+                ],
+                [
+                  41.16094986807388,
+                  300.04166666666663
+                ]
+              ],
+              "detection_score": 0.8856914231577094,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8411059703897027,
+              "confidence": 0.8411059703897027,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 42.02,
+            "paddle_detection": 26.31,
+            "line_crops": 1.52,
+            "docu_recognition": 146.15,
+            "metadata": 1.01,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 217.6
+          },
+          "work": {
+            "primary_regions": 4,
+            "recognized_regions": 4,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "initial_text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9034696168954076,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700292660639,
+              "confidence": 0.8638700292660639,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  157.54166666666666
+                ],
+                [
+                  42.74406332453825,
+                  157.54166666666666
+                ]
+              ],
+              "detection_score": 0.9450761541993198,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8770110739601983,
+              "confidence": 0.8770110739601983,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  179.70833333333331
+                ],
+                [
+                  653.8258575197889,
+                  228.79166666666666
+                ],
+                [
+                  42.74406332453825,
+                  231.16666666666666
+                ]
+              ],
+              "detection_score": 0.8458048025587658,
+              "text": "Ngày cấp / Date of issue: 15/03/2021",
+              "score": 0.850078867127498,
+              "confidence": 0.850078867127498,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  250.16666666666666
+                ],
+                [
+                  656.2005277044855,
+                  246.20833333333331
+                ],
+                [
+                  656.2005277044855,
+                  296.0833333333333
+                ],
+                [
+                  41.16094986807388,
+                  300.04166666666663
+                ]
+              ],
+              "detection_score": 0.8856914231577094,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8411059703897027,
+              "confidence": 0.8411059703897027,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              41.16,
+              246.21,
+              656.2,
+              300.04
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          }
+        }
+      }
+    },
+    {
+      "case": "expiry-back",
+      "repeat": 0,
+      "pair_ms": 571.46,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [],
+      "stages": {
+        "front": {
+          "structured_fields": {
+            "id_number": "001099000001",
+            "name": "NGUYỄN VĂN THỬ",
+            "date_of_birth": "01/02/1999",
+            "gender": "Nam",
+            "nationality": "Việt Nam",
+            "place_of_origin": "Hà Nội",
+            "place_of_residence": "Hà Nội"
+          },
+          "document_side": "front",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.8961992785749371,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700200961187,
+              "confidence": 0.8638700200961187,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  114.0
+                ],
+                [
+                  442.48021108179415,
+                  114.0
+                ],
+                [
+                  442.48021108179415,
+                  155.16666666666666
+                ],
+                [
+                  43.53562005277045,
+                  155.16666666666666
+                ]
+              ],
+              "detection_score": 0.9266022136710975,
+              "text": "Số / No.001099000001",
+              "score": 0.6398109990358353,
+              "confidence": 0.6398109990358353,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  39.577836411609496,
+                  178.91666666666666
+                ],
+                [
+                  710.8179419525065,
+                  174.95833333333331
+                ],
+                [
+                  711.6094986807387,
+                  224.83333333333331
+                ],
+                [
+                  40.369393139841684,
+                  228.79166666666666
+                ]
+              ],
+              "detection_score": 0.8444064052658741,
+              "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+              "score": 0.8530328048242105,
+              "confidence": 0.8530328048242105,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  254.125
+                ],
+                [
+                  653.8258575197889,
+                  254.125
+                ],
+                [
+                  653.8258575197889,
+                  298.4583333333333
+                ],
+                [
+                  43.53562005277045,
+                  298.4583333333333
+                ]
+              ],
+              "detection_score": 0.8768834687388102,
+              "text": "Ngày sinh / Date of birth: 01/02/1999",
+              "score": 0.8476111087444667,
+              "confidence": 0.8476111087444667,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  44.327176781002635,
+                  322.2083333333333
+                ],
+                [
+                  373.61477572559363,
+                  325.375
+                ],
+                [
+                  373.61477572559363,
+                  367.3333333333333
+                ],
+                [
+                  43.53562005277045,
+                  364.9583333333333
+                ]
+              ],
+              "detection_score": 0.8614410727972324,
+              "text": "Giới tính / Sex: Nam",
+              "score": 0.8372805655002594,
+              "confidence": 0.8372805655002594,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  392.66666666666663
+                ],
+                [
+                  576.2532981530343,
+                  392.66666666666663
+                ],
+                [
+                  576.2532981530343,
+                  437.79166666666663
+                ],
+                [
+                  43.53562005277045,
+                  437.79166666666663
+                ]
+              ],
+              "detection_score": 0.8798190316291216,
+              "text": "Quốc tịch / Nationality: Việt Nam",
+              "score": 0.8477391546422784,
+              "confidence": 0.8477391546422784,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  463.91666666666663
+                ],
+                [
+                  596.042216358839,
+                  463.91666666666663
+                ],
+                [
+                  596.042216358839,
+                  509.04166666666663
+                ],
+                [
+                  45.11873350923482,
+                  509.04166666666663
+                ]
+              ],
+              "detection_score": 0.940837098403128,
+              "text": "Quê quán / Place of origin: Hà Nội",
+              "score": 0.8461080719442928,
+              "confidence": 0.8461080719442928,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  533.5833333333333
+                ],
+                [
+                  736.1477572559367,
+                  533.5833333333333
+                ],
+                [
+                  736.1477572559367,
+                  578.7083333333333
+                ],
+                [
+                  43.53562005277045,
+                  578.7083333333333
+                ]
+              ],
+              "detection_score": 0.9035306486936441,
+              "text": "Nơi thường trú / Place of residence: Hà Nội",
+              "score": 0.864563126896703,
+              "confidence": 0.864563126896703,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 42.04,
+            "paddle_detection": 26.05,
+            "line_crops": 2.47,
+            "docu_recognition": 254.65,
+            "metadata": 0.31,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 326.13
+          },
+          "work": {
+            "primary_regions": 8,
+            "recognized_regions": 8,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "structured_fields": {
+            "issue_date": "15/03/2021",
+            "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+            "identifying_features": "Nốt ruồi má trái"
+          },
+          "document_side": "back",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9052482492836673,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700292660639,
+              "confidence": 0.8638700292660639,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  157.54166666666666
+                ],
+                [
+                  42.74406332453825,
+                  157.54166666666666
+                ]
+              ],
+              "detection_score": 0.9498121941773863,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8770110739601983,
+              "confidence": 0.8770110739601983,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  231.16666666666666
+                ],
+                [
+                  43.53562005277045,
+                  231.16666666666666
+                ]
+              ],
+              "detection_score": 0.846810333172191,
+              "text": "Ngày cấp / Date of issue: 15/03/2021",
+              "score": 0.8455227530664868,
+              "confidence": 0.8455227530664868,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  250.16666666666666
+                ],
+                [
+                  656.2005277044855,
+                  246.20833333333331
+                ],
+                [
+                  656.2005277044855,
+                  296.0833333333333
+                ],
+                [
+                  41.16094986807388,
+                  300.04166666666663
+                ]
+              ],
+              "detection_score": 0.8931388878900028,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8822968825697899,
+              "confidence": 0.8822968825697899,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  319.8333333333333
+                ],
+                [
+                  537.467018469657,
+                  322.2083333333333
+                ],
+                [
+                  537.467018469657,
+                  372.875
+                ],
+                [
+                  41.16094986807388,
+                  369.7083333333333
+                ]
+              ],
+              "detection_score": 0.860202806019952,
+              "text": "Có giá trị đến / Date of expiry",
+              "score": 0.8545069507052822,
+              "confidence": 0.8545069507052822,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  375.25
+                ],
+                [
+                  239.84168865435353,
+                  375.25
+                ],
+                [
+                  239.84168865435353,
+                  421.16666666666663
+                ],
+                [
+                  41.16094986807388,
+                  421.16666666666663
+                ]
+              ],
+              "detection_score": 0.8931423849604746,
+              "text": "25/10/2036",
+              "score": 0.9010375022888184,
+              "confidence": 0.9010375022888184,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 42.17,
+            "paddle_detection": 25.75,
+            "line_crops": 1.96,
+            "docu_recognition": 157.32,
+            "metadata": 1.29,
+            "model_init": 0.0,
+            "queue_wait": 0.03,
+            "inference": 229.09
+          },
+          "work": {
+            "primary_regions": 6,
+            "recognized_regions": 6,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "initial_text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9052482492836673,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700292660639,
+              "confidence": 0.8638700292660639,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  157.54166666666666
+                ],
+                [
+                  42.74406332453825,
+                  157.54166666666666
+                ]
+              ],
+              "detection_score": 0.9498121941773863,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8770110739601983,
+              "confidence": 0.8770110739601983,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  231.16666666666666
+                ],
+                [
+                  43.53562005277045,
+                  231.16666666666666
+                ]
+              ],
+              "detection_score": 0.846810333172191,
+              "text": "Ngày cấp / Date of issue: 15/03/2021",
+              "score": 0.8455227530664868,
+              "confidence": 0.8455227530664868,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  250.16666666666666
+                ],
+                [
+                  656.2005277044855,
+                  246.20833333333331
+                ],
+                [
+                  656.2005277044855,
+                  296.0833333333333
+                ],
+                [
+                  41.16094986807388,
+                  300.04166666666663
+                ]
+              ],
+              "detection_score": 0.8931388878900028,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8822968825697899,
+              "confidence": 0.8822968825697899,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  319.8333333333333
+                ],
+                [
+                  537.467018469657,
+                  322.2083333333333
+                ],
+                [
+                  537.467018469657,
+                  372.875
+                ],
+                [
+                  41.16094986807388,
+                  369.7083333333333
+                ]
+              ],
+              "detection_score": 0.860202806019952,
+              "text": "Có giá trị đến / Date of expiry",
+              "score": 0.8545069507052822,
+              "confidence": 0.8545069507052822,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  375.25
+                ],
+                [
+                  239.84168865435353,
+                  375.25
+                ],
+                [
+                  239.84168865435353,
+                  421.16666666666663
+                ],
+                [
+                  41.16094986807388,
+                  421.16666666666663
+                ]
+              ],
+              "detection_score": 0.8931423849604746,
+              "text": "25/10/2036",
+              "score": 0.9010375022888184,
+              "confidence": 0.9010375022888184,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              41.16,
+              246.21,
+              656.2,
+              300.04
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          }
+        }
+      }
+    },
+    {
+      "case": "expiry-back",
+      "repeat": 1,
+      "pair_ms": 572.14,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [],
+      "stages": {
+        "front": {
+          "structured_fields": {
+            "id_number": "001099000001",
+            "name": "NGUYỄN VĂN THỬ",
+            "date_of_birth": "01/02/1999",
+            "gender": "Nam",
+            "nationality": "Việt Nam",
+            "place_of_origin": "Hà Nội",
+            "place_of_residence": "Hà Nội"
+          },
+          "document_side": "front",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.8961992785749371,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700200961187,
+              "confidence": 0.8638700200961187,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  114.0
+                ],
+                [
+                  442.48021108179415,
+                  114.0
+                ],
+                [
+                  442.48021108179415,
+                  155.16666666666666
+                ],
+                [
+                  43.53562005277045,
+                  155.16666666666666
+                ]
+              ],
+              "detection_score": 0.9266022136710975,
+              "text": "Số / No.001099000001",
+              "score": 0.6398109990358353,
+              "confidence": 0.6398109990358353,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  39.577836411609496,
+                  178.91666666666666
+                ],
+                [
+                  710.8179419525065,
+                  174.95833333333331
+                ],
+                [
+                  711.6094986807387,
+                  224.83333333333331
+                ],
+                [
+                  40.369393139841684,
+                  228.79166666666666
+                ]
+              ],
+              "detection_score": 0.8444064052658741,
+              "text": "Họ và tên / Full name: NGUYỄN VĂN THỬ",
+              "score": 0.8530328048242105,
+              "confidence": 0.8530328048242105,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  254.125
+                ],
+                [
+                  653.8258575197889,
+                  254.125
+                ],
+                [
+                  653.8258575197889,
+                  298.4583333333333
+                ],
+                [
+                  43.53562005277045,
+                  298.4583333333333
+                ]
+              ],
+              "detection_score": 0.8768834687388102,
+              "text": "Ngày sinh / Date of birth: 01/02/1999",
+              "score": 0.8476111087444667,
+              "confidence": 0.8476111087444667,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  44.327176781002635,
+                  322.2083333333333
+                ],
+                [
+                  373.61477572559363,
+                  325.375
+                ],
+                [
+                  373.61477572559363,
+                  367.3333333333333
+                ],
+                [
+                  43.53562005277045,
+                  364.9583333333333
+                ]
+              ],
+              "detection_score": 0.8614410727972324,
+              "text": "Giới tính / Sex: Nam",
+              "score": 0.8372805655002594,
+              "confidence": 0.8372805655002594,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  392.66666666666663
+                ],
+                [
+                  576.2532981530343,
+                  392.66666666666663
+                ],
+                [
+                  576.2532981530343,
+                  437.79166666666663
+                ],
+                [
+                  43.53562005277045,
+                  437.79166666666663
+                ]
+              ],
+              "detection_score": 0.8798190316291216,
+              "text": "Quốc tịch / Nationality: Việt Nam",
+              "score": 0.8477391546422784,
+              "confidence": 0.8477391546422784,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  463.91666666666663
+                ],
+                [
+                  596.042216358839,
+                  463.91666666666663
+                ],
+                [
+                  596.042216358839,
+                  509.04166666666663
+                ],
+                [
+                  45.11873350923482,
+                  509.04166666666663
+                ]
+              ],
+              "detection_score": 0.940837098403128,
+              "text": "Quê quán / Place of origin: Hà Nội",
+              "score": 0.8461080719442928,
+              "confidence": 0.8461080719442928,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  533.5833333333333
+                ],
+                [
+                  736.1477572559367,
+                  533.5833333333333
+                ],
+                [
+                  736.1477572559367,
+                  578.7083333333333
+                ],
+                [
+                  43.53562005277045,
+                  578.7083333333333
+                ]
+              ],
+              "detection_score": 0.9035306486936441,
+              "text": "Nơi thường trú / Place of residence: Hà Nội",
+              "score": 0.864563126896703,
+              "confidence": 0.864563126896703,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 41.9,
+            "paddle_detection": 25.98,
+            "line_crops": 2.48,
+            "docu_recognition": 254.96,
+            "metadata": 0.31,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 326.22
+          },
+          "work": {
+            "primary_regions": 8,
+            "recognized_regions": 8,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "structured_fields": {
+            "issue_date": "15/03/2021",
+            "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+            "identifying_features": "Nốt ruồi má trái"
+          },
+          "document_side": "back",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9052482492836673,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700292660639,
+              "confidence": 0.8638700292660639,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  157.54166666666666
+                ],
+                [
+                  42.74406332453825,
+                  157.54166666666666
+                ]
+              ],
+              "detection_score": 0.9498121941773863,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8770110739601983,
+              "confidence": 0.8770110739601983,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  231.16666666666666
+                ],
+                [
+                  43.53562005277045,
+                  231.16666666666666
+                ]
+              ],
+              "detection_score": 0.846810333172191,
+              "text": "Ngày cấp / Date of issue: 15/03/2021",
+              "score": 0.8455227530664868,
+              "confidence": 0.8455227530664868,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  250.16666666666666
+                ],
+                [
+                  656.2005277044855,
+                  246.20833333333331
+                ],
+                [
+                  656.2005277044855,
+                  296.0833333333333
+                ],
+                [
+                  41.16094986807388,
+                  300.04166666666663
+                ]
+              ],
+              "detection_score": 0.8931388878900028,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8822968825697899,
+              "confidence": 0.8822968825697899,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  319.8333333333333
+                ],
+                [
+                  537.467018469657,
+                  322.2083333333333
+                ],
+                [
+                  537.467018469657,
+                  372.875
+                ],
+                [
+                  41.16094986807388,
+                  369.7083333333333
+                ]
+              ],
+              "detection_score": 0.860202806019952,
+              "text": "Có giá trị đến / Date of expiry",
+              "score": 0.8545069507052822,
+              "confidence": 0.8545069507052822,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  375.25
+                ],
+                [
+                  239.84168865435353,
+                  375.25
+                ],
+                [
+                  239.84168865435353,
+                  421.16666666666663
+                ],
+                [
+                  41.16094986807388,
+                  421.16666666666663
+                ]
+              ],
+              "detection_score": 0.8931423849604746,
+              "text": "25/10/2036",
+              "score": 0.9010375022888184,
+              "confidence": 0.9010375022888184,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 42.02,
+            "paddle_detection": 25.78,
+            "line_crops": 1.94,
+            "docu_recognition": 157.85,
+            "metadata": 1.27,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 229.47
+          },
+          "work": {
+            "primary_regions": 6,
+            "recognized_regions": 6,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "initial_text_lines": [
+            {
+              "box": [
+                [
+                  40.369393139841684,
+                  22.166666666666664
+                ],
+                [
+                  626.1213720316622,
+                  25.333333333333332
+                ],
+                [
+                  626.1213720316622,
+                  84.70833333333333
+                ],
+                [
+                  39.577836411609496,
+                  82.33333333333333
+                ]
+              ],
+              "detection_score": 0.9052482492836673,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8638700292660639,
+              "confidence": 0.8638700292660639,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  112.41666666666666
+                ],
+                [
+                  662.5329815303429,
+                  157.54166666666666
+                ],
+                [
+                  42.74406332453825,
+                  157.54166666666666
+                ]
+              ],
+              "detection_score": 0.9498121941773863,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8770110739601983,
+              "confidence": 0.8770110739601983,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  182.875
+                ],
+                [
+                  653.8258575197889,
+                  231.16666666666666
+                ],
+                [
+                  43.53562005277045,
+                  231.16666666666666
+                ]
+              ],
+              "detection_score": 0.846810333172191,
+              "text": "Ngày cấp / Date of issue: 15/03/2021",
+              "score": 0.8455227530664868,
+              "confidence": 0.8455227530664868,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  250.16666666666666
+                ],
+                [
+                  656.2005277044855,
+                  246.20833333333331
+                ],
+                [
+                  656.2005277044855,
+                  296.0833333333333
+                ],
+                [
+                  41.16094986807388,
+                  300.04166666666663
+                ]
+              ],
+              "detection_score": 0.8931388878900028,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8822968825697899,
+              "confidence": 0.8822968825697899,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  319.8333333333333
+                ],
+                [
+                  537.467018469657,
+                  322.2083333333333
+                ],
+                [
+                  537.467018469657,
+                  372.875
+                ],
+                [
+                  41.16094986807388,
+                  369.7083333333333
+                ]
+              ],
+              "detection_score": 0.860202806019952,
+              "text": "Có giá trị đến / Date of expiry",
+              "score": 0.8545069507052822,
+              "confidence": 0.8545069507052822,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  375.25
+                ],
+                [
+                  239.84168865435353,
+                  375.25
+                ],
+                [
+                  239.84168865435353,
+                  421.16666666666663
+                ],
+                [
+                  41.16094986807388,
+                  421.16666666666663
+                ]
+              ],
+              "detection_score": 0.8931423849604746,
+              "text": "25/10/2036",
+              "score": 0.9010375022888184,
+              "confidence": 0.9010375022888184,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              41.16,
+              246.21,
+              656.2,
+              300.04
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          }
+        }
+      }
+    },
+    {
+      "case": "small-caption",
+      "repeat": 0,
+      "pair_ms": 555.18,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lloc of - Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "stages": {
+        "front": {
+          "structured_fields": {
+            "id_number": "001099000001",
+            "name": "NGUYỄN VĂN THỨ",
+            "date_of_birth": "01/02/1999",
+            "gender": "Nam",
+            "nationality": "Việt Nam",
+            "place_of_origin": "lloc of - Hà Nội",
+            "place_of_residence": "Hà Nội"
+          },
+          "document_side": "front",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  22.166666666666664
+                ],
+                [
+                  509.7625329815303,
+                  25.333333333333332
+                ],
+                [
+                  509.7625329815303,
+                  71.25
+                ],
+                [
+                  42.74406332453825,
+                  68.875
+                ]
+              ],
+              "detection_score": 0.8887535551695304,
+              "text": "CĂN CƯỚC DỮ LIỆU GIẢ LẬP",
+              "score": 0.8725412984689077,
+              "confidence": 0.8725412984689077,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  96.58333333333333
+                ],
+                [
+                  417.1503957783641,
+                  96.58333333333333
+                ],
+                [
+                  417.1503957783641,
+                  133.79166666666666
+                ],
+                [
+                  45.11873350923482,
+                  133.79166666666666
+                ]
+              ],
+              "detection_score": 0.985141638849682,
+              "text": "Số / No: 001099000001",
+              "score": 0.6816455806079118,
+              "confidence": 0.6816455806079118,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  39.577836411609496,
+                  155.16666666666666
+                ],
+                [
+                  673.6147757255936,
+                  151.20833333333331
+                ],
+                [
+                  673.6147757255936,
+                  200.29166666666666
+                ],
+                [
+                  40.369393139841684,
+                  204.25
+                ]
+              ],
+              "detection_score": 0.8529024876934043,
+              "text": "Họ và tên / Full name: NGUYỄN VĂN THỨ",
+              "score": 0.8568601213596962,
+              "confidence": 0.8568601213596962,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  224.83333333333331
+                ],
+                [
+                  615.0395778364116,
+                  224.04166666666666
+                ],
+                [
+                  615.0395778364116,
+                  266.0
+                ],
+                [
+                  42.74406332453825,
+                  267.5833333333333
+                ]
+              ],
+              "detection_score": 0.8602785344404509,
+              "text": "Ngày sinh / Date of birth: 01/02/1999",
+              "score": 0.847078193281148,
+              "confidence": 0.847078193281148,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  287.375
+                ],
+                [
+                  355.4089709762533,
+                  289.75
+                ],
+                [
+                  354.6174142480211,
+                  332.5
+                ],
+                [
+                  42.74406332453825,
+                  330.125
+                ]
+              ],
+              "detection_score": 0.8597200152284281,
+              "text": "Giới tính / Sex: Nam",
+              "score": 0.8301473557949066,
+              "confidence": 0.8301473557949066,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  353.875
+                ],
+                [
+                  547.7572559366754,
+                  354.66666666666663
+                ],
+                [
+                  547.7572559366754,
+                  397.41666666666663
+                ],
+                [
+                  42.74406332453825,
+                  395.8333333333333
+                ]
+              ],
+              "detection_score": 0.8749239389050587,
+              "text": "Quốc tịch / Nationality: Việt Nam",
+              "score": 0.8622233840552244,
+              "confidence": 0.8622233840552244,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  421.16666666666663
+                ],
+                [
+                  561.2137203166227,
+                  421.16666666666663
+                ],
+                [
+                  561.2137203166227,
+                  462.3333333333333
+                ],
+                [
+                  45.11873350923482,
+                  462.3333333333333
+                ]
+              ],
+              "detection_score": 0.9370149756616637,
+              "text": "Quê quán/ lloc of origin: Hà Nội",
+              "score": 0.7241836083121598,
+              "confidence": 0.7241836083121598,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  485.29166666666663
+                ],
+                [
+                  692.6121372031662,
+                  485.29166666666663
+                ],
+                [
+                  692.6121372031662,
+                  526.4583333333333
+                ],
+                [
+                  43.53562005277045,
+                  526.4583333333333
+                ]
+              ],
+              "detection_score": 0.9082292388725516,
+              "text": "Nơi thường trú / Place of residence: Hà Nội",
+              "score": 0.8624022790165835,
+              "confidence": 0.8624022790165835,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  585.0416666666666
+                ],
+                [
+                  135.3562005277045,
+                  585.0416666666666
+                ],
+                [
+                  135.3562005277045,
+                  608.7916666666666
+                ],
+                [
+                  43.53562005277045,
+                  608.7916666666666
+                ]
+              ],
+              "detection_score": 0.9247609387647601,
+              "text": "Có giá trị đến",
+              "score": 0.9000248738697597,
+              "confidence": 0.9000248738697597,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  617.5
+                ],
+                [
+                  226.3852242744063,
+                  617.5
+                ],
+                [
+                  226.3852242744063,
+                  656.2916666666666
+                ],
+                [
+                  42.74406332453825,
+                  656.2916666666666
+                ]
+              ],
+              "detection_score": 0.9213601499028906,
+              "text": "25/10/2036",
+              "score": 0.9029031217098236,
+              "confidence": 0.9029031217098236,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 36.69,
+            "paddle_detection": 25.36,
+            "line_crops": 2.49,
+            "docu_recognition": 281.74,
+            "metadata": 0.33,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 346.65
+          },
+          "work": {
+            "primary_regions": 10,
+            "recognized_regions": 10,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "structured_fields": {
+            "issue_date": "15/03/2021",
+            "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+            "identifying_features": "Nốt ruồi má trái"
+          },
+          "document_side": "back",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  22.166666666666664
+                ],
+                [
+                  565.9630606860158,
+                  25.333333333333332
+                ],
+                [
+                  565.9630606860158,
+                  79.16666666666666
+                ],
+                [
+                  41.16094986807388,
+                  76.0
+                ]
+              ],
+              "detection_score": 0.901328613376199,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8665756560288943,
+              "confidence": 0.8665756560288943,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  153.58333333333331
+                ],
+                [
+                  42.74406332453825,
+                  153.58333333333331
+                ]
+              ],
+              "detection_score": 0.8868832416563877,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8855698721276389,
+              "confidence": 0.8855698721276389,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  170.20833333333331
+                ],
+                [
+                  618.2058047493404,
+                  166.25
+                ],
+                [
+                  618.9973614775726,
+                  212.16666666666666
+                ],
+                [
+                  42.74406332453825,
+                  216.125
+                ]
+              ],
+              "detection_score": 0.8690800091752507,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8874027486890554,
+              "confidence": 0.8874027486890554,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  384.75
+                ],
+                [
+                  45.11873350923482,
+                  384.75
+                ]
+              ],
+              "detection_score": 0.8934884376414824,
+              "text": "15/03/2021",
+              "score": 0.9070575594902038,
+              "confidence": 0.9070575594902038,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  304.79166666666663
+                ],
+                [
+                  432.1899736147757,
+                  302.41666666666663
+                ],
+                [
+                  432.9815303430079,
+                  347.54166666666663
+                ],
+                [
+                  42.74406332453825,
+                  349.91666666666663
+                ]
+              ],
+              "detection_score": 0.8748789470321093,
+              "text": "Ngày cấp / Date of issue:",
+              "score": 0.8214005130529404,
+              "confidence": 0.8214005130529404,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 37.27,
+            "paddle_detection": 24.91,
+            "line_crops": 1.42,
+            "docu_recognition": 127.39,
+            "metadata": 1.12,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 192.17
+          },
+          "work": {
+            "primary_regions": 5,
+            "recognized_regions": 5,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "initial_text_lines": [
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  22.166666666666664
+                ],
+                [
+                  565.9630606860158,
+                  25.333333333333332
+                ],
+                [
+                  565.9630606860158,
+                  79.16666666666666
+                ],
+                [
+                  41.16094986807388,
+                  76.0
+                ]
+              ],
+              "detection_score": 0.901328613376199,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8665756560288943,
+              "confidence": 0.8665756560288943,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  153.58333333333331
+                ],
+                [
+                  42.74406332453825,
+                  153.58333333333331
+                ]
+              ],
+              "detection_score": 0.8868832416563877,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8855698721276389,
+              "confidence": 0.8855698721276389,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  170.20833333333331
+                ],
+                [
+                  618.2058047493404,
+                  166.25
+                ],
+                [
+                  618.9973614775726,
+                  212.16666666666666
+                ],
+                [
+                  42.74406332453825,
+                  216.125
+                ]
+              ],
+              "detection_score": 0.8690800091752507,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8874027486890554,
+              "confidence": 0.8874027486890554,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  384.75
+                ],
+                [
+                  45.11873350923482,
+                  384.75
+                ]
+              ],
+              "detection_score": 0.8934884376414824,
+              "text": "15/03/2021",
+              "score": 0.9070575594902038,
+              "confidence": 0.9070575594902038,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  304.79166666666663
+                ],
+                [
+                  432.1899736147757,
+                  302.41666666666663
+                ],
+                [
+                  432.9815303430079,
+                  347.54166666666663
+                ],
+                [
+                  42.74406332453825,
+                  349.91666666666663
+                ]
+              ],
+              "detection_score": 0.8748789470321093,
+              "text": "Ngày cấp / Date of issue:",
+              "score": 0.8214005130529404,
+              "confidence": 0.8214005130529404,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              42.74,
+              166.25,
+              619.0,
+              216.12
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          }
+        }
+      }
+    },
+    {
+      "case": "small-caption",
+      "repeat": 1,
+      "pair_ms": 557.22,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lloc of - Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "stages": {
+        "front": {
+          "structured_fields": {
+            "id_number": "001099000001",
+            "name": "NGUYỄN VĂN THỨ",
+            "date_of_birth": "01/02/1999",
+            "gender": "Nam",
+            "nationality": "Việt Nam",
+            "place_of_origin": "lloc of - Hà Nội",
+            "place_of_residence": "Hà Nội"
+          },
+          "document_side": "front",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  22.166666666666664
+                ],
+                [
+                  509.7625329815303,
+                  25.333333333333332
+                ],
+                [
+                  509.7625329815303,
+                  71.25
+                ],
+                [
+                  42.74406332453825,
+                  68.875
+                ]
+              ],
+              "detection_score": 0.8887535551695304,
+              "text": "CĂN CƯỚC DỮ LIỆU GIẢ LẬP",
+              "score": 0.8725412984689077,
+              "confidence": 0.8725412984689077,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  96.58333333333333
+                ],
+                [
+                  417.1503957783641,
+                  96.58333333333333
+                ],
+                [
+                  417.1503957783641,
+                  133.79166666666666
+                ],
+                [
+                  45.11873350923482,
+                  133.79166666666666
+                ]
+              ],
+              "detection_score": 0.985141638849682,
+              "text": "Số / No: 001099000001",
+              "score": 0.6816455806079118,
+              "confidence": 0.6816455806079118,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  39.577836411609496,
+                  155.16666666666666
+                ],
+                [
+                  673.6147757255936,
+                  151.20833333333331
+                ],
+                [
+                  673.6147757255936,
+                  200.29166666666666
+                ],
+                [
+                  40.369393139841684,
+                  204.25
+                ]
+              ],
+              "detection_score": 0.8529024876934043,
+              "text": "Họ và tên / Full name: NGUYỄN VĂN THỨ",
+              "score": 0.8568601213596962,
+              "confidence": 0.8568601213596962,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  224.83333333333331
+                ],
+                [
+                  615.0395778364116,
+                  224.04166666666666
+                ],
+                [
+                  615.0395778364116,
+                  266.0
+                ],
+                [
+                  42.74406332453825,
+                  267.5833333333333
+                ]
+              ],
+              "detection_score": 0.8602785344404509,
+              "text": "Ngày sinh / Date of birth: 01/02/1999",
+              "score": 0.847078193281148,
+              "confidence": 0.847078193281148,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  287.375
+                ],
+                [
+                  355.4089709762533,
+                  289.75
+                ],
+                [
+                  354.6174142480211,
+                  332.5
+                ],
+                [
+                  42.74406332453825,
+                  330.125
+                ]
+              ],
+              "detection_score": 0.8597200152284281,
+              "text": "Giới tính / Sex: Nam",
+              "score": 0.8301473557949066,
+              "confidence": 0.8301473557949066,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  353.875
+                ],
+                [
+                  547.7572559366754,
+                  354.66666666666663
+                ],
+                [
+                  547.7572559366754,
+                  397.41666666666663
+                ],
+                [
+                  42.74406332453825,
+                  395.8333333333333
+                ]
+              ],
+              "detection_score": 0.8749239389050587,
+              "text": "Quốc tịch / Nationality: Việt Nam",
+              "score": 0.8622233840552244,
+              "confidence": 0.8622233840552244,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  421.16666666666663
+                ],
+                [
+                  561.2137203166227,
+                  421.16666666666663
+                ],
+                [
+                  561.2137203166227,
+                  462.3333333333333
+                ],
+                [
+                  45.11873350923482,
+                  462.3333333333333
+                ]
+              ],
+              "detection_score": 0.9370149756616637,
+              "text": "Quê quán/ lloc of origin: Hà Nội",
+              "score": 0.7241836083121598,
+              "confidence": 0.7241836083121598,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  485.29166666666663
+                ],
+                [
+                  692.6121372031662,
+                  485.29166666666663
+                ],
+                [
+                  692.6121372031662,
+                  526.4583333333333
+                ],
+                [
+                  43.53562005277045,
+                  526.4583333333333
+                ]
+              ],
+              "detection_score": 0.9082292388725516,
+              "text": "Nơi thường trú / Place of residence: Hà Nội",
+              "score": 0.8624022790165835,
+              "confidence": 0.8624022790165835,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  585.0416666666666
+                ],
+                [
+                  135.3562005277045,
+                  585.0416666666666
+                ],
+                [
+                  135.3562005277045,
+                  608.7916666666666
+                ],
+                [
+                  43.53562005277045,
+                  608.7916666666666
+                ]
+              ],
+              "detection_score": 0.9247609387647601,
+              "text": "Có giá trị đến",
+              "score": 0.9000248738697597,
+              "confidence": 0.9000248738697597,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  617.5
+                ],
+                [
+                  226.3852242744063,
+                  617.5
+                ],
+                [
+                  226.3852242744063,
+                  656.2916666666666
+                ],
+                [
+                  42.74406332453825,
+                  656.2916666666666
+                ]
+              ],
+              "detection_score": 0.9213601499028906,
+              "text": "25/10/2036",
+              "score": 0.9029031217098236,
+              "confidence": 0.9029031217098236,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 36.91,
+            "paddle_detection": 25.45,
+            "line_crops": 2.5,
+            "docu_recognition": 282.69,
+            "metadata": 0.35,
+            "model_init": 0.0,
+            "queue_wait": 0.06,
+            "inference": 347.95
+          },
+          "work": {
+            "primary_regions": 10,
+            "recognized_regions": 10,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "structured_fields": {
+            "issue_date": "15/03/2021",
+            "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+            "identifying_features": "Nốt ruồi má trái"
+          },
+          "document_side": "back",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  22.166666666666664
+                ],
+                [
+                  565.9630606860158,
+                  25.333333333333332
+                ],
+                [
+                  565.9630606860158,
+                  79.16666666666666
+                ],
+                [
+                  41.16094986807388,
+                  76.0
+                ]
+              ],
+              "detection_score": 0.901328613376199,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8665756560288943,
+              "confidence": 0.8665756560288943,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  153.58333333333331
+                ],
+                [
+                  42.74406332453825,
+                  153.58333333333331
+                ]
+              ],
+              "detection_score": 0.8868832416563877,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8855698721276389,
+              "confidence": 0.8855698721276389,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  170.20833333333331
+                ],
+                [
+                  618.2058047493404,
+                  166.25
+                ],
+                [
+                  618.9973614775726,
+                  212.16666666666666
+                ],
+                [
+                  42.74406332453825,
+                  216.125
+                ]
+              ],
+              "detection_score": 0.8690800091752507,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8874027486890554,
+              "confidence": 0.8874027486890554,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  384.75
+                ],
+                [
+                  45.11873350923482,
+                  384.75
+                ]
+              ],
+              "detection_score": 0.8934884376414824,
+              "text": "15/03/2021",
+              "score": 0.9070575594902038,
+              "confidence": 0.9070575594902038,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  304.79166666666663
+                ],
+                [
+                  432.1899736147757,
+                  302.41666666666663
+                ],
+                [
+                  432.9815303430079,
+                  347.54166666666663
+                ],
+                [
+                  42.74406332453825,
+                  349.91666666666663
+                ]
+              ],
+              "detection_score": 0.8748789470321093,
+              "text": "Ngày cấp / Date of issue:",
+              "score": 0.8214005130529404,
+              "confidence": 0.8214005130529404,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 37.57,
+            "paddle_detection": 24.95,
+            "line_crops": 1.5,
+            "docu_recognition": 126.97,
+            "metadata": 1.12,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 192.16
+          },
+          "work": {
+            "primary_regions": 5,
+            "recognized_regions": 5,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "initial_text_lines": [
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  22.166666666666664
+                ],
+                [
+                  565.9630606860158,
+                  25.333333333333332
+                ],
+                [
+                  565.9630606860158,
+                  79.16666666666666
+                ],
+                [
+                  41.16094986807388,
+                  76.0
+                ]
+              ],
+              "detection_score": 0.901328613376199,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8665756560288943,
+              "confidence": 0.8665756560288943,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  153.58333333333331
+                ],
+                [
+                  42.74406332453825,
+                  153.58333333333331
+                ]
+              ],
+              "detection_score": 0.8868832416563877,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8855698721276389,
+              "confidence": 0.8855698721276389,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  170.20833333333331
+                ],
+                [
+                  618.2058047493404,
+                  166.25
+                ],
+                [
+                  618.9973614775726,
+                  212.16666666666666
+                ],
+                [
+                  42.74406332453825,
+                  216.125
+                ]
+              ],
+              "detection_score": 0.8690800091752507,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8874027486890554,
+              "confidence": 0.8874027486890554,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  384.75
+                ],
+                [
+                  45.11873350923482,
+                  384.75
+                ]
+              ],
+              "detection_score": 0.8934884376414824,
+              "text": "15/03/2021",
+              "score": 0.9070575594902038,
+              "confidence": 0.9070575594902038,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  304.79166666666663
+                ],
+                [
+                  432.1899736147757,
+                  302.41666666666663
+                ],
+                [
+                  432.9815303430079,
+                  347.54166666666663
+                ],
+                [
+                  42.74406332453825,
+                  349.91666666666663
+                ]
+              ],
+              "detection_score": 0.8748789470321093,
+              "text": "Ngày cấp / Date of issue:",
+              "score": 0.8214005130529404,
+              "confidence": 0.8214005130529404,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              42.74,
+              166.25,
+              619.0,
+              216.12
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          }
+        }
+      }
+    },
+    {
+      "case": "no-caption",
+      "repeat": 0,
+      "pair_ms": 542.53,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [],
+      "stages": {
+        "front": {
+          "structured_fields": {
+            "id_number": "001099000001",
+            "name": "NGUYỄN VĂN THỨ",
+            "date_of_birth": "01/02/1999",
+            "gender": "Nam",
+            "nationality": "Việt Nam",
+            "place_of_origin": "Hà Nội",
+            "place_of_residence": "Hà Nội"
+          },
+          "document_side": "front",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  22.166666666666664
+                ],
+                [
+                  509.7625329815303,
+                  25.333333333333332
+                ],
+                [
+                  509.7625329815303,
+                  71.25
+                ],
+                [
+                  42.74406332453825,
+                  68.875
+                ]
+              ],
+              "detection_score": 0.8803366919420305,
+              "text": "CĂN CƯỚC DỮ LIỆU GIẢ LẬP",
+              "score": 0.8725412984689077,
+              "confidence": 0.8725412984689077,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  96.58333333333333
+                ],
+                [
+                  417.1503957783641,
+                  96.58333333333333
+                ],
+                [
+                  417.1503957783641,
+                  133.79166666666666
+                ],
+                [
+                  45.11873350923482,
+                  133.79166666666666
+                ]
+              ],
+              "detection_score": 0.9723681870103853,
+              "text": "Số / No: 001099000001",
+              "score": 0.6816455806079118,
+              "confidence": 0.6816455806079118,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  39.577836411609496,
+                  155.16666666666666
+                ],
+                [
+                  673.6147757255936,
+                  151.20833333333331
+                ],
+                [
+                  673.6147757255936,
+                  200.29166666666666
+                ],
+                [
+                  40.369393139841684,
+                  204.25
+                ]
+              ],
+              "detection_score": 0.847601054510941,
+              "text": "Họ và tên / Full name: NGUYỄN VĂN THỨ",
+              "score": 0.8568601213596962,
+              "confidence": 0.8568601213596962,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  226.41666666666666
+                ],
+                [
+                  615.0395778364116,
+                  226.41666666666666
+                ],
+                [
+                  615.0395778364116,
+                  267.5833333333333
+                ],
+                [
+                  43.53562005277045,
+                  267.5833333333333
+                ]
+              ],
+              "detection_score": 0.8842621253982846,
+              "text": "Ngày sinh / Date of birth: 01/02/1999",
+              "score": 0.8478795922285801,
+              "confidence": 0.8478795922285801,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  291.3333333333333
+                ],
+                [
+                  353.8258575197889,
+                  291.3333333333333
+                ],
+                [
+                  353.8258575197889,
+                  330.125
+                ],
+                [
+                  45.11873350923482,
+                  330.125
+                ]
+              ],
+              "detection_score": 0.8921074885704788,
+              "text": "Giới tính// Sex: Nam",
+              "score": 0.7676107987761498,
+              "confidence": 0.7676107987761498,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  356.25
+                ],
+                [
+                  547.7572559366754,
+                  356.25
+                ],
+                [
+                  547.7572559366754,
+                  397.41666666666663
+                ],
+                [
+                  43.53562005277045,
+                  397.41666666666663
+                ]
+              ],
+              "detection_score": 0.9059801341150684,
+              "text": "Quốc tịch / Nationality: Việt Nam",
+              "score": 0.8502797014785536,
+              "confidence": 0.8502797014785536,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  421.16666666666663
+                ],
+                [
+                  561.2137203166227,
+                  421.16666666666663
+                ],
+                [
+                  561.2137203166227,
+                  462.3333333333333
+                ],
+                [
+                  43.53562005277045,
+                  462.3333333333333
+                ]
+              ],
+              "detection_score": 0.9235826501824425,
+              "text": "Quê quán / Place of origin: Hà Nội",
+              "score": 0.8482857854927287,
+              "confidence": 0.8482857854927287,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  485.29166666666663
+                ],
+                [
+                  692.6121372031662,
+                  485.29166666666663
+                ],
+                [
+                  692.6121372031662,
+                  526.4583333333333
+                ],
+                [
+                  43.53562005277045,
+                  526.4583333333333
+                ]
+              ],
+              "detection_score": 0.8996546727094308,
+              "text": "Nơi thường trú / Place of residence: Hà Nội",
+              "score": 0.8624022790165835,
+              "confidence": 0.8624022790165835,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  692.6121372031662,
+                  604.8333333333333
+                ],
+                [
+                  878.6279683377309,
+                  604.8333333333333
+                ],
+                [
+                  878.6279683377309,
+                  647.5833333333333
+                ],
+                [
+                  692.6121372031662,
+                  647.5833333333333
+                ]
+              ],
+              "detection_score": 0.8810566916900616,
+              "text": "20/10/2028",
+              "score": 0.9021903872489929,
+              "confidence": 0.9021903872489929,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 36.65,
+            "paddle_detection": 25.21,
+            "line_crops": 2.36,
+            "docu_recognition": 269.8,
+            "metadata": 0.32,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 334.39
+          },
+          "work": {
+            "primary_regions": 9,
+            "recognized_regions": 9,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "structured_fields": {
+            "issue_date": "15/03/2021",
+            "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+            "identifying_features": "Nốt ruồi má trái"
+          },
+          "document_side": "back",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  22.166666666666664
+                ],
+                [
+                  565.9630606860158,
+                  25.333333333333332
+                ],
+                [
+                  565.9630606860158,
+                  79.16666666666666
+                ],
+                [
+                  41.16094986807388,
+                  76.0
+                ]
+              ],
+              "detection_score": 0.901328613376199,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8665756560288943,
+              "confidence": 0.8665756560288943,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  153.58333333333331
+                ],
+                [
+                  42.74406332453825,
+                  153.58333333333331
+                ]
+              ],
+              "detection_score": 0.8868832416563877,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8855698721276389,
+              "confidence": 0.8855698721276389,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  170.20833333333331
+                ],
+                [
+                  618.2058047493404,
+                  166.25
+                ],
+                [
+                  618.9973614775726,
+                  212.16666666666666
+                ],
+                [
+                  42.74406332453825,
+                  216.125
+                ]
+              ],
+              "detection_score": 0.8690800091752507,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8874027486890554,
+              "confidence": 0.8874027486890554,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  384.75
+                ],
+                [
+                  45.11873350923482,
+                  384.75
+                ]
+              ],
+              "detection_score": 0.8934884376414824,
+              "text": "15/03/2021",
+              "score": 0.9070575594902038,
+              "confidence": 0.9070575594902038,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  304.79166666666663
+                ],
+                [
+                  432.1899736147757,
+                  302.41666666666663
+                ],
+                [
+                  432.9815303430079,
+                  347.54166666666663
+                ],
+                [
+                  42.74406332453825,
+                  349.91666666666663
+                ]
+              ],
+              "detection_score": 0.8748789470321093,
+              "text": "Ngày cấp / Date of issue:",
+              "score": 0.8214005130529404,
+              "confidence": 0.8214005130529404,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 37.19,
+            "paddle_detection": 24.85,
+            "line_crops": 1.43,
+            "docu_recognition": 127.53,
+            "metadata": 1.11,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 192.16
+          },
+          "work": {
+            "primary_regions": 5,
+            "recognized_regions": 5,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "initial_text_lines": [
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  22.166666666666664
+                ],
+                [
+                  565.9630606860158,
+                  25.333333333333332
+                ],
+                [
+                  565.9630606860158,
+                  79.16666666666666
+                ],
+                [
+                  41.16094986807388,
+                  76.0
+                ]
+              ],
+              "detection_score": 0.901328613376199,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8665756560288943,
+              "confidence": 0.8665756560288943,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  153.58333333333331
+                ],
+                [
+                  42.74406332453825,
+                  153.58333333333331
+                ]
+              ],
+              "detection_score": 0.8868832416563877,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8855698721276389,
+              "confidence": 0.8855698721276389,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  170.20833333333331
+                ],
+                [
+                  618.2058047493404,
+                  166.25
+                ],
+                [
+                  618.9973614775726,
+                  212.16666666666666
+                ],
+                [
+                  42.74406332453825,
+                  216.125
+                ]
+              ],
+              "detection_score": 0.8690800091752507,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8874027486890554,
+              "confidence": 0.8874027486890554,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  384.75
+                ],
+                [
+                  45.11873350923482,
+                  384.75
+                ]
+              ],
+              "detection_score": 0.8934884376414824,
+              "text": "15/03/2021",
+              "score": 0.9070575594902038,
+              "confidence": 0.9070575594902038,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  304.79166666666663
+                ],
+                [
+                  432.1899736147757,
+                  302.41666666666663
+                ],
+                [
+                  432.9815303430079,
+                  347.54166666666663
+                ],
+                [
+                  42.74406332453825,
+                  349.91666666666663
+                ]
+              ],
+              "detection_score": 0.8748789470321093,
+              "text": "Ngày cấp / Date of issue:",
+              "score": 0.8214005130529404,
+              "confidence": 0.8214005130529404,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              42.74,
+              166.25,
+              619.0,
+              216.12
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          }
+        }
+      }
+    },
+    {
+      "case": "no-caption",
+      "repeat": 1,
+      "pair_ms": 543.58,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "expiry": [],
+      "stages": {
+        "front": {
+          "structured_fields": {
+            "id_number": "001099000001",
+            "name": "NGUYỄN VĂN THỨ",
+            "date_of_birth": "01/02/1999",
+            "gender": "Nam",
+            "nationality": "Việt Nam",
+            "place_of_origin": "Hà Nội",
+            "place_of_residence": "Hà Nội"
+          },
+          "document_side": "front",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  22.166666666666664
+                ],
+                [
+                  509.7625329815303,
+                  25.333333333333332
+                ],
+                [
+                  509.7625329815303,
+                  71.25
+                ],
+                [
+                  42.74406332453825,
+                  68.875
+                ]
+              ],
+              "detection_score": 0.8803366919420305,
+              "text": "CĂN CƯỚC DỮ LIỆU GIẢ LẬP",
+              "score": 0.8725412984689077,
+              "confidence": 0.8725412984689077,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  96.58333333333333
+                ],
+                [
+                  417.1503957783641,
+                  96.58333333333333
+                ],
+                [
+                  417.1503957783641,
+                  133.79166666666666
+                ],
+                [
+                  45.11873350923482,
+                  133.79166666666666
+                ]
+              ],
+              "detection_score": 0.9723681870103853,
+              "text": "Số / No: 001099000001",
+              "score": 0.6816455806079118,
+              "confidence": 0.6816455806079118,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  39.577836411609496,
+                  155.16666666666666
+                ],
+                [
+                  673.6147757255936,
+                  151.20833333333331
+                ],
+                [
+                  673.6147757255936,
+                  200.29166666666666
+                ],
+                [
+                  40.369393139841684,
+                  204.25
+                ]
+              ],
+              "detection_score": 0.847601054510941,
+              "text": "Họ và tên / Full name: NGUYỄN VĂN THỨ",
+              "score": 0.8568601213596962,
+              "confidence": 0.8568601213596962,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  226.41666666666666
+                ],
+                [
+                  615.0395778364116,
+                  226.41666666666666
+                ],
+                [
+                  615.0395778364116,
+                  267.5833333333333
+                ],
+                [
+                  43.53562005277045,
+                  267.5833333333333
+                ]
+              ],
+              "detection_score": 0.8842621253982846,
+              "text": "Ngày sinh / Date of birth: 01/02/1999",
+              "score": 0.8478795922285801,
+              "confidence": 0.8478795922285801,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  291.3333333333333
+                ],
+                [
+                  353.8258575197889,
+                  291.3333333333333
+                ],
+                [
+                  353.8258575197889,
+                  330.125
+                ],
+                [
+                  45.11873350923482,
+                  330.125
+                ]
+              ],
+              "detection_score": 0.8921074885704788,
+              "text": "Giới tính// Sex: Nam",
+              "score": 0.7676107987761498,
+              "confidence": 0.7676107987761498,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  356.25
+                ],
+                [
+                  547.7572559366754,
+                  356.25
+                ],
+                [
+                  547.7572559366754,
+                  397.41666666666663
+                ],
+                [
+                  43.53562005277045,
+                  397.41666666666663
+                ]
+              ],
+              "detection_score": 0.9059801341150684,
+              "text": "Quốc tịch / Nationality: Việt Nam",
+              "score": 0.8502797014785536,
+              "confidence": 0.8502797014785536,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  421.16666666666663
+                ],
+                [
+                  561.2137203166227,
+                  421.16666666666663
+                ],
+                [
+                  561.2137203166227,
+                  462.3333333333333
+                ],
+                [
+                  43.53562005277045,
+                  462.3333333333333
+                ]
+              ],
+              "detection_score": 0.9235826501824425,
+              "text": "Quê quán / Place of origin: Hà Nội",
+              "score": 0.8482857854927287,
+              "confidence": 0.8482857854927287,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  43.53562005277045,
+                  485.29166666666663
+                ],
+                [
+                  692.6121372031662,
+                  485.29166666666663
+                ],
+                [
+                  692.6121372031662,
+                  526.4583333333333
+                ],
+                [
+                  43.53562005277045,
+                  526.4583333333333
+                ]
+              ],
+              "detection_score": 0.8996546727094308,
+              "text": "Nơi thường trú / Place of residence: Hà Nội",
+              "score": 0.8624022790165835,
+              "confidence": 0.8624022790165835,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  692.6121372031662,
+                  604.8333333333333
+                ],
+                [
+                  878.6279683377309,
+                  604.8333333333333
+                ],
+                [
+                  878.6279683377309,
+                  647.5833333333333
+                ],
+                [
+                  692.6121372031662,
+                  647.5833333333333
+                ]
+              ],
+              "detection_score": 0.8810566916900616,
+              "text": "20/10/2028",
+              "score": 0.9021903872489929,
+              "confidence": 0.9021903872489929,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 36.66,
+            "paddle_detection": 25.74,
+            "line_crops": 2.39,
+            "docu_recognition": 270.14,
+            "metadata": 0.34,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 335.31
+          },
+          "work": {
+            "primary_regions": 9,
+            "recognized_regions": 9,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "structured_fields": {
+            "issue_date": "15/03/2021",
+            "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+            "identifying_features": "Nốt ruồi má trái"
+          },
+          "document_side": "back",
+          "text_lines": [
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  22.166666666666664
+                ],
+                [
+                  565.9630606860158,
+                  25.333333333333332
+                ],
+                [
+                  565.9630606860158,
+                  79.16666666666666
+                ],
+                [
+                  41.16094986807388,
+                  76.0
+                ]
+              ],
+              "detection_score": 0.901328613376199,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8665756560288943,
+              "confidence": 0.8665756560288943,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  153.58333333333331
+                ],
+                [
+                  42.74406332453825,
+                  153.58333333333331
+                ]
+              ],
+              "detection_score": 0.8868832416563877,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8855698721276389,
+              "confidence": 0.8855698721276389,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  170.20833333333331
+                ],
+                [
+                  618.2058047493404,
+                  166.25
+                ],
+                [
+                  618.9973614775726,
+                  212.16666666666666
+                ],
+                [
+                  42.74406332453825,
+                  216.125
+                ]
+              ],
+              "detection_score": 0.8690800091752507,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8874027486890554,
+              "confidence": 0.8874027486890554,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  384.75
+                ],
+                [
+                  45.11873350923482,
+                  384.75
+                ]
+              ],
+              "detection_score": 0.8934884376414824,
+              "text": "15/03/2021",
+              "score": 0.9070575594902038,
+              "confidence": 0.9070575594902038,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  304.79166666666663
+                ],
+                [
+                  432.1899736147757,
+                  302.41666666666663
+                ],
+                [
+                  432.9815303430079,
+                  347.54166666666663
+                ],
+                [
+                  42.74406332453825,
+                  349.91666666666663
+                ]
+              ],
+              "detection_score": 0.8748789470321093,
+              "text": "Ngày cấp / Date of issue:",
+              "score": 0.8214005130529404,
+              "confidence": 0.8214005130529404,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "strategy": "namlhn_docu_v1",
+          "coordinate_space": "original_image",
+          "timings_ms": {
+            "preprocess": 37.36,
+            "paddle_detection": 24.84,
+            "line_crops": 1.42,
+            "docu_recognition": 127.4,
+            "metadata": 1.14,
+            "model_init": 0.0,
+            "queue_wait": 0.04,
+            "inference": 192.2
+          },
+          "work": {
+            "primary_regions": 5,
+            "recognized_regions": 5,
+            "recognition_batches": 1,
+            "reread_regions": 0,
+            "full_image_attempts": 1
+          },
+          "initial_text_lines": [
+            {
+              "box": [
+                [
+                  41.16094986807388,
+                  22.166666666666664
+                ],
+                [
+                  565.9630606860158,
+                  25.333333333333332
+                ],
+                [
+                  565.9630606860158,
+                  79.16666666666666
+                ],
+                [
+                  41.16094986807388,
+                  76.0
+                ]
+              ],
+              "detection_score": 0.901328613376199,
+              "text": "CĂN CƯỚC - DỮ LIỆU GIẢ LẬP",
+              "score": 0.8665756560288943,
+              "confidence": 0.8665756560288943,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  108.45833333333333
+                ],
+                [
+                  626.1213720316622,
+                  153.58333333333331
+                ],
+                [
+                  42.74406332453825,
+                  153.58333333333331
+                ]
+              ],
+              "detection_score": 0.8868832416563877,
+              "text": "Đặc điểm nhân dạng: Nốt ruồi má trái",
+              "score": 0.8855698721276389,
+              "confidence": 0.8855698721276389,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  170.20833333333331
+                ],
+                [
+                  618.2058047493404,
+                  166.25
+                ],
+                [
+                  618.9973614775726,
+                  212.16666666666666
+                ],
+                [
+                  42.74406332453825,
+                  216.125
+                ]
+              ],
+              "detection_score": 0.8690800091752507,
+              "text": "Cơ quan cấp: CÔNG AN TỈNH HÀ NAM",
+              "score": 0.8874027486890554,
+              "confidence": 0.8874027486890554,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  45.11873350923482,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  349.91666666666663
+                ],
+                [
+                  192.34828496042215,
+                  384.75
+                ],
+                [
+                  45.11873350923482,
+                  384.75
+                ]
+              ],
+              "detection_score": 0.8934884376414824,
+              "text": "15/03/2021",
+              "score": 0.9070575594902038,
+              "confidence": 0.9070575594902038,
+              "recognition_source": "docu_vietocr"
+            },
+            {
+              "box": [
+                [
+                  42.74406332453825,
+                  304.79166666666663
+                ],
+                [
+                  432.1899736147757,
+                  302.41666666666663
+                ],
+                [
+                  432.9815303430079,
+                  347.54166666666663
+                ],
+                [
+                  42.74406332453825,
+                  349.91666666666663
+                ]
+              ],
+              "detection_score": 0.8748789470321093,
+              "text": "Ngày cấp / Date of issue:",
+              "score": 0.8214005130529404,
+              "confidence": 0.8214005130529404,
+              "recognition_source": "docu_vietocr"
+            }
+          ],
+          "authority_region": {
+            "method": "layout",
+            "bbox": [
+              42.74,
+              166.25,
+              619.0,
+              216.12
+            ],
+            "image_size": [
+              1200,
+              760
+            ],
+            "line_count": 1,
+            "anchor": "label"
+          }
+        }
+      }
+    }
+  ]
+}

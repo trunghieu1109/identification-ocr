@@ -12,6 +12,8 @@ from identification_demo.web import FIELDS, MAX_IMAGE_BYTES, create_app
 class FakeEngine:
     def __init__(self, result=None, error=None):
         self.result = result if result is not None else {name: f"TEST {name}" for _, _, name in FIELDS}
+        if result is None:
+            self.result["text_lines"] = ["Có giá trị đến: 25/10/2036"]
         self.error = error
         self.paths = []
         self.dimensions = None
@@ -47,7 +49,8 @@ def test_complete_result_normalizes_fields_and_removes_temporary_files():
     assert response.status_code == 200
     result = response.json()
     assert result["success"] and result["status"] == "complete"
-    assert result["recognized_fields"] == 7
+    assert result["recognized_fields"] == 8
+    assert result["fields"]["expiry_date"] == "25/10/2036"
     assert result["fields"]["id_number"] == "TEST ID_number"
     assert result["processing_time_ms"] >= 0 and result["request_id"]
     assert response.headers["cache-control"] == "no-store"
@@ -65,7 +68,7 @@ def test_missing_fields_remain_empty(raw, expected, count):
     assert result["status"] == expected
     assert result["recognized_fields"] == count
     assert result["fields"]["nationality"] == ""
-    assert len(result["fields"]) == 7
+    assert len(result["fields"]) == 8
 
 
 @pytest.mark.parametrize("data,status", [(b"", 422), (b"not an image", 422),
@@ -140,7 +143,7 @@ def test_back_is_automatically_parsed_into_its_own_fields():
     assert response.status_code == 200
     report = response.json()
     assert report["side"] == "back"
-    assert report["total_fields"] == report["recognized_fields"] == 3
+    assert report["total_fields"] == 4 and report["recognized_fields"] == 3
     assert report["fields"]["issue_date"] == "20/04/2021"
     assert "CỤC CẢNH SÁT" in report["fields"]["issuing_authority"]
     assert "place_of_residence" not in report["fields"]

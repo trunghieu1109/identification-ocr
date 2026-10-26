@@ -5,7 +5,9 @@ from fastapi.testclient import TestClient
 from identification_demo.gpu_engine import DocUGPUEngine
 from identification_demo.web import create_app
 from test_pipeline import Engine, Reader, PAYLOAD, image_data
-from test_gpu_engine import READY, FRONT
+from test_gpu_engine import READY, FRONT as DOCU_FRONT
+
+FRONT = {**DOCU_FRONT, "text_lines": [*DOCU_FRONT["text_lines"], {"text": "Có giá trị đến: 25/10/2036"}]}
 
 
 def submit(client, quality=None):
@@ -74,7 +76,7 @@ def test_high_selects_gpu_metadata_and_retains_qr_priority():
     assert response.status_code == 200
     result = response.json()
     assert result["quality"] == "high" and result["status"] == "complete"
-    assert result["ocr_engine"] == {"provider": "CaoAnhNato/vn-identity-card-ocr", "device": "cuda", "used": True}
+    assert result["ocr_engine"] == {"provider": "namlhn/vietnam-cccd-ocr", "device": "cuda", "used": True}
     assert result["fields"]["issue_date"] == "15/03/2021" and result["field_sources"]["issue_date"] == "qr_front"
     assert result["fields"]["name"] == "NGUYỄN VĂN THỬ"
     assert result["fields"]["issuing_authority"] == "Công an tỉnh Hà Nam"

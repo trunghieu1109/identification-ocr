@@ -1,0 +1,2236 @@
+{
+  "synthetic": true,
+  "scope": "GPU engine only; no HTTP/QR; one warmup and two alternating repeats; controlled synthetic degradation",
+  "runs": [
+    {
+      "case": "clean",
+      "mode": "off",
+      "repeat": 0,
+      "pair_ms": 594.63,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 43.26,
+          "paddle_detection": 28.29,
+          "line_crops": 3.06,
+          "docu_recognition": 295.41,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.69,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 372.23
+        },
+        "back": {
+          "preprocess": 44.04,
+          "paddle_detection": 28.34,
+          "line_crops": 1.58,
+          "docu_recognition": 145.93,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.01,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 222.1
+        }
+      }
+    },
+    {
+      "case": "clean",
+      "mode": "adaptive",
+      "repeat": 0,
+      "pair_ms": 599.56,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 44.2,
+          "paddle_detection": 26.46,
+          "line_crops": 3.02,
+          "docu_recognition": 295.66,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.67,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 375.81
+        },
+        "back": {
+          "preprocess": 43.84,
+          "paddle_detection": 27.96,
+          "line_crops": 1.52,
+          "docu_recognition": 145.54,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.03,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 223.46
+        }
+      }
+    },
+    {
+      "case": "clean",
+      "mode": "off",
+      "repeat": 1,
+      "pair_ms": 595.27,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 44.14,
+          "paddle_detection": 28.78,
+          "line_crops": 3.05,
+          "docu_recognition": 295.27,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.67,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 373.15
+        },
+        "back": {
+          "preprocess": 45.21,
+          "paddle_detection": 27.66,
+          "line_crops": 1.56,
+          "docu_recognition": 145.07,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.02,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 221.86
+        }
+      }
+    },
+    {
+      "case": "clean",
+      "mode": "adaptive",
+      "repeat": 1,
+      "pair_ms": 602.14,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 46.95,
+          "paddle_detection": 28.63,
+          "line_crops": 3.06,
+          "docu_recognition": 292.57,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.68,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 378.12
+        },
+        "back": {
+          "preprocess": 45.32,
+          "paddle_detection": 27.69,
+          "line_crops": 1.52,
+          "docu_recognition": 144.52,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.99,
+          "model_init": 0.0,
+          "queue_wait": 0.02,
+          "inference": 223.79
+        }
+      }
+    },
+    {
+      "case": "small-caption",
+      "mode": "off",
+      "repeat": 0,
+      "pair_ms": 559.09,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lloc of origin: Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": false,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 5,
+          "recognized_regions": 5,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 44.71,
+          "paddle_detection": 29.65,
+          "line_crops": 2.56,
+          "docu_recognition": 276.52,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.63,
+          "model_init": 0.0,
+          "queue_wait": 0.02,
+          "inference": 355.82
+        },
+        "back": {
+          "preprocess": 45.14,
+          "paddle_detection": 29.01,
+          "line_crops": 1.49,
+          "docu_recognition": 124.47,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.14,
+          "model_init": 0.0,
+          "queue_wait": 0.02,
+          "inference": 203.02
+        }
+      }
+    },
+    {
+      "case": "small-caption",
+      "mode": "adaptive",
+      "repeat": 0,
+      "pair_ms": 567.25,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lloc of origin: Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": false,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 5,
+          "recognized_regions": 5,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 44.43,
+          "paddle_detection": 29.68,
+          "line_crops": 2.56,
+          "docu_recognition": 277.2,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.63,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 360.26
+        },
+        "back": {
+          "preprocess": 44.94,
+          "paddle_detection": 29.1,
+          "line_crops": 1.44,
+          "docu_recognition": 126.04,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.11,
+          "model_init": 0.0,
+          "queue_wait": 0.02,
+          "inference": 206.76
+        }
+      }
+    },
+    {
+      "case": "small-caption",
+      "mode": "off",
+      "repeat": 1,
+      "pair_ms": 560.42,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lloc of origin: Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": false,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 5,
+          "recognized_regions": 5,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 44.38,
+          "paddle_detection": 29.93,
+          "line_crops": 2.57,
+          "docu_recognition": 277.65,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.64,
+          "model_init": 0.0,
+          "queue_wait": 0.02,
+          "inference": 356.91
+        },
+        "back": {
+          "preprocess": 44.97,
+          "paddle_detection": 28.94,
+          "line_crops": 1.53,
+          "docu_recognition": 125.0,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.13,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 203.28
+        }
+      }
+    },
+    {
+      "case": "small-caption",
+      "mode": "adaptive",
+      "repeat": 1,
+      "pair_ms": 581.38,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "lloc of origin: Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": false,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 5,
+          "recognized_regions": 5,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 44.56,
+          "paddle_detection": 29.88,
+          "line_crops": 2.56,
+          "docu_recognition": 283.34,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.66,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 366.89
+        },
+        "back": {
+          "preprocess": 45.4,
+          "paddle_detection": 29.96,
+          "line_crops": 1.45,
+          "docu_recognition": 130.97,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.38,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 214.16
+        }
+      }
+    },
+    {
+      "case": "blur-noise",
+      "mode": "off",
+      "repeat": 0,
+      "pair_ms": 576.71,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 47.34,
+          "paddle_detection": 27.2,
+          "line_crops": 3.06,
+          "docu_recognition": 300.56,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.68,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 380.47
+        },
+        "back": {
+          "preprocess": 47.63,
+          "paddle_detection": 26.31,
+          "line_crops": 1.6,
+          "docu_recognition": 117.71,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.95,
+          "model_init": 0.0,
+          "queue_wait": 0.02,
+          "inference": 196.0
+        }
+      }
+    },
+    {
+      "case": "blur-noise",
+      "mode": "adaptive",
+      "repeat": 0,
+      "pair_ms": 584.88,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 47.6,
+          "paddle_detection": 27.08,
+          "line_crops": 3.07,
+          "docu_recognition": 301.86,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.66,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 389.22
+        },
+        "back": {
+          "preprocess": 47.13,
+          "paddle_detection": 26.41,
+          "line_crops": 1.54,
+          "docu_recognition": 113.69,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.98,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 195.42
+        }
+      }
+    },
+    {
+      "case": "blur-noise",
+      "mode": "off",
+      "repeat": 1,
+      "pair_ms": 571.93,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 47.24,
+          "paddle_detection": 26.91,
+          "line_crops": 3.03,
+          "docu_recognition": 300.53,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.67,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 380.01
+        },
+        "back": {
+          "preprocess": 47.16,
+          "paddle_detection": 26.35,
+          "line_crops": 1.52,
+          "docu_recognition": 114.03,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.99,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 191.67
+        }
+      }
+    },
+    {
+      "case": "blur-noise",
+      "mode": "adaptive",
+      "repeat": 1,
+      "pair_ms": 593.17,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 47.13,
+          "paddle_detection": 27.02,
+          "line_crops": 3.12,
+          "docu_recognition": 305.54,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.65,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 392.51
+        },
+        "back": {
+          "preprocess": 47.56,
+          "paddle_detection": 27.27,
+          "line_crops": 1.54,
+          "docu_recognition": 116.11,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.0,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 200.42
+        }
+      }
+    },
+    {
+      "case": "low-contrast",
+      "mode": "off",
+      "repeat": 0,
+      "pair_ms": 560.7,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 37.32,
+          "paddle_detection": 26.3,
+          "line_crops": 2.96,
+          "docu_recognition": 278.36,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.74,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 345.78
+        },
+        "back": {
+          "preprocess": 37.73,
+          "paddle_detection": 26.29,
+          "line_crops": 1.56,
+          "docu_recognition": 147.86,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.02,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 214.53
+        }
+      }
+    },
+    {
+      "case": "low-contrast",
+      "mode": "adaptive",
+      "repeat": 0,
+      "pair_ms": 1142.85,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 2,
+          "enhanced_regions": 9,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 9,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 2,
+          "enhanced_regions": 4,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 4,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 37.38,
+          "paddle_detection": 26.36,
+          "line_crops": 3.04,
+          "docu_recognition": 265.91,
+          "text_enhancement": 135.07,
+          "enhanced_recognition": 247.73,
+          "metadata": 0.67,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 719.29
+        },
+        "back": {
+          "preprocess": 37.25,
+          "paddle_detection": 24.79,
+          "line_crops": 1.49,
+          "docu_recognition": 143.97,
+          "text_enhancement": 69.9,
+          "enhanced_recognition": 143.31,
+          "metadata": 0.99,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 423.3
+        }
+      }
+    },
+    {
+      "case": "low-contrast",
+      "mode": "off",
+      "repeat": 1,
+      "pair_ms": 538.58,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 37.0,
+          "paddle_detection": 25.42,
+          "line_crops": 2.95,
+          "docu_recognition": 263.14,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.71,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 329.31
+        },
+        "back": {
+          "preprocess": 37.36,
+          "paddle_detection": 25.06,
+          "line_crops": 1.49,
+          "docu_recognition": 144.06,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.99,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 209.03
+        }
+      }
+    },
+    {
+      "case": "low-contrast",
+      "mode": "adaptive",
+      "repeat": 1,
+      "pair_ms": 1140.48,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 2,
+          "enhanced_regions": 9,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 9,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 2,
+          "enhanced_regions": 4,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 4,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 37.07,
+          "paddle_detection": 25.43,
+          "line_crops": 2.93,
+          "docu_recognition": 262.76,
+          "text_enhancement": 135.08,
+          "enhanced_recognition": 247.32,
+          "metadata": 0.66,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 714.28
+        },
+        "back": {
+          "preprocess": 37.13,
+          "paddle_detection": 25.73,
+          "line_crops": 1.48,
+          "docu_recognition": 145.43,
+          "text_enhancement": 70.1,
+          "enhanced_recognition": 143.47,
+          "metadata": 1.0,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 425.95
+        }
+      }
+    },
+    {
+      "case": "heavy-noise",
+      "mode": "off",
+      "repeat": 0,
+      "pair_ms": 538.55,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 36.71,
+          "paddle_detection": 25.55,
+          "line_crops": 3.05,
+          "docu_recognition": 295.76,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.65,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 361.8
+        },
+        "back": {
+          "preprocess": 36.77,
+          "paddle_detection": 24.83,
+          "line_crops": 1.56,
+          "docu_recognition": 112.28,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.97,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 176.49
+        }
+      }
+    },
+    {
+      "case": "heavy-noise",
+      "mode": "adaptive",
+      "repeat": 0,
+      "pair_ms": 1074.48,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 2,
+          "enhanced_regions": 7,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 7,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 2,
+          "enhanced_regions": 4,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 4,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 36.77,
+          "paddle_detection": 26.12,
+          "line_crops": 3.17,
+          "docu_recognition": 296.51,
+          "text_enhancement": 114.43,
+          "enhanced_recognition": 220.26,
+          "metadata": 0.68,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 705.78
+        },
+        "back": {
+          "preprocess": 36.7,
+          "paddle_detection": 24.89,
+          "line_crops": 1.58,
+          "docu_recognition": 112.49,
+          "text_enhancement": 76.05,
+          "enhanced_recognition": 111.6,
+          "metadata": 0.98,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 368.42
+        }
+      }
+    },
+    {
+      "case": "heavy-noise",
+      "mode": "off",
+      "repeat": 1,
+      "pair_ms": 539.77,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 36.55,
+          "paddle_detection": 25.54,
+          "line_crops": 3.1,
+          "docu_recognition": 296.11,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.67,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 362.03
+        },
+        "back": {
+          "preprocess": 36.54,
+          "paddle_detection": 24.85,
+          "line_crops": 1.56,
+          "docu_recognition": 113.46,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.0,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 177.47
+        }
+      }
+    },
+    {
+      "case": "heavy-noise",
+      "mode": "adaptive",
+      "repeat": 1,
+      "pair_ms": 1079.63,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỬ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": true,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [
+        {
+          "expiry_date": "25/10/2036",
+          "expiry_type": "date",
+          "evidence": [
+            {
+              "number": 9,
+              "text": "Có giá trị đến / Date of expiry:"
+            },
+            {
+              "number": 10,
+              "text": "25/10/2036"
+            }
+          ],
+          "method": "layout"
+        }
+      ],
+      "work": {
+        "front": {
+          "primary_regions": 10,
+          "recognized_regions": 10,
+          "recognition_batches": 2,
+          "enhanced_regions": 7,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 7,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 4,
+          "recognized_regions": 4,
+          "recognition_batches": 2,
+          "enhanced_regions": 4,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 4,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 36.59,
+          "paddle_detection": 25.5,
+          "line_crops": 3.15,
+          "docu_recognition": 298.46,
+          "text_enhancement": 113.89,
+          "enhanced_recognition": 221.92,
+          "metadata": 0.66,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 707.89
+        },
+        "back": {
+          "preprocess": 36.54,
+          "paddle_detection": 24.68,
+          "line_crops": 1.54,
+          "docu_recognition": 114.44,
+          "text_enhancement": 75.79,
+          "enhanced_recognition": 113.27,
+          "metadata": 1.0,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 371.49
+        }
+      }
+    },
+    {
+      "case": "no-caption",
+      "mode": "off",
+      "repeat": 0,
+      "pair_ms": 523.42,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [],
+      "work": {
+        "front": {
+          "primary_regions": 9,
+          "recognized_regions": 9,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 5,
+          "recognized_regions": 5,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 36.53,
+          "paddle_detection": 25.25,
+          "line_crops": 2.4,
+          "docu_recognition": 266.83,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.52,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 331.6
+        },
+        "back": {
+          "preprocess": 37.39,
+          "paddle_detection": 24.87,
+          "line_crops": 1.47,
+          "docu_recognition": 126.66,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.12,
+          "model_init": 0.0,
+          "queue_wait": 0.03,
+          "inference": 191.57
+        }
+      }
+    },
+    {
+      "case": "no-caption",
+      "mode": "adaptive",
+      "repeat": 0,
+      "pair_ms": 529.46,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [],
+      "work": {
+        "front": {
+          "primary_regions": 9,
+          "recognized_regions": 9,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 5,
+          "recognized_regions": 5,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 36.55,
+          "paddle_detection": 25.32,
+          "line_crops": 2.44,
+          "docu_recognition": 267.05,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.51,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 335.78
+        },
+        "back": {
+          "preprocess": 37.26,
+          "paddle_detection": 25.18,
+          "line_crops": 1.49,
+          "docu_recognition": 126.15,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.11,
+          "model_init": 0.0,
+          "queue_wait": 0.09,
+          "inference": 193.39
+        }
+      }
+    },
+    {
+      "case": "no-caption",
+      "mode": "off",
+      "repeat": 1,
+      "pair_ms": 526.83,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [],
+      "work": {
+        "front": {
+          "primary_regions": 9,
+          "recognized_regions": 9,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 5,
+          "recognized_regions": 5,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 36.56,
+          "paddle_detection": 25.33,
+          "line_crops": 2.42,
+          "docu_recognition": 270.78,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.54,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 335.71
+        },
+        "back": {
+          "preprocess": 37.43,
+          "paddle_detection": 25.23,
+          "line_crops": 1.45,
+          "docu_recognition": 125.55,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.13,
+          "model_init": 0.0,
+          "queue_wait": 0.05,
+          "inference": 190.86
+        }
+      }
+    },
+    {
+      "case": "no-caption",
+      "mode": "adaptive",
+      "repeat": 1,
+      "pair_ms": 529.37,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "NGUYỄN VĂN THỨ",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "CÔNG AN TỈNH HÀ NAM",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "matches": {
+        "id_number": true,
+        "name": false,
+        "date_of_birth": true,
+        "gender": true,
+        "nationality": true,
+        "place_of_origin": true,
+        "place_of_residence": true,
+        "issue_date": true,
+        "issuing_authority": true
+      },
+      "expiry": [],
+      "work": {
+        "front": {
+          "primary_regions": 9,
+          "recognized_regions": 9,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        },
+        "back": {
+          "primary_regions": 5,
+          "recognized_regions": 5,
+          "recognition_batches": 1,
+          "enhanced_regions": 0,
+          "enhancement_changed_regions": 0,
+          "reread_regions": 0,
+          "full_image_attempts": 1
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "preprocess": 37.06,
+          "paddle_detection": 25.47,
+          "line_crops": 2.43,
+          "docu_recognition": 266.98,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 0.53,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 336.42
+        },
+        "back": {
+          "preprocess": 37.06,
+          "paddle_detection": 24.96,
+          "line_crops": 1.44,
+          "docu_recognition": 125.95,
+          "text_enhancement": 0.0,
+          "enhanced_recognition": 0.0,
+          "metadata": 1.11,
+          "model_init": 0.0,
+          "queue_wait": 0.04,
+          "inference": 192.7
+        }
+      }
+    }
+  ],
+  "summary": [
+    {
+      "case": "clean",
+      "off": {
+        "median_ms": 594.95,
+        "correct_fields": 9,
+        "enhanced_regions": 0
+      },
+      "adaptive": {
+        "median_ms": 600.8499999999999,
+        "correct_fields": 9,
+        "enhanced_regions": 0
+      }
+    },
+    {
+      "case": "small-caption",
+      "off": {
+        "median_ms": 559.755,
+        "correct_fields": 7,
+        "enhanced_regions": 0
+      },
+      "adaptive": {
+        "median_ms": 574.315,
+        "correct_fields": 7,
+        "enhanced_regions": 0
+      }
+    },
+    {
+      "case": "blur-noise",
+      "off": {
+        "median_ms": 574.3199999999999,
+        "correct_fields": 9,
+        "enhanced_regions": 0
+      },
+      "adaptive": {
+        "median_ms": 589.025,
+        "correct_fields": 9,
+        "enhanced_regions": 0
+      }
+    },
+    {
+      "case": "low-contrast",
+      "off": {
+        "median_ms": 549.6400000000001,
+        "correct_fields": 9,
+        "enhanced_regions": 0
+      },
+      "adaptive": {
+        "median_ms": 1141.665,
+        "correct_fields": 9,
+        "enhanced_regions": 13
+      }
+    },
+    {
+      "case": "heavy-noise",
+      "off": {
+        "median_ms": 539.16,
+        "correct_fields": 9,
+        "enhanced_regions": 0
+      },
+      "adaptive": {
+        "median_ms": 1077.055,
+        "correct_fields": 9,
+        "enhanced_regions": 11
+      }
+    },
+    {
+      "case": "no-caption",
+      "off": {
+        "median_ms": 525.125,
+        "correct_fields": 8,
+        "enhanced_regions": 0
+      },
+      "adaptive": {
+        "median_ms": 529.415,
+        "correct_fields": 8,
+        "enhanced_regions": 0
+      }
+    }
+  ],
+  "degradation": {
+    "seed": "42 front, 43 back",
+    "blur_noise": "Gaussian sigma .65; noise sigma 7",
+    "heavy_noise": "Gaussian sigma .65; noise sigma 18",
+    "low_contrast": "RGB * .35 + 140; noise sigma 4"
+  }
+}

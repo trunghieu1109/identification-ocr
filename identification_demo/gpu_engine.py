@@ -200,7 +200,27 @@ class DocUGPUEngine:
             source_data = buffer.getvalue()
         return self._extract_data(source_data, side, needed_fields)
 
-    def _extract_data(self, data, side, needed_fields=None):
+    def extract_expiry_image(self, image, side, source_data=None):
+        if source_data is None:
+            buffer = io.BytesIO()
+            image.save(buffer, format="PNG")
+            source_data = buffer.getvalue()
+        return self._extract_data(source_data, side, include_layout=True)
+
+    def extract_experiment_image(self, image, side, needed_fields=None, source_data=None):
+        if source_data is None:
+            buffer = io.BytesIO()
+            image.save(buffer, format="PNG")
+            source_data = buffer.getvalue()
+        # The DocU worker's public field whitelist stays unchanged. Expiry is
+        # parsed from the same pass's text boxes in the experiment only.
+        needed = [key for key in needed_fields if key != "expiry_date"] if needed_fields is not None else None
+        return self._extract_data(source_data, side, needed, include_layout=True)
+
+    def _normalize_payload(self, payload):
+        return normalize_result(payload)
+
+    def _extract_data(self, data, side, needed_fields=None, include_layout=False):
         if not self.base_url:
             raise OCRUnavailable("Mức cao chưa sẵn sàng: chưa cấu hình dịch vụ OCR GPU.")
         try:
@@ -228,7 +248,12 @@ class DocUGPUEngine:
                     raise OCRMultipleDocuments(count)
                 raise InvalidImage("Dịch vụ OCR GPU từ chối ảnh nhưng chưa trả nguyên nhân cụ thể. Hãy thử lại bằng ảnh JPG/PNG rõ nét.")
             response.raise_for_status()
-            result = normalize_result(response.json())
+            payload = response.json()
+            result = self._normalize_payload(payload)
+            if include_layout:
+                # Only the expiry experiment needs the original text boxes.
+                # Production OCR continues to expose its existing text format.
+                result["text_lines"] = payload.get("text_lines", [])
             result.setdefault("timings_ms", {})["worker_round_trip"] = round((perf_counter() - started) * 1000, 2)
             return result
         except (OCRBusy, OCRUnavailable, InvalidImage):

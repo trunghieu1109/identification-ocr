@@ -39,14 +39,15 @@ def load_image(data):
     return image
 
 
-def process_image(data, engine, side="auto", needed_fields=None, source_data=None):
+def process_image(data, engine, side="auto", needed_fields=None, source_data=None, include_expiry=False):
     started = perf_counter()
 
     # Never use the original filename as a filesystem path. The entire directory
     # is removed on success and failure, including any upstream sidecar outputs.
     context = nullcontext(data) if isinstance(data, Image.Image) else closing(load_image(data))
     with context as image:
-        extract_image = getattr(engine, "extract_image", None)
+        extract_image = ((getattr(engine, "extract_experiment_image", None) if include_expiry else None)
+                         or getattr(engine, "extract_image", None))
         if extract_image:
             raw = extract_image(image, side, needed_fields=needed_fields,
                                 source_data=source_data if source_data is not None else data if isinstance(data, bytes) else None)
@@ -84,20 +85,38 @@ def process_image(data, engine, side="auto", needed_fields=None, source_data=Non
             if value is not None and not isinstance(value, (str, int, float)):
                 raise TypeError("OCR field must be text")
             fields[key] = str(value).strip() if value is not None else ""
+    if side == "front" and not fields.get("id_number") and rows:
+        from .namlhn_identity import extract_id_number
+        original_lines = raw.get("text_lines", [])
+        evidence = (original_lines if original_lines and all(isinstance(line, dict) and isinstance(line.get("text"), str)
+                                                             for line in original_lines) else [{"text": text} for text in rows])
+        value, _box, validation = extract_id_number(evidence, with_details=True)
+        if value:
+            fields["id_number"] = value
+            raw = {**raw, "id_number_validation": validation}
+    expiry = None
+    if include_expiry:
+        from .expiry import read_expiry
+        fields["expiry_date"], expiry = read_expiry(raw, side)
     raw_text = "\n".join(rows or backup_rows)
     count = sum(bool(value) for value in fields.values())
+    complete = all(fields[key] for key, *_ in schema)
+    if expiry is not None and side == "front":
+        complete = complete and (bool(fields["expiry_date"]) or expiry["expiry_type"] == "unlimited")
     result = {
         "success": True,
-        "status": "complete" if count == len(schema) else "partial" if count else "unstructured" if raw_text else "no_text",
+        "status": "complete" if complete else "partial" if count else "unstructured" if raw_text else "no_text",
         "side": side,
         "detected_side": detected,
         "fields": fields,
         "raw_text": raw_text,
         "recognized_fields": count,
-        "total_fields": len(schema),
+        "total_fields": len(fields),
         "processing_time_ms": round((perf_counter() - started) * 1000),
     }
-    for key in ("recovery", "enhancement", "timings_ms", "work", "authority_region"):
+    if expiry is not None:
+        result["expiry"] = expiry
+    for key in ("recovery", "enhancement", "timings_ms", "work", "authority_region", "image_preprocessing", "id_number_validation"):
         if isinstance(raw.get(key), dict):
             result[key] = raw[key]
     if result.get("authority_region", {}).get("status") == "partial":

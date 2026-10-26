@@ -1,0 +1,717 @@
+{
+  "checks": [
+    {
+      "crops": 5,
+      "text_equal": true,
+      "max_probability_delta": 5.434541139326399e-08
+    },
+    {
+      "crops": 5,
+      "text_equal": true,
+      "max_probability_delta": 1.788139347702611e-08
+    },
+    {
+      "crops": 5,
+      "text_equal": true,
+      "max_probability_delta": 3.076368770837945e-08
+    },
+    {
+      "crops": 5,
+      "text_equal": true,
+      "max_probability_delta": 2.384185793236071e-08
+    },
+    {
+      "crops": 5,
+      "text_equal": true,
+      "max_probability_delta": 3.067886122920527e-08
+    },
+    {
+      "crops": 11,
+      "text_equal": true,
+      "max_probability_delta": 3.5762786843029915e-08
+    }
+  ],
+  "summary": [
+    {
+      "case": "small_caption",
+      "legacy_ms": 1490.6799999999998,
+      "optimized_ms": 783.47,
+      "fields_equal": true
+    },
+    {
+      "case": "small_dates",
+      "legacy_ms": 1565.6399999999999,
+      "optimized_ms": 781.0,
+      "fields_equal": true
+    },
+    {
+      "case": "authority",
+      "legacy_ms": 2099.565,
+      "optimized_ms": 1026.055,
+      "fields_equal": true
+    }
+  ],
+  "runs": [
+    {
+      "case": "small_caption",
+      "mode": "legacy",
+      "repeat": 0,
+      "pair_ms": 1484.84,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "Công AN Tỉnh Hà NAM",
+        "identifying_features": "Nốt ruỏi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 14.4,
+            "paddle_detect_recognize": 122.74,
+            "metadata": 1.04,
+            "vietocr_reread": 597.13,
+            "model_init": 0.0,
+            "queue_wait": 0.06,
+            "inference": 735.43
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 8.38,
+            "paddle_detect_recognize": 93.9,
+            "metadata": 1.69,
+            "vietocr_reread": 628.19,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 732.64
+          },
+          "work": {
+            "primary_regions": 5,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "small_caption",
+      "mode": "optimized",
+      "repeat": 0,
+      "pair_ms": 780.48,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "Công AN Tỉnh Hà NAM",
+        "identifying_features": "Nốt ruỏi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 8.58,
+            "paddle_detect_recognize": 122.96,
+            "metadata": 1.01,
+            "vietocr_reread": 281.83,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 414.49
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 8.52,
+            "paddle_detect_recognize": 93.94,
+            "metadata": 1.65,
+            "vietocr_reread": 245.0,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 349.56
+          },
+          "work": {
+            "primary_regions": 5,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "small_dates",
+      "mode": "legacy",
+      "repeat": 0,
+      "pair_ms": 1564.28,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "Công AN Tỉnh Hà NAM",
+        "identifying_features": "Nốt ruỏi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 8.24,
+            "paddle_detect_recognize": 122.93,
+            "metadata": 1.1,
+            "vietocr_reread": 680.63,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 813.02
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 8.79,
+            "paddle_detect_recognize": 93.98,
+            "metadata": 1.75,
+            "vietocr_reread": 629.77,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 734.78
+          },
+          "work": {
+            "primary_regions": 5,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "small_dates",
+      "mode": "optimized",
+      "repeat": 0,
+      "pair_ms": 780.35,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "Công AN Tỉnh Hà NAM",
+        "identifying_features": "Nốt ruỏi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 8.61,
+            "paddle_detect_recognize": 123.22,
+            "metadata": 1.06,
+            "vietocr_reread": 275.65,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 408.66
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 9.05,
+            "paddle_detect_recognize": 94.28,
+            "metadata": 1.72,
+            "vietocr_reread": 249.58,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 355.08
+          },
+          "work": {
+            "primary_regions": 5,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "authority",
+      "mode": "legacy",
+      "repeat": 0,
+      "pair_ms": 2105.09,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "20/04/2021",
+        "issuing_authority": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 9.28,
+            "paddle_detect_recognize": 123.25,
+            "metadata": 1.05,
+            "vietocr_reread": 705.34,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 839.04
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 12.92,
+            "paddle_detect_recognize": 143.39,
+            "metadata": 6.43,
+            "vietocr_reread": 1075.48,
+            "model_init": 0.0,
+            "queue_wait": 0.06,
+            "inference": 1240.31
+          },
+          "work": {
+            "primary_regions": 11,
+            "reread_regions": 11,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "authority",
+      "mode": "optimized",
+      "repeat": 0,
+      "pair_ms": 1023.9,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "20/04/2021",
+        "issuing_authority": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 8.79,
+            "paddle_detect_recognize": 123.62,
+            "metadata": 1.05,
+            "vietocr_reread": 283.11,
+            "model_init": 0.0,
+            "queue_wait": 0.06,
+            "inference": 416.69
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 13.02,
+            "paddle_detect_recognize": 146.51,
+            "metadata": 6.49,
+            "vietocr_reread": 413.69,
+            "model_init": 0.0,
+            "queue_wait": 0.06,
+            "inference": 581.84
+          },
+          "work": {
+            "primary_regions": 11,
+            "reread_regions": 11,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "small_caption",
+      "mode": "optimized",
+      "repeat": 1,
+      "pair_ms": 786.46,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "Công AN Tỉnh Hà NAM",
+        "identifying_features": "Nốt ruỏi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 11.17,
+            "paddle_detect_recognize": 124.54,
+            "metadata": 1.02,
+            "vietocr_reread": 279.79,
+            "model_init": 0.0,
+            "queue_wait": 0.06,
+            "inference": 416.64
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 10.15,
+            "paddle_detect_recognize": 94.55,
+            "metadata": 1.69,
+            "vietocr_reread": 246.37,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 353.28
+          },
+          "work": {
+            "primary_regions": 5,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "small_caption",
+      "mode": "legacy",
+      "repeat": 1,
+      "pair_ms": 1496.52,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "Công AN Tỉnh Hà NAM",
+        "identifying_features": "Nốt ruỏi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 10.05,
+            "paddle_detect_recognize": 122.95,
+            "metadata": 1.01,
+            "vietocr_reread": 600.89,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 735.0
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 10.41,
+            "paddle_detect_recognize": 95.32,
+            "metadata": 2.3,
+            "vietocr_reread": 636.24,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 745.01
+          },
+          "work": {
+            "primary_regions": 5,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "small_dates",
+      "mode": "optimized",
+      "repeat": 1,
+      "pair_ms": 781.65,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "Công AN Tỉnh Hà NAM",
+        "identifying_features": "Nốt ruỏi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 10.05,
+            "paddle_detect_recognize": 126.91,
+            "metadata": 1.05,
+            "vietocr_reread": 272.51,
+            "model_init": 0.0,
+            "queue_wait": 0.06,
+            "inference": 410.65
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 10.06,
+            "paddle_detect_recognize": 94.8,
+            "metadata": 1.68,
+            "vietocr_reread": 247.24,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 354.23
+          },
+          "work": {
+            "primary_regions": 5,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "small_dates",
+      "mode": "legacy",
+      "repeat": 1,
+      "pair_ms": 1567.0,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "15/03/2021",
+        "issuing_authority": "Công AN Tỉnh Hà NAM",
+        "identifying_features": "Nốt ruỏi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 10.27,
+            "paddle_detect_recognize": 124.61,
+            "metadata": 1.05,
+            "vietocr_reread": 677.76,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 813.81
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 9.04,
+            "paddle_detect_recognize": 95.55,
+            "metadata": 1.8,
+            "vietocr_reread": 629.87,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 736.72
+          },
+          "work": {
+            "primary_regions": 5,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "authority",
+      "mode": "optimized",
+      "repeat": 1,
+      "pair_ms": 1028.21,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "20/04/2021",
+        "issuing_authority": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 9.11,
+            "paddle_detect_recognize": 128.71,
+            "metadata": 1.04,
+            "vietocr_reread": 278.98,
+            "model_init": 0.0,
+            "queue_wait": 0.06,
+            "inference": 417.97
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 12.79,
+            "paddle_detect_recognize": 145.46,
+            "metadata": 6.61,
+            "vietocr_reread": 417.47,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 584.58
+          },
+          "work": {
+            "primary_regions": 11,
+            "reread_regions": 11,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "authority",
+      "mode": "legacy",
+      "repeat": 1,
+      "pair_ms": 2094.04,
+      "fields": {
+        "id_number": "001099000001",
+        "name": "Giới Tính/Sex: Nam",
+        "date_of_birth": "01/02/1999",
+        "gender": "Nam",
+        "nationality": "Việt Nam",
+        "place_of_origin": "Hà Nội",
+        "place_of_residence": "Hà Nội",
+        "expiry_date": "25/10/2036",
+        "issue_date": "20/04/2021",
+        "issuing_authority": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+        "identifying_features": "Nốt ruồi má trái"
+      },
+      "stages": {
+        "front": {
+          "timings_ms": {
+            "preprocess": 8.99,
+            "paddle_detect_recognize": 125.13,
+            "metadata": 1.04,
+            "vietocr_reread": 689.03,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 824.31
+          },
+          "work": {
+            "primary_regions": 10,
+            "reread_regions": 5,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        },
+        "back": {
+          "timings_ms": {
+            "preprocess": 13.2,
+            "paddle_detect_recognize": 146.78,
+            "metadata": 6.48,
+            "vietocr_reread": 1075.51,
+            "model_init": 0.0,
+            "queue_wait": 0.05,
+            "inference": 1244.14
+          },
+          "work": {
+            "primary_regions": 11,
+            "reread_regions": 11,
+            "reread_batches": 1,
+            "full_image_attempts": 1
+          }
+        }
+      }
+    }
+  ],
+  "method": "3 synthetic pairs, 2 alternating repeats; warmed original and optimized decoders; same loaded Transformer/checkpoint/FP32, crops and width groups. Includes image decode and engine work, excludes HTTP/QR. Parity checked on exactly the same cropped images before timing."
+}

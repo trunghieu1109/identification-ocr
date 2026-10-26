@@ -1,0 +1,1057 @@
+{
+  "created_at": "2026-10-25T08:50:53.432176+00:00",
+  "engine": "docu",
+  "model": "vgg_seq2seq",
+  "environment": {
+    "python": "3.11.17",
+    "torch": "2.7.1+cu128",
+    "torch_cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5060",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "gpu_total_mb": 7706,
+    "cpu_threads": 4,
+    "recognizer_device": "cuda:0"
+  },
+  "checkpoint_sha256": "0921503a41375a0584268e23ef3d414ea478a8fe8777865c7745d38f2d0bc5db",
+  "dataset": [
+    {
+      "name": "expiry-front",
+      "images": {
+        "front": {
+          "file": "front-expiry-1.png",
+          "sha256": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+          "size": [
+            1200,
+            760
+          ],
+          "bytes": 71853
+        },
+        "back": {
+          "file": "back-expiry-0.png",
+          "sha256": "9fc4a717b106624aad008b8b4e1be6c274fce448f83c65e014eb1294b1948e82",
+          "size": [
+            1200,
+            760
+          ],
+          "bytes": 37139
+        }
+      }
+    },
+    {
+      "name": "expiry-back",
+      "images": {
+        "front": {
+          "file": "front-expiry-0.png",
+          "sha256": "8ab42db0bdd4eaab05e76caa8fafdd0b4e67ce78fcde53f0e31b4b539efe2845",
+          "size": [
+            1200,
+            760
+          ],
+          "bytes": 61173
+        },
+        "back": {
+          "file": "back-expiry-1.png",
+          "sha256": "6fbcdaff9710aa156dd73f8f31a15e0f1d37dc0ab45b7b7b64d391544e021889",
+          "size": [
+            1200,
+            760
+          ],
+          "bytes": 47362
+        }
+      }
+    }
+  ],
+  "scope": "predecoded RGB images; no HTTP, upload, QR or image decode; sequential sides; CUDA synchronized",
+  "requested_fields": {
+    "front": [
+      "id_number",
+      "name",
+      "date_of_birth",
+      "gender",
+      "nationality",
+      "place_of_origin",
+      "place_of_residence"
+    ],
+    "back": [
+      "issue_date",
+      "issuing_authority"
+    ]
+  },
+  "initialization_ms": 3620.69,
+  "first_pair": {
+    "pair": "expiry-front",
+    "pair_ms": 2078.99,
+    "pair_wall_ms": 2079.77,
+    "sides_ms": {
+      "front": 1798.02,
+      "back": 280.97
+    },
+    "checks": {
+      "front": {
+        "nonempty_fields": [
+          "id_number",
+          "name",
+          "date_of_birth",
+          "gender",
+          "nationality",
+          "place_of_origin"
+        ],
+        "expected_matches": {
+          "id_number": true,
+          "name": false,
+          "date_of_birth": true,
+          "gender": true,
+          "nationality": true,
+          "place_of_origin": true,
+          "place_of_residence": false
+        },
+        "expiry_values": [
+          "25/10/2036"
+        ],
+        "ocr_line_count": 9
+      },
+      "back": {
+        "nonempty_fields": [
+          "issue_date",
+          "issuing_authority"
+        ],
+        "expected_matches": {
+          "issue_date": true,
+          "issuing_authority": true
+        },
+        "expiry_values": [],
+        "ocr_line_count": 3
+      }
+    },
+    "timings_ms": {
+      "front": {
+        "iqa": 16.43,
+        "segmentation": 636.6,
+        "rotation": 71.99,
+        "detection": 273.7,
+        "recognition": 763.05,
+        "metadata": 12.58,
+        "recovery": 525.95,
+        "queue_wait": 0.06,
+        "inference": 1796.99
+      },
+      "back": {
+        "iqa": 15.01,
+        "segmentation": 20.56,
+        "rotation": 13.62,
+        "detection": 24.95,
+        "recognition": 155.56,
+        "metadata": 2.31,
+        "authority_refinement": 39.3,
+        "recovery": 125.62,
+        "queue_wait": 0.04,
+        "inference": 279.77
+      }
+    },
+    "work": {
+      "front": {
+        "primary_regions": 26,
+        "reread_regions": 0,
+        "full_image_attempts": 5
+      },
+      "back": {
+        "primary_regions": 6,
+        "reread_regions": 2,
+        "full_image_attempts": 2
+      }
+    }
+  },
+  "warmup_rounds": 2,
+  "repeats": 5,
+  "summary": {
+    "all_pairs": {
+      "median_ms": 911.78,
+      "mean_ms": 916.72,
+      "min_ms": 770.34,
+      "max_ms": 1086.9,
+      "p95_ms": 1086.9
+    },
+    "by_pair": {
+      "expiry-front": {
+        "median_ms": 1055.81,
+        "mean_ms": 1060.75,
+        "min_ms": 1049.34,
+        "max_ms": 1086.9,
+        "p95_ms": 1086.9
+      },
+      "expiry-back": {
+        "median_ms": 773.23,
+        "mean_ms": 772.7,
+        "min_ms": 770.34,
+        "max_ms": 774.22,
+        "p95_ms": 774.22
+      }
+    },
+    "by_side": {
+      "front": {
+        "median_ms": 620.43,
+        "mean_ms": 624.93,
+        "min_ms": 459.37,
+        "max_ms": 810.5,
+        "p95_ms": 810.5
+      },
+      "back": {
+        "median_ms": 293.4,
+        "mean_ms": 291.8,
+        "min_ms": 269.49,
+        "max_ms": 310.97,
+        "p95_ms": 310.97
+      }
+    }
+  },
+  "samples": [
+    {
+      "repeat": 1,
+      "pair": "expiry-front",
+      "pair_ms": 1055.62,
+      "pair_wall_ms": 1056.28,
+      "sides_ms": {
+        "front": 786.13,
+        "back": 269.49
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": false
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 9
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 3
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 12.79,
+          "segmentation": 20.9,
+          "rotation": 13.76,
+          "detection": 59.71,
+          "recognition": 659.61,
+          "metadata": 1.94,
+          "recovery": 485.32,
+          "queue_wait": 0.04,
+          "inference": 785.22
+        },
+        "back": {
+          "iqa": 12.54,
+          "segmentation": 20.69,
+          "rotation": 13.6,
+          "detection": 25.11,
+          "recognition": 148.59,
+          "metadata": 0.85,
+          "authority_refinement": 39.01,
+          "recovery": 121.61,
+          "queue_wait": 0.04,
+          "inference": 268.23
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 26,
+          "reread_regions": 0,
+          "full_image_attempts": 5
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 1,
+      "pair": "expiry-back",
+      "pair_ms": 770.34,
+      "pair_wall_ms": 770.93,
+      "sides_ms": {
+        "front": 459.37,
+        "back": 310.97
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 12.88,
+          "segmentation": 20.77,
+          "rotation": 13.52,
+          "detection": 24.57,
+          "recognition": 378.68,
+          "metadata": 1.32,
+          "recovery": 213.61,
+          "queue_wait": 0.03,
+          "inference": 458.45
+        },
+        "back": {
+          "iqa": 12.87,
+          "segmentation": 20.9,
+          "rotation": 13.59,
+          "detection": 24.76,
+          "recognition": 186.89,
+          "metadata": 1.09,
+          "authority_refinement": 39.48,
+          "recovery": 141.53,
+          "queue_wait": 0.04,
+          "inference": 309.53
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 15,
+          "reread_regions": 0,
+          "full_image_attempts": 2
+        },
+        "back": {
+          "primary_regions": 9,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "pair": "expiry-front",
+      "pair_ms": 1055.81,
+      "pair_wall_ms": 1056.44,
+      "sides_ms": {
+        "front": 780.93,
+        "back": 274.88
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": false
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 9
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 3
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 12.78,
+          "segmentation": 20.92,
+          "rotation": 13.75,
+          "detection": 58.46,
+          "recognition": 656.06,
+          "metadata": 1.93,
+          "recovery": 479.38,
+          "queue_wait": 0.03,
+          "inference": 779.98
+        },
+        "back": {
+          "iqa": 14.86,
+          "segmentation": 20.83,
+          "rotation": 13.52,
+          "detection": 25.94,
+          "recognition": 150.51,
+          "metadata": 0.89,
+          "authority_refinement": 39.22,
+          "recovery": 123.51,
+          "queue_wait": 0.03,
+          "inference": 273.71
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 26,
+          "reread_regions": 0,
+          "full_image_attempts": 5
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "pair": "expiry-back",
+      "pair_ms": 774.22,
+      "pair_wall_ms": 774.8,
+      "sides_ms": {
+        "front": 463.64,
+        "back": 310.58
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 14.77,
+          "segmentation": 21.33,
+          "rotation": 13.88,
+          "detection": 25.19,
+          "recognition": 379.44,
+          "metadata": 1.36,
+          "recovery": 214.04,
+          "queue_wait": 0.03,
+          "inference": 462.68
+        },
+        "back": {
+          "iqa": 12.75,
+          "segmentation": 20.85,
+          "rotation": 13.56,
+          "detection": 24.6,
+          "recognition": 186.75,
+          "metadata": 1.08,
+          "authority_refinement": 39.62,
+          "recovery": 141.72,
+          "queue_wait": 0.04,
+          "inference": 309.11
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 15,
+          "reread_regions": 0,
+          "full_image_attempts": 2
+        },
+        "back": {
+          "primary_regions": 9,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "pair": "expiry-front",
+      "pair_ms": 1086.9,
+      "pair_wall_ms": 1087.56,
+      "sides_ms": {
+        "front": 810.5,
+        "back": 276.4
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": false
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 9
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 3
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 12.81,
+          "segmentation": 21.82,
+          "rotation": 14.99,
+          "detection": 59.15,
+          "recognition": 682.22,
+          "metadata": 1.92,
+          "recovery": 508.32,
+          "queue_wait": 0.11,
+          "inference": 809.32
+        },
+        "back": {
+          "iqa": 14.39,
+          "segmentation": 21.0,
+          "rotation": 13.76,
+          "detection": 25.76,
+          "recognition": 152.74,
+          "metadata": 0.88,
+          "authority_refinement": 38.71,
+          "recovery": 122.37,
+          "queue_wait": 0.04,
+          "inference": 275.21
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 26,
+          "reread_regions": 0,
+          "full_image_attempts": 5
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "pair": "expiry-back",
+      "pair_ms": 771.87,
+      "pair_wall_ms": 772.45,
+      "sides_ms": {
+        "front": 461.15,
+        "back": 310.72
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 14.64,
+          "segmentation": 20.65,
+          "rotation": 13.32,
+          "detection": 24.74,
+          "recognition": 378.57,
+          "metadata": 1.38,
+          "recovery": 213.74,
+          "queue_wait": 0.03,
+          "inference": 460.11
+        },
+        "back": {
+          "iqa": 12.87,
+          "segmentation": 21.17,
+          "rotation": 13.65,
+          "detection": 24.62,
+          "recognition": 186.13,
+          "metadata": 1.08,
+          "authority_refinement": 39.43,
+          "recovery": 140.85,
+          "queue_wait": 0.04,
+          "inference": 309.19
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 15,
+          "reread_regions": 0,
+          "full_image_attempts": 2
+        },
+        "back": {
+          "primary_regions": 9,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 4,
+      "pair": "expiry-front",
+      "pair_ms": 1056.08,
+      "pair_wall_ms": 1056.69,
+      "sides_ms": {
+        "front": 784.44,
+        "back": 271.64
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": false
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 9
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 3
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 12.82,
+          "segmentation": 21.14,
+          "rotation": 13.88,
+          "detection": 58.26,
+          "recognition": 658.92,
+          "metadata": 1.93,
+          "recovery": 480.41,
+          "queue_wait": 0.04,
+          "inference": 783.43
+        },
+        "back": {
+          "iqa": 14.4,
+          "segmentation": 21.19,
+          "rotation": 13.65,
+          "detection": 24.96,
+          "recognition": 148.12,
+          "metadata": 0.84,
+          "authority_refinement": 38.96,
+          "recovery": 121.32,
+          "queue_wait": 0.04,
+          "inference": 270.42
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 26,
+          "reread_regions": 0,
+          "full_image_attempts": 5
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 4,
+      "pair": "expiry-back",
+      "pair_ms": 773.23,
+      "pair_wall_ms": 773.82,
+      "sides_ms": {
+        "front": 462.83,
+        "back": 310.4
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 14.78,
+          "segmentation": 20.97,
+          "rotation": 13.64,
+          "detection": 24.72,
+          "recognition": 379.89,
+          "metadata": 1.31,
+          "recovery": 211.98,
+          "queue_wait": 0.04,
+          "inference": 461.9
+        },
+        "back": {
+          "iqa": 12.76,
+          "segmentation": 20.49,
+          "rotation": 13.48,
+          "detection": 25.41,
+          "recognition": 186.45,
+          "metadata": 1.09,
+          "authority_refinement": 39.26,
+          "recovery": 140.47,
+          "queue_wait": 0.04,
+          "inference": 308.98
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 15,
+          "reread_regions": 0,
+          "full_image_attempts": 2
+        },
+        "back": {
+          "primary_regions": 9,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 5,
+      "pair": "expiry-front",
+      "pair_ms": 1049.34,
+      "pair_wall_ms": 1049.96,
+      "sides_ms": {
+        "front": 777.23,
+        "back": 272.11
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": false
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 9
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 3
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 12.74,
+          "segmentation": 20.71,
+          "rotation": 13.6,
+          "detection": 57.43,
+          "recognition": 653.84,
+          "metadata": 1.91,
+          "recovery": 478.49,
+          "queue_wait": 0.03,
+          "inference": 776.3
+        },
+        "back": {
+          "iqa": 14.72,
+          "segmentation": 20.87,
+          "rotation": 13.61,
+          "detection": 25.22,
+          "recognition": 148.68,
+          "metadata": 0.85,
+          "authority_refinement": 39.1,
+          "recovery": 121.8,
+          "queue_wait": 0.06,
+          "inference": 270.9
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 26,
+          "reread_regions": 0,
+          "full_image_attempts": 5
+        },
+        "back": {
+          "primary_regions": 6,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    },
+    {
+      "repeat": 5,
+      "pair": "expiry-back",
+      "pair_ms": 773.83,
+      "pair_wall_ms": 774.42,
+      "sides_ms": {
+        "front": 463.06,
+        "back": 310.77
+      },
+      "checks": {
+        "front": {
+          "nonempty_fields": [
+            "id_number",
+            "name",
+            "date_of_birth",
+            "gender",
+            "nationality",
+            "place_of_origin",
+            "place_of_residence"
+          ],
+          "expected_matches": {
+            "id_number": true,
+            "name": false,
+            "date_of_birth": true,
+            "gender": true,
+            "nationality": true,
+            "place_of_origin": true,
+            "place_of_residence": true
+          },
+          "expiry_values": [],
+          "ocr_line_count": 8
+        },
+        "back": {
+          "nonempty_fields": [
+            "issue_date",
+            "issuing_authority"
+          ],
+          "expected_matches": {
+            "issue_date": true,
+            "issuing_authority": true
+          },
+          "expiry_values": [
+            "25/10/2036"
+          ],
+          "ocr_line_count": 4
+        }
+      },
+      "timings_ms": {
+        "front": {
+          "iqa": 14.64,
+          "segmentation": 20.93,
+          "rotation": 13.58,
+          "detection": 24.8,
+          "recognition": 380.16,
+          "metadata": 1.34,
+          "recovery": 214.48,
+          "queue_wait": 0.03,
+          "inference": 462.13
+        },
+        "back": {
+          "iqa": 12.72,
+          "segmentation": 20.89,
+          "rotation": 13.68,
+          "detection": 24.6,
+          "recognition": 186.87,
+          "metadata": 1.14,
+          "authority_refinement": 39.45,
+          "recovery": 141.26,
+          "queue_wait": 0.04,
+          "inference": 309.33
+        }
+      },
+      "work": {
+        "front": {
+          "primary_regions": 15,
+          "reread_regions": 0,
+          "full_image_attempts": 2
+        },
+        "back": {
+          "primary_regions": 9,
+          "reread_regions": 2,
+          "full_image_attempts": 2
+        }
+      }
+    }
+  ]
+}

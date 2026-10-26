@@ -1,0 +1,24 @@
+# Experimental image only: do not replace either production service with it.
+ARG NAMLHN_BASE_IMAGE=identification-ocr-identification-ocr:latest
+ARG DOCU_BASE_IMAGE=identification-ocr-ocr-gpu:latest
+FROM ${NAMLHN_BASE_IMAGE} AS namlhn_source
+FROM ${DOCU_BASE_IMAGE}
+
+# Both frameworks need CUDA: the production namlhn image installs CPU wheels.
+# CUDA 12.9 Paddle wheels are available for the RTX 50-series environment.
+ARG PADDLE_GPU_WHEEL=https://paddle-whl.cdn.bcebos.com/stable/cu129/paddlepaddle-gpu/paddlepaddle_gpu-3.2.2-cp311-cp311-linux_x86_64.whl
+RUN python -m pip install --no-cache-dir paddleocr==3.7.0 "${PADDLE_GPU_WHEEL}"
+# Keep the image-processing stack consistent with the production images.
+RUN python -m pip install --no-cache-dir numpy==1.26.4 "pandas<3"
+COPY --from=namlhn_source /opt/vietnam-cccd-ocr /opt/vietnam-cccd-ocr
+COPY identification_demo /app/identification_demo
+COPY scripts/benchmark-gpu-engines.py /app/scripts/benchmark-gpu-engines.py
+ENV OCR_SOURCE_DIR=/opt/vietnam-cccd-ocr OCR_DEVICE=cuda \
+    OCR_DEFAULT_QUALITY=high OCR_CPU_THREADS=4 OMP_NUM_THREADS=4 \
+    OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 \
+    FLAGS_allocator_strategy=auto_growth FLAGS_fraction_of_gpu_memory_to_use=0.1 \
+    PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK=True
+# Paddle's CUDA 12.9 runtime upgrades cuSPARSELt beyond the base Torch pin.
+# Make that shared-library directory explicit for the experimental process.
+ENV LD_LIBRARY_PATH=/usr/local/lib/python3.11/site-packages/nvidia/cusparselt/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+ENTRYPOINT ["python", "/app/scripts/benchmark-gpu-engines.py"]

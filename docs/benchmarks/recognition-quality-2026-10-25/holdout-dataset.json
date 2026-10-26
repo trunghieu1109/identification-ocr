@@ -1,0 +1,678 @@
+{
+  "synthetic": true,
+  "split": "held-out text and fonts",
+  "samples": [
+    {
+      "name": "00-0-clear.png",
+      "image": "00-0-clear.png",
+      "text": "LÊ THỊ QUỲNH NHƯ",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "00-0-degraded.png",
+      "image": "00-0-degraded.png",
+      "text": "LÊ THỊ QUỲNH NHƯ",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "00-1-clear.png",
+      "image": "00-1-clear.png",
+      "text": "LÊ THỊ QUỲNH NHƯ",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "00-1-degraded.png",
+      "image": "00-1-degraded.png",
+      "text": "LÊ THỊ QUỲNH NHƯ",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "01-0-clear.png",
+      "image": "01-0-clear.png",
+      "text": "VÕ HOÀNG PHÚC",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "01-0-degraded.png",
+      "image": "01-0-degraded.png",
+      "text": "VÕ HOÀNG PHÚC",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "01-1-clear.png",
+      "image": "01-1-clear.png",
+      "text": "VÕ HOÀNG PHÚC",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "01-1-degraded.png",
+      "image": "01-1-degraded.png",
+      "text": "VÕ HOÀNG PHÚC",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "02-0-clear.png",
+      "image": "02-0-clear.png",
+      "text": "BÙI ĐỨC THẮNG",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "02-0-degraded.png",
+      "image": "02-0-degraded.png",
+      "text": "BÙI ĐỨC THẮNG",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "02-1-clear.png",
+      "image": "02-1-clear.png",
+      "text": "BÙI ĐỨC THẮNG",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "02-1-degraded.png",
+      "image": "02-1-degraded.png",
+      "text": "BÙI ĐỨC THẮNG",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "03-0-clear.png",
+      "image": "03-0-clear.png",
+      "text": "HUỲNH TẤN TÀI",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "03-0-degraded.png",
+      "image": "03-0-degraded.png",
+      "text": "HUỲNH TẤN TÀI",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "03-1-clear.png",
+      "image": "03-1-clear.png",
+      "text": "HUỲNH TẤN TÀI",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "03-1-degraded.png",
+      "image": "03-1-degraded.png",
+      "text": "HUỲNH TẤN TÀI",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "04-0-clear.png",
+      "image": "04-0-clear.png",
+      "text": "TRƯƠNG NGỌC DIỄM",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "04-0-degraded.png",
+      "image": "04-0-degraded.png",
+      "text": "TRƯƠNG NGỌC DIỄM",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "04-1-clear.png",
+      "image": "04-1-clear.png",
+      "text": "TRƯƠNG NGỌC DIỄM",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "04-1-degraded.png",
+      "image": "04-1-degraded.png",
+      "text": "TRƯƠNG NGỌC DIỄM",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "05-0-clear.png",
+      "image": "05-0-clear.png",
+      "text": "ĐINH THỊ MỸ LINH",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "05-0-degraded.png",
+      "image": "05-0-degraded.png",
+      "text": "ĐINH THỊ MỸ LINH",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "05-1-clear.png",
+      "image": "05-1-clear.png",
+      "text": "ĐINH THỊ MỸ LINH",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "05-1-degraded.png",
+      "image": "05-1-degraded.png",
+      "text": "ĐINH THỊ MỸ LINH",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "06-0-clear.png",
+      "image": "06-0-clear.png",
+      "text": "ĐẶNG HỮU THUẬN",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "06-0-degraded.png",
+      "image": "06-0-degraded.png",
+      "text": "ĐẶNG HỮU THUẬN",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "06-1-clear.png",
+      "image": "06-1-clear.png",
+      "text": "ĐẶNG HỮU THUẬN",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "06-1-degraded.png",
+      "image": "06-1-degraded.png",
+      "text": "ĐẶNG HỮU THUẬN",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "07-0-clear.png",
+      "image": "07-0-clear.png",
+      "text": "NGUYỄN THỊ THUỶ TIÊN",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "07-0-degraded.png",
+      "image": "07-0-degraded.png",
+      "text": "NGUYỄN THỊ THUỶ TIÊN",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "07-1-clear.png",
+      "image": "07-1-clear.png",
+      "text": "NGUYỄN THỊ THUỶ TIÊN",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "07-1-degraded.png",
+      "image": "07-1-degraded.png",
+      "text": "NGUYỄN THỊ THUỶ TIÊN",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "08-0-clear.png",
+      "image": "08-0-clear.png",
+      "text": "Nguyễn Văn Hưởng",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "08-0-degraded.png",
+      "image": "08-0-degraded.png",
+      "text": "Nguyễn Văn Hưởng",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "08-1-clear.png",
+      "image": "08-1-clear.png",
+      "text": "Nguyễn Văn Hưởng",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "08-1-degraded.png",
+      "image": "08-1-degraded.png",
+      "text": "Nguyễn Văn Hưởng",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "09-0-clear.png",
+      "image": "09-0-clear.png",
+      "text": "Trần Thị Bích Ngọc",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "09-0-degraded.png",
+      "image": "09-0-degraded.png",
+      "text": "Trần Thị Bích Ngọc",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "09-1-clear.png",
+      "image": "09-1-clear.png",
+      "text": "Trần Thị Bích Ngọc",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "09-1-degraded.png",
+      "image": "09-1-degraded.png",
+      "text": "Trần Thị Bích Ngọc",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "10-0-clear.png",
+      "image": "10-0-clear.png",
+      "text": "Nữ",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "10-0-degraded.png",
+      "image": "10-0-degraded.png",
+      "text": "Nữ",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "10-1-clear.png",
+      "image": "10-1-clear.png",
+      "text": "Nữ",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "10-1-degraded.png",
+      "image": "10-1-degraded.png",
+      "text": "Nữ",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "11-0-clear.png",
+      "image": "11-0-clear.png",
+      "text": "Nam",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "11-0-degraded.png",
+      "image": "11-0-degraded.png",
+      "text": "Nam",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "11-1-clear.png",
+      "image": "11-1-clear.png",
+      "text": "Nam",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "11-1-degraded.png",
+      "image": "11-1-degraded.png",
+      "text": "Nam",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "12-0-clear.png",
+      "image": "12-0-clear.png",
+      "text": "Quốc tịch: Việt Nam",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "12-0-degraded.png",
+      "image": "12-0-degraded.png",
+      "text": "Quốc tịch: Việt Nam",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "12-1-clear.png",
+      "image": "12-1-clear.png",
+      "text": "Quốc tịch: Việt Nam",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "12-1-degraded.png",
+      "image": "12-1-degraded.png",
+      "text": "Quốc tịch: Việt Nam",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "13-0-clear.png",
+      "image": "13-0-clear.png",
+      "text": "Ngày sinh: 29/02/2000",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "13-0-degraded.png",
+      "image": "13-0-degraded.png",
+      "text": "Ngày sinh: 29/02/2000",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "13-1-clear.png",
+      "image": "13-1-clear.png",
+      "text": "Ngày sinh: 29/02/2000",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "13-1-degraded.png",
+      "image": "13-1-degraded.png",
+      "text": "Ngày sinh: 29/02/2000",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "14-0-clear.png",
+      "image": "14-0-clear.png",
+      "text": "Có giá trị đến: 31/12/2040",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "14-0-degraded.png",
+      "image": "14-0-degraded.png",
+      "text": "Có giá trị đến: 31/12/2040",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "14-1-clear.png",
+      "image": "14-1-clear.png",
+      "text": "Có giá trị đến: 31/12/2040",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "14-1-degraded.png",
+      "image": "14-1-degraded.png",
+      "text": "Có giá trị đến: 31/12/2040",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "15-0-clear.png",
+      "image": "15-0-clear.png",
+      "text": "Ngày cấp: 07/08/2023",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "15-0-degraded.png",
+      "image": "15-0-degraded.png",
+      "text": "Ngày cấp: 07/08/2023",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "15-1-clear.png",
+      "image": "15-1-clear.png",
+      "text": "Ngày cấp: 07/08/2023",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "15-1-degraded.png",
+      "image": "15-1-degraded.png",
+      "text": "Ngày cấp: 07/08/2023",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "16-0-clear.png",
+      "image": "16-0-clear.png",
+      "text": "079203001256",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "16-0-degraded.png",
+      "image": "16-0-degraded.png",
+      "text": "079203001256",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "16-1-clear.png",
+      "image": "16-1-clear.png",
+      "text": "079203001256",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "16-1-degraded.png",
+      "image": "16-1-degraded.png",
+      "text": "079203001256",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "17-0-clear.png",
+      "image": "17-0-clear.png",
+      "text": "012345678901",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "17-0-degraded.png",
+      "image": "17-0-degraded.png",
+      "text": "012345678901",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "17-1-clear.png",
+      "image": "17-1-clear.png",
+      "text": "012345678901",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "17-1-degraded.png",
+      "image": "17-1-degraded.png",
+      "text": "012345678901",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "18-0-clear.png",
+      "image": "18-0-clear.png",
+      "text": "Thôn Đông, Xã Vĩnh Thịnh, Huyện Vĩnh Tường, Tỉnh Vĩnh Phúc",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "18-0-degraded.png",
+      "image": "18-0-degraded.png",
+      "text": "Thôn Đông, Xã Vĩnh Thịnh, Huyện Vĩnh Tường, Tỉnh Vĩnh Phúc",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "18-1-clear.png",
+      "image": "18-1-clear.png",
+      "text": "Thôn Đông, Xã Vĩnh Thịnh, Huyện Vĩnh Tường, Tỉnh Vĩnh Phúc",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "18-1-degraded.png",
+      "image": "18-1-degraded.png",
+      "text": "Thôn Đông, Xã Vĩnh Thịnh, Huyện Vĩnh Tường, Tỉnh Vĩnh Phúc",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "19-0-clear.png",
+      "image": "19-0-clear.png",
+      "text": "Số 45/2 Đường Lý Thường Kiệt, Phường Hoà Thuận Đông, Quận Hải Châu, Thành phố Đà Nẵng",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "19-0-degraded.png",
+      "image": "19-0-degraded.png",
+      "text": "Số 45/2 Đường Lý Thường Kiệt, Phường Hoà Thuận Đông, Quận Hải Châu, Thành phố Đà Nẵng",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "19-1-clear.png",
+      "image": "19-1-clear.png",
+      "text": "Số 45/2 Đường Lý Thường Kiệt, Phường Hoà Thuận Đông, Quận Hải Châu, Thành phố Đà Nẵng",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "19-1-degraded.png",
+      "image": "19-1-degraded.png",
+      "text": "Số 45/2 Đường Lý Thường Kiệt, Phường Hoà Thuận Đông, Quận Hải Châu, Thành phố Đà Nẵng",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "20-0-clear.png",
+      "image": "20-0-clear.png",
+      "text": "Khu phố Bình Phước A, Phường Bình Chuẩn, Thành phố Thuận An, Tỉnh Bình Dương",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "20-0-degraded.png",
+      "image": "20-0-degraded.png",
+      "text": "Khu phố Bình Phước A, Phường Bình Chuẩn, Thành phố Thuận An, Tỉnh Bình Dương",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "20-1-clear.png",
+      "image": "20-1-clear.png",
+      "text": "Khu phố Bình Phước A, Phường Bình Chuẩn, Thành phố Thuận An, Tỉnh Bình Dương",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "20-1-degraded.png",
+      "image": "20-1-degraded.png",
+      "text": "Khu phố Bình Phước A, Phường Bình Chuẩn, Thành phố Thuận An, Tỉnh Bình Dương",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "21-0-clear.png",
+      "image": "21-0-clear.png",
+      "text": "Phường Nguyễn Trãi, Quận Hà Đông, Thành phố Hà Nội",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "21-0-degraded.png",
+      "image": "21-0-degraded.png",
+      "text": "Phường Nguyễn Trãi, Quận Hà Đông, Thành phố Hà Nội",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "21-1-clear.png",
+      "image": "21-1-clear.png",
+      "text": "Phường Nguyễn Trãi, Quận Hà Đông, Thành phố Hà Nội",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "21-1-degraded.png",
+      "image": "21-1-degraded.png",
+      "text": "Phường Nguyễn Trãi, Quận Hà Đông, Thành phố Hà Nội",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "22-0-clear.png",
+      "image": "22-0-clear.png",
+      "text": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "22-0-degraded.png",
+      "image": "22-0-degraded.png",
+      "text": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "22-1-clear.png",
+      "image": "22-1-clear.png",
+      "text": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "22-1-degraded.png",
+      "image": "22-1-degraded.png",
+      "text": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "23-0-clear.png",
+      "image": "23-0-clear.png",
+      "text": "CÔNG AN THÀNH PHỐ HỒ CHÍ MINH",
+      "variant": "clear",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "23-0-degraded.png",
+      "image": "23-0-degraded.png",
+      "text": "CÔNG AN THÀNH PHỐ HỒ CHÍ MINH",
+      "variant": "degraded",
+      "font": "LiberationSans-Regular.ttf"
+    },
+    {
+      "name": "23-1-clear.png",
+      "image": "23-1-clear.png",
+      "text": "CÔNG AN THÀNH PHỐ HỒ CHÍ MINH",
+      "variant": "clear",
+      "font": "Ubuntu-R.ttf"
+    },
+    {
+      "name": "23-1-degraded.png",
+      "image": "23-1-degraded.png",
+      "text": "CÔNG AN THÀNH PHỐ HỒ CHÍ MINH",
+      "variant": "degraded",
+      "font": "Ubuntu-R.ttf"
+    }
+  ]
+}
