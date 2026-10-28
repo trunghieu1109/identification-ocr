@@ -1,4 +1,4 @@
-"""Namlhn CUDA service shared by the main GPU profile and OCR experiments."""
+"""GPU service: Paddle text detection and DocU Seq2Seq recognition."""
 import logging
 import os
 import secrets
@@ -7,7 +7,6 @@ from contextlib import asynccontextmanager, closing
 from pathlib import Path
 from time import perf_counter
 from typing import Literal
-from unittest.mock import patch
 
 from fastapi import FastAPI, File, Header, UploadFile
 from fastapi.responses import JSONResponse
@@ -21,63 +20,16 @@ from .namlhn_docu_pipeline import STRATEGY as DOCU_STRATEGY
 logger = logging.getLogger(__name__)
 
 
-class NamLhnCudaEngine(NamLhnEngine):
-    def __init__(self):
-        super().__init__()
-        self.device = "cuda"
-        self.model = os.getenv("NAMLHN_GPU_MODEL", os.getenv("OCR_MODEL", "vgg_transformer"))
-        if self.model not in {"vgg_seq2seq", "vgg_transformer"}:
-            raise ValueError("NAMLHN_GPU_MODEL must be vgg_seq2seq or vgg_transformer")
-        self.reason = "Đang khởi tạo namlhn GPU."
-        self.cuda_available = False
-        self.decoder = "vietocr_default"
-
-    def _initialize(self):
-        if self._extractor is not None:
-            return
-        import torch
-        import paddle
-        from vietocr.tool.config import Cfg
-        self.cuda_available = bool(torch.cuda.is_available() and paddle.device.is_compiled_with_cuda()
-                                   and paddle.device.cuda.device_count() > 0)
-        if not self.cuda_available:
-            self.reason = "namlhn GPU chưa truy cập được CUDA của cả Paddle và PyTorch."
-            raise OCRUnavailable(self.reason)
-        # Match the CPU recognizer's FP32 computation; this comparison should
-        # change the device, not opt into lower-precision CUDA math.
-        torch.backends.cuda.matmul.allow_tf32 = False
-        torch.backends.cudnn.allow_tf32 = False
-        root = Path(os.getenv("NAMLHN_GPU_CONFIG_DIR", "/opt/docu/configs/vietocr"))
-        weights = Path(os.getenv("OCR_WEIGHTS", f"/app/model/recognition/{self.model}.pth"))
-        if not weights.is_file() or not (root / f"{self.model}.yml").is_file():
-            raise OCRUnavailable("Thiếu checkpoint hoặc cấu hình cục bộ của namlhn GPU.")
-        os.environ["OCR_WEIGHTS"] = str(weights)
-        paddle.set_device("gpu:0")
-        paddle.ones([1]).sum().numpy()
-        torch.ones(1, device="cuda").add_(1)
-        torch.cuda.synchronize()
-        with patch.object(Cfg, "load_config_from_name", side_effect=lambda name: Cfg.load_config_from_file(root / f"{name}.yml")):
-            super()._initialize()
-        if not str(next(self._extractor._vietocr.model.parameters()).device).startswith("cuda"):
-            self._extractor = None
-            raise OCRUnavailable("VietOCR của namlhn chưa chạy trên CUDA.")
-        if self.model == "vgg_transformer" and os.getenv("NAMLHN_GPU_FAST_DECODE", "1") == "1":
-            from .cuda_decode import DECODER, install_cuda_decoder
-            install_cuda_decoder(self._extractor._vietocr)
-            self.decoder = DECODER
-        self.reason = ""
-
-    def describe(self):
-        return {**super().describe(), "device": "cuda:0", "cuda_available": self.cuda_available,
-                "pipeline_ready": self._extractor is not None and self.cuda_available,
-                "recognition_model": self.model, "decoder": self.decoder, "reason": self.reason}
-
-
-class NamLhnDocUCudaEngine(NamLhnCudaEngine):
+class NamLhnDocUCudaEngine(NamLhnEngine):
     """Load only Paddle detection and one DocU recognizer on the GPU."""
     def __init__(self):
-        super().__init__()
-        self.model = os.getenv("NAMLHN_GPU_MODEL", "vgg_seq2seq")
+        super().__init__(queue_name="ocr-gpu")
+        self.device = "cuda"
+        self.model = "vgg_seq2seq"
+        self.cuda_available = False
+        self.reason = "Đang khởi tạo OCR GPU."
+        if os.getenv("NAMLHN_GPU_MODEL", self.model) != self.model:
+            raise ValueError("GPU chỉ hỗ trợ model vgg_seq2seq")
         self.text_enhancement = os.getenv("NAMLHN_GPU_TEXT_ENHANCEMENT", "adaptive")
         if self.text_enhancement not in {"off", "adaptive"}:
             raise ValueError("NAMLHN_GPU_TEXT_ENHANCEMENT must be off or adaptive")
@@ -139,7 +91,8 @@ class NamLhnDocUCudaEngine(NamLhnCudaEngine):
 
     def describe(self):
         ready = self._detector is not None and self._recognizer is not None
-        return {**super().describe(), "model_loaded": ready,
+        return {**super().describe(), "device": "cuda:0", "cuda_available": self.cuda_available,
+                "reason": self.reason, "recognition_model": self.model, "model_loaded": ready,
                 "pipeline_ready": ready and self.cuda_available, "strategy": DOCU_STRATEGY,
                 "detection_model": "PP-OCRv6_medium_det", "recognition_provider": "docu",
                 "recognition_device": "cuda:0",
@@ -149,23 +102,19 @@ class NamLhnDocUCudaEngine(NamLhnCudaEngine):
 
 
 def create_namlhn_gpu_app(engine=None):
-    if engine is None:
-        pipeline = os.getenv("NAMLHN_GPU_PIPELINE", "docu")
-        if pipeline not in {"docu", "legacy"}:
-            raise ValueError("NAMLHN_GPU_PIPELINE must be docu or legacy")
-        engine = NamLhnDocUCudaEngine() if pipeline == "docu" else NamLhnCudaEngine()
+    engine = engine if engine is not None else NamLhnDocUCudaEngine()
 
     @asynccontextmanager
     async def lifespan(_app):
         try:
             await run_in_threadpool(engine.initialize)
         except Exception:
-            logger.exception("Experimental namlhn GPU initialization failed")
+            logger.exception("Namlhn GPU initialization failed")
         yield
         engine.close()
 
     app = FastAPI(title="Namlhn GPU OCR", lifespan=lifespan)
-    token = os.getenv("NAMLHN_GPU_OCR_API_KEY", os.getenv("GPU_OCR_API_KEY", ""))
+    token = os.getenv("NAMLHN_GPU_OCR_API_KEY", "")
 
     def failure(message, status, headers=None):
         return JSONResponse({"success": False, "error": message}, status_code=status,
@@ -213,7 +162,7 @@ def create_namlhn_gpu_app(engine=None):
         except OCRUnavailable as exc:
             return failure(str(exc), 503)
         except Exception:
-            logger.exception("Experimental namlhn GPU OCR failed")
+            logger.exception("Namlhn GPU OCR failed")
             return failure("Chưa xử lý được ảnh bằng namlhn GPU.", 503)
         finally:
             await file.close()

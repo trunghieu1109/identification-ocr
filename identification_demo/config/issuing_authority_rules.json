@@ -1,13 +1,6 @@
 {
   "enabled": true,
-  "image_enhancement": true,
   "min_similarity": 0.9,
-  "recovery_crop": {
-    "min_width_ratio": 0.66,
-    "above_lines": 0.75,
-    "below_lines": 6,
-    "min_below_height_ratio": 0.16
-  },
   "authorities": [
     {
       "name": "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI",

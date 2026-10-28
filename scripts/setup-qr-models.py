@@ -9,7 +9,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from identification_demo.qr_experiments import QRDET_RELEASE, model_directory
+from identification_demo.wechat_qr import model_directory
 
 
 WECHAT_URL = "https://raw.githubusercontent.com/WeChatCV/opencv_3rdparty/wechat_qrcode"
@@ -18,8 +18,7 @@ MODELS = (
     ("detect.caffemodel", f"{WECHAT_URL}/detect.caffemodel", "238e2b2d6f3c18d6c3a30de0c31e23cf"),
     ("sr.prototxt", f"{WECHAT_URL}/sr.prototxt", "69db99927a70df953b471daaba03fbef"),
     ("sr.caffemodel", f"{WECHAT_URL}/sr.caffemodel", "cbfcd60361a73beb8c583eea7e8e6664"),
-    ("qrdet/qrdet-s.pt", f"{QRDET_RELEASE}/qrdet-s.pt",
-     "50a9113970a878a51206d5caabcc2c758856f751944199a2c371d872fd768af1"),
+
 )
 
 
@@ -53,7 +52,6 @@ def download_models(directory):
         finally:
             if temporary is not None:
                 temporary.unlink(missing_ok=True)
-    (directory / "qrdet" / "current_release.txt").write_text(QRDET_RELEASE)
 
 
 if __name__ == "__main__":

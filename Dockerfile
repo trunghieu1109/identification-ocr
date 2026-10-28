@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ARG OCR_REF=2d951ac603a43677572ff39ed6a21bdebe622263
 RUN git clone https://github.com/namlhn/vietnam-cccd-ocr.git /opt/vietnam-cccd-ocr \
     && git -C /opt/vietnam-cccd-ocr checkout "$OCR_REF" \
-    && git -C /opt/vietnam-cccd-ocr rev-parse HEAD > /opt/ocr-upstream-revision
+    && git -C /opt/vietnam-cccd-ocr rev-parse HEAD > /opt/ocr-upstream-revision \
+    && rm -rf /opt/vietnam-cccd-ocr/.git /opt/vietnam-cccd-ocr/models
 
 WORKDIR /app
 COPY requirements.txt requirements-cpu.txt ./

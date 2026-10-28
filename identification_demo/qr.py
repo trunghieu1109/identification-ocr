@@ -1,10 +1,7 @@
 """Read QR pixels locally and parse the seven-part CCCD text format."""
-import importlib
-import importlib.util
 import re
 import unicodedata
 from datetime import datetime
-from threading import Lock
 
 
 QR_FIELDS = (
@@ -49,35 +46,3 @@ def parse_cccd_qr(text):
     fields["issue_date"] = _date(parts[6])
     fields["gender"] = {"nam": "Nam", "nữ": "Nữ", "khác": "Khác"}.get(parts[4].casefold(), "")
     return fields
-
-
-class QRReader:
-    def __init__(self):
-        self._lock = Lock()
-
-    def describe(self):
-        return {"provider": "zxing-cpp", "available": importlib.util.find_spec("zxingcpp") is not None}
-
-    def read(self, image):
-        if not self._lock.acquire(timeout=2):
-            raise QRBusy("Dịch vụ đang đọc một mã QR khác. Hãy thử lại sau ít giây.")
-        try:
-            try:
-                zxingcpp = importlib.import_module("zxingcpp")
-            except ImportError as exc:
-                raise QRUnavailable("Chưa cài bộ đọc QR. Hãy cài requirements.txt hoặc build lại Docker.") from exc
-            barcodes = zxingcpp.read_barcodes(
-                image, formats=zxingcpp.BarcodeFormat.QRCode,
-                try_rotate=True, try_downscale=True,
-            )
-            texts = []
-            for barcode in barcodes:
-                try:
-                    text = barcode.bytes.decode("utf-8")
-                except UnicodeDecodeError:
-                    text = barcode.text
-                if text not in texts:
-                    texts.append(text)
-            return texts
-        finally:
-            self._lock.release()

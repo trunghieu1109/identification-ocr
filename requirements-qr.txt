@@ -1,3 +1,2 @@
-# The three QR experiments run in the web/CPU service.
-qrdet>=2.5,<3
+# WeChatQRCode is the only QR reader used by the application.
 opencv-contrib-python==4.10.0.84

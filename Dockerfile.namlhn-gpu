@@ -1,12 +1,43 @@
-# Main GPU worker; keep its CUDA dependencies separate from the CPU service.
-# The base can be rebuilt with Dockerfile.benchmark-gpu when not present locally.
-ARG NAMLHN_GPU_BASE_IMAGE=identification-ocr-benchmark-gpu:experiment
-FROM ${NAMLHN_GPU_BASE_IMAGE}
-COPY identification_demo /app/identification_demo
-ENV OCR_DEVICE=cuda OCR_MODEL=vgg_transformer OCR_DEFAULT_QUALITY=high
-ENV NAMLHN_GPU_MODEL=vgg_seq2seq NAMLHN_GPU_PIPELINE=docu
-ENV NAMLHN_GPU_TEXT_ENHANCEMENT=adaptive
-ENTRYPOINT []
+ARG DOCU_MODELS_IMAGE=natollang/docu-ocr@sha256:7b24a413cbee8e87aa7b2664efbadf6419e5766fcf29daf317b1aae1bba49ec4
+FROM ${DOCU_MODELS_IMAGE} AS pretrained
+
+FROM python:3.11-slim AS sources
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/*
+ARG OCR_REF=2d951ac603a43677572ff39ed6a21bdebe622263
+ARG DOCU_REF=7b98e5ef984f55c9f23f896e67c93c1be0aabddc
+RUN git clone https://github.com/namlhn/vietnam-cccd-ocr.git /src/namlhn \
+    && git -C /src/namlhn checkout "$OCR_REF" \
+    && git clone https://github.com/CaoAnhNato/vn-identity-card-ocr.git /src/docu \
+    && git -C /src/docu checkout "$DOCU_REF"
+COPY patches /patches
+COPY scripts/patch-upstream.sh /patch-upstream.sh
+RUN sh /patch-upstream.sh /src/namlhn
+COPY scripts/prepare-gpu-sources.py /prepare-gpu-sources.py
+RUN python /prepare-gpu-sources.py --namlhn /src/namlhn --docu /src/docu --output /runtime
+
+FROM python:3.11-slim
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 \
+    OCR_SOURCE_DIR=/opt/vietnam-cccd-ocr DOCU_SOURCE_DIR=/opt/docu \
+    OCR_DEVICE=cuda OCR_DEFAULT_QUALITY=high \
+    NAMLHN_GPU_TEXT_ENHANCEMENT=adaptive NAMLHN_GPU_CARD_ENHANCEMENT=adaptive \
+    OCR_CPU_THREADS=4 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 \
+    FLAGS_allocator_strategy=auto_growth FLAGS_fraction_of_gpu_memory_to_use=0.1 \
+    PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK=True
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 libglib2.0-0 libgl1 && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+ARG PADDLE_GPU_WHEEL=https://paddle-whl.cdn.bcebos.com/stable/cu129/paddlepaddle-gpu/paddlepaddle_gpu-3.2.2-cp311-cp311-linux_x86_64.whl
+COPY requirements.txt requirements-gpu.txt ./
+# Install both frameworks in one layer so replaced CUDA libraries are not
+# retained in an earlier layer. Keep the verified runtime versions.
+RUN pip install --no-cache-dir torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu128 \
+    && pip install --no-cache-dir -r requirements.txt -r requirements-gpu.txt "$PADDLE_GPU_WHEEL"
+ENV LD_LIBRARY_PATH=/usr/local/lib/python3.11/site-packages/nvidia/cusparselt/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+COPY --from=sources /runtime/ /opt/
+# Only the recognizer checkpoint is needed; detection is provided by Paddle.
+COPY --from=pretrained /app/model/recognition/vgg_seq2seq.pth /app/model/recognition/vgg_seq2seq.pth
+COPY identification_demo ./identification_demo
 HEALTHCHECK --interval=15s --timeout=5s --start-period=90s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8082/api/v1/health/ready', timeout=4)"
 EXPOSE 8082

@@ -20,6 +20,24 @@ let toastTimer;
 let serviceHealth = null;
 let clientTimings = null;
 let qualityTouched = false;
+let mrzTouched = false;
+try {
+  const saved = localStorage.getItem("gpu-mrz-enabled");
+  if (saved === "true" || saved === "false") {
+    $("gpu-mrz-enabled").checked = saved === "true";
+    mrzTouched = true;
+  }
+} catch (_) { /* Server default is used when browser storage is unavailable. */ }
+
+function sourceLabel(source, quality) {
+  if (!source) return "";
+  if (source.startsWith("mrz_")) return "MRZ · mặt sau";
+  if (sourceLabels[source]) return sourceLabels[source].replace("OCR", quality === "high" ? "OCR GPU" : "OCR CPU");
+  const reader = source.startsWith("qr_") ? "QR" : source.startsWith("ocr_") ? "OCR GPU" : "";
+  if (!reader) return "";
+  const side = source.includes("front") ? "mặt trước" : "mặt sau";
+  return `${reader} · ${side} · ${source.includes("aligned") ? "ảnh căn chỉnh" : "ảnh gốc"}`;
+}
 
 function selectedQuality() {
   return document.querySelector('input[name="quality"]:checked').value;
@@ -27,6 +45,9 @@ function selectedQuality() {
 
 function updateGPUStatus() {
   const high = selectedQuality() === "high";
+  const mrz = $("gpu-mrz-enabled").checked;
+  $("gpu-mrz-options").hidden = !high;
+  $("quality-description").textContent = high && mrz ? "Ưu tiên QR → MRZ; OCR GPU bổ sung phần còn thiếu. Nếu cả QR và MRZ không đọc được, OCR vẫn đọc đủ hai mặt." : high ? "Luồng GPU QR + OCR trước đó. OCR bổ sung thông tin còn thiếu từ hai mặt." : "QR được ưu tiên; OCR CPU bổ sung thông tin còn thiếu từ hai mặt.";
   const available = serviceHealth?.ocr_profiles?.high?.available;
   $("gpu-status").hidden = !high || available === true;
   $("gpu-status").textContent = !serviceHealth ? "Đang kiểm tra dịch vụ GPU…" : "Mức cao hiện chưa sẵn sàng. Thông tin QR vẫn được giữ; phần OCR cần dịch vụ GPU hoạt động.";
@@ -62,10 +83,10 @@ function renderFields(values = null) {
       text.textContent = values[key] || (key === "expiry_date" && result?.expiry?.expiry_type === "unlimited" ? "Không thời hạn" : key === "identifying_features" ? "Đã bỏ qua" : key === "old_id_number" ? "Không có / chưa đọc được" : "Chưa đọc được");
       content.append(text);
       if (!values[key]) value.classList.add("empty");
-      if (values[key] && sourceLabels[result?.field_sources?.[key]]) {
+      if (values[key] && sourceLabel(result?.field_sources?.[key], result?.quality)) {
         const source = document.createElement("span");
         source.className = "field-source";
-        source.textContent = sourceLabels[result.field_sources[key]].replace("OCR", result.quality === "high" ? "OCR GPU" : "OCR CPU");
+        source.textContent = sourceLabel(result.field_sources[key], result.quality);
         content.append(source);
       }
       value.append(content);
@@ -104,8 +125,6 @@ function resetResult() {
   $("back-ocr-final").replaceChildren();
   $("back-ocr-candidate").textContent = "";
   $("back-ocr-authority").textContent = "";
-  $("back-ocr-crop").hidden = true;
-  $("back-ocr-crop-image").removeAttribute("src");
   $("timing-details").hidden = true;
   $("timing-details").open = false;
   $("copy-json").disabled = true;
@@ -167,6 +186,7 @@ function setBusy(value) {
   $("extract-spinner").hidden = !value;
   $("extract-arrow").hidden = value;
   $("quality-selector").disabled = value;
+  $("gpu-mrz-enabled").disabled = value;
   for (const side of sides) {
     for (const suffix of ["remove-file", "file-input", "choose-file"]) $(`${side}-${suffix}`).disabled = value;
   }
@@ -182,6 +202,7 @@ async function extract() {
   $("extract-label").textContent = "Đang gửi ảnh…";
   const form = new FormData();
   form.append("quality", selectedQuality());
+  form.append("use_mrz", String($("gpu-mrz-enabled").checked));
   form.append("include_back_ocr", "true");
   for (const side of sides) form.append(`${side}_image`, selectedFiles[side]);
   try {
@@ -198,12 +219,13 @@ async function extract() {
     renderBackOCR(result);
     const count = fields.filter(([key]) => result.fields[key]).length;
     const qrCount = fields.filter(([key]) => result.field_sources?.[key]?.startsWith("qr_")).length;
-    const ocrCount = count - qrCount;
+    const mrzCount = fields.filter(([key]) => result.field_sources?.[key]?.startsWith("mrz_") && result.fields[key]).length;
+    const ocrCount = count - qrCount - mrzCount;
     $("result-count").textContent = `${count} / ${fields.length} trường`;
     $("json-output").textContent = JSON.stringify(result, null, 2);
     $("copy-json").disabled = false;
     $("download-json").disabled = false;
-    setState(count ? "success" : "", result.status === "complete" ? "Đã đọc xong thông tin CCCD" : count ? "Đã đọc một phần thông tin" : "Chưa tìm thấy thông tin", count ? `Giữ ${qrCount} trường từ QR và bổ sung ${ocrCount} trường bằng OCR.` : "Hãy dùng ảnh chụp thẳng, rõ chữ và không chói sáng.");
+    setState(count ? "success" : "", result.status === "complete" ? "Đã đọc xong thông tin CCCD" : count ? "Đã đọc một phần thông tin" : "Chưa tìm thấy thông tin", count ? `${qrCount} trường từ QR${mrzCount ? `, ${mrzCount} trường từ MRZ` : ""} và ${ocrCount} trường từ OCR.` : "Hãy dùng ảnh chụp thẳng, rõ chữ và không chói sáng.");
     const messages = Array.isArray(result.warnings) ? [...result.warnings] : [];
     if (result.status !== "complete") messages.push("Một số thông tin chưa đầy đủ. Hãy đối chiếu với thẻ gốc.");
     $("result-notice").textContent = messages.join(" ");
@@ -247,12 +269,6 @@ function renderBackOCR(payload) {
   renderLines("back-ocr-final", debug.final_lines);
   $("back-ocr-candidate").textContent = debug.ambiguous ? "Chưa chọn được khối cơ quan cấp" : debug.authority_candidate || "Chưa chọn được dòng phù hợp";
   $("back-ocr-authority").textContent = payload.fields.issuing_authority || "Chưa đọc được";
-  const crop = debug.search_crop;
-  if (crop?.image?.startsWith("data:image/jpeg;base64,") && Array.isArray(crop.bbox) && crop.bbox.length === 4) {
-    $("back-ocr-crop-image").src = crop.image;
-    $("back-ocr-crop-caption").textContent = `Vùng ảnh đã tìm bổ sung cơ quan cấp · ${Math.round(crop.bbox[2] - crop.bbox[0])} × ${Math.round(crop.bbox[3] - crop.bbox[1])} px`;
-    $("back-ocr-crop").hidden = false;
-  }
   $("back-ocr-details").hidden = false;
   $("back-ocr-details").open = true;
 }
@@ -322,8 +338,9 @@ function afterResultPaint() {
 
 function renderProcessingSummary(payload, qrCount, ocrCount) {
   const seconds = value => (value / 1000).toLocaleString("vi-VN", { maximumFractionDigits: 1 });
-  $("processing-time").textContent = `Tổng chờ: ${seconds(clientTimings.total)} giây · QR/OCR: ${seconds(payload.processing_time_ms)} giây`;
-  $("result-sources").textContent = `${qrCount} trường từ QR · ${ocrCount} trường từ OCR ${payload.quality === "high" ? "GPU" : "CPU"}`;
+  const mrzCount = fields.filter(([key]) => payload.field_sources?.[key]?.startsWith("mrz_") && payload.fields[key]).length;
+  $("processing-time").textContent = `Tổng chờ: ${seconds(clientTimings.total)} giây · Xử lý: ${seconds(payload.processing_time_ms)} giây`;
+  $("result-sources").textContent = `${qrCount} trường từ QR${mrzCount ? ` · ${mrzCount} trường từ MRZ` : ""} · ${ocrCount} trường từ OCR ${payload.quality === "high" ? "GPU" : "CPU"}${payload.gpu_pipeline ? ` · ${payload.gpu_pipeline.used === "parallel" ? "MRZ bật" : "GPU QR + OCR"}` : ""}`;
 }
 
 function renderTimings(payload) {
@@ -365,6 +382,14 @@ function renderTimings(payload) {
     add(label, payload.timings_ms?.[key]);
     const side = key === "ocr_front" ? "front" : key === "ocr_back" ? "back" : null;
     if (side) for (const [stage, name] of Object.entries(details)) add(name, payload.ocr?.[side]?.timings_ms?.[stage], true);
+  }
+  if (payload.gpu_pipeline?.used === "parallel") {
+    const prefixLabels = {align_: "Căn chỉnh", qr_: "QR", mrz_: "MRZ", ocr_: "OCR"};
+    for (const [key, value] of Object.entries(payload.timings_ms || {})) {
+      const prefix = Object.keys(prefixLabels).find(item => key.startsWith(item));
+      if (prefix) add(`${prefixLabels[prefix]} · ${key.includes("front") ? "mặt trước" : "mặt sau"}${key.includes("aligned") ? " · ảnh căn chỉnh" : ""}`, value, true);
+    }
+    add("Các bước chạy song song; thời gian có phần chồng lấp", payload.timings_ms?.total);
   }
   $("ocr-work").textContent = sides.map(side => {
     const work = payload.ocr?.[side]?.work;
@@ -437,6 +462,12 @@ $("quality-selector").addEventListener("change", () => {
   resetResult();
   updateGPUStatus();
 });
+$("gpu-mrz-enabled").addEventListener("change", () => {
+  mrzTouched = true;
+  try { localStorage.setItem("gpu-mrz-enabled", String($("gpu-mrz-enabled").checked)); } catch (_) { /* Optional preference. */ }
+  resetResult();
+  updateGPUStatus();
+});
 for (const name of ["fields", "json"]) {
   $("tab-" + name).addEventListener("click", () => setTab(name));
   $("tab-" + name).addEventListener("keydown", event => {
@@ -476,6 +507,9 @@ fetch("/api/health").then(response => {
   return response.json();
 }).then(health => {
   serviceHealth = health;
+  if (!mrzTouched && !busy && typeof health.gpu_mrz?.default_enabled === "boolean") {
+    $("gpu-mrz-enabled").checked = health.gpu_mrz.default_enabled;
+  }
   if (!qualityTouched && !busy && ["medium", "high"].includes(health.default_quality)) {
     document.querySelector(`input[name="quality"][value="${health.default_quality}"]`).checked = true;
   }

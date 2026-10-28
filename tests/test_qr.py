@@ -1,11 +1,8 @@
-import importlib
-import types
 import unicodedata
 
 import pytest
-from PIL import Image
 
-from identification_demo.qr import QRBusy, QRReader, QRUnavailable, parse_cccd_qr
+from identification_demo.qr import parse_cccd_qr
 
 
 # Synthetic data only; leading zeroes and Vietnamese UTF-8 must survive decoding.
@@ -54,42 +51,3 @@ def test_known_layout_with_missing_name_preserves_other_qr_fields():
 ])
 def test_dates_are_validated(value, expected):
     assert parse_cccd_qr(PAYLOAD.replace("01021999", value))["date_of_birth"] == expected
-
-
-def test_reader_passes_pixels_to_qr_decoder_and_preserves_utf8(monkeypatch):
-    calls = []
-
-    def decode(image, **options):
-        calls.append((image.mode, image.size, options))
-        # The decoder's guessed text encoding must not corrupt valid UTF-8 bytes.
-        return [types.SimpleNamespace(bytes=PAYLOAD.encode(), text="wrong encoding")] * 2
-
-    module = types.SimpleNamespace(BarcodeFormat=types.SimpleNamespace(QRCode="QR"), read_barcodes=decode)
-    monkeypatch.setattr(importlib, "import_module", lambda name: module)
-    reader = QRReader()
-    with Image.new("RGB", (200, 100)) as image:
-        assert reader.read(image) == [PAYLOAD]
-    assert calls == [("RGB", (200, 100), {"formats": "QR", "try_rotate": True, "try_downscale": True})]
-    assert not reader._lock.locked()
-
-
-def test_missing_decoder_is_actionable_and_can_be_retried(monkeypatch):
-    def missing(name):
-        raise ImportError(name)
-
-    monkeypatch.setattr(importlib, "import_module", missing)
-    reader = QRReader()
-    for _ in range(2):
-        with pytest.raises(QRUnavailable, match="requirements.txt"):
-            reader.read(None)
-        assert not reader._lock.locked()
-
-
-def test_parallel_decodes_are_rejected():
-    reader = QRReader()
-    reader._lock.acquire()
-    try:
-        with pytest.raises(QRBusy):
-            reader.read(None)
-    finally:
-        reader._lock.release()

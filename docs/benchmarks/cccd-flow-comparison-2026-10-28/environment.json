@@ -1,0 +1,93 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5060",
+  "vram_mib": 8151,
+  "nvidia_driver": "580.178.04",
+  "cpu": "AMD Ryzen 9 5950X",
+  "logical_cpus_visible": 15,
+  "images": {
+    "web": "sha256:85cf4dbe4ae3972c225d8e355c2edf6d9f089b26be2951949a598306c9a29f03",
+    "gpu": "sha256:099143302356a1a485f8b5399dec729353b06b3ddb22d7ecbb0067e4c247d337",
+    "experiment": "sha256:290e1fecdaef49b6b749f6fc858f9193ec00cd340f79a2d970836f32cd11812d"
+  },
+  "health": {
+    "main": {
+      "status": "ok",
+      "engine": {
+        "provider": "namlhn/vietnam-cccd-ocr",
+        "source_available": true,
+        "model_loaded": false,
+        "device": "cpu",
+        "model": "vgg_transformer",
+        "queue": {
+          "capacity": 8,
+          "pending": 0,
+          "active": false,
+          "completed": 0
+        }
+      },
+      "qr": {
+        "provider": "wechat-qrcode",
+        "available": true
+      },
+      "ocr_profiles": {
+        "medium": {
+          "provider": "namlhn/vietnam-cccd-ocr",
+          "source_available": true,
+          "model_loaded": false,
+          "device": "cpu",
+          "model": "vgg_transformer",
+          "queue": {
+            "capacity": 8,
+            "pending": 0,
+            "active": false,
+            "completed": 0
+          }
+        },
+        "high": {
+          "provider": "namlhn/vietnam-cccd-ocr",
+          "device": "cuda:0",
+          "configured": true,
+          "available": true,
+          "model_loaded": true,
+          "recognition_model": "vgg_seq2seq",
+          "queue": {
+            "capacity": 8,
+            "pending": 0,
+            "active": false,
+            "completed": 161
+          },
+          "strategy": "namlhn_docu_v1",
+          "recognition_provider": "docu",
+          "recognition_device": "cuda:0",
+          "card_crop": "off",
+          "card_enhancement": "adaptive",
+          "text_enhancement": "adaptive"
+        }
+      },
+      "default_quality": "high",
+      "max_image_bytes": 10485760,
+      "supported_formats": [
+        "image/jpeg",
+        "image/png"
+      ],
+      "supported_sides": [
+        "front",
+        "back"
+      ]
+    },
+    "experiment": {
+      "experimental": true,
+      "available": true,
+      "alignment": "DocAligner/lcnet050",
+      "mrz": "FastMRZ/2.1.2 + Vietnam TD1 validation",
+      "device": "cpu",
+      "ocr": "existing namlhn-gpu",
+      "queue": {
+        "capacity": 2,
+        "pending": 0,
+        "active": false,
+        "completed": 35
+      }
+    }
+  }
+}

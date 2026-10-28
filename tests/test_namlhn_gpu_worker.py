@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 
 from identification_demo.engine import NamLhnEngine, OCRBusy, OCRUnavailable, OCRMultipleDocuments
 from identification_demo.namlhn_gpu_engine import NamLhnGPUEngine
-from identification_demo.namlhn_gpu_worker import NamLhnCudaEngine, NamLhnDocUCudaEngine, create_namlhn_gpu_app
+from identification_demo.namlhn_gpu_worker import NamLhnDocUCudaEngine, create_namlhn_gpu_app
 from identification_demo.processing import MAX_IMAGE_BYTES
 from test_pipeline import image_data
 
@@ -102,42 +102,13 @@ def test_namlhn_worker_cannot_silently_initialize_cpu_models():
     paddle = pytest.importorskip("paddle")
     if torch.cuda.is_available() and paddle.device.is_compiled_with_cuda():
         pytest.skip("This check intentionally requires a CPU-only environment")
-    engine = NamLhnCudaEngine()
+    engine = NamLhnDocUCudaEngine()
     try:
         with pytest.raises(OCRUnavailable, match="CUDA"):
             engine.initialize()
         assert engine.describe()["pipeline_ready"] is False and engine._extractor is None
     finally:
         engine.close()
-
-
-@pytest.mark.parametrize("model", [None, "vgg_transformer", "vgg_seq2seq"])
-def test_cpu_and_gpu_choose_the_same_model_unless_explicitly_overridden(monkeypatch, model):
-    monkeypatch.setenv("NAMLHN_GPU_PIPELINE", "legacy")
-    monkeypatch.delenv("NAMLHN_GPU_MODEL", raising=False)
-    if model is None:
-        monkeypatch.delenv("OCR_MODEL", raising=False)
-    else:
-        monkeypatch.setenv("OCR_MODEL", model)
-    cpu, gpu, remote = NamLhnEngine(), NamLhnCudaEngine(), NamLhnGPUEngine("")
-    try:
-        assert cpu.model == gpu.model == remote.model == (model or "vgg_transformer")
-        assert cpu.device == "cpu" and gpu.device == "cuda"
-    finally:
-        cpu.close()
-        gpu.close()
-        remote.close()
-
-
-def test_a_different_gpu_model_requires_an_explicit_override(monkeypatch):
-    monkeypatch.setenv("NAMLHN_GPU_PIPELINE", "legacy")
-    monkeypatch.setenv("OCR_MODEL", "vgg_transformer")
-    monkeypatch.setenv("NAMLHN_GPU_MODEL", "vgg_seq2seq")
-    gpu = NamLhnCudaEngine()
-    try:
-        assert gpu.model == "vgg_seq2seq" and NamLhnGPUEngine("").model == "vgg_seq2seq"
-    finally:
-        gpu.close()
 
 
 def test_removed_card_crop_setting_cannot_reenable_crop_and_enhancement_stays_on(monkeypatch):

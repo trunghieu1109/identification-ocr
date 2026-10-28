@@ -7,7 +7,7 @@ class RequestTimingMiddleware:
         self.app = app
 
     async def __call__(self, scope, receive, send):
-        if scope["type"] != "http" or scope.get("path") not in {"/api/cccd/extract", "/api/cccd/experiment/extract"}:
+        if scope["type"] != "http" or scope.get("path") != "/api/cccd/extract":
             return await self.app(scope, receive, send)
         timing = {"started": perf_counter()}
         scope.setdefault("state", {})["request_timing"] = timing

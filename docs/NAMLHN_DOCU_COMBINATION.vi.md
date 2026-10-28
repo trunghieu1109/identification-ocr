@@ -1,3 +1,5 @@
+> **Tài liệu lịch sử.** Các API thử nghiệm, worker DocU độc lập và pipeline legacy đã được gỡ ở bản 0.8.0. Các số liệu được giữ để đối chiếu; dùng [README hiện tại](../README.md) để triển khai.
+
 # Namlhn GPU kết hợp bộ đọc DocU
 
 Lựa chọn `namlhn_gpu` hiện dùng `strategy: namlhn_docu_v1`:

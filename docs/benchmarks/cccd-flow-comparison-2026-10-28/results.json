@@ -1,0 +1,3614 @@
+{
+  "started_at": "2026-10-28T08:47:43.323151+00:00",
+  "synthetic": true,
+  "requests_per_flow_per_case": 5,
+  "warmups_per_flow_per_case": 1,
+  "concurrency": 1,
+  "order": "alternate flow order each measured round",
+  "cases": [
+    {
+      "name": "clear_mrz_no_qr",
+      "input_sha256": {
+        "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back": "59b238f003daab20e2d676ced27936b1c31ac1036cad5b75b773c493e5d6e281"
+      },
+      "input_bytes": 135698,
+      "expected_fields": 10,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 677.66,
+            "pipeline_ms": 672.94,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 12.56,
+              "ocr": 638.81,
+              "other": 21.57
+            },
+            "timings_ms": {
+              "image_decode": 21.49,
+              "qr_front": 6.44,
+              "qr_back": 6.12,
+              "ocr_front": 395.83,
+              "ocr_back": 242.98,
+              "merge": 0.08,
+              "total": 672.94
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 3467,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 1249.15,
+            "pipeline_ms": 1237.75,
+            "stage_ms": {
+              "alignment": 8.88,
+              "mrz": 508.05,
+              "qr": 16.11,
+              "ocr": 659.22,
+              "other": 45.49
+            },
+            "timings_ms": {
+              "align_front": 4.09,
+              "qr_front_original": 10.34,
+              "ocr_front_original": 397.25,
+              "align_back": 4.79,
+              "qr_back_original": 5.77,
+              "mrz_back": 508.05,
+              "ocr_back_original": 261.97,
+              "total": 1237.75
+            },
+            "worker_queue_ms": 0.07,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 233872,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 651.13,
+            "pipeline_ms": 646.01,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 14.06,
+              "ocr": 613.83,
+              "other": 18.12
+            },
+            "timings_ms": {
+              "image_decode": 18.06,
+              "qr_front": 8.77,
+              "qr_back": 5.29,
+              "ocr_front": 369.96,
+              "ocr_back": 243.87,
+              "merge": 0.06,
+              "total": 646.01
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3467,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 649.45,
+            "pipeline_ms": 645.13,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 10.92,
+              "ocr": 613.18,
+              "other": 21.03
+            },
+            "timings_ms": {
+              "image_decode": 20.95,
+              "qr_front": 5.58,
+              "qr_back": 5.34,
+              "ocr_front": 370.75,
+              "ocr_back": 242.43,
+              "merge": 0.08,
+              "total": 645.13
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3468,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 671.73,
+            "pipeline_ms": 667.37,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.77,
+              "ocr": 634.19,
+              "other": 21.41
+            },
+            "timings_ms": {
+              "image_decode": 21.34,
+              "qr_front": 5.49,
+              "qr_back": 6.28,
+              "ocr_front": 374.4,
+              "ocr_back": 259.79,
+              "merge": 0.07,
+              "total": 667.37
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3467,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 656.53,
+            "pipeline_ms": 652.59,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.03,
+              "ocr": 620.68,
+              "other": 20.88
+            },
+            "timings_ms": {
+              "image_decode": 20.81,
+              "qr_front": 5.65,
+              "qr_back": 5.38,
+              "ocr_front": 375.81,
+              "ocr_back": 244.87,
+              "merge": 0.07,
+              "total": 652.59
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3466,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 656.65,
+            "pipeline_ms": 652.88,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 10.8,
+              "ocr": 621.38,
+              "other": 20.7
+            },
+            "timings_ms": {
+              "image_decode": 20.63,
+              "qr_front": 5.51,
+              "qr_back": 5.29,
+              "ocr_front": 374.33,
+              "ocr_back": 247.05,
+              "merge": 0.07,
+              "total": 652.88
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3467,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 1243.09,
+            "pipeline_ms": 1231.89,
+            "stage_ms": {
+              "alignment": 8.22,
+              "mrz": 511.57,
+              "qr": 11.51,
+              "ocr": 654.41,
+              "other": 46.18
+            },
+            "timings_ms": {
+              "align_front": 3.9,
+              "qr_front_original": 6.1,
+              "ocr_front_original": 391.34,
+              "align_back": 4.32,
+              "qr_back_original": 5.41,
+              "mrz_back": 511.57,
+              "ocr_back_original": 263.07,
+              "total": 1231.89
+            },
+            "worker_queue_ms": 0.07,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 233868,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1212.1,
+            "pipeline_ms": 1201.79,
+            "stage_ms": {
+              "alignment": 8.48,
+              "mrz": 480.46,
+              "qr": 11.29,
+              "ocr": 655.53,
+              "other": 46.03
+            },
+            "timings_ms": {
+              "align_front": 3.79,
+              "qr_front_original": 5.3,
+              "ocr_front_original": 392.14,
+              "align_back": 4.69,
+              "qr_back_original": 5.99,
+              "mrz_back": 480.46,
+              "ocr_back_original": 263.39,
+              "total": 1201.79
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 233869,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1295.63,
+            "pipeline_ms": 1285.11,
+            "stage_ms": {
+              "alignment": 10.27,
+              "mrz": 543.49,
+              "qr": 13.08,
+              "ocr": 669.34,
+              "other": 48.93
+            },
+            "timings_ms": {
+              "align_front": 4.73,
+              "qr_front_original": 6.7,
+              "ocr_front_original": 403.78,
+              "align_back": 5.54,
+              "qr_back_original": 6.38,
+              "mrz_back": 543.49,
+              "ocr_back_original": 265.56,
+              "total": 1285.11
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 233868,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1234.13,
+            "pipeline_ms": 1224.32,
+            "stage_ms": {
+              "alignment": 8.49,
+              "mrz": 493.29,
+              "qr": 11.05,
+              "ocr": 665.92,
+              "other": 45.57
+            },
+            "timings_ms": {
+              "align_front": 4.23,
+              "qr_front_original": 5.55,
+              "ocr_front_original": 400.79,
+              "align_back": 4.26,
+              "qr_back_original": 5.5,
+              "mrz_back": 493.29,
+              "ocr_back_original": 265.13,
+              "total": 1224.32
+            },
+            "worker_queue_ms": 0.02,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 233869,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1239.39,
+            "pipeline_ms": 1229.4,
+            "stage_ms": {
+              "alignment": 8.92,
+              "mrz": 492.38,
+              "qr": 11.67,
+              "ocr": 670.43,
+              "other": 46.0
+            },
+            "timings_ms": {
+              "align_front": 3.99,
+              "qr_front_original": 5.56,
+              "ocr_front_original": 405.83,
+              "align_back": 4.93,
+              "qr_back_original": 6.11,
+              "mrz_back": 492.38,
+              "ocr_back_original": 264.6,
+              "total": 1229.4
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 233871,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 656.53,
+          "mean_wall_ms": 657.1,
+          "min_wall_ms": 649.45,
+          "max_wall_ms": 671.73,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 11.72,
+            "ocr": 620.65,
+            "other": 20.43
+          },
+          "mean_gpu_queue_ms": 0.1,
+          "mean_response_bytes": 3467,
+          "recognized_fields_range": [
+            10,
+            10
+          ],
+          "exact_expected_matches_range": [
+            9,
+            9
+          ],
+          "mismatched_field_names": [
+            "issue_date"
+          ],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 1239.39,
+          "mean_wall_ms": 1244.87,
+          "min_wall_ms": 1212.1,
+          "max_wall_ms": 1295.63,
+          "mean_stage_ms": {
+            "alignment": 8.88,
+            "mrz": 504.24,
+            "qr": 11.72,
+            "ocr": 663.13,
+            "other": 46.54
+          },
+          "mean_gpu_queue_ms": 0.1,
+          "mean_response_bytes": 233869,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            9,
+            9
+          ],
+          "mismatched_field_names": [
+            "issue_date"
+          ],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 582.86,
+      "delta_median_percent": 88.78
+    },
+    {
+      "name": "mild_blur_no_qr",
+      "input_sha256": {
+        "front": "4d204ed8fe4b25727b1cdd6cb88847f40023308bd3f9dd7e8b9ea9c9dfba721b",
+        "back": "77267cc0d6c4566199118c802e561082b6dc9081b8bb72e181dc5e8c7137992d"
+      },
+      "input_bytes": 277080,
+      "expected_fields": 10,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 707.58,
+            "pipeline_ms": 703.48,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 10.95,
+              "ocr": 667.81,
+              "other": 24.72
+            },
+            "timings_ms": {
+              "image_decode": 24.64,
+              "qr_front": 5.64,
+              "qr_back": 5.31,
+              "ocr_front": 356.0,
+              "ocr_back": 311.81,
+              "merge": 0.08,
+              "total": 703.48
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 3468,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 1095.79,
+            "pipeline_ms": 1085.5,
+            "stage_ms": {
+              "alignment": 9.05,
+              "mrz": 312.7,
+              "qr": 10.62,
+              "ocr": 703.73,
+              "other": 49.4
+            },
+            "timings_ms": {
+              "align_front": 3.87,
+              "qr_front_original": 5.25,
+              "ocr_front_original": 375.49,
+              "align_back": 5.18,
+              "qr_back_original": 5.37,
+              "mrz_back": 312.7,
+              "ocr_back_original": 328.24,
+              "total": 1085.5
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 193023,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 693.49,
+            "pipeline_ms": 688.92,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 10.99,
+              "ocr": 652.41,
+              "other": 25.52
+            },
+            "timings_ms": {
+              "image_decode": 25.45,
+              "qr_front": 5.65,
+              "qr_back": 5.34,
+              "ocr_front": 346.8,
+              "ocr_back": 305.61,
+              "merge": 0.07,
+              "total": 688.92
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3468,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 704.56,
+            "pipeline_ms": 700.1,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.25,
+              "ocr": 663.94,
+              "other": 24.91
+            },
+            "timings_ms": {
+              "image_decode": 24.84,
+              "qr_front": 5.88,
+              "qr_back": 5.37,
+              "ocr_front": 361.82,
+              "ocr_back": 302.12,
+              "merge": 0.07,
+              "total": 700.1
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 3467,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 698.65,
+            "pipeline_ms": 693.66,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 14.93,
+              "ocr": 654.15,
+              "other": 24.58
+            },
+            "timings_ms": {
+              "image_decode": 24.52,
+              "qr_front": 5.8,
+              "qr_back": 9.13,
+              "ocr_front": 349.3,
+              "ocr_back": 304.85,
+              "merge": 0.06,
+              "total": 693.66
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 3467,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 688.37,
+            "pipeline_ms": 684.18,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 10.82,
+              "ocr": 648.91,
+              "other": 24.45
+            },
+            "timings_ms": {
+              "image_decode": 24.37,
+              "qr_front": 5.55,
+              "qr_back": 5.27,
+              "ocr_front": 345.83,
+              "ocr_back": 303.08,
+              "merge": 0.08,
+              "total": 684.18
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 3467,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 691.73,
+            "pipeline_ms": 687.47,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 10.98,
+              "ocr": 652.32,
+              "other": 24.17
+            },
+            "timings_ms": {
+              "image_decode": 24.1,
+              "qr_front": 5.69,
+              "qr_back": 5.29,
+              "ocr_front": 349.07,
+              "ocr_back": 303.25,
+              "merge": 0.07,
+              "total": 687.47
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 3468,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 1104.71,
+            "pipeline_ms": 1094.26,
+            "stage_ms": {
+              "alignment": 9.79,
+              "mrz": 320.86,
+              "qr": 11.38,
+              "ocr": 702.51,
+              "other": 49.72
+            },
+            "timings_ms": {
+              "align_front": 5.35,
+              "qr_front_original": 5.93,
+              "ocr_front_original": 373.13,
+              "align_back": 4.44,
+              "qr_back_original": 5.45,
+              "mrz_back": 320.86,
+              "ocr_back_original": 329.38,
+              "total": 1094.26
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 193026,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1108.15,
+            "pipeline_ms": 1097.54,
+            "stage_ms": {
+              "alignment": 8.75,
+              "mrz": 316.49,
+              "qr": 11.89,
+              "ocr": 711.42,
+              "other": 48.99
+            },
+            "timings_ms": {
+              "align_front": 4.25,
+              "qr_front_original": 5.93,
+              "ocr_front_original": 372.92,
+              "align_back": 4.5,
+              "qr_back_original": 5.96,
+              "mrz_back": 316.49,
+              "ocr_back_original": 338.5,
+              "total": 1097.54
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 193024,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1097.88,
+            "pipeline_ms": 1087.39,
+            "stage_ms": {
+              "alignment": 8.03,
+              "mrz": 311.1,
+              "qr": 10.58,
+              "ocr": 707.21,
+              "other": 50.47
+            },
+            "timings_ms": {
+              "align_front": 3.92,
+              "qr_front_original": 5.36,
+              "ocr_front_original": 377.22,
+              "align_back": 4.11,
+              "qr_back_original": 5.22,
+              "mrz_back": 311.1,
+              "ocr_back_original": 329.99,
+              "total": 1087.39
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.17,
+            "response_bytes": 193022,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1078.43,
+            "pipeline_ms": 1068.05,
+            "stage_ms": {
+              "alignment": 9.35,
+              "mrz": 299.23,
+              "qr": 11.21,
+              "ocr": 699.77,
+              "other": 48.49
+            },
+            "timings_ms": {
+              "align_front": 4.76,
+              "qr_front_original": 6.08,
+              "ocr_front_original": 371.47,
+              "align_back": 4.59,
+              "qr_back_original": 5.13,
+              "mrz_back": 299.23,
+              "ocr_back_original": 328.3,
+              "total": 1068.05
+            },
+            "worker_queue_ms": 0.02,
+            "gpu_queue_ms": 0.14,
+            "response_bytes": 193025,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1114.09,
+            "pipeline_ms": 1103.25,
+            "stage_ms": {
+              "alignment": 9.46,
+              "mrz": 319.81,
+              "qr": 11.16,
+              "ocr": 713.82,
+              "other": 49.0
+            },
+            "timings_ms": {
+              "align_front": 4.68,
+              "qr_front_original": 5.65,
+              "ocr_front_original": 372.59,
+              "align_back": 4.78,
+              "qr_back_original": 5.51,
+              "mrz_back": 319.81,
+              "ocr_back_original": 341.23,
+              "total": 1103.25
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.15,
+            "response_bytes": 193025,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 693.49,
+          "mean_wall_ms": 695.36,
+          "min_wall_ms": 688.37,
+          "max_wall_ms": 704.56,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 11.79,
+            "ocr": 654.35,
+            "other": 24.73
+          },
+          "mean_gpu_queue_ms": 0.11,
+          "mean_response_bytes": 3467,
+          "recognized_fields_range": [
+            10,
+            10
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 1104.71,
+          "mean_wall_ms": 1100.65,
+          "min_wall_ms": 1078.43,
+          "max_wall_ms": 1114.09,
+          "mean_stage_ms": {
+            "alignment": 9.08,
+            "mrz": 313.5,
+            "qr": 11.24,
+            "ocr": 706.95,
+            "other": 49.33
+          },
+          "mean_gpu_queue_ms": 0.14,
+          "mean_response_bytes": 193024,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 411.22,
+      "delta_median_percent": 59.3
+    },
+    {
+      "name": "perspective_back_no_qr",
+      "input_sha256": {
+        "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back": "9519adf95d5645c3aefc564c52b60c34195f0a4abc02ceda93615e705e59c49b"
+      },
+      "input_bytes": 338533,
+      "expected_fields": 10,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 870.98,
+            "pipeline_ms": 866.75,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 21.26,
+              "ocr": 795.47,
+              "other": 50.02
+            },
+            "timings_ms": {
+              "image_decode": 49.93,
+              "qr_front": 5.8,
+              "qr_back": 15.46,
+              "ocr_front": 397.99,
+              "ocr_back": 397.48,
+              "merge": 0.09,
+              "total": 866.75
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3472,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 2830.81,
+            "pipeline_ms": 2819.41,
+            "stage_ms": {
+              "alignment": 15.33,
+              "mrz": 1993.25,
+              "qr": 17.82,
+              "ocr": 728.82,
+              "other": 64.19
+            },
+            "timings_ms": {
+              "align_front": 4.7,
+              "qr_front_original": 5.19,
+              "ocr_front_original": 395.0,
+              "align_back": 10.63,
+              "qr_back_original": 6.82,
+              "qr_back_aligned": 5.81,
+              "mrz_back": 995.7,
+              "mrz_back_original": 997.55,
+              "ocr_back_aligned": 333.82,
+              "total": 2819.41
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 1.08,
+            "response_bytes": 228471,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 796.1,
+            "pipeline_ms": 792.65,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 13.43,
+              "ocr": 743.7,
+              "other": 35.52
+            },
+            "timings_ms": {
+              "image_decode": 35.45,
+              "qr_front": 6.14,
+              "qr_back": 7.29,
+              "ocr_front": 374.2,
+              "ocr_back": 369.5,
+              "merge": 0.07,
+              "total": 792.65
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 3469,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 820.09,
+            "pipeline_ms": 812.84,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 24.71,
+              "ocr": 745.96,
+              "other": 42.17
+            },
+            "timings_ms": {
+              "image_decode": 42.07,
+              "qr_front": 11.0,
+              "qr_back": 13.71,
+              "ocr_front": 377.87,
+              "ocr_back": 368.09,
+              "merge": 0.1,
+              "total": 812.84
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 3474,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 829.31,
+            "pipeline_ms": 822.79,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 26.43,
+              "ocr": 747.98,
+              "other": 48.38
+            },
+            "timings_ms": {
+              "image_decode": 48.29,
+              "qr_front": 16.71,
+              "qr_back": 9.72,
+              "ocr_front": 380.95,
+              "ocr_back": 367.03,
+              "merge": 0.09,
+              "total": 822.79
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3474,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 806.38,
+            "pipeline_ms": 800.63,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 21.6,
+              "ocr": 738.12,
+              "other": 40.91
+            },
+            "timings_ms": {
+              "image_decode": 40.84,
+              "qr_front": 9.57,
+              "qr_back": 12.03,
+              "ocr_front": 372.59,
+              "ocr_back": 365.53,
+              "merge": 0.07,
+              "total": 800.63
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3472,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 817.89,
+            "pipeline_ms": 812.27,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 15.11,
+              "ocr": 752.42,
+              "other": 44.74
+            },
+            "timings_ms": {
+              "image_decode": 44.65,
+              "qr_front": 7.22,
+              "qr_back": 7.89,
+              "ocr_front": 379.25,
+              "ocr_back": 373.17,
+              "merge": 0.09,
+              "total": 812.27
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 3472,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 2884.65,
+            "pipeline_ms": 2873.83,
+            "stage_ms": {
+              "alignment": 17.88,
+              "mrz": 2047.51,
+              "qr": 24.19,
+              "ocr": 717.9,
+              "other": 66.35
+            },
+            "timings_ms": {
+              "align_front": 5.5,
+              "qr_front_original": 10.29,
+              "ocr_front_original": 398.64,
+              "align_back": 12.38,
+              "qr_back_original": 7.27,
+              "qr_back_aligned": 6.63,
+              "mrz_back": 1051.16,
+              "mrz_back_original": 996.35,
+              "ocr_back_aligned": 319.26,
+              "total": 2873.83
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 228476,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 2841.5,
+            "pipeline_ms": 2829.37,
+            "stage_ms": {
+              "alignment": 15.59,
+              "mrz": 2010.36,
+              "qr": 18.81,
+              "ocr": 720.86,
+              "other": 63.75
+            },
+            "timings_ms": {
+              "align_front": 4.7,
+              "qr_front_original": 5.72,
+              "ocr_front_original": 394.23,
+              "align_back": 10.89,
+              "qr_back_original": 7.13,
+              "qr_back_aligned": 5.96,
+              "mrz_back": 1006.68,
+              "mrz_back_original": 1003.68,
+              "ocr_back_aligned": 326.63,
+              "total": 2829.37
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 228473,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 2861.02,
+            "pipeline_ms": 2849.5,
+            "stage_ms": {
+              "alignment": 15.68,
+              "mrz": 2023.36,
+              "qr": 18.85,
+              "ocr": 727.71,
+              "other": 63.9
+            },
+            "timings_ms": {
+              "align_front": 4.76,
+              "qr_front_original": 6.03,
+              "ocr_front_original": 406.86,
+              "align_back": 10.92,
+              "qr_back_original": 6.97,
+              "qr_back_aligned": 5.85,
+              "mrz_back": 1029.86,
+              "mrz_back_original": 993.5,
+              "ocr_back_aligned": 320.85,
+              "total": 2849.5
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.07,
+            "response_bytes": 228473,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 2883.96,
+            "pipeline_ms": 2872.8,
+            "stage_ms": {
+              "alignment": 17.48,
+              "mrz": 2052.07,
+              "qr": 21.92,
+              "ocr": 716.97,
+              "other": 64.36
+            },
+            "timings_ms": {
+              "align_front": 4.74,
+              "qr_front_original": 5.9,
+              "ocr_front_original": 395.31,
+              "align_back": 12.74,
+              "qr_back_original": 8.41,
+              "qr_back_aligned": 7.61,
+              "mrz_back": 1034.6,
+              "mrz_back_original": 1017.47,
+              "ocr_back_aligned": 321.66,
+              "total": 2872.8
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 228473,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 2826.01,
+            "pipeline_ms": 2814.29,
+            "stage_ms": {
+              "alignment": 15.62,
+              "mrz": 1992.6,
+              "qr": 19.89,
+              "ocr": 720.97,
+              "other": 65.21
+            },
+            "timings_ms": {
+              "align_front": 4.76,
+              "qr_front_original": 6.65,
+              "ocr_front_original": 403.09,
+              "align_back": 10.86,
+              "qr_back_original": 7.18,
+              "qr_back_aligned": 6.06,
+              "mrz_back": 976.31,
+              "mrz_back_original": 1016.29,
+              "ocr_back_aligned": 317.88,
+              "total": 2814.29
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 228473,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 817.89,
+          "mean_wall_ms": 813.95,
+          "min_wall_ms": 796.1,
+          "max_wall_ms": 829.31,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 20.26,
+            "ocr": 745.64,
+            "other": 42.34
+          },
+          "mean_gpu_queue_ms": 0.11,
+          "mean_response_bytes": 3472,
+          "recognized_fields_range": [
+            10,
+            10
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 2861.02,
+          "mean_wall_ms": 2859.43,
+          "min_wall_ms": 2826.01,
+          "max_wall_ms": 2884.65,
+          "mean_stage_ms": {
+            "alignment": 16.45,
+            "mrz": 2025.18,
+            "qr": 20.73,
+            "ocr": 720.88,
+            "other": 64.71
+          },
+          "mean_gpu_queue_ms": 0.1,
+          "mean_response_bytes": 228474,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 2043.13,
+      "delta_median_percent": 249.8
+    },
+    {
+      "name": "no_mrz_no_qr",
+      "input_sha256": {
+        "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back": "9fc4a717b106624aad008b8b4e1be6c274fce448f83c65e014eb1294b1948e82"
+      },
+      "input_bytes": 108992,
+      "expected_fields": 10,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 608.6,
+            "pipeline_ms": 605.4,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.49,
+              "ocr": 576.15,
+              "other": 17.76
+            },
+            "timings_ms": {
+              "image_decode": 17.7,
+              "qr_front": 6.19,
+              "qr_back": 5.3,
+              "ocr_front": 370.54,
+              "ocr_back": 205.61,
+              "merge": 0.06,
+              "total": 605.4
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3467,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 1484.87,
+            "pipeline_ms": 1475.55,
+            "stage_ms": {
+              "alignment": 9.1,
+              "mrz": 784.09,
+              "qr": 11.22,
+              "ocr": 624.76,
+              "other": 46.38
+            },
+            "timings_ms": {
+              "align_front": 4.44,
+              "qr_front_original": 6.02,
+              "ocr_front_original": 390.4,
+              "align_back": 4.66,
+              "qr_back_original": 5.2,
+              "mrz_back": 784.09,
+              "ocr_back_original": 234.36,
+              "total": 1475.55
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 180185,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 615.06,
+            "pipeline_ms": 612.11,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.11,
+              "ocr": 584.85,
+              "other": 16.15
+            },
+            "timings_ms": {
+              "image_decode": 16.08,
+              "qr_front": 5.64,
+              "qr_back": 5.47,
+              "ocr_front": 377.01,
+              "ocr_back": 207.84,
+              "merge": 0.07,
+              "total": 612.11
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 3466,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 611.78,
+            "pipeline_ms": 608.11,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 13.59,
+              "ocr": 578.69,
+              "other": 15.83
+            },
+            "timings_ms": {
+              "image_decode": 15.75,
+              "qr_front": 8.18,
+              "qr_back": 5.41,
+              "ocr_front": 371.86,
+              "ocr_back": 206.83,
+              "merge": 0.08,
+              "total": 608.11
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3466,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 621.42,
+            "pipeline_ms": 617.84,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 18.98,
+              "ocr": 581.83,
+              "other": 17.03
+            },
+            "timings_ms": {
+              "image_decode": 16.95,
+              "qr_front": 9.11,
+              "qr_back": 9.87,
+              "ocr_front": 374.8,
+              "ocr_back": 207.03,
+              "merge": 0.08,
+              "total": 617.84
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 3468,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 619.93,
+            "pipeline_ms": 616.82,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 13.8,
+              "ocr": 586.89,
+              "other": 16.13
+            },
+            "timings_ms": {
+              "image_decode": 16.03,
+              "qr_front": 7.91,
+              "qr_back": 5.89,
+              "ocr_front": 376.17,
+              "ocr_back": 210.72,
+              "merge": 0.1,
+              "total": 616.82
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3467,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 619.21,
+            "pipeline_ms": 616.03,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 10.83,
+              "ocr": 588.84,
+              "other": 16.36
+            },
+            "timings_ms": {
+              "image_decode": 16.29,
+              "qr_front": 5.6,
+              "qr_back": 5.23,
+              "ocr_front": 378.6,
+              "ocr_back": 210.24,
+              "merge": 0.07,
+              "total": 616.03
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.07,
+            "response_bytes": 3468,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 1487.99,
+            "pipeline_ms": 1478.6,
+            "stage_ms": {
+              "alignment": 9.59,
+              "mrz": 787.1,
+              "qr": 11.79,
+              "ocr": 623.36,
+              "other": 46.76
+            },
+            "timings_ms": {
+              "align_front": 4.38,
+              "qr_front_original": 5.88,
+              "ocr_front_original": 394.99,
+              "align_back": 5.21,
+              "qr_back_original": 5.91,
+              "mrz_back": 787.1,
+              "ocr_back_original": 228.37,
+              "total": 1478.6
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 180183,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1536.26,
+            "pipeline_ms": 1526.66,
+            "stage_ms": {
+              "alignment": 9.02,
+              "mrz": 828.64,
+              "qr": 10.32,
+              "ocr": 631.75,
+              "other": 46.93
+            },
+            "timings_ms": {
+              "align_front": 4.25,
+              "qr_front_original": 5.13,
+              "ocr_front_original": 403.93,
+              "align_back": 4.77,
+              "qr_back_original": 5.19,
+              "mrz_back": 828.64,
+              "ocr_back_original": 227.82,
+              "total": 1526.66
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 180184,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1504.53,
+            "pipeline_ms": 1494.96,
+            "stage_ms": {
+              "alignment": 9.01,
+              "mrz": 805.43,
+              "qr": 10.59,
+              "ocr": 623.37,
+              "other": 46.56
+            },
+            "timings_ms": {
+              "align_front": 4.24,
+              "qr_front_original": 5.26,
+              "ocr_front_original": 394.18,
+              "align_back": 4.77,
+              "qr_back_original": 5.33,
+              "mrz_back": 805.43,
+              "ocr_back_original": 229.19,
+              "total": 1494.96
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 180187,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1485.24,
+            "pipeline_ms": 1475.76,
+            "stage_ms": {
+              "alignment": 9.51,
+              "mrz": 782.36,
+              "qr": 11.51,
+              "ocr": 625.66,
+              "other": 46.72
+            },
+            "timings_ms": {
+              "align_front": 4.18,
+              "qr_front_original": 5.09,
+              "ocr_front_original": 394.48,
+              "align_back": 5.33,
+              "qr_back_original": 6.42,
+              "mrz_back": 782.36,
+              "ocr_back_original": 231.18,
+              "total": 1475.76
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 180188,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 1500.61,
+            "pipeline_ms": 1491.04,
+            "stage_ms": {
+              "alignment": 9.31,
+              "mrz": 794.86,
+              "qr": 10.75,
+              "ocr": 628.79,
+              "other": 47.33
+            },
+            "timings_ms": {
+              "align_front": 4.41,
+              "qr_front_original": 5.35,
+              "ocr_front_original": 401.6,
+              "align_back": 4.9,
+              "qr_back_original": 5.4,
+              "mrz_back": 794.86,
+              "ocr_back_original": 227.19,
+              "total": 1491.04
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.07,
+            "response_bytes": 180181,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 619.21,
+          "mean_wall_ms": 617.48,
+          "min_wall_ms": 611.78,
+          "max_wall_ms": 621.42,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 13.66,
+            "ocr": 584.22,
+            "other": 16.3
+          },
+          "mean_gpu_queue_ms": 0.1,
+          "mean_response_bytes": 3467,
+          "recognized_fields_range": [
+            10,
+            10
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 1500.61,
+          "mean_wall_ms": 1502.93,
+          "min_wall_ms": 1485.24,
+          "max_wall_ms": 1536.26,
+          "mean_stage_ms": {
+            "alignment": 9.29,
+            "mrz": 799.68,
+            "qr": 10.99,
+            "ocr": 626.59,
+            "other": 46.86
+          },
+          "mean_gpu_queue_ms": 0.1,
+          "mean_response_bytes": 180185,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 881.4,
+      "delta_median_percent": 142.34
+    },
+    {
+      "name": "readable_qr_and_mrz",
+      "input_sha256": {
+        "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back": "bd34da06a9de2a6abffde5452ca966151058b04b20830dc4dc96cb0b9e1f8ee8"
+      },
+      "input_bytes": 136705,
+      "expected_fields": 11,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 653.81,
+            "pipeline_ms": 650.36,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.78,
+              "ocr": 618.6,
+              "other": 19.98
+            },
+            "timings_ms": {
+              "image_decode": 16.46,
+              "qr_front": 5.75,
+              "qr_back": 6.03,
+              "ocr_front": 373.78,
+              "ocr_back": 244.82,
+              "merge": 3.52,
+              "total": 650.36
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 3320,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "complete",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 1721.42,
+            "pipeline_ms": 1709.19,
+            "stage_ms": {
+              "alignment": 8.53,
+              "mrz": 977.79,
+              "qr": 15.23,
+              "ocr": 660.62,
+              "other": 47.02
+            },
+            "timings_ms": {
+              "align_front": 4.32,
+              "qr_front_original": 6.06,
+              "ocr_front_original": 393.8,
+              "align_back": 4.21,
+              "qr_back_original": 9.17,
+              "mrz_back": 977.79,
+              "ocr_back_original": 266.82,
+              "total": 1709.19
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.07,
+            "response_bytes": 249748,
+            "upload_bytes": 137198,
+            "status": "review_required",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": [
+              "issue_date"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 665.89,
+            "pipeline_ms": 662.46,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 14.64,
+              "ocr": 630.89,
+              "other": 16.93
+            },
+            "timings_ms": {
+              "image_decode": 16.73,
+              "qr_front": 6.64,
+              "qr_back": 8.0,
+              "ocr_front": 384.4,
+              "ocr_back": 246.49,
+              "merge": 0.2,
+              "total": 662.46
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.06,
+            "response_bytes": 3312,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "complete",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 663.97,
+            "pipeline_ms": 660.58,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.92,
+              "ocr": 632.07,
+              "other": 16.59
+            },
+            "timings_ms": {
+              "image_decode": 16.4,
+              "qr_front": 5.93,
+              "qr_back": 5.99,
+              "ocr_front": 383.14,
+              "ocr_back": 248.93,
+              "merge": 0.19,
+              "total": 660.58
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.07,
+            "response_bytes": 3318,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "complete",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 665.86,
+            "pipeline_ms": 662.27,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.76,
+              "ocr": 633.58,
+              "other": 16.93
+            },
+            "timings_ms": {
+              "image_decode": 16.76,
+              "qr_front": 5.74,
+              "qr_back": 6.02,
+              "ocr_front": 386.64,
+              "ocr_back": 246.94,
+              "merge": 0.17,
+              "total": 662.27
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3318,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "complete",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 700.66,
+            "pipeline_ms": 697.52,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 19.99,
+              "ocr": 661.42,
+              "other": 16.11
+            },
+            "timings_ms": {
+              "image_decode": 15.94,
+              "qr_front": 9.06,
+              "qr_back": 10.93,
+              "ocr_front": 393.36,
+              "ocr_back": 268.06,
+              "merge": 0.17,
+              "total": 697.52
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 3323,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "complete",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 694.74,
+            "pipeline_ms": 691.3,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 24.2,
+              "ocr": 649.76,
+              "other": 17.34
+            },
+            "timings_ms": {
+              "image_decode": 17.14,
+              "qr_front": 10.37,
+              "qr_back": 13.83,
+              "ocr_front": 388.31,
+              "ocr_back": 261.45,
+              "merge": 0.2,
+              "total": 691.3
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3320,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_used_fields": [],
+            "qr_status": "complete",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 1743.49,
+            "pipeline_ms": 1732.68,
+            "stage_ms": {
+              "alignment": 9.21,
+              "mrz": 1001.42,
+              "qr": 11.6,
+              "ocr": 663.18,
+              "other": 47.27
+            },
+            "timings_ms": {
+              "align_front": 4.6,
+              "qr_front_original": 5.5,
+              "ocr_front_original": 397.28,
+              "align_back": 4.61,
+              "qr_back_original": 6.1,
+              "mrz_back": 1001.42,
+              "ocr_back_original": 265.9,
+              "total": 1732.68
+            },
+            "worker_queue_ms": 0.06,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 249751,
+            "upload_bytes": 137198,
+            "status": "review_required",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": [
+              "issue_date"
+            ]
+          },
+          {
+            "wall_ms": 1738.07,
+            "pipeline_ms": 1727.33,
+            "stage_ms": {
+              "alignment": 9.0,
+              "mrz": 1002.71,
+              "qr": 11.53,
+              "ocr": 657.03,
+              "other": 47.06
+            },
+            "timings_ms": {
+              "align_front": 4.35,
+              "qr_front_original": 5.56,
+              "ocr_front_original": 392.94,
+              "align_back": 4.65,
+              "qr_back_original": 5.97,
+              "mrz_back": 1002.71,
+              "ocr_back_original": 264.09,
+              "total": 1727.33
+            },
+            "worker_queue_ms": 0.02,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 249753,
+            "upload_bytes": 137198,
+            "status": "review_required",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": [
+              "issue_date"
+            ]
+          },
+          {
+            "wall_ms": 1781.81,
+            "pipeline_ms": 1770.62,
+            "stage_ms": {
+              "alignment": 8.38,
+              "mrz": 1025.63,
+              "qr": 11.93,
+              "ocr": 675.82,
+              "other": 48.86
+            },
+            "timings_ms": {
+              "align_front": 4.23,
+              "qr_front_original": 5.57,
+              "ocr_front_original": 398.92,
+              "align_back": 4.15,
+              "qr_back_original": 6.36,
+              "mrz_back": 1025.63,
+              "ocr_back_original": 276.9,
+              "total": 1770.62
+            },
+            "worker_queue_ms": 0.07,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 249754,
+            "upload_bytes": 137198,
+            "status": "review_required",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": [
+              "issue_date"
+            ]
+          },
+          {
+            "wall_ms": 1759.43,
+            "pipeline_ms": 1748.86,
+            "stage_ms": {
+              "alignment": 9.18,
+              "mrz": 1005.21,
+              "qr": 12.87,
+              "ocr": 674.06,
+              "other": 47.54
+            },
+            "timings_ms": {
+              "align_front": 4.23,
+              "qr_front_original": 7.24,
+              "ocr_front_original": 400.26,
+              "align_back": 4.95,
+              "qr_back_original": 5.63,
+              "mrz_back": 1005.21,
+              "ocr_back_original": 273.8,
+              "total": 1748.86
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 249753,
+            "upload_bytes": 137198,
+            "status": "review_required",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": [
+              "issue_date"
+            ]
+          },
+          {
+            "wall_ms": 1841.85,
+            "pipeline_ms": 1831.1,
+            "stage_ms": {
+              "alignment": 8.2,
+              "mrz": 1048.03,
+              "qr": 11.06,
+              "ocr": 716.84,
+              "other": 46.97
+            },
+            "timings_ms": {
+              "align_front": 3.79,
+              "qr_front_original": 5.15,
+              "ocr_front_original": 436.88,
+              "align_back": 4.41,
+              "qr_back_original": 5.91,
+              "mrz_back": 1048.03,
+              "ocr_back_original": 279.96,
+              "total": 1831.1
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 249756,
+            "upload_bytes": 137198,
+            "status": "review_required",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_used_fields": [],
+            "qr_status": null,
+            "conflict_fields": [
+              "issue_date"
+            ]
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 665.89,
+          "mean_wall_ms": 678.22,
+          "min_wall_ms": 663.97,
+          "max_wall_ms": 700.66,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 16.5,
+            "ocr": 641.54,
+            "other": 16.78
+          },
+          "mean_gpu_queue_ms": 0.08,
+          "mean_response_bytes": 3318,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            11,
+            11
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 1759.43,
+          "mean_wall_ms": 1772.93,
+          "min_wall_ms": 1738.07,
+          "max_wall_ms": 1841.85,
+          "mean_stage_ms": {
+            "alignment": 8.79,
+            "mrz": 1016.6,
+            "qr": 11.8,
+            "ocr": 677.39,
+            "other": 47.54
+          },
+          "mean_gpu_queue_ms": 0.1,
+          "mean_response_bytes": 249753,
+          "recognized_fields_range": [
+            12,
+            12
+          ],
+          "exact_expected_matches_range": [
+            11,
+            11
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 1093.54,
+      "delta_median_percent": 164.22
+    }
+  ],
+  "finished_at": "2026-10-28T08:48:54.984527+00:00"
+}

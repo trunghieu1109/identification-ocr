@@ -1,3 +1,5 @@
+> **Tài liệu lịch sử.** Các API thử nghiệm, worker DocU độc lập và pipeline legacy đã được gỡ ở bản 0.8.0. Các số liệu được giữ để đối chiếu; dùng [README hiện tại](../README.md) để triển khai.
+
 # Thử nghiệm namlhn và DocU trên cùng GPU — 25/10/2026
 
 Trên bộ ảnh giả lập này, **namlhn + VietOCR Seq2Seq trên GPU đạt trung vị

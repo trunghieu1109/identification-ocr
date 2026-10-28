@@ -5,7 +5,6 @@ import pytest
 from identification_demo.authority_region import select_authority_region
 from identification_demo.cpu_pipeline import reread_indexes
 from identification_demo.documents import parse_back
-from identification_demo.gpu_engine import normalize_result
 
 AGENCY = "CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI"
 
@@ -83,11 +82,6 @@ def test_unknown_institution_is_kept_instead_of_replaced_with_a_common_cuc():
     assert parse_back(rows)["issuing_authority"] == "CÔNG AN TỈNH HÀ NAM"
 
 
-def test_geometry_is_preserved_through_gpu_normalization_and_defaults_are_ignored():
-    payload = {"success": True, "doc_type": "cccd_back", "text_lines": card_lines(),
-               "extracted_fields": {"issue_authority": "WRONG DEFAULT", "issue_date": "2021-04-20"}}
-    result = normalize_result(payload)
-    assert result["structured_fields"]["issuing_authority"] == AGENCY
 
 
 def test_real_gpu_text_dto_boxes_are_accepted_by_the_same_selector():

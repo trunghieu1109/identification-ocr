@@ -5,10 +5,13 @@ import pytest
 from PIL import Image
 
 from identification_demo.cpu_pipeline import reread_indexes
-from identification_demo.gpu_engine import DocUGPUEngine, normalize_result
+from identification_demo.namlhn_gpu_engine import NamLhnGPUEngine
 from identification_demo.pipeline import CARD_FIELDS, process_card
 from test_pipeline import FRONT, BACK, PAYLOAD, Reader, image_data
-from test_regions import FULL_BACK, box, fake_engine, readable_back
+from test_namlhn_gpu_engine import READY
+
+def box(left, top, right, bottom):
+    return [[left, top], [right, top], [right, bottom], [left, bottom]]
 
 
 def test_combined_reuses_decoded_images_and_only_requests_qr_gaps(monkeypatch):
@@ -91,52 +94,16 @@ def test_cpu_batch_corrects_requested_vietnamese_field_with_real_namlhn_parser()
     assert result["work"]["primary_regions"] == 5 and result["work"]["reread_regions"] == 1
 
 
-def test_gpu_does_not_retry_rotation_for_ignored_or_qr_filled_fields():
-    doc = readable_back("one", box(0, 0, 100, 60), complete=False)
-    doc.recognized_texts = [SimpleNamespace(text="Đặc điểm nhân dạng"), SimpleNamespace(text="Ngày cấp"),
-                            SimpleNamespace(text="Cơ quan cấp: Công an tỉnh Hà Nam")]
-    doc.extracted_fields = {}
-    engine = fake_engine([doc])
-    engine._read_full_image = lambda *_args: pytest.fail("No redundant full-image OCR")
-    result = engine.extract_document("unused.png", "back", ["issuing_authority"])
-    assert "recovery" not in result
-    assert result["work"]["full_image_attempts"] == 1
-    engine.close()
-
-
-def test_gpu_reuses_identical_original_instead_of_recognizing_it_twice():
-    import numpy as np
-    frame = np.full((100, 160, 3), 255, dtype=np.uint8)
-    doc = readable_back("one", box(0, 0, 160, 100), complete=False)
-    doc.cropped_image = frame.copy()
-    doc.recognized_texts = [SimpleNamespace(text="Đặc điểm nhân dạng"), SimpleNamespace(text="Ngày cấp"),
-                            SimpleNamespace(text="Cơ quan cấp: Công an tỉnh Hà Nam")]
-    doc.extracted_fields = {}
-    engine = fake_engine([doc])
-    rotations = []
-    def recover(_frame, _side, rotation):
-        rotations.append(rotation)
-        return dict(FULL_BACK)
-    engine._read_full_image = recover
-    # Exercise the same array path as the actual worker's decoded upload.
-    result = engine._extract_document(frame, "back", ["issue_date", "issuing_authority"])
-    assert rotations == [180]
-    assert result["work"]["skipped_duplicate_passes"] == 1
-    assert result["work"]["full_image_attempts"] == 2
-    assert result["recovery"]["attempted_rotations"] == [0, 180]
-    engine.close()
-
-
 def test_gpu_http_reuses_client_for_two_sides_and_forwards_only_needed_fields():
     requests = []
     def handler(request):
         requests.append(request)
         if request.url.path.endswith("ready"):
-            return httpx.Response(200, json={"pipeline_ready": True, "device": "cuda:0", "cuda_available": True})
+            return httpx.Response(200, json=READY)
         assert request.url.params["fields"] == "issuing_authority"
-        return httpx.Response(200, json={"success": True, "doc_type": "cccd_back", "extracted_fields": {},
+        return httpx.Response(200, json={"success": True, "document_side": "back", "structured_fields": {"issuing_authority": "Công an tỉnh Hà Nam"},
                                         "text_lines": ["Cơ quan cấp: Công an tỉnh Hà Nam"]})
-    engine = DocUGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
+    engine = NamLhnGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
     first_client = engine._client()
     with Image.new("RGB", (20, 20)) as image:
         for _ in range(2):
@@ -144,11 +111,3 @@ def test_gpu_http_reuses_client_for_two_sides_and_forwards_only_needed_fields():
     assert engine._client() is first_client
     assert [request.url.path for request in requests] == ["/api/v1/health/ready", "/api/v1/extract", "/api/v1/extract"]
     engine.close()
-
-
-def test_gpu_timing_metadata_cannot_leak_arbitrary_values():
-    raw = normalize_result({"success": True, "extracted_fields": {},
-                            "timings_ms": {"recognition": 42, "raw_text": "private", "detection": float("inf")},
-                            "work": {"primary_regions": 2, "person": "private", "reread_regions": -1}})
-    assert raw["timings_ms"] == {"recognition": 42}
-    assert raw["work"] == {"primary_regions": 2}

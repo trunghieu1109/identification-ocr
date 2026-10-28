@@ -1,0 +1,105 @@
+{
+  "recorded_at": "2026-10-28T10:00:03.185269+00:00",
+  "cpu": "AMD Ryzen 9 5950X",
+  "logical_cpus_visible": 15,
+  "gpu_csv_fields": "name,driver_version,utilization.gpu,memory.used,memory.total",
+  "gpu_initial": "NVIDIA GeForce RTX 5060, 580.178.04, 30 %, 3294 MiB, 8151 MiB",
+  "containers": {
+    "identification-ocr-identification-ocr-1": {
+      "image": "sha256:796c0a7a87505ea100607894dda5038d332fe2c139dc7ee8588a419ced69018d",
+      "started_at": "2026-10-28T09:34:30.069230698Z"
+    },
+    "identification-ocr-namlhn-gpu-1": {
+      "image": "sha256:099143302356a1a485f8b5399dec729353b06b3ddb22d7ecbb0067e4c247d337",
+      "started_at": "2026-10-28T03:14:51.237553417Z"
+    },
+    "identification-ocr-cccd-experiment-1": {
+      "image": "sha256:6134346685e9cd51e954c51df5487c2938cb42f7c69dbf40ab7107234afc839c",
+      "started_at": "2026-10-28T09:34:30.032034538Z"
+    }
+  },
+  "health": {
+    "main": {
+      "status": "ok",
+      "engine": {
+        "provider": "namlhn/vietnam-cccd-ocr",
+        "source_available": true,
+        "model_loaded": false,
+        "device": "cpu",
+        "model": "vgg_transformer",
+        "queue": {
+          "capacity": 8,
+          "pending": 0,
+          "active": false,
+          "completed": 0
+        }
+      },
+      "qr": {
+        "provider": "wechat-qrcode",
+        "available": true
+      },
+      "ocr_profiles": {
+        "medium": {
+          "provider": "namlhn/vietnam-cccd-ocr",
+          "source_available": true,
+          "model_loaded": false,
+          "device": "cpu",
+          "model": "vgg_transformer",
+          "queue": {
+            "capacity": 8,
+            "pending": 0,
+            "active": false,
+            "completed": 0
+          }
+        },
+        "high": {
+          "provider": "namlhn/vietnam-cccd-ocr",
+          "device": "cuda:0",
+          "configured": true,
+          "available": true,
+          "model_loaded": true,
+          "recognition_model": "vgg_seq2seq",
+          "queue": {
+            "capacity": 8,
+            "pending": 0,
+            "active": false,
+            "completed": 335
+          },
+          "strategy": "namlhn_docu_v1",
+          "recognition_provider": "docu",
+          "recognition_device": "cuda:0",
+          "card_crop": "off",
+          "card_enhancement": "adaptive",
+          "text_enhancement": "adaptive"
+        }
+      },
+      "default_quality": "high",
+      "max_image_bytes": 10485760,
+      "supported_formats": [
+        "image/jpeg",
+        "image/png"
+      ],
+      "supported_sides": [
+        "front",
+        "back"
+      ]
+    },
+    "experiment": {
+      "experimental": true,
+      "available": true,
+      "alignment": "DocAligner/lcnet050",
+      "mrz": "FastMRZ/2.1.2 + Vietnam TD1 validation",
+      "device": "cpu",
+      "ocr": "existing namlhn-gpu",
+      "queue": {
+        "capacity": 2,
+        "pending": 0,
+        "active": true,
+        "completed": 14
+      },
+      "execution": "parallel_qr_mrz_ocr",
+      "mrz_attempt_limit": 3,
+      "mrz_retry_budget_ms": 900
+    }
+  }
+}

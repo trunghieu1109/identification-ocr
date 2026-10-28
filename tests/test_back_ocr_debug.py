@@ -1,10 +1,9 @@
 import httpx
 from fastapi.testclient import TestClient
 
-from identification_demo.gpu_engine import DocUGPUEngine
+from identification_demo.namlhn_gpu_engine import NamLhnGPUEngine
 from identification_demo.web import create_app
-from identification_demo.ocr_debug import authority_crop_preview
-from test_gpu_engine import FRONT, READY
+from test_namlhn_gpu_engine import FRONT, READY
 from test_pipeline import Engine, Reader, image_data
 
 
@@ -28,12 +27,12 @@ def test_requested_back_text_reaches_ui_without_extra_ocr_or_changing_qr_priorit
             return httpx.Response(200, json=READY)
         posts.append(request.url.params['doc_type_hint'])
         return httpx.Response(200, json=FRONT if posts[-1] == 'cccd_front' else {
-            'success': True, 'doc_type': 'cccd_back', 'extracted_fields': {},
+            'success': True, 'document_side': 'back', 'structured_fields': {'issuing_authority': 'CỤC CẢNH SÁT QUẢN LÝ HÀNH CHÍNH VỀ TRẬT TỰ XÃ HỘI'},
             'initial_text_lines': initial, 'text_lines': final,
         })
 
     cpu = Engine()
-    gpu = DocUGPUEngine('http://gpu.test', transport=httpx.MockTransport(handler))
+    gpu = NamLhnGPUEngine('http://gpu.test', transport=httpx.MockTransport(handler))
     response = submit(TestClient(create_app(cpu, Reader(), gpu)), 'true')
     assert response.status_code == 200
     result = response.json()
@@ -68,33 +67,3 @@ def test_debug_remains_available_when_only_partial_institution_was_read():
     assert debug['final_lines'][1]['in_authority']
     assert not debug['final_lines'][2]['in_authority']
     assert debug['final_lines'][2]['text'].startswith('<script>')
-
-
-def test_crop_preview_shows_the_exact_searched_pixels_and_only_on_debug_request():
-    import base64
-    import io
-    import numpy as np
-    from PIL import Image
-    from identification_demo.gpu_engine import normalize_result
-
-    image = np.full((200, 400, 3), 255, dtype=np.uint8)
-    image[50:150, 100:300] = [0, 0, 255]
-    crop = authority_crop_preview(image, [100, 50, 300, 150])
-    with Image.open(io.BytesIO(base64.b64decode(crop['image'].split(',', 1)[1]))) as preview:
-        assert preview.size == (200, 100)
-        assert preview.getpixel((100, 50))[0] > 240
-        assert preview.getpixel((100, 50))[2] < 10
-    payload = {'success': True, 'doc_type': 'cccd_back', 'extracted_fields': {},
-               'text_lines': ['CỤC TRƯỞNG CỤC CẢNH SÁT'], 'authority_search_crop': crop}
-    normalized = normalize_result(payload)
-    assert normalized['back_ocr_debug']['search_crop'] == crop
-
-    class GPU(Engine):
-        def extract(self, path):
-            super().extract(path)
-            return normalized if self.calls[-1] == 'back' else super_front
-
-    super_front = Engine().results['front']
-    for include in (None, 'true'):
-        result = submit(TestClient(create_app(Engine(), Reader(), GPU())), include).json()
-        assert ('search_crop' in result['ocr']['back'].get('debug', {})) == (include == 'true')

@@ -226,7 +226,7 @@ def main(argv=None):
     parser.add_argument("--output", type=Path, help="Thư mục xuất mới hoặc đang trống")
     parser.add_argument("--docker", action="store_true", help="Dùng môi trường GPU trong Docker Compose")
     parser.add_argument("--recognizer", choices=("vietocr",), default="vietocr", help="Bộ đọc chữ: VietOCR")
-    parser.add_argument("--model", choices=("vgg_seq2seq", "vgg_transformer"), help="Mặc định theo NAMLHN_GPU_MODEL")
+    parser.add_argument("--model", choices=("vgg_seq2seq",), help="Bộ đọc DocU Seq2Seq")
     parser.add_argument("--enhancement", choices=("off", "adaptive"), help="Mặc định theo cấu hình worker")
     parser.add_argument("--card-enhancement", choices=("adaptive", "off"), help="Hiệu chỉnh sáng/tương phản/nhiễu trước OCR")
     args = parser.parse_args(argv)

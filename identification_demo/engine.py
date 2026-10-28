@@ -28,7 +28,7 @@ class OCRMultipleDocuments(OCRUnavailable):
 
 
 class NamLhnEngine:
-    def __init__(self):
+    def __init__(self, queue_name="ocr-cpu"):
         source = Path(os.getenv("OCR_SOURCE_DIR", ".vendor/vietnam-cccd-ocr")).resolve()
         if (source / "ocr" / "__init__.py").is_file():
             sys.path.insert(0, str(source))
@@ -38,7 +38,7 @@ class NamLhnEngine:
         self._extractor = None
         self._lock = Lock()
         from .work_queue import ModelQueue
-        self._queue = ModelQueue("ocr-cpu")
+        self._queue = ModelQueue(queue_name)
 
     def describe(self):
         return {
@@ -91,9 +91,6 @@ class NamLhnEngine:
         result, timings = self._queue.run(self._extract_pixels, image, side, needed_fields)
         result.setdefault("timings_ms", {}).update(timings)
         return result
-
-    def extract_expiry_image(self, image, side, source_data=None):
-        return self.extract_image(image, side, needed_fields=["expiry_date"], source_data=source_data)
 
     def _extract_pixels(self, image, side, needed_fields):
         from .cpu_pipeline import extract_pixels

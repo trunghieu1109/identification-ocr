@@ -1,3 +1,5 @@
+> **Tài liệu lịch sử.** Các API thử nghiệm, worker DocU độc lập và pipeline legacy đã được gỡ ở bản 0.8.0. Các số liệu được giữ để đối chiếu; dùng [README hiện tại](../README.md) để triển khai.
+
 # Thử nghiệm ngày hết hạn
 
 **Tài liệu API thử nghiệm cũ.** Tab Ngày hết hạn đã được thay bằng

@@ -1,3 +1,5 @@
+> **Tài liệu lịch sử.** Các API thử nghiệm, worker DocU độc lập và pipeline legacy đã được gỡ ở bản 0.8.0. Các số liệu được giữ để đối chiếu; dùng [README hiện tại](../README.md) để triển khai.
+
 # Đo pipeline OCR sau tối ưu — 24/10/2026
 
 Đo trên cùng host bằng ảnh CCCD tổng hợp chứa dữ liệu kiểm thử; CPU và RTX 5060 8 GB. Trước/sau dùng cùng file ảnh, cùng checkpoint, cùng API hai mặt. Bản sau: `0.5.0`, được kiểm tra tại cổng 8888. Không dùng thẻ thật trong bài đo này.

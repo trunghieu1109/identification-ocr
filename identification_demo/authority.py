@@ -71,7 +71,7 @@ def authority_rules():
         return _read_rules(str(path), stat.st_mtime_ns, stat.st_size, stat.st_ino)
     except (OSError, ValueError, TypeError):
         logger.warning("Issuing authority rules unavailable or invalid; preserving recognized text")
-        return {"enabled": False, "image_enhancement": True, "authorities": []}
+        return {"enabled": False, "authorities": []}
 
 
 def normalize_authority(value):

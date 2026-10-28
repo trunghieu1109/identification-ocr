@@ -225,7 +225,7 @@ def test_hybrid_default_is_seq2seq_and_has_independent_readiness(monkeypatch):
         engine.close()
 
 
-def test_factory_rejects_unknown_pipeline_without_loading_models(monkeypatch):
-    monkeypatch.setenv("NAMLHN_GPU_PIPELINE", "unknown")
-    with pytest.raises(ValueError, match="NAMLHN_GPU_PIPELINE"):
+def test_worker_rejects_retired_recognizer_models_without_loading_them(monkeypatch):
+    monkeypatch.setenv("NAMLHN_GPU_MODEL", "vgg_transformer")
+    with pytest.raises(ValueError, match="vgg_seq2seq"):
         create_namlhn_gpu_app()

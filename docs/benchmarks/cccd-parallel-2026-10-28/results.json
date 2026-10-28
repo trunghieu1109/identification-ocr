@@ -1,0 +1,5510 @@
+{
+  "started_at": "2026-10-28T09:28:05.833936+00:00",
+  "synthetic": true,
+  "requests_per_flow_per_case": 5,
+  "warmups_per_flow_per_case": 1,
+  "concurrency": 1,
+  "order": "alternate flow order each measured round",
+  "cases": [
+    {
+      "name": "clear_mrz_no_qr",
+      "input_sha256": {
+        "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back": "59b238f003daab20e2d676ced27936b1c31ac1036cad5b75b773c493e5d6e281"
+      },
+      "input_bytes": 135698,
+      "expected_fields": 10,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 866.81,
+            "pipeline_ms": 859.84,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 147.26,
+              "ocr": 675.98,
+              "other": 36.6
+            },
+            "timings_ms": {
+              "image_decode": 36.49,
+              "qr_front": 140.05,
+              "qr_back": 7.21,
+              "ocr_front": 416.2,
+              "ocr_back": 259.78,
+              "merge": 0.11,
+              "total": 859.84
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3472,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 865.84,
+            "pipeline_ms": 841.37,
+            "stage_ms": {
+              "alignment": 16.55,
+              "mrz": 671.19,
+              "qr": 57.21,
+              "ocr": 755.99,
+              "other": 65.62
+            },
+            "timings_ms": {
+              "align_front": 9.88,
+              "align_back": 6.67,
+              "qr_front_original": 46.33,
+              "qr_back_original": 10.88,
+              "ocr_front_original": 480.89,
+              "mrz_back": 671.19,
+              "ocr_back_original": 275.1,
+              "total": 841.37
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 234614,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 465.51
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 205.6
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 28.59,
+                "end_ms": 38.47
+              },
+              "align_back": {
+                "start_ms": 38.49,
+                "end_ms": 45.17
+              },
+              "qr_front_original": {
+                "start_ms": 45.69,
+                "end_ms": 92.02
+              },
+              "qr_back_original": {
+                "start_ms": 92.06,
+                "end_ms": 102.94
+              },
+              "ocr_front_original": {
+                "start_ms": 48.84,
+                "end_ms": 529.72
+              },
+              "mrz_back": {
+                "start_ms": 46.04,
+                "end_ms": 717.23
+              },
+              "ocr_back_original": {
+                "start_ms": 529.78,
+                "end_ms": 804.88
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 687.11,
+            "pipeline_ms": 682.44,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 12.34,
+              "ocr": 649.91,
+              "other": 20.19
+            },
+            "timings_ms": {
+              "image_decode": 20.04,
+              "qr_front": 5.99,
+              "qr_back": 6.35,
+              "ocr_front": 394.15,
+              "ocr_back": 255.76,
+              "merge": 0.15,
+              "total": 682.44
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3470,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 704.39,
+            "pipeline_ms": 698.58,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 14.21,
+              "ocr": 652.35,
+              "other": 32.02
+            },
+            "timings_ms": {
+              "image_decode": 31.92,
+              "qr_front": 7.47,
+              "qr_back": 6.74,
+              "ocr_front": 390.16,
+              "ocr_back": 262.19,
+              "merge": 0.1,
+              "total": 698.58
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3474,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 718.01,
+            "pipeline_ms": 712.61,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 12.92,
+              "ocr": 675.4,
+              "other": 24.29
+            },
+            "timings_ms": {
+              "image_decode": 24.2,
+              "qr_front": 5.93,
+              "qr_back": 6.99,
+              "ocr_front": 405.56,
+              "ocr_back": 269.84,
+              "merge": 0.09,
+              "total": 712.61
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.15,
+            "response_bytes": 3475,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 667.01,
+            "pipeline_ms": 662.22,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.81,
+              "ocr": 626.37,
+              "other": 24.04
+            },
+            "timings_ms": {
+              "image_decode": 23.96,
+              "qr_front": 6.26,
+              "qr_back": 5.55,
+              "ocr_front": 379.19,
+              "ocr_back": 247.18,
+              "merge": 0.08,
+              "total": 662.22
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3472,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 663.57,
+            "pipeline_ms": 658.62,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.18,
+              "ocr": 624.64,
+              "other": 22.8
+            },
+            "timings_ms": {
+              "image_decode": 22.72,
+              "qr_front": 5.74,
+              "qr_back": 5.44,
+              "ocr_front": 376.59,
+              "ocr_back": 248.05,
+              "merge": 0.08,
+              "total": 658.62
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3468,
+            "upload_bytes": 136193,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 849.44,
+            "pipeline_ms": 835.22,
+            "stage_ms": {
+              "alignment": 10.42,
+              "mrz": 567.63,
+              "qr": 27.65,
+              "ocr": 760.75,
+              "other": 62.23
+            },
+            "timings_ms": {
+              "align_front": 6.02,
+              "align_back": 4.4,
+              "qr_front_original": 17.33,
+              "qr_back_original": 10.32,
+              "ocr_front_original": 460.2,
+              "mrz_back": 567.63,
+              "ocr_back_original": 300.55,
+              "total": 835.22
+            },
+            "worker_queue_ms": 0.06,
+            "gpu_queue_ms": 0.14,
+            "response_bytes": 234611,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 373.77
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 193.79
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 31.05,
+                "end_ms": 37.07
+              },
+              "align_back": {
+                "start_ms": 37.09,
+                "end_ms": 41.49
+              },
+              "qr_front_original": {
+                "start_ms": 41.73,
+                "end_ms": 59.06
+              },
+              "qr_back_original": {
+                "start_ms": 59.1,
+                "end_ms": 69.42
+              },
+              "ocr_front_original": {
+                "start_ms": 43.51,
+                "end_ms": 503.71
+              },
+              "mrz_back": {
+                "start_ms": 42.77,
+                "end_ms": 610.4
+              },
+              "ocr_back_original": {
+                "start_ms": 503.75,
+                "end_ms": 804.3
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 813.9,
+            "pipeline_ms": 797.42,
+            "stage_ms": {
+              "alignment": 8.42,
+              "mrz": 550.25,
+              "qr": 20.33,
+              "ocr": 738.22,
+              "other": 49.14
+            },
+            "timings_ms": {
+              "align_front": 4.47,
+              "align_back": 3.95,
+              "qr_front_original": 10.63,
+              "qr_back_original": 9.7,
+              "ocr_front_original": 460.73,
+              "mrz_back": 550.25,
+              "ocr_back_original": 277.49,
+              "total": 797.42
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 234610,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 356.5
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 193.65
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.31,
+                "end_ms": 20.78
+              },
+              "align_back": {
+                "start_ms": 20.8,
+                "end_ms": 24.75
+              },
+              "qr_front_original": {
+                "start_ms": 24.97,
+                "end_ms": 35.61
+              },
+              "qr_back_original": {
+                "start_ms": 35.63,
+                "end_ms": 45.33
+              },
+              "ocr_front_original": {
+                "start_ms": 26.57,
+                "end_ms": 487.3
+              },
+              "mrz_back": {
+                "start_ms": 25.68,
+                "end_ms": 575.93
+              },
+              "ocr_back_original": {
+                "start_ms": 487.34,
+                "end_ms": 764.83
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 786.24,
+            "pipeline_ms": 773.79,
+            "stage_ms": {
+              "alignment": 9.0,
+              "mrz": 535.04,
+              "qr": 19.63,
+              "ocr": 714.83,
+              "other": 48.59
+            },
+            "timings_ms": {
+              "align_front": 5.21,
+              "align_back": 3.79,
+              "qr_front_original": 11.17,
+              "qr_back_original": 8.46,
+              "ocr_front_original": 444.01,
+              "mrz_back": 535.04,
+              "ocr_back_original": 270.82,
+              "total": 773.79
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 234613,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 343.04
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 191.91
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 18.0,
+                "end_ms": 23.21
+              },
+              "align_back": {
+                "start_ms": 23.23,
+                "end_ms": 27.02
+              },
+              "qr_front_original": {
+                "start_ms": 27.27,
+                "end_ms": 38.43
+              },
+              "qr_back_original": {
+                "start_ms": 38.47,
+                "end_ms": 46.93
+              },
+              "ocr_front_original": {
+                "start_ms": 28.61,
+                "end_ms": 472.61
+              },
+              "mrz_back": {
+                "start_ms": 27.93,
+                "end_ms": 562.97
+              },
+              "ocr_back_original": {
+                "start_ms": 472.65,
+                "end_ms": 743.47
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 775.19,
+            "pipeline_ms": 762.96,
+            "stage_ms": {
+              "alignment": 7.99,
+              "mrz": 608.18,
+              "qr": 21.65,
+              "ocr": 698.84,
+              "other": 54.59
+            },
+            "timings_ms": {
+              "align_front": 4.29,
+              "align_back": 3.7,
+              "qr_front_original": 10.7,
+              "qr_back_original": 10.95,
+              "ocr_front_original": 425.69,
+              "mrz_back": 608.18,
+              "ocr_back_original": 273.15,
+              "total": 762.96
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 234611,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 391.89
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 216.21
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.68,
+                "end_ms": 20.96
+              },
+              "align_back": {
+                "start_ms": 20.98,
+                "end_ms": 24.69
+              },
+              "qr_front_original": {
+                "start_ms": 24.87,
+                "end_ms": 35.57
+              },
+              "qr_back_original": {
+                "start_ms": 35.6,
+                "end_ms": 46.55
+              },
+              "ocr_front_original": {
+                "start_ms": 26.38,
+                "end_ms": 452.07
+              },
+              "mrz_back": {
+                "start_ms": 25.55,
+                "end_ms": 633.73
+              },
+              "ocr_back_original": {
+                "start_ms": 452.11,
+                "end_ms": 725.25
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 770.67,
+            "pipeline_ms": 759.56,
+            "stage_ms": {
+              "alignment": 9.08,
+              "mrz": 584.6,
+              "qr": 41.66,
+              "ocr": 701.3,
+              "other": 47.77
+            },
+            "timings_ms": {
+              "align_front": 4.99,
+              "align_back": 4.09,
+              "qr_front_original": 26.83,
+              "qr_back_original": 14.83,
+              "ocr_front_original": 423.61,
+              "mrz_back": 584.6,
+              "ocr_back_original": 277.69,
+              "total": 759.56
+            },
+            "worker_queue_ms": 0.06,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 234613,
+            "upload_bytes": 136191,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 9,
+            "mismatched_field_names": [
+              "issue_date"
+            ],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 365.89
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 218.62
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.79,
+                "end_ms": 21.78
+              },
+              "align_back": {
+                "start_ms": 21.8,
+                "end_ms": 25.9
+              },
+              "qr_front_original": {
+                "start_ms": 26.12,
+                "end_ms": 52.95
+              },
+              "qr_back_original": {
+                "start_ms": 53.06,
+                "end_ms": 67.89
+              },
+              "ocr_front_original": {
+                "start_ms": 27.47,
+                "end_ms": 451.09
+              },
+              "mrz_back": {
+                "start_ms": 26.69,
+                "end_ms": 611.28
+              },
+              "ocr_back_original": {
+                "start_ms": 451.13,
+                "end_ms": 728.82
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 687.11,
+          "mean_wall_ms": 688.02,
+          "min_wall_ms": 663.57,
+          "max_wall_ms": 718.01,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 12.49,
+            "ocr": 645.73,
+            "other": 24.67
+          },
+          "mean_gpu_queue_ms": 0.11,
+          "mean_response_bytes": 3472,
+          "recognized_fields_range": [
+            10,
+            10
+          ],
+          "exact_expected_matches_range": [
+            9,
+            9
+          ],
+          "mismatched_field_names": [
+            "issue_date"
+          ],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 786.24,
+          "mean_wall_ms": 799.09,
+          "min_wall_ms": 770.67,
+          "max_wall_ms": 849.44,
+          "mean_stage_ms": {
+            "alignment": 8.98,
+            "mrz": 569.14,
+            "qr": 26.18,
+            "ocr": 722.79,
+            "other": 52.46
+          },
+          "mean_gpu_queue_ms": 0.12,
+          "mean_response_bytes": 234612,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            9,
+            9
+          ],
+          "mismatched_field_names": [
+            "issue_date"
+          ],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 99.13,
+      "delta_median_percent": 14.43
+    },
+    {
+      "name": "mild_blur_no_qr",
+      "input_sha256": {
+        "front": "4d204ed8fe4b25727b1cdd6cb88847f40023308bd3f9dd7e8b9ea9c9dfba721b",
+        "back": "77267cc0d6c4566199118c802e561082b6dc9081b8bb72e181dc5e8c7137992d"
+      },
+      "input_bytes": 277080,
+      "expected_fields": 10,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 719.74,
+            "pipeline_ms": 714.97,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 14.22,
+              "ocr": 674.69,
+              "other": 26.06
+            },
+            "timings_ms": {
+              "image_decode": 25.98,
+              "qr_front": 8.87,
+              "qr_back": 5.35,
+              "ocr_front": 358.93,
+              "ocr_back": 315.76,
+              "merge": 0.08,
+              "total": 714.97
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.14,
+            "response_bytes": 3467,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 849.17,
+            "pipeline_ms": 836.57,
+            "stage_ms": {
+              "alignment": 9.37,
+              "mrz": 354.3,
+              "qr": 22.22,
+              "ocr": 768.9,
+              "other": 56.8
+            },
+            "timings_ms": {
+              "align_front": 5.12,
+              "align_back": 4.25,
+              "qr_front_original": 9.6,
+              "qr_back_original": 12.62,
+              "mrz_back": 354.3,
+              "ocr_front_original": 429.43,
+              "ocr_back_original": 339.47,
+              "total": 836.57
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.15,
+            "response_bytes": 193723,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 354.25
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 20.72,
+                "end_ms": 25.84
+              },
+              "align_back": {
+                "start_ms": 25.86,
+                "end_ms": 30.11
+              },
+              "qr_front_original": {
+                "start_ms": 30.35,
+                "end_ms": 39.95
+              },
+              "qr_back_original": {
+                "start_ms": 40.01,
+                "end_ms": 52.63
+              },
+              "mrz_back": {
+                "start_ms": 31.04,
+                "end_ms": 385.34
+              },
+              "ocr_front_original": {
+                "start_ms": 31.85,
+                "end_ms": 461.27
+              },
+              "ocr_back_original": {
+                "start_ms": 461.31,
+                "end_ms": 800.79
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 716.15,
+            "pipeline_ms": 711.27,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.26,
+              "ocr": 673.42,
+              "other": 26.59
+            },
+            "timings_ms": {
+              "image_decode": 26.52,
+              "qr_front": 6.02,
+              "qr_back": 5.24,
+              "ocr_front": 359.64,
+              "ocr_back": 313.78,
+              "merge": 0.07,
+              "total": 711.27
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3469,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 725.79,
+            "pipeline_ms": 720.79,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.57,
+              "ocr": 683.0,
+              "other": 26.22
+            },
+            "timings_ms": {
+              "image_decode": 26.14,
+              "qr_front": 5.89,
+              "qr_back": 5.68,
+              "ocr_front": 363.7,
+              "ocr_back": 319.3,
+              "merge": 0.08,
+              "total": 720.79
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.15,
+            "response_bytes": 3471,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 737.19,
+            "pipeline_ms": 731.92,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 15.67,
+              "ocr": 689.52,
+              "other": 26.73
+            },
+            "timings_ms": {
+              "image_decode": 26.66,
+              "qr_front": 10.42,
+              "qr_back": 5.25,
+              "ocr_front": 369.58,
+              "ocr_back": 319.94,
+              "merge": 0.07,
+              "total": 731.92
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 3474,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 750.3,
+            "pipeline_ms": 743.3,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 10.89,
+              "ocr": 705.49,
+              "other": 26.92
+            },
+            "timings_ms": {
+              "image_decode": 26.84,
+              "qr_front": 5.58,
+              "qr_back": 5.31,
+              "ocr_front": 366.96,
+              "ocr_back": 338.53,
+              "merge": 0.08,
+              "total": 743.3
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.24,
+            "response_bytes": 3472,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 801.14,
+            "pipeline_ms": 796.16,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 22.36,
+              "ocr": 735.11,
+              "other": 38.69
+            },
+            "timings_ms": {
+              "image_decode": 38.59,
+              "qr_front": 9.7,
+              "qr_back": 12.66,
+              "ocr_front": 390.15,
+              "ocr_back": 344.96,
+              "merge": 0.1,
+              "total": 796.16
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3469,
+            "upload_bytes": 277575,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 837.2,
+            "pipeline_ms": 826.29,
+            "stage_ms": {
+              "alignment": 7.8,
+              "mrz": 351.71,
+              "qr": 20.99,
+              "ocr": 766.82,
+              "other": 50.12
+            },
+            "timings_ms": {
+              "align_front": 3.8,
+              "align_back": 4.0,
+              "qr_front_original": 7.9,
+              "qr_back_original": 13.09,
+              "mrz_back": 351.71,
+              "ocr_front_original": 433.26,
+              "ocr_back_original": 333.56,
+              "total": 826.29
+            },
+            "worker_queue_ms": 0.06,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 193725,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 351.66
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 19.66,
+                "end_ms": 23.47
+              },
+              "align_back": {
+                "start_ms": 23.48,
+                "end_ms": 27.48
+              },
+              "qr_front_original": {
+                "start_ms": 27.76,
+                "end_ms": 35.66
+              },
+              "qr_back_original": {
+                "start_ms": 35.71,
+                "end_ms": 48.79
+              },
+              "mrz_back": {
+                "start_ms": 28.41,
+                "end_ms": 380.11
+              },
+              "ocr_front_original": {
+                "start_ms": 29.29,
+                "end_ms": 462.55
+              },
+              "ocr_back_original": {
+                "start_ms": 462.59,
+                "end_ms": 796.16
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 857.52,
+            "pipeline_ms": 846.21,
+            "stage_ms": {
+              "alignment": 7.13,
+              "mrz": 332.38,
+              "qr": 17.61,
+              "ocr": 786.51,
+              "other": 50.88
+            },
+            "timings_ms": {
+              "align_front": 3.83,
+              "align_back": 3.3,
+              "qr_front_original": 8.95,
+              "qr_back_original": 8.66,
+              "mrz_back": 332.38,
+              "ocr_front_original": 439.84,
+              "ocr_back_original": 346.67,
+              "total": 846.21
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 193725,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 332.31
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 19.84,
+                "end_ms": 23.67
+              },
+              "align_back": {
+                "start_ms": 23.69,
+                "end_ms": 26.99
+              },
+              "qr_front_original": {
+                "start_ms": 27.2,
+                "end_ms": 36.15
+              },
+              "qr_back_original": {
+                "start_ms": 36.18,
+                "end_ms": 44.84
+              },
+              "mrz_back": {
+                "start_ms": 27.86,
+                "end_ms": 360.24
+              },
+              "ocr_front_original": {
+                "start_ms": 28.88,
+                "end_ms": 468.72
+              },
+              "ocr_back_original": {
+                "start_ms": 468.8,
+                "end_ms": 815.48
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 876.66,
+            "pipeline_ms": 863.83,
+            "stage_ms": {
+              "alignment": 7.81,
+              "mrz": 351.44,
+              "qr": 18.21,
+              "ocr": 799.1,
+              "other": 55.53
+            },
+            "timings_ms": {
+              "align_front": 4.17,
+              "align_back": 3.64,
+              "qr_front_original": 9.72,
+              "qr_back_original": 8.49,
+              "mrz_back": 351.44,
+              "ocr_front_original": 450.93,
+              "ocr_back_original": 348.17,
+              "total": 863.83
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.14,
+            "response_bytes": 193725,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 351.38
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 21.4,
+                "end_ms": 25.57
+              },
+              "align_back": {
+                "start_ms": 25.59,
+                "end_ms": 29.23
+              },
+              "qr_front_original": {
+                "start_ms": 30.34,
+                "end_ms": 40.06
+              },
+              "qr_back_original": {
+                "start_ms": 40.1,
+                "end_ms": 48.59
+              },
+              "mrz_back": {
+                "start_ms": 31.03,
+                "end_ms": 382.46
+              },
+              "ocr_front_original": {
+                "start_ms": 31.73,
+                "end_ms": 482.66
+              },
+              "ocr_back_original": {
+                "start_ms": 482.7,
+                "end_ms": 830.87
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 844.3,
+            "pipeline_ms": 833.07,
+            "stage_ms": {
+              "alignment": 12.87,
+              "mrz": 378.35,
+              "qr": 14.2,
+              "ocr": 765.47,
+              "other": 52.87
+            },
+            "timings_ms": {
+              "align_front": 6.66,
+              "align_back": 6.21,
+              "qr_front_original": 8.59,
+              "qr_back_original": 5.61,
+              "mrz_back": 378.35,
+              "ocr_front_original": 416.76,
+              "ocr_back_original": 348.71,
+              "total": 833.07
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 193728,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 378.29
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 21.07,
+                "end_ms": 27.74
+              },
+              "align_back": {
+                "start_ms": 27.76,
+                "end_ms": 33.97
+              },
+              "qr_front_original": {
+                "start_ms": 34.18,
+                "end_ms": 42.78
+              },
+              "qr_back_original": {
+                "start_ms": 42.8,
+                "end_ms": 48.41
+              },
+              "mrz_back": {
+                "start_ms": 34.94,
+                "end_ms": 413.29
+              },
+              "ocr_front_original": {
+                "start_ms": 36.04,
+                "end_ms": 452.79
+              },
+              "ocr_back_original": {
+                "start_ms": 452.83,
+                "end_ms": 801.54
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 834.1,
+            "pipeline_ms": 823.08,
+            "stage_ms": {
+              "alignment": 11.03,
+              "mrz": 409.76,
+              "qr": 21.57,
+              "ocr": 758.0,
+              "other": 52.45
+            },
+            "timings_ms": {
+              "align_front": 6.0,
+              "align_back": 5.03,
+              "qr_front_original": 11.61,
+              "qr_back_original": 9.96,
+              "mrz_back": 409.76,
+              "ocr_front_original": 422.41,
+              "ocr_back_original": 335.59,
+              "total": 823.08
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 193725,
+            "upload_bytes": 277573,
+            "status": "review_required",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "verified",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "verified",
+                "elapsed_ms": 409.68
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number",
+              "expiry_date",
+              "gender",
+              "nationality",
+              "name"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 21.63,
+                "end_ms": 27.63
+              },
+              "align_back": {
+                "start_ms": 27.66,
+                "end_ms": 32.69
+              },
+              "qr_front_original": {
+                "start_ms": 32.96,
+                "end_ms": 44.57
+              },
+              "qr_back_original": {
+                "start_ms": 44.69,
+                "end_ms": 54.65
+              },
+              "mrz_back": {
+                "start_ms": 33.67,
+                "end_ms": 443.42
+              },
+              "ocr_front_original": {
+                "start_ms": 34.56,
+                "end_ms": 456.97
+              },
+              "ocr_back_original": {
+                "start_ms": 457.0,
+                "end_ms": 792.59
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 737.19,
+          "mean_wall_ms": 746.11,
+          "min_wall_ms": 716.15,
+          "max_wall_ms": 801.14,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 14.35,
+            "ocr": 697.31,
+            "other": 29.03
+          },
+          "mean_gpu_queue_ms": 0.14,
+          "mean_response_bytes": 3471,
+          "recognized_fields_range": [
+            10,
+            10
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 844.3,
+          "mean_wall_ms": 849.96,
+          "min_wall_ms": 834.1,
+          "max_wall_ms": 876.66,
+          "mean_stage_ms": {
+            "alignment": 9.33,
+            "mrz": 364.73,
+            "qr": 18.52,
+            "ocr": 775.18,
+            "other": 52.37
+          },
+          "mean_gpu_queue_ms": 0.12,
+          "mean_response_bytes": 193726,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 107.11,
+      "delta_median_percent": 14.53
+    },
+    {
+      "name": "perspective_back_no_qr",
+      "input_sha256": {
+        "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back": "9519adf95d5645c3aefc564c52b60c34195f0a4abc02ceda93615e705e59c49b"
+      },
+      "input_bytes": 338533,
+      "expected_fields": 10,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 840.37,
+            "pipeline_ms": 835.92,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 16.43,
+              "ocr": 765.01,
+              "other": 54.48
+            },
+            "timings_ms": {
+              "image_decode": 54.39,
+              "qr_front": 6.81,
+              "qr_back": 9.62,
+              "ocr_front": 388.74,
+              "ocr_back": 376.27,
+              "merge": 0.09,
+              "total": 835.92
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3472,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 899.58,
+            "pipeline_ms": 887.69,
+            "stage_ms": {
+              "alignment": 24.22,
+              "mrz": 606.51,
+              "qr": 67.84,
+              "ocr": 792.43,
+              "other": 67.49
+            },
+            "timings_ms": {
+              "align_front": 6.09,
+              "align_back": 18.13,
+              "qr_front_original": 36.67,
+              "qr_back_original": 18.19,
+              "qr_back_aligned": 12.98,
+              "ocr_front_original": 446.82,
+              "mrz_back": 606.51,
+              "ocr_back_aligned": 345.61,
+              "total": 887.69
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 229464,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 406.56
+              },
+              {
+                "method": "bottom_region",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "partial",
+                "elapsed_ms": 199.83
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 34.35,
+                "end_ms": 40.44
+              },
+              "align_back": {
+                "start_ms": 40.47,
+                "end_ms": 58.6
+              },
+              "qr_front_original": {
+                "start_ms": 58.82,
+                "end_ms": 95.5
+              },
+              "qr_back_original": {
+                "start_ms": 95.53,
+                "end_ms": 113.73
+              },
+              "qr_back_aligned": {
+                "start_ms": 113.77,
+                "end_ms": 126.75
+              },
+              "ocr_front_original": {
+                "start_ms": 62.29,
+                "end_ms": 509.11
+              },
+              "mrz_back": {
+                "start_ms": 61.28,
+                "end_ms": 667.78
+              },
+              "ocr_back_aligned": {
+                "start_ms": 509.19,
+                "end_ms": 854.8
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 847.05,
+            "pipeline_ms": 843.5,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 15.11,
+              "ocr": 780.23,
+              "other": 48.16
+            },
+            "timings_ms": {
+              "image_decode": 48.07,
+              "qr_front": 7.13,
+              "qr_back": 7.98,
+              "ocr_front": 383.73,
+              "ocr_back": 396.5,
+              "merge": 0.09,
+              "total": 843.5
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 3470,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 841.74,
+            "pipeline_ms": 835.82,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 14.17,
+              "ocr": 787.9,
+              "other": 33.75
+            },
+            "timings_ms": {
+              "image_decode": 33.67,
+              "qr_front": 6.01,
+              "qr_back": 8.16,
+              "ocr_front": 390.4,
+              "ocr_back": 397.5,
+              "merge": 0.08,
+              "total": 835.82
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 3470,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 854.17,
+            "pipeline_ms": 850.74,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 16.45,
+              "ocr": 785.61,
+              "other": 48.68
+            },
+            "timings_ms": {
+              "image_decode": 48.59,
+              "qr_front": 8.32,
+              "qr_back": 8.13,
+              "ocr_front": 391.12,
+              "ocr_back": 394.49,
+              "merge": 0.09,
+              "total": 850.74
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 3472,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 812.84,
+            "pipeline_ms": 806.81,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 13.57,
+              "ocr": 761.13,
+              "other": 32.11
+            },
+            "timings_ms": {
+              "image_decode": 32.02,
+              "qr_front": 6.26,
+              "qr_back": 7.31,
+              "ocr_front": 384.3,
+              "ocr_back": 376.83,
+              "merge": 0.09,
+              "total": 806.81
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 3472,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 835.94,
+            "pipeline_ms": 828.94,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 14.64,
+              "ocr": 769.06,
+              "other": 45.24
+            },
+            "timings_ms": {
+              "image_decode": 45.15,
+              "qr_front": 6.67,
+              "qr_back": 7.97,
+              "ocr_front": 382.5,
+              "ocr_back": 386.56,
+              "merge": 0.09,
+              "total": 828.94
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 3475,
+            "upload_bytes": 339028,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 896.37,
+            "pipeline_ms": 884.42,
+            "stage_ms": {
+              "alignment": 23.19,
+              "mrz": 638.4,
+              "qr": 38.14,
+              "ocr": 792.78,
+              "other": 66.91
+            },
+            "timings_ms": {
+              "align_front": 4.88,
+              "align_back": 18.31,
+              "qr_front_original": 17.76,
+              "qr_back_original": 9.65,
+              "qr_back_aligned": 10.73,
+              "ocr_front_original": 441.05,
+              "mrz_back": 638.4,
+              "ocr_back_aligned": 351.73,
+              "total": 884.42
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 229459,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 403.92
+              },
+              {
+                "method": "bottom_region",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "partial",
+                "elapsed_ms": 234.41
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 34.7,
+                "end_ms": 39.59
+              },
+              "align_back": {
+                "start_ms": 39.61,
+                "end_ms": 57.92
+              },
+              "qr_front_original": {
+                "start_ms": 58.16,
+                "end_ms": 75.92
+              },
+              "qr_back_original": {
+                "start_ms": 75.96,
+                "end_ms": 85.6
+              },
+              "qr_back_aligned": {
+                "start_ms": 85.63,
+                "end_ms": 96.37
+              },
+              "ocr_front_original": {
+                "start_ms": 59.65,
+                "end_ms": 500.7
+              },
+              "mrz_back": {
+                "start_ms": 58.83,
+                "end_ms": 697.23
+              },
+              "ocr_back_aligned": {
+                "start_ms": 500.74,
+                "end_ms": 852.47
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 881.51,
+            "pipeline_ms": 870.0,
+            "stage_ms": {
+              "alignment": 16.42,
+              "mrz": 536.25,
+              "qr": 42.0,
+              "ocr": 787.55,
+              "other": 64.12
+            },
+            "timings_ms": {
+              "align_front": 4.31,
+              "align_back": 12.11,
+              "qr_front_original": 9.0,
+              "qr_back_original": 19.69,
+              "qr_back_aligned": 13.31,
+              "ocr_front_original": 447.52,
+              "mrz_back": 536.25,
+              "ocr_back_aligned": 340.03,
+              "total": 870.0
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.53,
+            "response_bytes": 229456,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 337.72
+              },
+              {
+                "method": "bottom_region",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "partial",
+                "elapsed_ms": 198.45
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 31.89,
+                "end_ms": 36.2
+              },
+              "align_back": {
+                "start_ms": 36.22,
+                "end_ms": 48.33
+              },
+              "qr_front_original": {
+                "start_ms": 48.54,
+                "end_ms": 57.54
+              },
+              "qr_back_original": {
+                "start_ms": 57.56,
+                "end_ms": 77.25
+              },
+              "qr_back_aligned": {
+                "start_ms": 77.27,
+                "end_ms": 90.58
+              },
+              "ocr_front_original": {
+                "start_ms": 50.41,
+                "end_ms": 497.93
+              },
+              "mrz_back": {
+                "start_ms": 49.23,
+                "end_ms": 585.48
+              },
+              "ocr_back_aligned": {
+                "start_ms": 497.97,
+                "end_ms": 838.0
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 880.73,
+            "pipeline_ms": 869.03,
+            "stage_ms": {
+              "alignment": 16.39,
+              "mrz": 552.88,
+              "qr": 40.02,
+              "ocr": 786.47,
+              "other": 64.57
+            },
+            "timings_ms": {
+              "align_front": 4.81,
+              "align_back": 11.58,
+              "qr_front_original": 15.03,
+              "qr_back_original": 12.7,
+              "qr_back_aligned": 12.29,
+              "ocr_front_original": 448.19,
+              "mrz_back": 552.88,
+              "ocr_back_aligned": 338.28,
+              "total": 869.03
+            },
+            "worker_queue_ms": 0.07,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 229461,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 344.48
+              },
+              {
+                "method": "bottom_region",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "partial",
+                "elapsed_ms": 208.33
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 32.38,
+                "end_ms": 37.19
+              },
+              "align_back": {
+                "start_ms": 37.21,
+                "end_ms": 48.79
+              },
+              "qr_front_original": {
+                "start_ms": 49.01,
+                "end_ms": 64.04
+              },
+              "qr_back_original": {
+                "start_ms": 64.09,
+                "end_ms": 76.79
+              },
+              "qr_back_aligned": {
+                "start_ms": 76.83,
+                "end_ms": 89.13
+              },
+              "ocr_front_original": {
+                "start_ms": 50.57,
+                "end_ms": 498.76
+              },
+              "mrz_back": {
+                "start_ms": 49.68,
+                "end_ms": 602.55
+              },
+              "ocr_back_aligned": {
+                "start_ms": 498.79,
+                "end_ms": 837.08
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 881.82,
+            "pipeline_ms": 869.2,
+            "stage_ms": {
+              "alignment": 20.69,
+              "mrz": 559.27,
+              "qr": 52.07,
+              "ocr": 778.32,
+              "other": 68.56
+            },
+            "timings_ms": {
+              "align_front": 6.99,
+              "align_back": 13.7,
+              "qr_front_original": 17.36,
+              "qr_back_original": 21.71,
+              "qr_back_aligned": 13.0,
+              "ocr_front_original": 441.79,
+              "mrz_back": 559.27,
+              "ocr_back_aligned": 336.53,
+              "total": 869.2
+            },
+            "worker_queue_ms": 0.06,
+            "gpu_queue_ms": 0.15,
+            "response_bytes": 229461,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 340.21
+              },
+              {
+                "method": "bottom_region",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "partial",
+                "elapsed_ms": 218.99
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 32.09,
+                "end_ms": 39.08
+              },
+              "align_back": {
+                "start_ms": 39.11,
+                "end_ms": 52.81
+              },
+              "qr_front_original": {
+                "start_ms": 53.05,
+                "end_ms": 70.41
+              },
+              "qr_back_original": {
+                "start_ms": 70.46,
+                "end_ms": 92.16
+              },
+              "qr_back_aligned": {
+                "start_ms": 92.2,
+                "end_ms": 105.2
+              },
+              "ocr_front_original": {
+                "start_ms": 54.66,
+                "end_ms": 496.44
+              },
+              "mrz_back": {
+                "start_ms": 53.65,
+                "end_ms": 612.92
+              },
+              "ocr_back_aligned": {
+                "start_ms": 496.48,
+                "end_ms": 833.0
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 870.19,
+            "pipeline_ms": 858.65,
+            "stage_ms": {
+              "alignment": 17.66,
+              "mrz": 546.68,
+              "qr": 29.63,
+              "ocr": 774.27,
+              "other": 65.29
+            },
+            "timings_ms": {
+              "align_front": 5.79,
+              "align_back": 11.87,
+              "qr_front_original": 7.38,
+              "qr_back_original": 12.04,
+              "qr_back_aligned": 10.21,
+              "ocr_front_original": 442.68,
+              "mrz_back": 546.68,
+              "ocr_back_aligned": 331.59,
+              "total": 858.65
+            },
+            "worker_queue_ms": 0.06,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 229460,
+            "upload_bytes": 339026,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "aligned"
+            },
+            "mrz_status": "partial",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 343.45
+              },
+              {
+                "method": "bottom_region",
+                "variant": "aligned",
+                "rotation_clockwise": 0,
+                "status": "partial",
+                "elapsed_ms": 203.16
+              }
+            ],
+            "mrz_stop_reason": "usable_fields",
+            "mrz_used_fields": [
+              "id_number"
+            ],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 33.29,
+                "end_ms": 39.07
+              },
+              "align_back": {
+                "start_ms": 39.09,
+                "end_ms": 50.96
+              },
+              "qr_front_original": {
+                "start_ms": 51.16,
+                "end_ms": 58.53
+              },
+              "qr_back_original": {
+                "start_ms": 58.6,
+                "end_ms": 70.64
+              },
+              "qr_back_aligned": {
+                "start_ms": 70.69,
+                "end_ms": 80.9
+              },
+              "ocr_front_original": {
+                "start_ms": 52.58,
+                "end_ms": 495.25
+              },
+              "mrz_back": {
+                "start_ms": 51.76,
+                "end_ms": 598.44
+              },
+              "ocr_back_aligned": {
+                "start_ms": 495.28,
+                "end_ms": 826.87
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 841.74,
+          "mean_wall_ms": 838.35,
+          "min_wall_ms": 812.84,
+          "max_wall_ms": 854.17,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 14.79,
+            "ocr": 776.79,
+            "other": 41.59
+          },
+          "mean_gpu_queue_ms": 0.11,
+          "mean_response_bytes": 3472,
+          "recognized_fields_range": [
+            10,
+            10
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 881.51,
+          "mean_wall_ms": 882.12,
+          "min_wall_ms": 870.19,
+          "max_wall_ms": 896.37,
+          "mean_stage_ms": {
+            "alignment": 18.87,
+            "mrz": 566.7,
+            "qr": 40.37,
+            "ocr": 783.88,
+            "other": 65.89
+          },
+          "mean_gpu_queue_ms": 0.21,
+          "mean_response_bytes": 229459,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 39.77,
+      "delta_median_percent": 4.72
+    },
+    {
+      "name": "no_mrz_no_qr",
+      "input_sha256": {
+        "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back": "9fc4a717b106624aad008b8b4e1be6c274fce448f83c65e014eb1294b1948e82"
+      },
+      "input_bytes": 108992,
+      "expected_fields": 10,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 653.66,
+            "pipeline_ms": 650.46,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 18.13,
+              "ocr": 613.74,
+              "other": 18.59
+            },
+            "timings_ms": {
+              "image_decode": 18.49,
+              "qr_front": 7.06,
+              "qr_back": 11.07,
+              "ocr_front": 393.51,
+              "ocr_back": 220.23,
+              "merge": 0.1,
+              "total": 650.46
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3470,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 845.91,
+            "pipeline_ms": 836.49,
+            "stage_ms": {
+              "alignment": 8.11,
+              "mrz": 781.27,
+              "qr": 19.37,
+              "ocr": 709.56,
+              "other": 46.5
+            },
+            "timings_ms": {
+              "align_front": 3.88,
+              "align_back": 4.23,
+              "qr_front_original": 10.08,
+              "qr_back_original": 9.29,
+              "ocr_front_original": 454.68,
+              "ocr_back_original": 254.88,
+              "mrz_back": 781.27,
+              "total": 836.49
+            },
+            "worker_queue_ms": 0.06,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 181494,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "not_found",
+                "elapsed_ms": 303.01
+              },
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "not_found",
+                "elapsed_ms": 293.43
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "invalid",
+                "elapsed_ms": 184.74
+              }
+            ],
+            "mrz_stop_reason": "attempt_limit",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.08,
+                "end_ms": 19.96
+              },
+              "align_back": {
+                "start_ms": 19.98,
+                "end_ms": 24.21
+              },
+              "qr_front_original": {
+                "start_ms": 24.42,
+                "end_ms": 34.5
+              },
+              "qr_back_original": {
+                "start_ms": 34.55,
+                "end_ms": 43.84
+              },
+              "ocr_front_original": {
+                "start_ms": 25.68,
+                "end_ms": 480.35
+              },
+              "ocr_back_original": {
+                "start_ms": 480.39,
+                "end_ms": 735.27
+              },
+              "mrz_back": {
+                "start_ms": 25.03,
+                "end_ms": 806.3
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 643.19,
+            "pipeline_ms": 640.3,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 12.18,
+              "ocr": 609.79,
+              "other": 18.33
+            },
+            "timings_ms": {
+              "image_decode": 18.27,
+              "qr_front": 5.82,
+              "qr_back": 6.36,
+              "ocr_front": 386.42,
+              "ocr_back": 223.37,
+              "merge": 0.06,
+              "total": 640.3
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.07,
+            "response_bytes": 3471,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 616.61,
+            "pipeline_ms": 613.52,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 12.59,
+              "ocr": 584.45,
+              "other": 16.48
+            },
+            "timings_ms": {
+              "image_decode": 16.4,
+              "qr_front": 6.55,
+              "qr_back": 6.04,
+              "ocr_front": 377.02,
+              "ocr_back": 207.43,
+              "merge": 0.08,
+              "total": 613.52
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3466,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 637.78,
+            "pipeline_ms": 634.74,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.41,
+              "ocr": 607.33,
+              "other": 16.0
+            },
+            "timings_ms": {
+              "image_decode": 15.92,
+              "qr_front": 6.07,
+              "qr_back": 5.34,
+              "ocr_front": 386.26,
+              "ocr_back": 221.07,
+              "merge": 0.08,
+              "total": 634.74
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 3469,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 618.28,
+            "pipeline_ms": 615.17,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 12.1,
+              "ocr": 587.12,
+              "other": 15.95
+            },
+            "timings_ms": {
+              "image_decode": 15.87,
+              "qr_front": 5.85,
+              "qr_back": 6.25,
+              "ocr_front": 378.15,
+              "ocr_back": 208.97,
+              "merge": 0.08,
+              "total": 615.17
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3467,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 623.34,
+            "pipeline_ms": 619.77,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 15.41,
+              "ocr": 587.71,
+              "other": 16.65
+            },
+            "timings_ms": {
+              "image_decode": 16.57,
+              "qr_front": 8.09,
+              "qr_back": 7.32,
+              "ocr_front": 373.79,
+              "ocr_back": 213.92,
+              "merge": 0.08,
+              "total": 619.77
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3467,
+            "upload_bytes": 109487,
+            "status": "complete",
+            "recognized_fields": 10,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "no_qr",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 813.22,
+            "pipeline_ms": 803.71,
+            "stage_ms": {
+              "alignment": 7.85,
+              "mrz": 749.09,
+              "qr": 17.69,
+              "ocr": 677.04,
+              "other": 46.1
+            },
+            "timings_ms": {
+              "align_front": 4.13,
+              "align_back": 3.72,
+              "qr_front_original": 7.93,
+              "qr_back_original": 9.76,
+              "ocr_front_original": 448.82,
+              "ocr_back_original": 228.22,
+              "mrz_back": 749.09,
+              "total": 803.71
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 181490,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "not_found",
+                "elapsed_ms": 308.44
+              },
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "not_found",
+                "elapsed_ms": 251.71
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "invalid",
+                "elapsed_ms": 188.86
+              }
+            ],
+            "mrz_stop_reason": "attempt_limit",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.57,
+                "end_ms": 20.7
+              },
+              "align_back": {
+                "start_ms": 20.72,
+                "end_ms": 24.44
+              },
+              "qr_front_original": {
+                "start_ms": 24.67,
+                "end_ms": 32.59
+              },
+              "qr_back_original": {
+                "start_ms": 32.65,
+                "end_ms": 42.42
+              },
+              "ocr_front_original": {
+                "start_ms": 26.09,
+                "end_ms": 474.91
+              },
+              "ocr_back_original": {
+                "start_ms": 474.94,
+                "end_ms": 703.16
+              },
+              "mrz_back": {
+                "start_ms": 25.34,
+                "end_ms": 774.43
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 802.79,
+            "pipeline_ms": 793.15,
+            "stage_ms": {
+              "alignment": 7.73,
+              "mrz": 739.02,
+              "qr": 21.68,
+              "ocr": 662.19,
+              "other": 45.81
+            },
+            "timings_ms": {
+              "align_front": 4.18,
+              "align_back": 3.55,
+              "qr_front_original": 11.6,
+              "qr_back_original": 10.08,
+              "ocr_front_original": 431.6,
+              "ocr_back_original": 230.59,
+              "mrz_back": 739.02,
+              "total": 793.15
+            },
+            "worker_queue_ms": 0.03,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 181490,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "not_found",
+                "elapsed_ms": 293.16
+              },
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "not_found",
+                "elapsed_ms": 267.92
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "invalid",
+                "elapsed_ms": 177.85
+              }
+            ],
+            "mrz_stop_reason": "attempt_limit",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.08,
+                "end_ms": 20.26
+              },
+              "align_back": {
+                "start_ms": 20.31,
+                "end_ms": 23.85
+              },
+              "qr_front_original": {
+                "start_ms": 24.06,
+                "end_ms": 35.67
+              },
+              "qr_back_original": {
+                "start_ms": 35.7,
+                "end_ms": 45.78
+              },
+              "ocr_front_original": {
+                "start_ms": 25.47,
+                "end_ms": 457.06
+              },
+              "ocr_back_original": {
+                "start_ms": 457.12,
+                "end_ms": 687.7
+              },
+              "mrz_back": {
+                "start_ms": 24.66,
+                "end_ms": 763.68
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 817.66,
+            "pipeline_ms": 808.1,
+            "stage_ms": {
+              "alignment": 7.83,
+              "mrz": 753.36,
+              "qr": 17.42,
+              "ocr": 713.31,
+              "other": 46.2
+            },
+            "timings_ms": {
+              "align_front": 3.89,
+              "align_back": 3.94,
+              "qr_front_original": 7.81,
+              "qr_back_original": 9.61,
+              "ocr_front_original": 473.93,
+              "ocr_back_original": 239.38,
+              "mrz_back": 753.36,
+              "total": 808.1
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.13,
+            "response_bytes": 181491,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "not_found",
+                "elapsed_ms": 307.94
+              },
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "not_found",
+                "elapsed_ms": 260.65
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "invalid",
+                "elapsed_ms": 184.66
+              }
+            ],
+            "mrz_stop_reason": "attempt_limit",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.43,
+                "end_ms": 20.32
+              },
+              "align_back": {
+                "start_ms": 20.34,
+                "end_ms": 24.28
+              },
+              "qr_front_original": {
+                "start_ms": 24.53,
+                "end_ms": 32.34
+              },
+              "qr_back_original": {
+                "start_ms": 32.37,
+                "end_ms": 41.98
+              },
+              "ocr_front_original": {
+                "start_ms": 25.94,
+                "end_ms": 499.87
+              },
+              "ocr_back_original": {
+                "start_ms": 499.9,
+                "end_ms": 739.28
+              },
+              "mrz_back": {
+                "start_ms": 25.24,
+                "end_ms": 778.6
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 836.72,
+            "pipeline_ms": 827.37,
+            "stage_ms": {
+              "alignment": 6.71,
+              "mrz": 774.52,
+              "qr": 19.19,
+              "ocr": 663.84,
+              "other": 45.47
+            },
+            "timings_ms": {
+              "align_front": 3.68,
+              "align_back": 3.03,
+              "qr_front_original": 9.54,
+              "qr_back_original": 9.65,
+              "ocr_front_original": 429.95,
+              "ocr_back_original": 233.89,
+              "mrz_back": 774.52,
+              "total": 827.37
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 181491,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "not_found",
+                "elapsed_ms": 290.52
+              },
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "not_found",
+                "elapsed_ms": 278.01
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "invalid",
+                "elapsed_ms": 205.9
+              }
+            ],
+            "mrz_stop_reason": "attempt_limit",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.02,
+                "end_ms": 19.7
+              },
+              "align_back": {
+                "start_ms": 19.72,
+                "end_ms": 22.76
+              },
+              "qr_front_original": {
+                "start_ms": 22.95,
+                "end_ms": 32.49
+              },
+              "qr_back_original": {
+                "start_ms": 32.52,
+                "end_ms": 42.17
+              },
+              "ocr_front_original": {
+                "start_ms": 24.24,
+                "end_ms": 454.2
+              },
+              "ocr_back_original": {
+                "start_ms": 454.27,
+                "end_ms": 688.16
+              },
+              "mrz_back": {
+                "start_ms": 23.61,
+                "end_ms": 798.13
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 865.08,
+            "pipeline_ms": 853.16,
+            "stage_ms": {
+              "alignment": 8.06,
+              "mrz": 795.23,
+              "qr": 17.01,
+              "ocr": 689.96,
+              "other": 49.0
+            },
+            "timings_ms": {
+              "align_front": 4.29,
+              "align_back": 3.77,
+              "qr_front_original": 10.96,
+              "qr_back_original": 6.05,
+              "ocr_front_original": 446.93,
+              "ocr_back_original": 243.03,
+              "mrz_back": 795.23,
+              "total": 853.16
+            },
+            "worker_queue_ms": 0.07,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 181495,
+            "upload_bytes": 109485,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 10,
+            "exact_expected_matches": 10,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "not_found",
+                "elapsed_ms": 313.46
+              },
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "not_found",
+                "elapsed_ms": 291.71
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 180,
+                "status": "invalid",
+                "elapsed_ms": 189.92
+              }
+            ],
+            "mrz_stop_reason": "attempt_limit",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 18.77,
+                "end_ms": 23.06
+              },
+              "align_back": {
+                "start_ms": 23.08,
+                "end_ms": 26.85
+              },
+              "qr_front_original": {
+                "start_ms": 27.06,
+                "end_ms": 38.02
+              },
+              "qr_back_original": {
+                "start_ms": 38.05,
+                "end_ms": 44.1
+              },
+              "ocr_front_original": {
+                "start_ms": 28.86,
+                "end_ms": 475.79
+              },
+              "ocr_back_original": {
+                "start_ms": 475.82,
+                "end_ms": 718.86
+              },
+              "mrz_back": {
+                "start_ms": 27.93,
+                "end_ms": 823.16
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 623.34,
+          "mean_wall_ms": 627.84,
+          "min_wall_ms": 616.61,
+          "max_wall_ms": 643.19,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 12.74,
+            "ocr": 595.28,
+            "other": 16.68
+          },
+          "mean_gpu_queue_ms": 0.08,
+          "mean_response_bytes": 3468,
+          "recognized_fields_range": [
+            10,
+            10
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 817.66,
+          "mean_wall_ms": 827.09,
+          "min_wall_ms": 802.79,
+          "max_wall_ms": 865.08,
+          "mean_stage_ms": {
+            "alignment": 7.64,
+            "mrz": 762.24,
+            "qr": 18.6,
+            "ocr": 681.27,
+            "other": 46.52
+          },
+          "mean_gpu_queue_ms": 0.11,
+          "mean_response_bytes": 181491,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            10,
+            10
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 194.32,
+      "delta_median_percent": 31.17
+    },
+    {
+      "name": "readable_qr_and_mrz",
+      "input_sha256": {
+        "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+        "back": "bd34da06a9de2a6abffde5452ca966151058b04b20830dc4dc96cb0b9e1f8ee8"
+      },
+      "input_bytes": 136705,
+      "expected_fields": 11,
+      "warmups": {
+        "gpu": [
+          {
+            "wall_ms": 679.36,
+            "pipeline_ms": 675.82,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 13.42,
+              "ocr": 642.58,
+              "other": 19.82
+            },
+            "timings_ms": {
+              "image_decode": 16.17,
+              "qr_front": 6.26,
+              "qr_back": 7.16,
+              "ocr_front": 394.92,
+              "ocr_back": 247.66,
+              "merge": 3.65,
+              "total": 675.82
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3316,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "complete",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 777.56,
+            "pipeline_ms": 765.72,
+            "stage_ms": {
+              "alignment": 8.35,
+              "mrz": 550.19,
+              "qr": 20.91,
+              "ocr": 708.12,
+              "other": 47.71
+            },
+            "timings_ms": {
+              "align_front": 4.26,
+              "align_back": 4.09,
+              "qr_front_original": 9.46,
+              "qr_back_original": 11.45,
+              "ocr_front_original": 428.35,
+              "mrz_back": 550.19,
+              "ocr_back_original": 279.77,
+              "total": 765.72
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 249659,
+            "upload_bytes": 137198,
+            "status": "complete",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 337.85
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 212.27
+              }
+            ],
+            "mrz_stop_reason": "covered_by_qr_ocr",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.56,
+                "end_ms": 20.82
+              },
+              "align_back": {
+                "start_ms": 20.88,
+                "end_ms": 24.96
+              },
+              "qr_front_original": {
+                "start_ms": 25.17,
+                "end_ms": 34.63
+              },
+              "qr_back_original": {
+                "start_ms": 34.68,
+                "end_ms": 46.12
+              },
+              "ocr_front_original": {
+                "start_ms": 26.65,
+                "end_ms": 455.0
+              },
+              "mrz_back": {
+                "start_ms": 25.82,
+                "end_ms": 576.01
+              },
+              "ocr_back_original": {
+                "start_ms": 455.07,
+                "end_ms": 734.84
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "samples": {
+        "gpu": [
+          {
+            "wall_ms": 672.62,
+            "pipeline_ms": 665.4,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 13.67,
+              "ocr": 632.24,
+              "other": 19.49
+            },
+            "timings_ms": {
+              "image_decode": 19.31,
+              "qr_front": 6.67,
+              "qr_back": 7.0,
+              "ocr_front": 381.91,
+              "ocr_back": 250.33,
+              "merge": 0.18,
+              "total": 665.4
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.1,
+            "response_bytes": 3320,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "complete",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 646.23,
+            "pipeline_ms": 641.94,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 11.95,
+              "ocr": 612.86,
+              "other": 17.13
+            },
+            "timings_ms": {
+              "image_decode": 16.92,
+              "qr_front": 5.65,
+              "qr_back": 6.3,
+              "ocr_front": 370.14,
+              "ocr_back": 242.72,
+              "merge": 0.21,
+              "total": 641.94
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.08,
+            "response_bytes": 3317,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "complete",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 668.38,
+            "pipeline_ms": 664.88,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 20.15,
+              "ocr": 627.07,
+              "other": 17.66
+            },
+            "timings_ms": {
+              "image_decode": 16.58,
+              "qr_front": 9.5,
+              "qr_back": 10.65,
+              "ocr_front": 375.38,
+              "ocr_back": 251.69,
+              "merge": 1.08,
+              "total": 664.88
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 3321,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "complete",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 667.64,
+            "pipeline_ms": 664.32,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 14.81,
+              "ocr": 633.35,
+              "other": 16.16
+            },
+            "timings_ms": {
+              "image_decode": 15.98,
+              "qr_front": 8.8,
+              "qr_back": 6.01,
+              "ocr_front": 381.35,
+              "ocr_back": 252.0,
+              "merge": 0.18,
+              "total": 664.32
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.14,
+            "response_bytes": 3318,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "complete",
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 665.94,
+            "pipeline_ms": 662.24,
+            "stage_ms": {
+              "alignment": 0,
+              "mrz": 0,
+              "qr": 13.66,
+              "ocr": 632.31,
+              "other": 16.27
+            },
+            "timings_ms": {
+              "image_decode": 16.02,
+              "qr_front": 6.33,
+              "qr_back": 7.33,
+              "ocr_front": 390.84,
+              "ocr_back": 241.47,
+              "merge": 0.25,
+              "total": 662.24
+            },
+            "worker_queue_ms": 0,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 3316,
+            "upload_bytes": 137200,
+            "status": "complete",
+            "recognized_fields": 11,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {},
+            "mrz_status": null,
+            "mrz_attempts": [],
+            "mrz_stop_reason": null,
+            "mrz_used_fields": [],
+            "execution": null,
+            "stage_intervals_ms": {},
+            "qr_status": "complete",
+            "conflict_fields": []
+          }
+        ],
+        "experiment": [
+          {
+            "wall_ms": 755.21,
+            "pipeline_ms": 744.52,
+            "stage_ms": {
+              "alignment": 7.34,
+              "mrz": 572.87,
+              "qr": 23.9,
+              "ocr": 687.83,
+              "other": 47.97
+            },
+            "timings_ms": {
+              "align_front": 4.02,
+              "align_back": 3.32,
+              "qr_front_original": 11.27,
+              "qr_back_original": 12.63,
+              "ocr_front_original": 420.78,
+              "mrz_back": 572.87,
+              "ocr_back_original": 267.05,
+              "total": 744.52
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 249662,
+            "upload_bytes": 137198,
+            "status": "complete",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 359.47
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 213.32
+              }
+            ],
+            "mrz_stop_reason": "covered_by_qr_ocr",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 17.64,
+                "end_ms": 21.66
+              },
+              "align_back": {
+                "start_ms": 21.68,
+                "end_ms": 25.0
+              },
+              "qr_front_original": {
+                "start_ms": 25.21,
+                "end_ms": 36.48
+              },
+              "qr_back_original": {
+                "start_ms": 36.52,
+                "end_ms": 49.16
+              },
+              "ocr_front_original": {
+                "start_ms": 26.55,
+                "end_ms": 447.33
+              },
+              "mrz_back": {
+                "start_ms": 25.81,
+                "end_ms": 598.68
+              },
+              "ocr_back_original": {
+                "start_ms": 447.38,
+                "end_ms": 714.42
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 750.72,
+            "pipeline_ms": 740.22,
+            "stage_ms": {
+              "alignment": 9.15,
+              "mrz": 542.48,
+              "qr": 20.02,
+              "ocr": 683.39,
+              "other": 46.22
+            },
+            "timings_ms": {
+              "align_front": 4.76,
+              "align_back": 4.39,
+              "qr_front_original": 7.72,
+              "qr_back_original": 12.3,
+              "ocr_front_original": 419.65,
+              "mrz_back": 542.48,
+              "ocr_back_original": 263.74,
+              "total": 740.22
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.12,
+            "response_bytes": 249655,
+            "upload_bytes": 137198,
+            "status": "complete",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 335.11
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 207.3
+              }
+            ],
+            "mrz_stop_reason": "covered_by_qr_ocr",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.53,
+                "end_ms": 21.29
+              },
+              "align_back": {
+                "start_ms": 21.31,
+                "end_ms": 25.7
+              },
+              "qr_front_original": {
+                "start_ms": 25.93,
+                "end_ms": 33.65
+              },
+              "qr_back_original": {
+                "start_ms": 33.7,
+                "end_ms": 45.99
+              },
+              "ocr_front_original": {
+                "start_ms": 27.35,
+                "end_ms": 447.0
+              },
+              "mrz_back": {
+                "start_ms": 26.54,
+                "end_ms": 569.02
+              },
+              "ocr_back_original": {
+                "start_ms": 447.05,
+                "end_ms": 710.78
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 753.39,
+            "pipeline_ms": 742.81,
+            "stage_ms": {
+              "alignment": 8.13,
+              "mrz": 537.08,
+              "qr": 20.46,
+              "ocr": 684.76,
+              "other": 47.58
+            },
+            "timings_ms": {
+              "align_front": 4.3,
+              "align_back": 3.83,
+              "qr_front_original": 9.6,
+              "qr_back_original": 10.86,
+              "ocr_front_original": 420.02,
+              "mrz_back": 537.08,
+              "ocr_back_original": 264.74,
+              "total": 742.81
+            },
+            "worker_queue_ms": 0.05,
+            "gpu_queue_ms": 0.09,
+            "response_bytes": 249659,
+            "upload_bytes": 137198,
+            "status": "complete",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 330.71
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 206.29
+              }
+            ],
+            "mrz_stop_reason": "covered_by_qr_ocr",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.57,
+                "end_ms": 20.87
+              },
+              "align_back": {
+                "start_ms": 20.89,
+                "end_ms": 24.72
+              },
+              "qr_front_original": {
+                "start_ms": 24.95,
+                "end_ms": 34.55
+              },
+              "qr_back_original": {
+                "start_ms": 34.58,
+                "end_ms": 45.44
+              },
+              "ocr_front_original": {
+                "start_ms": 27.25,
+                "end_ms": 447.27
+              },
+              "mrz_back": {
+                "start_ms": 25.65,
+                "end_ms": 562.73
+              },
+              "ocr_back_original": {
+                "start_ms": 447.31,
+                "end_ms": 712.05
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 768.31,
+            "pipeline_ms": 757.95,
+            "stage_ms": {
+              "alignment": 8.34,
+              "mrz": 566.37,
+              "qr": 15.73,
+              "ocr": 698.93,
+              "other": 49.4
+            },
+            "timings_ms": {
+              "align_front": 4.53,
+              "align_back": 3.81,
+              "qr_front_original": 6.35,
+              "qr_back_original": 9.38,
+              "ocr_front_original": 426.02,
+              "mrz_back": 566.37,
+              "ocr_back_original": 272.91,
+              "total": 757.95
+            },
+            "worker_queue_ms": 0.04,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 249659,
+            "upload_bytes": 137198,
+            "status": "complete",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 348.99
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 217.31
+              }
+            ],
+            "mrz_stop_reason": "covered_by_qr_ocr",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.48,
+                "end_ms": 21.01
+              },
+              "align_back": {
+                "start_ms": 21.03,
+                "end_ms": 24.84
+              },
+              "qr_front_original": {
+                "start_ms": 25.06,
+                "end_ms": 31.4
+              },
+              "qr_back_original": {
+                "start_ms": 31.46,
+                "end_ms": 40.84
+              },
+              "ocr_front_original": {
+                "start_ms": 26.31,
+                "end_ms": 452.32
+              },
+              "mrz_back": {
+                "start_ms": 25.68,
+                "end_ms": 592.05
+              },
+              "ocr_back_original": {
+                "start_ms": 452.36,
+                "end_ms": 725.27
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          },
+          {
+            "wall_ms": 748.99,
+            "pipeline_ms": 737.46,
+            "stage_ms": {
+              "alignment": 12.1,
+              "mrz": 540.97,
+              "qr": 22.18,
+              "ocr": 677.51,
+              "other": 46.43
+            },
+            "timings_ms": {
+              "align_front": 6.39,
+              "align_back": 5.71,
+              "qr_front_original": 12.67,
+              "qr_back_original": 9.51,
+              "ocr_front_original": 412.3,
+              "mrz_back": 540.97,
+              "ocr_back_original": 265.21,
+              "total": 737.46
+            },
+            "worker_queue_ms": 0.06,
+            "gpu_queue_ms": 0.11,
+            "response_bytes": 249660,
+            "upload_bytes": 137198,
+            "status": "complete",
+            "recognized_fields": 12,
+            "expected_fields": 11,
+            "exact_expected_matches": 11,
+            "mismatched_field_names": [],
+            "field_names": [
+              "id_number",
+              "old_id_number",
+              "name",
+              "date_of_birth",
+              "gender",
+              "nationality",
+              "place_of_origin",
+              "place_of_residence",
+              "issue_date",
+              "issuing_authority",
+              "identifying_features",
+              "expiry_date"
+            ],
+            "ocr_passes": 2,
+            "ocr_errors": 0,
+            "alignment": {
+              "front": "original",
+              "back": "original"
+            },
+            "mrz_status": "invalid",
+            "mrz_attempts": [
+              {
+                "method": "fastmrz",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 321.21
+              },
+              {
+                "method": "bottom_region",
+                "variant": "original",
+                "rotation_clockwise": 0,
+                "status": "invalid",
+                "elapsed_ms": 219.69
+              }
+            ],
+            "mrz_stop_reason": "covered_by_qr_ocr",
+            "mrz_used_fields": [],
+            "execution": {
+              "mode": "parallel_qr_mrz_ocr",
+              "merge_priority": [
+                "qr",
+                "mrz",
+                "ocr"
+              ],
+              "ocr_policy": "fill_missing_with_full_image_fallback",
+              "gpu_recognition_scope": "full_image",
+              "mrz_attempt_limit": 3,
+              "mrz_retry_budget_ms": 900
+            },
+            "stage_intervals_ms": {
+              "align_front": {
+                "start_ms": 16.85,
+                "end_ms": 23.24
+              },
+              "align_back": {
+                "start_ms": 23.26,
+                "end_ms": 28.96
+              },
+              "qr_front_original": {
+                "start_ms": 29.17,
+                "end_ms": 41.83
+              },
+              "qr_back_original": {
+                "start_ms": 41.87,
+                "end_ms": 51.38
+              },
+              "ocr_front_original": {
+                "start_ms": 30.56,
+                "end_ms": 442.86
+              },
+              "mrz_back": {
+                "start_ms": 29.78,
+                "end_ms": 570.75
+              },
+              "ocr_back_original": {
+                "start_ms": 442.9,
+                "end_ms": 708.11
+              }
+            },
+            "qr_status": null,
+            "conflict_fields": []
+          }
+        ]
+      },
+      "summary": {
+        "gpu": {
+          "samples": 5,
+          "median_wall_ms": 667.64,
+          "mean_wall_ms": 664.16,
+          "min_wall_ms": 646.23,
+          "max_wall_ms": 672.62,
+          "mean_stage_ms": {
+            "alignment": 0,
+            "mrz": 0,
+            "qr": 14.85,
+            "ocr": 627.57,
+            "other": 17.34
+          },
+          "mean_gpu_queue_ms": 0.11,
+          "mean_response_bytes": 3318,
+          "recognized_fields_range": [
+            11,
+            11
+          ],
+          "exact_expected_matches_range": [
+            11,
+            11
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        },
+        "experiment": {
+          "samples": 5,
+          "median_wall_ms": 753.39,
+          "mean_wall_ms": 755.32,
+          "min_wall_ms": 748.99,
+          "max_wall_ms": 768.31,
+          "mean_stage_ms": {
+            "alignment": 9.01,
+            "mrz": 551.95,
+            "qr": 20.46,
+            "ocr": 686.48,
+            "other": 47.52
+          },
+          "mean_gpu_queue_ms": 0.11,
+          "mean_response_bytes": 249659,
+          "recognized_fields_range": [
+            12,
+            12
+          ],
+          "exact_expected_matches_range": [
+            11,
+            11
+          ],
+          "mismatched_field_names": [],
+          "ocr_passes_range": [
+            2,
+            2
+          ],
+          "ocr_errors": 0
+        }
+      },
+      "delta_median_ms": 85.75,
+      "delta_median_percent": 12.84
+    }
+  ],
+  "finished_at": "2026-10-28T09:28:52.276548+00:00"
+}

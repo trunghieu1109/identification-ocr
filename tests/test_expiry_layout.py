@@ -1,15 +1,8 @@
 """Expiry values follow their printed caption, not detector list ordering."""
-import httpx
 import pytest
-from fastapi.testclient import TestClient
 
 from identification_demo.cpu_pipeline import reread_indexes
 from identification_demo.expiry import expiry_rows, parse_expiry
-from identification_demo.gpu_engine import DocUGPUEngine, normalize_result
-from identification_demo.web import create_app
-from test_expiry_experiments import submit
-from test_gpu_engine import READY
-from test_pipeline import Engine, Reader
 
 
 def line(text, left, top, right, bottom):
@@ -94,29 +87,6 @@ def test_cpu_corrects_the_expiry_crop_even_with_confident_initial_ocr():
     assert batches == [2]
     assert parse_expiry(result["text_lines"])[0]["expiry_date"] == "25/10/2036"
     assert result["text_lines"][0]["text"] == "Ngày sinh: 01/02/1999"
-
-
-def test_gpu_experiment_preserves_boxes_but_production_normalization_stays_the_same():
-    rows = [line("25/10/2036", 50, 540, 225, 565),
-            line("Ngày sinh: 01/02/1999", 600, 520, 1000, 545),
-            line("Có giá trị đến", 50, 500, 230, 525)]
-    payload = {"success": True, "doc_type": "cccd_front", "extracted_fields": {}, "text_lines": rows}
-    assert normalize_result(payload)["text_lines"] == [row["text"] for row in rows]
-
-    def handler(request):
-        if request.method == "GET":
-            return httpx.Response(200, json=READY)
-        if request.url.params["doc_type_hint"] == "cccd_back":
-            return httpx.Response(200, json={"success": True, "doc_type": "cccd_back", "extracted_fields": {}, "text_lines": []})
-        return httpx.Response(200, json=payload)
-
-    cpu = Engine()
-    gpu = DocUGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
-    result = submit(TestClient(create_app(cpu, Reader(), gpu)), quality="high").json()
-    assert result["fields"]["expiry_date"] == "25/10/2036" and result["sources"] == ["ocr_front"]
-    assert result["candidates"][0]["method"] == "layout"
-    assert result["ocr"]["front"]["text_lines"][0]["bbox"] == [50, 540, 225, 565]
-    assert not cpu.calls
 
 
 @pytest.mark.parametrize("box", [None, [], [0, 0, 0, 0], [0, 0, float("nan"), 10], [[1, 2], [3, 4]]])

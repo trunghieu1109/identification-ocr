@@ -73,9 +73,9 @@ def test_main_gpu_defaults_to_namlhn_worker_and_reports_its_actual_model(monkeyp
         return httpx.Response(200, json={"success": True, "document_side": side, "structured_fields": fields,
                                         "text_lines": ["Có giá trị đến: 25/10/2036"] if side == "front" else []})
 
-    cpu, docu = Engine(), Engine()
+    cpu = Engine()
     gpu = NamLhnGPUEngine("http://namlhn.test", httpx.MockTransport(handler))
-    app = create_app(cpu, Reader(), namlhn_gpu_engine=gpu, docu_gpu_engine=docu)
+    app = create_app(cpu, Reader(), namlhn_gpu_engine=gpu)
     with TestClient(app) as client:
         response = client.post("/api/cccd/extract", files={
             "front_image": ("front.png", image_data(), "image/png"),
@@ -88,4 +88,4 @@ def test_main_gpu_defaults_to_namlhn_worker_and_reports_its_actual_model(monkeyp
     assert result["ocr_engine"]["model"] == "vgg_seq2seq" and result["ocr_engine"]["strategy"] == "namlhn_docu_v1"
     assert result["fields"]["expiry_date"] == "25/10/2036"
     assert len(posts) == 2 and all("expiry_date" in fields for _, fields in posts)
-    assert not cpu.calls and not docu.calls
+    assert not cpu.calls

@@ -1,3 +1,5 @@
+> **Tài liệu lịch sử.** Các API thử nghiệm, worker DocU độc lập và pipeline legacy đã được gỡ ở bản 0.8.0. Các số liệu được giữ để đối chiếu; dùng [README hiện tại](../README.md) để triển khai.
+
 # Ghi nhận thử nghiệm bộ nhận dạng
 
 **AsterNet đã được gỡ theo yêu cầu người dùng vì kết quả trên ảnh thực tế

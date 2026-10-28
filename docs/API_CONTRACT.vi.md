@@ -1,6 +1,8 @@
 # API contract: đọc thông tin từ hai mặt căn cước
 
-Đối chiếu với mã nguồn ứng dụng phiên bản **0.7.0**, ngày **25/10/2026**.
+Đối chiếu với mã nguồn ứng dụng phiên bản **0.9.0**, ngày **28/10/2026**.
+
+Từ 0.9.0, `quality=high` có công tắc `use_mrz`: bật dùng QR/MRZ/OCR song song và căn chỉnh; tắt dùng GPU QR + OCR cũ. Compose mặc định bật qua `GPU_MRZ_ENABLED=1`. Schema 12 trường, `source="qr_ocr"` và trạng thái HTTP được giữ; xem [hướng dẫn bật/tắt](GPU_MRZ_SWITCH.vi.md).
 
 Từ 0.7.0, mức `high` dùng namlhn GPU. Cả hai mức thêm `expiry_date` vào
 `fields` và `field_sources`; `total_fields` tăng từ 11 lên 12.
@@ -8,6 +10,8 @@ Từ 0.7.0, mức `high` dùng namlhn GPU. Cả hai mức thêm `expiry_date` v�
 API nhận ảnh mặt trước và mặt sau của cùng một căn cước, trả một JSON chứa
 thông tin đọc được của người trên thẻ. Đây là contract hiện tại để hệ thống
 tích hợp tiếp tục sử dụng khi thay đổi bộ xử lý bên trong.
+
+Bản 0.8.0 giữ contract API chính, mức CPU `medium` và GPU `high`; chỉ gỡ các API thử nghiệm riêng.
 
 ## 1. Giao tiếp HTTP
 
@@ -33,6 +37,7 @@ file tạm phục vụ OCR được dọn khi xử lý kết thúc.
 | `back_image` | File nhị phân | Có | Ảnh mặt sau của cùng căn cước |
 | `quality` | string | Không | `medium` hoặc `high`; mặc định theo `OCR_DEFAULT_QUALITY` (Compose: `high`); phân biệt chữ hoa/chữ thường |
 | `include_back_ocr` | boolean | Không | Mặc định `false`; `true` trả thêm chữ OCR mặt sau để đối chiếu |
+| `use_mrz` | boolean | Không | Chỉ áp dụng `high`: `true` chạy QR/MRZ/OCR song song; `false` chạy GPU QR + OCR cũ; bỏ qua dùng `GPU_MRZ_ENABLED` |
 
 Mỗi ảnh phải không rỗng, có nội dung JPEG hoặc PNG hợp lệ, tối đa
 **10 MiB = 10.485.760 byte** và **20.000.000 pixel**. Giới hạn áp dụng riêng
@@ -87,6 +92,10 @@ base64 thay thế.
 | `request_id` | string | Mã lần gọi do server sinh |
 | `timings_ms` | object | Mili giây từng bước: `image_decode`, `qr_front`, `qr_back`, `ocr_front`, `ocr_back`, `merge`, `total` |
 | `request_timings_ms` | object | Mili giây xử lý HTTP trên ứng dụng: `receive_upload`, `prepare_request`, `dispatch_wait`, `pipeline`, `finish_result`, `server_until_result` |
+| `gpu_pipeline` | object | Khi `high`: `requested`, `used` là `classic/parallel`; `fallback` báo tự dùng GPU cũ khi worker MRZ lỗi kết nối/contract |
+| `mrz`, `alignment`, `execution` | object | Khi dùng `parallel`: trạng thái MRZ/checksum và căn chỉnh, chính sách song song; không chứa ảnh hoặc MRZ thô |
+| `review_fields` | string[] | Khi dùng `parallel`: các trường cần đối chiếu, có thể khiến `status=partial` dù không còn trường thiếu |
+| `stage_intervals_ms` | object | Khi dùng `parallel`: mốc bắt đầu/kết thúc công đoạn để đối chiếu các phần chồng lấp |
 
 Quy ước trạng thái:
 
@@ -159,7 +168,7 @@ lưu ý điểm này khi phân tích ngày. `gender` là chuỗi, hiện chưa c
 được kiểm tra cho mọi bộ xử lý.
 
 Mỗi giá trị trong `field_sources` thuộc một trong:
-`qr_front`, `qr_back`, `ocr_front`, `ocr_back` hoặc `null`.
+`qr_front`, `qr_back`, `ocr_front`, `ocr_back` hoặc `null` ở luồng cũ/CPU. Luồng song song thêm `mrz_back` và tên nguồn chỉ rõ ảnh, như `qr_front_original`, `qr_back_aligned`, `ocr_front_original`, `ocr_back_aligned`, cùng biến thể fallback.
 `null` tương ứng trường chưa có dữ liệu. Các key JSON không có ý nghĩa về thứ tự.
 
 ## 5. Quy tắc kết hợp dữ liệu

@@ -46,8 +46,7 @@ def process_image(data, engine, side="auto", needed_fields=None, source_data=Non
     # is removed on success and failure, including any upstream sidecar outputs.
     context = nullcontext(data) if isinstance(data, Image.Image) else closing(load_image(data))
     with context as image:
-        extract_image = ((getattr(engine, "extract_experiment_image", None) if include_expiry else None)
-                         or getattr(engine, "extract_image", None))
+        extract_image = getattr(engine, "extract_image", None)
         if extract_image:
             raw = extract_image(image, side, needed_fields=needed_fields,
                                 source_data=source_data if source_data is not None else data if isinstance(data, bytes) else None)

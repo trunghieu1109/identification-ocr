@@ -18,8 +18,7 @@ cache model của Compose. Cần NVIDIA GPU và image đã được build theo R
 Container tạm khởi tạo riêng model, nên cần đủ VRAM bên cạnh các worker đang chạy.
 
 Nếu chạy trực tiếp trong môi trường đã có đủ thư viện và model GPU, bỏ
-`--docker`. Mặc định dùng VietOCR Seq2Seq; `--model vgg_transformer` chọn
-biến thể Transformer. Tham số `--recognizer vietocr` vẫn được hỗ trợ.
+`--docker`. Bản 0.8.0 chỉ giữ VietOCR `vgg_seq2seq`. Tham số `--recognizer vietocr` vẫn được hỗ trợ.
 Tăng cường ảnh theo `NAMLHN_GPU_TEXT_ENHANCEMENT` (`adaptive`). Muốn giữ riêng
 kết quả nhận dạng lượt đầu:
 

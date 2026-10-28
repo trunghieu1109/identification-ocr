@@ -2,10 +2,10 @@ import httpx
 import pytest
 from fastapi.testclient import TestClient
 
-from identification_demo.gpu_engine import DocUGPUEngine
+from identification_demo.namlhn_gpu_engine import NamLhnGPUEngine
 from identification_demo.web import create_app
 from test_pipeline import Engine, Reader, PAYLOAD, image_data
-from test_gpu_engine import READY, FRONT as DOCU_FRONT
+from test_namlhn_gpu_engine import READY, FRONT as DOCU_FRONT
 
 FRONT = {**DOCU_FRONT, "text_lines": [*DOCU_FRONT["text_lines"], {"text": "Có giá trị đến: 25/10/2036"}]}
 
@@ -52,7 +52,7 @@ def test_gpu_default_never_warms_or_calls_cpu_and_still_prioritizes_qr(monkeypat
 def test_gpu_default_unavailable_preserves_qr_without_falling_back_to_cpu(monkeypatch):
     monkeypatch.setenv("OCR_DEFAULT_QUALITY", "high")
     cpu = Engine()
-    result = submit(TestClient(create_app(cpu, Reader(), DocUGPUEngine("")))).json()
+    result = submit(TestClient(create_app(cpu, Reader(), NamLhnGPUEngine("")))).json()
     assert result["quality"] == "high" and result["status"] == "partial"
     assert result["field_sources"]["issue_date"] == "qr_front"
     assert not cpu.calls
@@ -65,18 +65,19 @@ def test_high_selects_gpu_metadata_and_retains_qr_priority():
             return httpx.Response(200, json=READY)
         side = request.url.params["doc_type_hint"]
         posts.append(side)
-        payload = FRONT if side == "cccd_front" else {"success": True, "doc_type": "cccd_back", "extracted_fields": {
-            "issue_date": "2021-04-20", "issue_authority": "WRONG DEFAULT", "characteristics": "Nốt ruồi má trái",
+        payload = FRONT if side == "cccd_front" else {"success": True, "document_side": "back", "structured_fields": {
+            "issue_date": "20/04/2021", "issuing_authority": "Công an tỉnh Hà Nam", "identifying_features": "Nốt ruồi má trái",
         }, "text_lines": [{"text": "Ngày cấp: 20/04/2021"}, {"text": "Cơ quan cấp: Công an tỉnh Hà Nam"}]}
         return httpx.Response(200, json=payload)
     cpu = Engine()
-    gpu = DocUGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
+    gpu = NamLhnGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
     client = TestClient(create_app(cpu, Reader(), gpu))
     response = submit(client, "high")
     assert response.status_code == 200
     result = response.json()
     assert result["quality"] == "high" and result["status"] == "complete"
-    assert result["ocr_engine"] == {"provider": "namlhn/vietnam-cccd-ocr", "device": "cuda", "used": True}
+    assert result["ocr_engine"] == {"provider": "namlhn/vietnam-cccd-ocr", "device": "cuda", "used": True,
+                                    "model": "vgg_seq2seq", "strategy": "namlhn_docu_v1"}
     assert result["fields"]["issue_date"] == "15/03/2021" and result["field_sources"]["issue_date"] == "qr_front"
     assert result["fields"]["name"] == "NGUYỄN VĂN THỬ"
     assert result["fields"]["issuing_authority"] == "Công an tỉnh Hà Nam"
@@ -102,13 +103,14 @@ def test_partial_gpu_institution_stays_visible_in_common_api_with_qr_priority():
         if request.method == "GET":
             return httpx.Response(200, json=READY)
         payload = FRONT if request.url.params["doc_type_hint"] == "cccd_front" else {
-            "success": True, "doc_type": "cccd_back", "extracted_fields": {"issue_authority": "WRONG DEFAULT"},
+            "success": True, "document_side": "back", "structured_fields": {"issuing_authority": "CỤC CẢNH SÁT"},
+            "authority_region": {"status": "partial"},
             "text_lines": [{"text": "Ngày cấp: 20/04/2021"}, {"text": "CỤC TRƯỞNG CỤC CẢNH SÁT"}],
         }
         return httpx.Response(200, json=payload)
 
     cpu = Engine()
-    gpu = DocUGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
+    gpu = NamLhnGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
     response = submit(TestClient(create_app(cpu, Reader(), gpu)), "high")
     assert response.status_code == 200
     result = response.json()
@@ -123,7 +125,7 @@ def test_partial_gpu_institution_stays_visible_in_common_api_with_qr_priority():
 
 def test_gpu_unavailable_keeps_qr_with_explicit_errors_and_does_not_use_cpu():
     cpu = Engine()
-    result = submit(TestClient(create_app(cpu, Reader(), DocUGPUEngine(""))), "high").json()
+    result = submit(TestClient(create_app(cpu, Reader(), NamLhnGPUEngine(""))), "high").json()
     assert result["status"] == "partial" and result["quality"] == "high"
     assert result["ocr_engine"]["used"] is False
     assert result["fields"]["issue_date"] == "15/03/2021"
@@ -134,7 +136,7 @@ def test_gpu_unavailable_keeps_qr_with_explicit_errors_and_does_not_use_cpu():
 
 def test_gpu_unavailable_without_any_qr_returns_503_and_does_not_use_cpu():
     cpu = Engine()
-    response = submit(TestClient(create_app(cpu, Reader([]), DocUGPUEngine(""))), "high")
+    response = submit(TestClient(create_app(cpu, Reader([]), NamLhnGPUEngine(""))), "high")
     assert response.status_code == 503 and not cpu.calls
 
 
@@ -148,8 +150,8 @@ def test_unknown_quality_is_rejected_before_reading_images(quality):
 
 def test_swapped_gpu_sides_are_rejected():
     def handler(request):
-        return httpx.Response(200, json=READY if request.method == "GET" else {"success": True, "doc_type": "cccd_back", "extracted_fields": {}})
-    gpu = DocUGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
+        return httpx.Response(200, json=READY if request.method == "GET" else {"success": True, "document_side": "back", "structured_fields": {}})
+    gpu = NamLhnGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
     response = submit(TestClient(create_app(Engine(), Reader(), gpu)), "high")
     assert response.status_code == 422 and "mặt sau" in response.json()["error"]
 
@@ -161,7 +163,7 @@ def test_ambiguous_back_regions_keep_qr_and_successful_front_ocr():
         if request.url.params["doc_type_hint"] == "cccd_front":
             return httpx.Response(200, json=FRONT)
         return httpx.Response(422, json={"error_code": "multiple_documents", "detected_regions": 2})
-    gpu = DocUGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
+    gpu = NamLhnGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
     cpu = Engine()
     response = submit(TestClient(create_app(cpu, Reader(), gpu)), "high")
     assert response.status_code == 200
@@ -183,7 +185,7 @@ def test_ambiguous_regions_on_both_sides_without_any_data_return_actionable_422(
         return httpx.Response(200, json=READY) if request.method == "GET" else httpx.Response(422, json={
             "error_code": "multiple_documents", "detected_regions": 2,
         })
-    gpu = DocUGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
+    gpu = NamLhnGPUEngine("http://gpu.test", transport=httpx.MockTransport(handler))
     response = submit(TestClient(create_app(Engine(), Reader([]), gpu)), "high")
     assert response.status_code == 422
     assert "vùng thẻ duy nhất" in response.json()["error"]

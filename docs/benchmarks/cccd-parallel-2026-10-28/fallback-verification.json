@@ -1,0 +1,116 @@
+[
+  {
+    "case": "unreadable_qr_and_mrz",
+    "input_sha256": {
+      "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+      "back": "aaebdf0a5ef5619ff41dc102b58772203f83c800aa71ac7a5e6f226d481cbee3"
+    },
+    "recognized_fields": 11,
+    "exact_expected_matches": 9,
+    "expected_fields": 10,
+    "mismatched_field_names": [
+      "issue_date"
+    ],
+    "field_sources": {
+      "id_number": "ocr_front_original",
+      "old_id_number": null,
+      "name": "ocr_front_original",
+      "date_of_birth": "ocr_front_original",
+      "gender": "ocr_front_original",
+      "nationality": "ocr_front_original",
+      "place_of_origin": "ocr_front_original",
+      "place_of_residence": "ocr_front_original",
+      "issue_date": "ocr_back_original",
+      "issuing_authority": "ocr_back_original",
+      "identifying_features": "ocr_back_original",
+      "expiry_date": "ocr_front_original"
+    },
+    "mrz_status": "invalid",
+    "mrz_attempts": [
+      {
+        "method": "fastmrz",
+        "variant": "original",
+        "rotation_clockwise": 0,
+        "status": "not_found",
+        "elapsed_ms": 430.59
+      },
+      {
+        "method": "fastmrz",
+        "variant": "original",
+        "rotation_clockwise": 180,
+        "status": "not_found",
+        "elapsed_ms": 343.16
+      },
+      {
+        "method": "bottom_region",
+        "variant": "original",
+        "rotation_clockwise": 180,
+        "status": "invalid",
+        "elapsed_ms": 214.23
+      }
+    ],
+    "ocr_passes": {
+      "front": 1,
+      "back": 1
+    },
+    "processing_time_ms": 1048,
+    "all_required_fields_filled": true,
+    "matches_main_on_required_fields": true
+  },
+  {
+    "case": "rotated_back_mrz",
+    "input_sha256": {
+      "front": "5c93ddd022de49fdabf4de1982d6ac138be9ef2fe0b3e6623ebd8a56ecc429fd",
+      "back": "86e50057e77fc4e1698b307e4cdfa454806f3c03f4867cae7102a4fa33c566d1"
+    },
+    "recognized_fields": 11,
+    "exact_expected_matches": 9,
+    "expected_fields": 10,
+    "mismatched_field_names": [
+      "issue_date"
+    ],
+    "field_sources": {
+      "id_number": "mrz_back",
+      "old_id_number": null,
+      "name": "ocr_front_original",
+      "date_of_birth": "ocr_front_original",
+      "gender": "mrz_back",
+      "nationality": "mrz_back",
+      "place_of_origin": "ocr_front_original",
+      "place_of_residence": "ocr_front_original",
+      "issue_date": "ocr_back_original_mrz_rotation",
+      "issuing_authority": "ocr_back_original_mrz_rotation",
+      "identifying_features": "ocr_back_original_mrz_rotation",
+      "expiry_date": "mrz_back"
+    },
+    "mrz_status": "verified",
+    "mrz_attempts": [
+      {
+        "method": "fastmrz",
+        "variant": "original",
+        "rotation_clockwise": 0,
+        "status": "not_found",
+        "elapsed_ms": 334.88
+      },
+      {
+        "method": "fastmrz",
+        "variant": "original",
+        "rotation_clockwise": 180,
+        "status": "invalid",
+        "elapsed_ms": 343.77
+      },
+      {
+        "method": "bottom_region",
+        "variant": "original",
+        "rotation_clockwise": 180,
+        "status": "verified",
+        "elapsed_ms": 190.57
+      }
+    ],
+    "ocr_passes": {
+      "front": 1,
+      "back": 2
+    },
+    "processing_time_ms": 1196
+  }
+]

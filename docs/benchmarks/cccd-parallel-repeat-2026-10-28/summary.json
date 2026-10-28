@@ -1,0 +1,110 @@
+{
+  "started_at": "2026-10-28T10:00:00.480781+00:00",
+  "finished_at": "2026-10-28T10:01:23.988372+00:00",
+  "synthetic": true,
+  "samples_per_flow": 50,
+  "flows": {
+    "gpu": {
+      "mean_ms": 698.59,
+      "median_ms": 677.85,
+      "min_ms": 610.67,
+      "max_ms": 835.79,
+      "mean_gpu_queue_ms": 0.1,
+      "ocr_errors": 0,
+      "previous_mean_ms": 712.9
+    },
+    "experiment": {
+      "mean_ms": 815.53,
+      "median_ms": 814.24,
+      "min_ms": 740.68,
+      "max_ms": 904.83,
+      "mean_gpu_queue_ms": 0.19,
+      "ocr_errors": 0,
+      "previous_mean_ms": 822.72
+    }
+  },
+  "cases": [
+    {
+      "name": "clear_mrz_no_qr",
+      "gpu_mean_ms": 681.88,
+      "experiment_mean_ms": 776.27,
+      "delta_ms": 94.39,
+      "expected_matches": {
+        "gpu": [
+          9,
+          9
+        ],
+        "experiment": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "name": "mild_blur_no_qr",
+      "gpu_mean_ms": 717.68,
+      "experiment_mean_ms": 825.07,
+      "delta_ms": 107.39,
+      "expected_matches": {
+        "gpu": [
+          10,
+          10
+        ],
+        "experiment": [
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "name": "perspective_back_no_qr",
+      "gpu_mean_ms": 813.46,
+      "experiment_mean_ms": 866.95,
+      "delta_ms": 53.49,
+      "expected_matches": {
+        "gpu": [
+          10,
+          10
+        ],
+        "experiment": [
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "name": "no_mrz_no_qr",
+      "gpu_mean_ms": 621.01,
+      "experiment_mean_ms": 834.41,
+      "delta_ms": 213.4,
+      "expected_matches": {
+        "gpu": [
+          10,
+          10
+        ],
+        "experiment": [
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "name": "readable_qr_and_mrz",
+      "gpu_mean_ms": 658.94,
+      "experiment_mean_ms": 774.95,
+      "delta_ms": 116.01,
+      "expected_matches": {
+        "gpu": [
+          11,
+          11
+        ],
+        "experiment": [
+          11,
+          11
+        ]
+      }
+    }
+  ],
+  "mean_delta_ms": 116.94,
+  "mean_delta_percent": 16.74
+}

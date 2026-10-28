@@ -6,3 +6,6 @@ __pycache__
 .env
 tests
 exports
+docs/*
+!docs/licenses/
+image.png

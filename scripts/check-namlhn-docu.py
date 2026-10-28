@@ -21,7 +21,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--label", required=True)
     parser.add_argument("--base-url", default="http://127.0.0.1:8888")
-    parser.add_argument("--engines", nargs="+", default=["namlhn_gpu"])
+    parser.add_argument("--qualities", nargs="+", choices=("medium", "high"), default=["high"])
     parser.add_argument("--repeats", type=int, default=2)
     args = parser.parse_args()
     manifest = json.loads(args.dataset.read_text())
@@ -35,10 +35,9 @@ def main():
             files = {f"{side}_image": (f"{side}.png", (args.dataset.parent / pair[side]).read_bytes(), "image/png")
                      for side in ("front", "back")}
             expected = {key: value for fields in pair.get("expected", {}).values() for key, value in fields.items()}
-            for engine in args.engines:
+            for engine in args.qualities:
                 for repeat in range(-1, args.repeats):
-                    response = client.post("/api/cccd/experiment/extract", files=files,
-                        data={"engine": engine, "use_qr": "false", "include_ocr_text": "true"})
+                    response = client.post("/api/cccd/extract", files=files, data={"quality": engine})
                     response.raise_for_status()
                     result = response.json()
                     if result.get("success") is not True:
@@ -59,10 +58,10 @@ def main():
     summary = [{"case": pair["name"], "engine": engine,
                 "median_ms": statistics.median(row["processing_time_ms"] for row in runs
                     if row["case"] == pair["name"] and row["engine"] == engine)}
-               for pair in manifest["pairs"] for engine in args.engines]
+               for pair in manifest["pairs"] for engine in args.qualities]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps({"label": args.label, "date": datetime.now(timezone.utc).isoformat(),
-        "scope": "Synthetic fixtures only; QR disabled; one warmup and repeated HTTP calls per case/engine. Not a real-card accuracy benchmark.",
+        "scope": "Synthetic fixtures only; main QR + OCR API; one warmup and repeated HTTP calls per case/engine. Not a real-card accuracy benchmark.",
         "summary": summary, "runs": runs}, ensure_ascii=False, indent=2) + "\n")
 
 

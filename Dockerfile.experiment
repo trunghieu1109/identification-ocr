@@ -1,0 +1,22 @@
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 \
+    CCCD_EXPERIMENT_MODEL_DIR=/opt/cccd-experiment-models \
+    QR_MODEL_DIR=/opt/qr-models OMP_THREAD_LIMIT=2 OPENBLAS_NUM_THREADS=2
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tesseract-ocr libgomp1 && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY requirements.txt requirements-experiment.txt ./
+RUN pip install --no-cache-dir -r requirements.txt -r requirements-experiment.txt \
+    && pip install --no-cache-dir --force-reinstall --no-deps opencv-contrib-python-headless==4.11.0.86
+COPY scripts/setup-experiment-models.py scripts/setup-qr-models.py ./scripts/
+COPY identification_demo/__init__.py identification_demo/wechat_qr.py identification_demo/qr.py ./identification_demo/
+RUN python scripts/setup-experiment-models.py --directory /opt/cccd-experiment-models \
+    && python scripts/setup-qr-models.py --directory /opt/qr-models
+COPY identification_demo ./identification_demo
+COPY docs/licenses ./licenses
+EXPOSE 8083
+HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
+    CMD python -c "import os, urllib.request; k=os.getenv('CCCD_EXPERIMENT_API_KEY',''); r=urllib.request.Request('http://127.0.0.1:8083/health', headers={'Authorization': 'Bearer '+k} if k else {}); urllib.request.urlopen(r, timeout=4)"
+CMD ["python", "-m", "uvicorn", "identification_demo.experiment_worker:app", "--host", "0.0.0.0", "--port", "8083"]
